@@ -1,0 +1,24 @@
+{
+  "name": "AutoLog — Car Maintenance Tracker",
+  "short_name": "AutoLog",
+  "description": "Universal car periodic maintenance schedule, odometer tracker, and workshop expense log.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#0f172a",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='128' fill='%234f46e5'/%3E%3Cpath d='M120 360a40 40 0 100 80 40 40 0 000-80zm272 0a40 40 0 100 80 40 40 0 000-80zM80 200l40-100h272l40 100M80 200h352M80 200v160h40m312-160v160h-40M160 360h192' fill='none' stroke='%23ffffff' stroke-width='32' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='128' fill='%234f46e5'/%3E%3Cpath d='M120 360a40 40 0 100 80 40 40 0 000-80zm272 0a40 40 0 100 80 40 40 0 000-80zM80 200l40-100h272l40 100M80 200h352M80 200v160h40m312-160v160h-40M160 360h192' fill='none' stroke='%23ffffff' stroke-width='32' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
