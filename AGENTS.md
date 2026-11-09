@@ -55,9 +55,16 @@ autolog/
 ├── DESIGN.md                # UI/UX design specifications, color tokens, and layout guidelines
 ├── LICENSE.md               # MIT open-source license
 ├── .gitignore               # Ignores editor artifacts, OS caches, and instructions directory
-├── cars/                    # Vehicle seed profiles in JSON format
-│   ├── sample-sedan.json    # Example vehicle history & schedule profile
-│   └── sample-compact.json  # Example vehicle history & schedule profile
+├── template/                # Generic sample vehicle profiles for all car types
+│   ├── sample-sedan.json    # Standard 4-door sedan profile
+│   ├── sample-suv.json      # SUV / Crossover AWD profile
+│   ├── sample-hatchback.json# Compact city hatchback profile
+│   ├── sample-truck.json    # 4x4 Turbo Diesel pickup truck profile
+│   ├── sample-sports.json   # High-performance sports car / coupe profile
+│   ├── sample-ev.json       # Dual-motor battery electric vehicle (EV) profile
+│   ├── sample-hybrid.json   # Gas-electric hybrid (HEV) profile
+│   └── sample-van.json      # Passenger van / MPV profile
+├── cars/                    # Vehicle profiles in JSON format
 ├── instructions/            # Architecture & skill specifications (ignored by git in .gitignore)
 │   ├── project-documentation-architect.md   # Guidelines for project-level documentation
 │   ├── attached-file-documentation-architect.md # Guidelines for single-file documentation

@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "2.0",
+  "lastUpdated": "2026-11-10",
+  "currency": "USD",
+  "vehicle": {
+    "id": "sample-sports",
+    "make": "Sample",
+    "model": "Coupe Sports RWD",
+    "year": 2023,
+    "registrationDate": "2023-06-01",
+    "engine": "3.0L Twin-Turbo Inline-6",
+    "engineNumber": "SAMPLE-SPT-005",
+    "chassisNumber": "SAMPLE-VIN-SP05",
+    "transmission": "8-Speed Sport Auto with Paddle Shifters",
+    "plateNumber": "SAMPLE GT1",
+    "currentMileageKm": 22000,
+    "latestServiceDate": "2026-09-15",
+    "workshop": {
+      "mechanicName": "Auto Care Center",
+      "location": "Main Street Garage",
+      "partsSupplier": "Auto Parts Depot"
+    }
+  },
+  "periodicSchedule": [
+    { "id": "high-perf-oil", "name": "Performance Synthetic Engine Oil (0W-40) & Filter", "category": "Fluids", "intervalKm": 7500, "intervalMonths": 6, "lastServicedKm": 20000, "lastServicedDate": "2026-09-15", "estimatedCostMyr": 110 },
+    { "id": "dot4-brake-fluid", "name": "High-Temp Brake Fluid (DOT 4 / 5.1)", "category": "Fluids", "intervalKm": 20000, "intervalMonths": 12, "lastServicedKm": 20000, "lastServicedDate": "2026-09-15", "estimatedCostMyr": 60 },
+    { "id": "lsd-gear-oil", "name": "Limited Slip Differential (LSD) Gear Oil", "category": "Drivetrain", "intervalKm": 30000, "intervalMonths": 24, "lastServicedKm": null, "lastServicedDate": null, "estimatedCostMyr": 85 },
+    { "id": "sport-brake-pads", "name": "Performance Brake Pads Inspection / Replacement", "category": "Brakes", "intervalKm": 20000, "intervalMonths": null, "lastServicedKm": 20000, "lastServicedDate": "2026-09-15", "estimatedCostMyr": 160 },
+    { "id": "spark-plugs", "name": "High-Heat Range Iridium Spark Plugs", "category": "Ignition", "intervalKm": 40000, "intervalMonths": 36, "lastServicedKm": null, "lastServicedDate": null, "estimatedCostMyr": 130 },
+    { "id": "engine-air-filters", "name": "Twin Intake Air Filters", "category": "Filters", "intervalKm": 20000, "intervalMonths": 12, "lastServicedKm": 20000, "lastServicedDate": "2026-09-15", "estimatedCostMyr": 70 },
+    { "id": "sport-tires", "name": "Performance Tires Alignment & Balance", "category": "Tires", "intervalKm": 10000, "intervalMonths": 6, "lastServicedKm": 20000, "lastServicedDate": "2026-09-15", "estimatedCostMyr": 50 }
+  ],
+  "maintenanceHistory": [
+    { "id": "sp-rec-01", "date": "2026-09-15", "mileageKm": 20000, "title": "20,000 km Performance Service", "category": "Periodic Service", "costMyr": 290, "paidMyr": 290, "paymentMethod": "Credit Card", "status": "Completed", "notes": "Replaced synthetic 0W-40 oil, OEM filter, DOT 4 brake fluid, and dual engine intake filters." }
+  ]
+}

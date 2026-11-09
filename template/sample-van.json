@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "2.0",
+  "lastUpdated": "2026-11-10",
+  "currency": "USD",
+  "vehicle": {
+    "id": "sample-van",
+    "make": "Sample",
+    "model": "Passenger Van / MPV",
+    "year": 2021,
+    "registrationDate": "2021-08-05",
+    "engine": "3.5L V6 DOHC",
+    "engineNumber": "SAMPLE-VAN-008",
+    "chassisNumber": "SAMPLE-VIN-VN08",
+    "transmission": "8-Speed Automatic FWD",
+    "plateNumber": "SAMPLE VAN1",
+    "currentMileageKm": 65000,
+    "latestServiceDate": "2026-10-05",
+    "workshop": {
+      "mechanicName": "Auto Care Center",
+      "location": "Main Street Garage",
+      "partsSupplier": "Auto Parts Depot"
+    }
+  },
+  "periodicSchedule": [
+    { "id": "engine-oil", "name": "Engine Oil & Filter (Full Synthetic)", "category": "Fluids", "intervalKm": 8000, "intervalMonths": 6, "lastServicedKm": 60000, "lastServicedDate": "2026-10-05", "estimatedCostMyr": 65 },
+    { "id": "atf-fluid", "name": "Automatic Transmission Fluid (ATF Flush)", "category": "Fluids", "intervalKm": 50000, "intervalMonths": 36, "lastServicedKm": 50000, "lastServicedDate": "2025-11-10", "estimatedCostMyr": 130 },
+    { "id": "front-rear-ac-filters", "name": "Dual Front & Rear Cabin A/C Filters", "category": "Filters", "intervalKm": 20000, "intervalMonths": 12, "lastServicedKm": 60000, "lastServicedDate": "2026-10-05", "estimatedCostMyr": 45 },
+    { "id": "engine-air-filter", "name": "Engine Air Intake Filter", "category": "Filters", "intervalKm": 25000, "intervalMonths": 12, "lastServicedKm": 50000, "lastServicedDate": "2025-11-10", "estimatedCostMyr": 30 },
+    { "id": "brake-pads-rotors", "name": "Heavy Load Front Brake Pads & Rotors Check", "category": "Brakes", "intervalKm": 30000, "intervalMonths": 24, "lastServicedKm": 60000, "lastServicedDate": "2026-10-05", "estimatedCostMyr": 95 },
+    { "id": "brake-fluid", "name": "Brake Fluid Flush", "category": "Fluids", "intervalKm": 40000, "intervalMonths": 24, "lastServicedKm": null, "lastServicedDate": null, "estimatedCostMyr": 55 },
+    { "id": "sliding-door-lube", "name": "Power Sliding Door Track Cleaning & Lubrication", "category": "Body", "intervalKm": 20000, "intervalMonths": 12, "lastServicedKm": 60000, "lastServicedDate": "2026-10-05", "estimatedCostMyr": 25 },
+    { "id": "tire-rotation", "name": "Tire Rotation & Suspension Bushings Check", "category": "Tires", "intervalKm": 10000, "intervalMonths": 6, "lastServicedKm": 60000, "lastServicedDate": "2026-10-05", "estimatedCostMyr": 35 }
+  ],
+  "maintenanceHistory": [
+    { "id": "vn-rec-01", "date": "2026-10-05", "mileageKm": 60000, "title": "60,000 km Major Family Van Service", "category": "Periodic Service", "costMyr": 265, "paidMyr": 265, "paymentMethod": "Credit Card", "status": "Completed", "notes": "Engine oil change, new front brake pads, replaced front & rear cabin filters, lubricated sliding door tracks." }
+  ]
+}

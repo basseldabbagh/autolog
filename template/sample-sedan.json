@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "2.0",
+  "lastUpdated": "2026-11-10",
+  "currency": "USD",
+  "vehicle": {
+    "id": "sample-sedan",
+    "make": "Sample",
+    "model": "Sedan",
+    "year": 2021,
+    "registrationDate": "2021-01-15",
+    "engine": "2.0L 4-Cylinder",
+    "engineNumber": "SAMPLE-ENG-001",
+    "chassisNumber": "SAMPLE-VIN-001",
+    "transmission": "Automatic",
+    "plateNumber": "SAMPLE 123",
+    "currentMileageKm": 45000,
+    "latestServiceDate": "2026-10-15",
+    "workshop": {
+      "mechanicName": "Auto Care Center",
+      "location": "Main Street Garage",
+      "partsSupplier": "Auto Parts Depot"
+    }
+  },
+  "periodicSchedule": [
+    { "id": "engine-oil", "name": "Engine Oil & Filter", "category": "Fluids", "intervalKm": 8000, "intervalMonths": 6, "lastServicedKm": 42000, "lastServicedDate": "2026-10-15", "estimatedCostMyr": 60 },
+    { "id": "cabin-air-filter", "name": "Cabin Air Filter", "category": "Filters", "intervalKm": 20000, "intervalMonths": 12, "lastServicedKm": 40000, "lastServicedDate": "2026-06-10", "estimatedCostMyr": 25 },
+    { "id": "engine-air-filter", "name": "Engine Air Filter", "category": "Filters", "intervalKm": 20000, "intervalMonths": 12, "lastServicedKm": 40000, "lastServicedDate": "2026-06-10", "estimatedCostMyr": 30 },
+    { "id": "tire-rotation", "name": "Tire Rotation & Balance", "category": "Tires", "intervalKm": 10000, "intervalMonths": 6, "lastServicedKm": 40000, "lastServicedDate": "2026-06-10", "estimatedCostMyr": 40 },
+    { "id": "brake-fluid", "name": "Brake Fluid Flush", "category": "Fluids", "intervalKm": 40000, "intervalMonths": 24, "lastServicedKm": 40000, "lastServicedDate": "2026-06-10", "estimatedCostMyr": 75 },
+    { "id": "spark-plugs", "name": "Spark Plugs", "category": "Ignition", "intervalKm": 60000, "intervalMonths": 48, "lastServicedKm": null, "lastServicedDate": null, "estimatedCostMyr": 110 }
+  ],
+  "maintenanceHistory": [
+    { "id": "rec-01", "date": "2026-10-15", "mileageKm": 42000, "title": "Engine Oil & Filter Replacement", "category": "Fluids", "costMyr": 60, "paidMyr": 60, "paymentMethod": "Credit Card", "status": "Completed", "notes": "Full synthetic 5W-30 oil and OEM filter." },
+    { "id": "rec-02", "date": "2026-06-10", "mileageKm": 40000, "title": "40,000 km Major Service", "category": "Periodic Service", "costMyr": 170, "paidMyr": 170, "paymentMethod": "Debit Card", "status": "Completed", "notes": "Replaced air and cabin filters, rotated tires, flushed brake fluid." }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "2.0",
+  "lastUpdated": "2026-11-10",
+  "currency": "USD",
+  "vehicle": {
+    "id": "sample-ev",
+    "make": "Sample",
+    "model": "EV Electric Crossover",
+    "year": 2024,
+    "registrationDate": "2024-01-15",
+    "engine": "Dual-Motor Electric AWD (75 kWh)",
+    "engineNumber": "SAMPLE-EV-006",
+    "chassisNumber": "SAMPLE-VIN-EV06",
+    "transmission": "Single-Speed Reduction Gear",
+    "plateNumber": "SAMPLE EV1",
+    "currentMileageKm": 31000,
+    "latestServiceDate": "2026-08-20",
+    "workshop": {
+      "mechanicName": "Auto Care Center",
+      "location": "Main Street Garage",
+      "partsSupplier": "Auto Parts Depot"
+    }
+  },
+  "periodicSchedule": [
+    { "id": "cabin-hepa-filter", "name": "Cabin Air & HEPA Filter Replacement", "category": "Filters", "intervalKm": 20000, "intervalMonths": 12, "lastServicedKm": 20000, "lastServicedDate": "2026-08-20", "estimatedCostMyr": 45 },
+    { "id": "tire-rotation-ev", "name": "EV Tire Rotation & Tread Depth Check", "category": "Tires", "intervalKm": 10000, "intervalMonths": 6, "lastServicedKm": 30000, "lastServicedDate": "2026-08-20", "estimatedCostMyr": 35 },
+    { "id": "brake-fluid-test", "name": "Brake Fluid Moisture Check / Flush", "category": "Fluids", "intervalKm": 40000, "intervalMonths": 24, "lastServicedKm": null, "lastServicedDate": null, "estimatedCostMyr": 60 },
+    { "id": "ac-desiccant", "name": "A/C Desiccant Bag & Thermal Management Service", "category": "Climate", "intervalKm": 60000, "intervalMonths": 36, "lastServicedKm": null, "lastServicedDate": null, "estimatedCostMyr": 80 },
+    { "id": "gearbox-oil", "name": "Drive Unit Reduction Gear Fluid", "category": "Fluids", "intervalKm": 80000, "intervalMonths": 48, "lastServicedKm": null, "lastServicedDate": null, "estimatedCostMyr": 90 },
+    { "id": "battery-coolant", "name": "High-Voltage Battery Glycol Coolant Flush", "category": "Cooling", "intervalKm": 80000, "intervalMonths": 48, "lastServicedKm": null, "lastServicedDate": null, "estimatedCostMyr": 120 },
+    { "id": "wiper-fluid", "name": "Windshield Wiper Blades & Washer Fluid", "category": "General", "intervalKm": 15000, "intervalMonths": 12, "lastServicedKm": 20000, "lastServicedDate": "2026-08-20", "estimatedCostMyr": 25 },
+    { "id": "12v-aux-battery", "name": "12V Auxiliary Battery Health Test", "category": "Electrical", "intervalKm": 20000, "intervalMonths": 12, "lastServicedKm": 20000, "lastServicedDate": "2026-08-20", "estimatedCostMyr": 0 }
+  ],
+  "maintenanceHistory": [
+    { "id": "ev-rec-01", "date": "2026-08-20", "mileageKm": 20000, "title": "20,000 km EV Annual Inspection", "category": "Periodic Service", "costMyr": 80, "paidMyr": 80, "paymentMethod": "Credit Card", "status": "Completed", "notes": "Rotated tires, replaced cabin HEPA filter, tested 12V auxiliary battery, and inspected high-voltage harness." }
+  ]
+}

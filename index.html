@@ -201,9 +201,17 @@
 						aria-label="Select Car"
 						class="bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs sm:text-sm font-medium rounded-xl ps-3 pe-7 py-2 border border-slate-700/80 focus:outline-none focus:border-indigo-500 transition cursor-pointer"
 					>
-						<option value="honda-city-2003">🚗 Honda City 2003</option>
-						<option value="hyundai-elantra-2009">🚙 Hyundai Elantra 2009</option>
-						<option value="blank-template">➕ New Car</option>
+						<optgroup label="Vehicle Types">
+							<option value="sample-sedan">🚗 Sedan (Sample)</option>
+							<option value="sample-suv">🚙 SUV / Crossover (Sample)</option>
+							<option value="sample-hatchback">🚘 Hatchback (Sample)</option>
+							<option value="sample-truck">🛻 Pickup Truck 4x4 (Sample)</option>
+							<option value="sample-sports">🏎️ Sports Car / Coupe (Sample)</option>
+							<option value="sample-ev">⚡ Electric Vehicle / EV (Sample)</option>
+							<option value="sample-hybrid">🔋 Hybrid / HEV (Sample)</option>
+							<option value="sample-van">🚐 Van / MPV (Sample)</option>
+						</optgroup>
+						<option value="blank-template">➕ Custom Car</option>
 					</select>
 
 					<!-- Google Drive Sync Button / Status Pill -->
@@ -406,7 +414,7 @@
 								step="100"
 								min="0"
 								class="w-full bg-slate-950/90 text-white font-mono text-2xl sm:text-3xl font-bold rounded-xl ps-3.5 pe-12 py-2 border border-indigo-500/50 focus:outline-none focus:border-indigo-400 transition"
-								value="196441"
+								value="45000"
 							/>
 							<span
 								class="absolute inset-y-0 end-3.5 flex items-center text-xs font-mono font-semibold text-slate-400 pointer-events-none"
@@ -443,9 +451,9 @@
 						class="mt-3 pt-2.5 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-400"
 					>
 						<div>
-							Last Service: <strong id="latestServiceDateText" class="text-slate-200 font-mono">2026-11-07</strong>
+							Last Service: <strong id="latestServiceDateText" class="text-slate-200 font-mono">—</strong>
 						</div>
-						<div>Workshop: <strong id="workshopMechanicText" class="text-slate-200">Alaa Hassoon Majdi</strong></div>
+						<div>Workshop: <strong id="workshopMechanicText" class="text-slate-200">—</strong></div>
 					</div>
 				</div>
 
@@ -1480,10 +1488,253 @@
 		<!-- Application Script -->
 		<script>
 			const BUILTIN_PROFILES = {
+				"sample-sedan": {
+					schemaVersion: "2.0",
+					lastUpdated: new Date().toISOString().slice(0, 10),
+					currency: "USD",
+					vehicle: {
+						id: "sample-sedan",
+						make: "Sample",
+						model: "Sedan 2.0L",
+						year: 2021,
+						registrationDate: "2021-01-15",
+						engine: "2.0L Inline-4",
+						engineNumber: "SAMPLE-ENG-001",
+						chassisNumber: "SAMPLE-VIN-001",
+						transmission: "Automatic",
+						plateNumber: "SAMPLE 123",
+						currentMileageKm: 45000,
+						latestServiceDate: new Date().toISOString().slice(0, 10),
+						workshop: {
+							mechanicName: "Auto Care Center",
+							location: "Main Street Garage",
+							partsSupplier: "Auto Parts Depot",
+						},
+					},
+					periodicSchedule: [
+						{ id: "engine-oil", name: "Engine Oil & Filter", category: "Fluids", intervalKm: 8000, intervalMonths: 6, lastServicedKm: 42000, lastServicedDate: new Date().toISOString().slice(0, 10), estimatedCostMyr: 60 },
+						{ id: "cabin-filter", name: "Cabin Air Filter", category: "Filters", intervalKm: 20000, intervalMonths: 12, lastServicedKm: 40000, lastServicedDate: null, estimatedCostMyr: 25 },
+						{ id: "engine-filter", name: "Engine Air Filter", category: "Filters", intervalKm: 20000, intervalMonths: 12, lastServicedKm: 40000, lastServicedDate: null, estimatedCostMyr: 30 },
+						{ id: "tire-rotation", name: "Tire Rotation & Balance", category: "Tires", intervalKm: 10000, intervalMonths: 6, lastServicedKm: 40000, lastServicedDate: null, estimatedCostMyr: 40 },
+						{ id: "brake-fluid", name: "Brake Fluid Flush", category: "Fluids", intervalKm: 40000, intervalMonths: 24, lastServicedKm: 40000, lastServicedDate: null, estimatedCostMyr: 75 },
+						{ id: "spark-plugs", name: "Spark Plugs", category: "Ignition", intervalKm: 60000, intervalMonths: 48, lastServicedKm: null, lastServicedDate: null, estimatedCostMyr: 110 },
+					],
+					maintenanceHistory: [
+						{ id: "rec-01", date: new Date().toISOString().slice(0, 10), mileageKm: 42000, title: "Engine Oil & Filter Replacement", category: "Fluids", costMyr: 60, paidMyr: 60, paymentMethod: "Credit Card", status: "Completed", notes: "Full synthetic 5W-30 and OEM filter." },
+						{ id: "rec-02", date: "2026-06-10", mileageKm: 40000, title: "40,000 km Major Service", category: "Periodic Service", costMyr: 170, paidMyr: 170, paymentMethod: "Debit Card", status: "Completed", notes: "Replaced air and cabin filters, rotated tires, flushed brake fluid." },
+					],
+				},
+				"sample-suv": {
+					schemaVersion: "2.0",
+					lastUpdated: new Date().toISOString().slice(0, 10),
+					currency: "USD",
+					vehicle: {
+						id: "sample-suv",
+						make: "Sample",
+						model: "SUV AWD",
+						year: 2023,
+						registrationDate: "2023-03-20",
+						engine: "2.5L AWD",
+						engineNumber: "SAMPLE-ENG-002",
+						chassisNumber: "SAMPLE-VIN-002",
+						transmission: "Automatic",
+						plateNumber: "SAMPLE 456",
+						currentMileageKm: 28000,
+						latestServiceDate: new Date().toISOString().slice(0, 10),
+						workshop: {
+							mechanicName: "Auto Care Center",
+							location: "Main Street Garage",
+							partsSupplier: "Auto Parts Depot",
+						},
+					},
+					periodicSchedule: [
+						{ id: "engine-oil", name: "Engine Oil & Filter", category: "Fluids", intervalKm: 10000, intervalMonths: 6, lastServicedKm: 25000, lastServicedDate: new Date().toISOString().slice(0, 10), estimatedCostMyr: 70 },
+						{ id: "cabin-filter", name: "Cabin A/C Filter", category: "Filters", intervalKm: 20000, intervalMonths: 12, lastServicedKm: 20000, lastServicedDate: null, estimatedCostMyr: 30 },
+						{ id: "tire-rotation", name: "Tire Rotation", category: "Tires", intervalKm: 10000, intervalMonths: 6, lastServicedKm: 25000, lastServicedDate: null, estimatedCostMyr: 35 },
+					],
+					maintenanceHistory: [
+						{ id: "rec-suv-01", date: new Date().toISOString().slice(0, 10), mileageKm: 25000, title: "Engine Oil Change & Tire Rotation", category: "Periodic Service", costMyr: 105, paidMyr: 105, paymentMethod: "Credit Card", status: "Completed", notes: "Routine maintenance." },
+					],
+				},
+				"sample-hatchback": {
+					schemaVersion: "2.0",
+					lastUpdated: new Date().toISOString().slice(0, 10),
+					currency: "USD",
+					vehicle: {
+						id: "sample-hatchback",
+						make: "Sample",
+						model: "Hatchback 1.5L",
+						year: 2022,
+						registrationDate: "2022-04-10",
+						engine: "1.5L Inline-4",
+						engineNumber: "SAMPLE-HB-003",
+						chassisNumber: "SAMPLE-VIN-HB03",
+						transmission: "CVT Automatic",
+						plateNumber: "SAMPLE HB1",
+						currentMileageKm: 35000,
+						latestServiceDate: new Date().toISOString().slice(0, 10),
+						workshop: { mechanicName: "Auto Care Center", location: "Main Street Garage", partsSupplier: "Auto Parts Depot" },
+					},
+					periodicSchedule: [
+						{ id: "engine-oil", name: "Engine Oil & Filter", category: "Fluids", intervalKm: 7500, intervalMonths: 6, lastServicedKm: 30000, lastServicedDate: new Date().toISOString().slice(0, 10), estimatedCostMyr: 55 },
+						{ id: "cvt-fluid", name: "CVT Transmission Fluid", category: "Fluids", intervalKm: 30000, intervalMonths: 24, lastServicedKm: 30000, lastServicedDate: new Date().toISOString().slice(0, 10), estimatedCostMyr: 90 },
+						{ id: "cabin-filter", name: "Cabin A/C Filter", category: "Filters", intervalKm: 15000, intervalMonths: 12, lastServicedKm: 30000, lastServicedDate: new Date().toISOString().slice(0, 10), estimatedCostMyr: 20 },
+						{ id: "engine-air-filter", name: "Engine Air Filter", category: "Filters", intervalKm: 20000, intervalMonths: 12, lastServicedKm: 20000, lastServicedDate: null, estimatedCostMyr: 25 },
+					],
+					maintenanceHistory: [
+						{ id: "hb-rec-01", date: new Date().toISOString().slice(0, 10), mileageKm: 30000, title: "30,000 km Service (Oil & CVT Fluid)", category: "Periodic Service", costMyr: 180, paidMyr: 180, paymentMethod: "Debit Card", status: "Completed", notes: "Routine periodic maintenance." },
+					],
+				},
+				"sample-truck": {
+					schemaVersion: "2.0",
+					lastUpdated: new Date().toISOString().slice(0, 10),
+					currency: "USD",
+					vehicle: {
+						id: "sample-truck",
+						make: "Sample",
+						model: "Pickup Truck 4x4",
+						year: 2022,
+						registrationDate: "2022-02-18",
+						engine: "2.8L Turbo Diesel",
+						engineNumber: "SAMPLE-DSL-004",
+						chassisNumber: "SAMPLE-VIN-TR04",
+						transmission: "6-Speed Automatic 4WD",
+						plateNumber: "SAMPLE 4X4",
+						currentMileageKm: 52000,
+						latestServiceDate: new Date().toISOString().slice(0, 10),
+						workshop: { mechanicName: "Auto Care Center", location: "Main Street Garage", partsSupplier: "Auto Parts Depot" },
+					},
+					periodicSchedule: [
+						{ id: "diesel-oil", name: "Diesel Engine Oil & Filter", category: "Fluids", intervalKm: 10000, intervalMonths: 6, lastServicedKm: 50000, lastServicedDate: new Date().toISOString().slice(0, 10), estimatedCostMyr: 95 },
+						{ id: "diesel-fuel-filter", name: "Diesel Fuel Filter & Water Trap", category: "Filters", intervalKm: 20000, intervalMonths: 12, lastServicedKm: 40000, lastServicedDate: null, estimatedCostMyr: 65 },
+						{ id: "diff-oil", name: "Front & Rear Differential Gear Oil", category: "Drivetrain", intervalKm: 40000, intervalMonths: 24, lastServicedKm: 40000, lastServicedDate: null, estimatedCostMyr: 120 },
+						{ id: "chassis-grease", name: "Propeller Shaft U-Joint Greasing", category: "Chassis", intervalKm: 10000, intervalMonths: 6, lastServicedKm: 50000, lastServicedDate: new Date().toISOString().slice(0, 10), estimatedCostMyr: 25 },
+					],
+					maintenanceHistory: [
+						{ id: "tr-rec-01", date: new Date().toISOString().slice(0, 10), mileageKm: 50000, title: "50,000 km Oil & Greasing", category: "Periodic Service", costMyr: 120, paidMyr: 120, paymentMethod: "Company Card", status: "Completed", notes: "Diesel oil change and driveshaft greasing." },
+					],
+				},
+				"sample-sports": {
+					schemaVersion: "2.0",
+					lastUpdated: new Date().toISOString().slice(0, 10),
+					currency: "USD",
+					vehicle: {
+						id: "sample-sports",
+						make: "Sample",
+						model: "Coupe Sports RWD",
+						year: 2023,
+						registrationDate: "2023-06-01",
+						engine: "3.0L Twin-Turbo Inline-6",
+						engineNumber: "SAMPLE-SPT-005",
+						chassisNumber: "SAMPLE-VIN-SP05",
+						transmission: "8-Speed Sport Auto",
+						plateNumber: "SAMPLE GT1",
+						currentMileageKm: 22000,
+						latestServiceDate: new Date().toISOString().slice(0, 10),
+						workshop: { mechanicName: "Auto Care Center", location: "Main Street Garage", partsSupplier: "Auto Parts Depot" },
+					},
+					periodicSchedule: [
+						{ id: "perf-oil", name: "Full Synthetic Sport Oil (0W-40) & Filter", category: "Fluids", intervalKm: 7500, intervalMonths: 6, lastServicedKm: 20000, lastServicedDate: new Date().toISOString().slice(0, 10), estimatedCostMyr: 110 },
+						{ id: "dot4-brake-fluid", name: "High-Temp Brake Fluid (DOT 4 / 5.1)", category: "Fluids", intervalKm: 20000, intervalMonths: 12, lastServicedKm: 20000, lastServicedDate: new Date().toISOString().slice(0, 10), estimatedCostMyr: 60 },
+						{ id: "lsd-oil", name: "Limited Slip Differential (LSD) Fluid", category: "Drivetrain", intervalKm: 30000, intervalMonths: 24, lastServicedKm: null, lastServicedDate: null, estimatedCostMyr: 85 },
+						{ id: "sport-brake-pads", name: "Performance Brake Pads Inspection", category: "Brakes", intervalKm: 20000, intervalMonths: null, lastServicedKm: 20000, lastServicedDate: new Date().toISOString().slice(0, 10), estimatedCostMyr: 160 },
+					],
+					maintenanceHistory: [
+						{ id: "sp-rec-01", date: new Date().toISOString().slice(0, 10), mileageKm: 20000, title: "20,000 km Performance Service", category: "Periodic Service", costMyr: 290, paidMyr: 290, paymentMethod: "Credit Card", status: "Completed", notes: "0W-40 oil, OEM filter, DOT 4 flush." },
+					],
+				},
+				"sample-ev": {
+					schemaVersion: "2.0",
+					lastUpdated: new Date().toISOString().slice(0, 10),
+					currency: "USD",
+					vehicle: {
+						id: "sample-ev",
+						make: "Sample",
+						model: "EV Electric Crossover",
+						year: 2024,
+						registrationDate: "2024-01-15",
+						engine: "Dual-Motor Electric AWD (75 kWh)",
+						engineNumber: "SAMPLE-EV-006",
+						chassisNumber: "SAMPLE-VIN-EV06",
+						transmission: "Single-Speed Reduction Gear",
+						plateNumber: "SAMPLE EV1",
+						currentMileageKm: 31000,
+						latestServiceDate: new Date().toISOString().slice(0, 10),
+						workshop: { mechanicName: "Auto Care Center", location: "Main Street Garage", partsSupplier: "Auto Parts Depot" },
+					},
+					periodicSchedule: [
+						{ id: "cabin-hepa", name: "Cabin Air & HEPA Filter", category: "Filters", intervalKm: 20000, intervalMonths: 12, lastServicedKm: 20000, lastServicedDate: new Date().toISOString().slice(0, 10), estimatedCostMyr: 45 },
+						{ id: "tire-rotation-ev", name: "EV Tire Rotation & Tread Depth", category: "Tires", intervalKm: 10000, intervalMonths: 6, lastServicedKm: 30000, lastServicedDate: new Date().toISOString().slice(0, 10), estimatedCostMyr: 35 },
+						{ id: "brake-fluid", name: "Brake Fluid Moisture Check", category: "Fluids", intervalKm: 40000, intervalMonths: 24, lastServicedKm: null, lastServicedDate: null, estimatedCostMyr: 60 },
+						{ id: "reduction-gear-oil", name: "Drive Unit Reduction Gear Oil", category: "Fluids", intervalKm: 80000, intervalMonths: 48, lastServicedKm: null, lastServicedDate: null, estimatedCostMyr: 90 },
+						{ id: "battery-coolant", name: "High-Voltage Battery Coolant", category: "Cooling", intervalKm: 80000, intervalMonths: 48, lastServicedKm: null, lastServicedDate: null, estimatedCostMyr: 120 },
+					],
+					maintenanceHistory: [
+						{ id: "ev-rec-01", date: new Date().toISOString().slice(0, 10), mileageKm: 20000, title: "20,000 km EV Annual Inspection", category: "Periodic Service", costMyr: 80, paidMyr: 80, paymentMethod: "Credit Card", status: "Completed", notes: "Rotated tires, replaced cabin HEPA filter, tested 12V battery." },
+					],
+				},
+				"sample-hybrid": {
+					schemaVersion: "2.0",
+					lastUpdated: new Date().toISOString().slice(0, 10),
+					currency: "USD",
+					vehicle: {
+						id: "sample-hybrid",
+						make: "Sample",
+						model: "Hybrid Sedan 1.8L",
+						year: 2023,
+						registrationDate: "2023-05-12",
+						engine: "1.8L Hybrid (Atkinson + Electric Motor)",
+						engineNumber: "SAMPLE-HYB-007",
+						chassisNumber: "SAMPLE-VIN-HY07",
+						transmission: "e-CVT Electronic Continuous",
+						plateNumber: "SAMPLE HEV",
+						currentMileageKm: 38000,
+						latestServiceDate: new Date().toISOString().slice(0, 10),
+						workshop: { mechanicName: "Auto Care Center", location: "Main Street Garage", partsSupplier: "Auto Parts Depot" },
+					},
+					periodicSchedule: [
+						{ id: "low-visc-oil", name: "Engine Oil (0W-16 / 0W-20) & Filter", category: "Fluids", intervalKm: 10000, intervalMonths: 6, lastServicedKm: 30000, lastServicedDate: new Date().toISOString().slice(0, 10), estimatedCostMyr: 65 },
+						{ id: "cabin-filter", name: "Cabin Air Filter", category: "Filters", intervalKm: 20000, intervalMonths: 12, lastServicedKm: 30000, lastServicedDate: new Date().toISOString().slice(0, 10), estimatedCostMyr: 25 },
+						{ id: "hybrid-fan-filter", name: "Hybrid Battery Cooling Fan Filter", category: "Filters", intervalKm: 30000, intervalMonths: 24, lastServicedKm: 30000, lastServicedDate: new Date().toISOString().slice(0, 10), estimatedCostMyr: 20 },
+						{ id: "inverter-coolant", name: "Inverter Cooling System Flush", category: "Cooling", intervalKm: 80000, intervalMonths: 48, lastServicedKm: null, lastServicedDate: null, estimatedCostMyr: 75 },
+					],
+					maintenanceHistory: [
+						{ id: "hy-rec-01", date: new Date().toISOString().slice(0, 10), mileageKm: 30000, title: "30,000 km Hybrid Service", category: "Periodic Service", costMyr: 138, paidMyr: 138, paymentMethod: "Credit Card", status: "Completed", notes: "0W-16 oil change, cabin filter, and cleaned hybrid battery duct filter." },
+					],
+				},
+				"sample-van": {
+					schemaVersion: "2.0",
+					lastUpdated: new Date().toISOString().slice(0, 10),
+					currency: "USD",
+					vehicle: {
+						id: "sample-van",
+						make: "Sample",
+						model: "Passenger Van / MPV",
+						year: 2021,
+						registrationDate: "2021-08-05",
+						engine: "3.5L V6 DOHC",
+						engineNumber: "SAMPLE-VAN-008",
+						chassisNumber: "SAMPLE-VIN-VN08",
+						transmission: "8-Speed Automatic FWD",
+						plateNumber: "SAMPLE VAN1",
+						currentMileageKm: 65000,
+						latestServiceDate: new Date().toISOString().slice(0, 10),
+						workshop: { mechanicName: "Auto Care Center", location: "Main Street Garage", partsSupplier: "Auto Parts Depot" },
+					},
+					periodicSchedule: [
+						{ id: "engine-oil", name: "Engine Oil & Filter (Synthetic)", category: "Fluids", intervalKm: 8000, intervalMonths: 6, lastServicedKm: 60000, lastServicedDate: new Date().toISOString().slice(0, 10), estimatedCostMyr: 65 },
+						{ id: "atf-fluid", name: "Automatic Transmission Fluid (ATF Flush)", category: "Fluids", intervalKm: 50000, intervalMonths: 36, lastServicedKm: 50000, lastServicedDate: null, estimatedCostMyr: 130 },
+						{ id: "cabin-ac-filters", name: "Dual Front & Rear Cabin A/C Filters", category: "Filters", intervalKm: 20000, intervalMonths: 12, lastServicedKm: 60000, lastServicedDate: new Date().toISOString().slice(0, 10), estimatedCostMyr: 45 },
+						{ id: "sliding-door-lube", name: "Power Sliding Door Track Lubrication", category: "Body", intervalKm: 20000, intervalMonths: 12, lastServicedKm: 60000, lastServicedDate: new Date().toISOString().slice(0, 10), estimatedCostMyr: 25 },
+					],
+					maintenanceHistory: [
+						{ id: "vn-rec-01", date: new Date().toISOString().slice(0, 10), mileageKm: 60000, title: "60,000 km Major Van Service", category: "Periodic Service", costMyr: 265, paidMyr: 265, paymentMethod: "Credit Card", status: "Completed", notes: "Engine oil, front & rear cabin filters, sliding door lube." },
+					],
+				},
 				"blank-template": {
 					schemaVersion: "2.0",
 					lastUpdated: new Date().toISOString().slice(0, 10),
-					currency: "MYR",
+					currency: "USD",
 					vehicle: {
 						id: "custom-car",
 						make: "Car Make",
@@ -1512,7 +1763,7 @@
 							intervalMonths: 6,
 							lastServicedKm: 50000,
 							lastServicedDate: new Date().toISOString().slice(0, 10),
-							estimatedCostMyr: 150,
+							estimatedCostMyr: 60,
 						},
 						{
 							id: "transmission-fluid",
@@ -1522,7 +1773,7 @@
 							intervalMonths: 24,
 							lastServicedKm: null,
 							lastServicedDate: null,
-							estimatedCostMyr: 180,
+							estimatedCostMyr: 120,
 						},
 						{
 							id: "brake-fluid",
@@ -1532,7 +1783,7 @@
 							intervalMonths: 36,
 							lastServicedKm: null,
 							lastServicedDate: null,
-							estimatedCostMyr: 60,
+							estimatedCostMyr: 45,
 						},
 						{
 							id: "spark-plugs",
@@ -1542,7 +1793,7 @@
 							intervalMonths: null,
 							lastServicedKm: null,
 							lastServicedDate: null,
-							estimatedCostMyr: 120,
+							estimatedCostMyr: 80,
 						},
 						{
 							id: "air-filter",
@@ -1552,7 +1803,7 @@
 							intervalMonths: 12,
 							lastServicedKm: null,
 							lastServicedDate: null,
-							estimatedCostMyr: 45,
+							estimatedCostMyr: 30,
 						},
 						{
 							id: "cabin-filter",
@@ -1562,7 +1813,7 @@
 							intervalMonths: 12,
 							lastServicedKm: null,
 							lastServicedDate: null,
-							estimatedCostMyr: 40,
+							estimatedCostMyr: 25,
 						},
 					],
 					maintenanceHistory: [],
@@ -1573,7 +1824,7 @@
 			const ACTIVE_KEY_STORAGE = "car_tracker_v3_active_profile";
 			const CUSTOM_LIST_STORAGE = "car_tracker_v3_custom_profiles";
 
-			let activeProfileKey = localStorage.getItem(ACTIVE_KEY_STORAGE) || "honda-city-2003";
+			let activeProfileKey = localStorage.getItem(ACTIVE_KEY_STORAGE) || "sample-sedan";
 			let appData = null;
 			let currentScheduleFilter = "all";
 			let currentHistorySearch = "";
@@ -1675,18 +1926,39 @@
 			function syncProfileSelectOptions() {
 				const sel = document.getElementById("carProfileSelect");
 				const customMap = getCustomProfilesMap();
-				const baseOptions = [
-					{ value: "honda-city-2003", text: "🚗 Honda City 2003" },
-					{ value: "hyundai-elantra-2009", text: "🚙 Hyundai Elantra 2009" },
+				const sampleOptions = [
+					{ value: "sample-sedan", text: "🚗 Sedan (Sample)" },
+					{ value: "sample-suv", text: "🚙 SUV / Crossover (Sample)" },
+					{ value: "sample-hatchback", text: "🚘 Hatchback (Sample)" },
+					{ value: "sample-truck", text: "🛻 Pickup Truck 4x4 (Sample)" },
+					{ value: "sample-sports", text: "🏎️ Sports Car / Coupe (Sample)" },
+					{ value: "sample-ev", text: "⚡ Electric Vehicle / EV (Sample)" },
+					{ value: "sample-hybrid", text: "🔋 Hybrid / HEV (Sample)" },
+					{ value: "sample-van", text: "🚐 Van / MPV (Sample)" },
 				];
+				const sampleIds = new Set(sampleOptions.map((o) => o.value).concat(["blank-template"]));
+				const customOptions = [];
 				Object.entries(customMap).forEach(([id, label]) => {
-					if (id !== "honda-city-2003" && id !== "hyundai-elantra-2009" && id !== "blank-template") {
-						baseOptions.push({ value: id, text: "🚘 " + label });
+					if (!sampleIds.has(id)) {
+						customOptions.push({ value: id, text: "🚘 " + label });
 					}
 				});
-				baseOptions.push({ value: "blank-template", text: "➕ New Car" });
 
-				sel.innerHTML = baseOptions.map((o) => `<option value="${o.value}">${o.text}</option>`).join("");
+				let html = '<optgroup label="Vehicle Types">';
+				sampleOptions.forEach((o) => {
+					html += `<option value="${o.value}">${o.text}</option>`;
+				});
+				html += "</optgroup>";
+				if (customOptions.length > 0) {
+					html += '<optgroup label="My Custom Vehicles">';
+					customOptions.forEach((o) => {
+						html += `<option value="${o.value}">${o.text}</option>`;
+					});
+					html += "</optgroup>";
+				}
+				html += '<option value="blank-template">➕ New Car</option>';
+
+				sel.innerHTML = html;
 				if ([...sel.options].some((o) => o.value === activeProfileKey)) {
 					sel.value = activeProfileKey;
 				}
@@ -1711,9 +1983,9 @@
 					}
 				}
 
-				if (window.location.protocol !== "file:" && BUILTIN_PROFILES[profileKey] && profileKey !== "blank-template") {
+				if (window.location.protocol !== "file:" && profileKey !== "blank-template") {
 					try {
-						const res = await fetch(`./${profileKey}.json`, { cache: "no-store" });
+						const res = await fetch(`./template/${profileKey}.json`, { cache: "no-store" });
 						if (res.ok) {
 							appData = await res.json();
 							saveToLocal(false);
@@ -1723,7 +1995,7 @@
 					} catch (_) {}
 				}
 
-				appData = JSON.parse(JSON.stringify(BUILTIN_PROFILES[profileKey] || BUILTIN_PROFILES["honda-city-2003"]));
+				appData = JSON.parse(JSON.stringify(BUILTIN_PROFILES[profileKey] || BUILTIN_PROFILES["sample-sedan"]));
 				saveToLocal(false);
 				renderAll();
 			}
@@ -3112,7 +3384,7 @@
 
 				// Reset Odometer
 				document.getElementById("resetMileageBtn").addEventListener("click", () => {
-					const defKm = BUILTIN_PROFILES[activeProfileKey]?.vehicle?.currentMileageKm || 196441;
+					const defKm = BUILTIN_PROFILES[activeProfileKey]?.vehicle?.currentMileageKm || 45000;
 					appData.vehicle.currentMileageKm = defKm;
 					saveToLocal(true);
 					renderAll();
@@ -3472,7 +3744,7 @@
 				document.getElementById("resetStorageBtn").addEventListener("click", () => {
 					localStorage.removeItem(STORAGE_PREFIX + activeProfileKey);
 					appData = JSON.parse(
-						JSON.stringify(BUILTIN_PROFILES[activeProfileKey] || BUILTIN_PROFILES["honda-city-2003"]),
+						JSON.stringify(BUILTIN_PROFILES[activeProfileKey] || BUILTIN_PROFILES["sample-sedan"]),
 					);
 					saveToLocal(false);
 					jsonTextarea.value = JSON.stringify(appData, null, 2);
