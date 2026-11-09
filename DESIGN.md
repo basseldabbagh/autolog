@@ -97,12 +97,12 @@ Typography is loaded dynamically via Google Fonts with robust fallbacks:
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
 │  STICKY TOP BAR                                                        │
-│  [Vehicle Icon] Honda City 2003  [WLL 8902] (Edit)  │ [Profile v] [Hub] [A4] [Share] │
+│  [Vehicle Icon] Apex Centurion 2022  [KLM 4820] (Edit)│ [Profile v] [Hub] [A4] [Share] │
 ├────────────────────────────────────────────────────────────────────────┤
 │  TOP METRICS ROW                                                       │
 │  ┌───────────────────────┐ ┌─────────┬─────────┬─────────┬───────────┐ │
 │  │ ODOMETER SIMULATOR    │ │ Tracked │ Next Due│ Total   │ Receipts  │ │
-│  │ 196,441 km            │ │  3 / 10 │ 7,000 km│ RM 4,182│ RM 3,557  │ │
+│  │ 45,000 km             │ │  4 / 10 │ 5,000 km│ $ 1,450 │ $ 1,200   │ │
 │  │ [+1k] [+5k] [Reset]   │ │ Items   │ Oil     │ Logged  │ Paid      │ │
 │  └───────────────────────┘ └─────────┴─────────┴─────────┴───────────┘ │
 ├────────────────────────────────────────────────────────────────────────┤
@@ -110,23 +110,23 @@ Typography is loaded dynamically via Google Fonts with robust fallbacks:
 │  Filters: [ All ] [ Tracked ] [ Unset ] [ Due ]          [+ Add Item]  │
 │  ────────────────────────────────────────────────────────────────────  │
 │  Service Item   │ Interval │ Last Srv (km) │ Next Due │ Cost │ Status  │
-│  Engine Oil     │ 7,000 km │ [196441] Save │ 203,441  │ RM 70│ 🟢 Good │
+│  Engine Oil     │ 8,000 km │ [42000] Save  │ 50,000   │ $ 65 │ 🟢 Good │
 ├────────────────────────────────────────────────────────────────────────┤
 │  VECTOR SVG VISUALIZATIONS                                             │
 │  ┌────────────────────────────────────┐ ┌────────────────────────────┐ │
 │  │ REMAINING DISTANCE COUNTDOWN BARS  │ │ EXPENSE BREAKDOWN DONUT    │ │
-│  │ Engine Oil [████████████] 7,000 km │ │     🍩 (Fluids, Overhaul)  │ │
-│  │ Gear Oil   [████████████] 30,000 km│ │ Total: RM 4,182            │ │
+│  │ Engine Oil [████████████] 5,000 km │ │     🍩 (Fluids, Brakes)    │ │
+│  │ Gear Oil   [████████████] 22,000 km│ │ Total: $ 1,450             │ │
 │  └────────────────────────────────────┘ └────────────────────────────┘ │
 ├────────────────────────────────────────────────────────────────────────┤
 │  WORKSHOP MAINTENANCE & REPAIR HISTORY                                 │
 │  [Search history...]                                     [+ Add Record]│
 │  ────────────────────────────────────────────────────────────────────  │
-│  2026-11-07 • 196,441 km • Engine Oil & Brake Master Pump • RM 275     │
-│  2026-04-30 • CVT Flywheel Drive Plate Replacement        • RM 490     │
+│  2025-11-15 • 42,000 km • Engine Oil & Filter Service     • $ 65       │
+│  2025-06-20 • 35,000 km • Front Brake Pads Replacement    • $ 140      │
 ├────────────────────────────────────────────────────────────────────────┤
 │  VEHICLE SPECIFICATIONS FOOTER                                         │
-│  Engine: 1.5L i-DSI • Chassis: PMHGD8... • Workshop: Alaa Hassoon      │
+│  Engine: 2.0L DOHC • Chassis: 1FA6P8... • Workshop: Metro Auto Care   │
 └────────────────────────────────────────────────────────────────────────┘
 ```
 

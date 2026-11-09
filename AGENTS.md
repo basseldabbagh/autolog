@@ -11,7 +11,7 @@
 - **Target Users**: Vehicle owners, car enthusiasts, DIY mechanics, independent automotive workshop operators, and fleet coordinators.
 - **Project Type**: Single-page, client-side web application (SPA) contained entirely within a monolithic [`index.html`](file:///e:/HTML/autolog/index.html) file, accompanied by standalone JSON vehicle profile definitions in [`cars/`](file:///e:/HTML/autolog/cars/).
 - **Major Capabilities**:
-  1. Multi-vehicle profile switching (built-in profiles: Honda City 2003 GD8, Hyundai Elantra 2009 HD, plus custom dynamic profiles).
+  1. Multi-vehicle profile switching (built-in sample profiles plus custom dynamic profiles).
   2. Dynamic odometer adjustment with fast increment steps (`+1k`, `+5k`) and reset capabilities.
   3. Real-time periodic maintenance status engine (categorized into `Good`, `Due Soon`, `Overdue`, and `Unset/Pending`).
   4. Vector SVG charts (horizontal remaining distance bars and category expense donut) generated without heavy charting libraries.
@@ -55,9 +55,9 @@ autolog/
 ├── DESIGN.md                # UI/UX design specifications, color tokens, and layout guidelines
 ├── LICENSE.md               # MIT open-source license
 ├── .gitignore               # Ignores editor artifacts, OS caches, and instructions directory
-├── cars/                    # Canonical vehicle seed profiles in JSON format
-│   ├── honda-city-2003.json # Full history & schedule for Honda City 1.5L GD8
-│   └── hyundai-elantra-2009.json # Full history & schedule for Hyundai Elantra 1.6L HD
+├── cars/                    # Vehicle seed profiles in JSON format
+│   ├── sample-sedan.json    # Example vehicle history & schedule profile
+│   └── sample-compact.json  # Example vehicle history & schedule profile
 ├── instructions/            # Architecture & skill specifications (ignored by git in .gitignore)
 │   ├── project-documentation-architect.md   # Guidelines for project-level documentation
 │   ├── attached-file-documentation-architect.md # Guidelines for single-file documentation
@@ -107,7 +107,7 @@ Then navigate to `http://localhost:8000` in your web browser.
 ### Verification & Testing Procedure
 When introducing code changes:
 1. **Console Check**: Open Chrome/Edge DevTools (`F12`), navigate to the **Console** tab, and verify that no unhandled errors or syntax exceptions occur on page load.
-2. **Profile Switch Test**: Switch between `honda-city-2003`, `hyundai-elantra-2009`, and `➕ New Car`. Verify that the header title, odometer, schedule table, and history records refresh accurately.
+2. **Profile Switch Test**: Switch between available profiles and `➕ New Car`. Verify that the header title, odometer, schedule table, and history records refresh accurately.
 3. **Odometer Reactivity**: Click `+1k` and `+5k`. Verify that:
    - Remaining distance updates in the table.
    - Status badges recalculate (`Good`, `Due Soon`, `Overdue`).
@@ -124,7 +124,7 @@ When introducing code changes:
 
 ### 1. State Management
 - All active application state is kept in the global object `let appData = null;`.
-- The active vehicle profile identifier is stored in `let activeProfileKey = 'honda-city-2003';`.
+- The active vehicle profile identifier is stored in `let activeProfileKey` (e.g. `'sample-sedan'` or the loaded profile ID).
 - Always mutate `appData` directly and then call `saveToLocal(true)` followed by `renderAll()`.
 - `saveToLocal(touchDate)` automatically updates `appData.lastUpdated` to today's date (`YYYY-MM-DD`) and writes to `localStorage.setItem('autolog_car_' + activeProfileKey, JSON.stringify(appData))`.
 
@@ -169,7 +169,7 @@ Do not inject external graphing dependencies (e.g., Chart.js). Generate SVGs dyn
    - When modifying default vehicle profiles, ensure the `BUILTIN_PROFILES` object in `index.html` and the corresponding standalone file in `cars/*.json` remain identical in content.
 4. **Never Hardcode Secrets**:
    - Do not include API keys, passwords, or personal credentials in code, documentation, or commits.
-   - Real workshop phone numbers and public vendor contacts included in seed profiles are historical references from the open repository assets.
+   - All workshop contact numbers, vendor contacts, and vehicle examples in documentation must use sanitized placeholder data.
 
 ---
 

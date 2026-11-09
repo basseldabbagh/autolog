@@ -41,7 +41,7 @@ All data is stored client-side in the browser's `localStorage` and can be export
 
 - **📱 Progressive Web App (PWA)**: Installable directly to home screens on iOS, Android, macOS, and Windows via [`manifest.json`](file:///e:/HTML/autolog/manifest.json) and [`sw.js`](file:///e:/HTML/autolog/sw.js) with full offline caching.
 - **🔍 Global Dashboard Filters**: Slice analytics and expense charts by time period (*This Year*, *Last Year*, *Last 6 Months*, *All Time*, or *Custom Date Range*) and service category with instant recalculation.
-- **🚗 Multi-Car Profile Management**: Pre-configured profiles (Honda City 2003 GD8, Hyundai Elantra 2009 HD) and a blank template for registering new vehicles. Custom vehicles are automatically registered and saved in browser storage.
+- **🚗 Multi-Car Profile Management**: Pre-configured sample vehicle profiles (e.g., Demo Sedan, Sample Compact) and a blank template for registering new vehicles. Custom vehicles are automatically registered and saved in browser storage.
 - **⏱️ Live Odometer Simulation**: Update mileage manually or increment quickly with `+1k` and `+5k` buttons. Recalculates every service interval and countdown in real time.
 - **🛠️ Periodic Maintenance Schedule**: Track engine oil, transmission fluid, spark plugs, timing belt/chain, coolant, drive belts, and filters with status badges:
   - 🟢 **Good**: > 1,000 km remaining.
@@ -96,8 +96,8 @@ autolog/
 ├── LICENSE.md               # MIT Open Source License
 ├── .gitignore               # Git ignore configuration
 ├── cars/                    # Standalone JSON vehicle profiles
-│   ├── honda-city-2003.json # Production profile: Honda City GD8 1.5L i-DSI
-│   └── hyundai-elantra-2009.json # Production profile: Hyundai Elantra HD 1.6L
+│   ├── sample-sedan.json    # Sample vehicle profile
+│   └── sample-compact.json  # Sample vehicle profile
 ├── instructions/            # AI assistant skills & architecture guidelines (git-ignored)
 │   ├── project-documentation-architect.md
 │   ├── attached-file-documentation-architect.md
@@ -159,24 +159,24 @@ Clicking **Share** opens a modal containing:
 {
   "schemaVersion": "2.0",
   "lastUpdated": "YYYY-MM-DD",
-  "currency": "MYR",
+  "currency": "USD",
   "vehicle": {
-    "id": "honda-city-2003",
-    "make": "Honda",
-    "model": "City 1.5L (GD8)",
-    "year": 2003,
-    "registrationDate": "2004-01-20",
-    "engine": "1.5L i-DSI (L15A2)",
-    "engineNumber": "L15A2-1008930",
-    "chassisNumber": "PMHGD86603D108880",
-    "transmission": "CVT Automatic",
-    "plateNumber": "WLL 8902",
-    "currentMileageKm": 196441,
-    "latestServiceDate": "2026-11-07",
+    "id": "sample-sedan-2022",
+    "make": "Apex Motors",
+    "model": "Centurion 2.0L",
+    "year": 2022,
+    "registrationDate": "2022-03-15",
+    "engine": "2.0L 4-Cylinder DOHC",
+    "engineNumber": "ENG-48201948",
+    "chassisNumber": "1FA6P8CF5H5000000",
+    "transmission": "6-Speed Automatic",
+    "plateNumber": "KLM-4820",
+    "currentMileageKm": 45000,
+    "latestServiceDate": "2026-01-15",
     "workshop": {
-      "mechanicName": "Alaa Hassoon Majdi",
-      "location": "Kajang / Seri Kembangan, Selangor",
-      "partsSupplier": "TF Auto Supply Sdn Bhd (+60 19-240 0912)"
+      "mechanicName": "Metro Auto Care",
+      "location": "Industrial Park, Metro City",
+      "partsSupplier": "Grand Auto Parts (+1 555-0142)"
     }
   },
   "periodicSchedule": [
@@ -184,25 +184,25 @@ Clicking **Share** opens a modal containing:
       "id": "engine-oil",
       "name": "Engine Oil & Oil Filter",
       "category": "Fluids",
-      "intervalKm": 7000,
-      "intervalMonths": null,
-      "lastServicedKm": 196441,
-      "lastServicedDate": "2026-11-07",
-      "estimatedCostMyr": 70
+      "intervalKm": 8000,
+      "intervalMonths": 6,
+      "lastServicedKm": 42000,
+      "lastServicedDate": "2025-11-15",
+      "estimatedCostMyr": 65
     }
   ],
   "maintenanceHistory": [
     {
-      "id": "rec-2026-11-07",
-      "date": "2026-11-07",
-      "mileageKm": 196441,
-      "title": "Engine Oil, CVT Gear Oil, Brake Fluid & Master Pump",
+      "id": "rec-2025-11-15",
+      "date": "2025-11-15",
+      "mileageKm": 42000,
+      "title": "Engine Oil & Filter Service",
       "category": "Periodic & Fluids",
-      "costMyr": 275,
-      "paidMyr": 200,
-      "paymentMethod": "TNG eWallet + Workshop Fees",
+      "costMyr": 65,
+      "paidMyr": 65,
+      "paymentMethod": "Credit Card",
       "status": "Completed",
-      "notes": "Serviced Engine Oil, CVT Oil & Brake Fluid at 196,441 km"
+      "notes": "Routine oil and filter replacement performed at 42,000 km"
     }
   ]
 }
