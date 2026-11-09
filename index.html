@@ -1,0 +1,2414 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="seoTitle">Car Maintenance &amp; Service Tracker — Periodic Schedule &amp; Workshop Log</title>
+  <meta name="description" id="seoDesc" content="Universal interactive car maintenance tracker, periodic service interval calculator, live odometer simulator, and printable A4 vehicle condition report." />
+  <meta name="keywords" id="seoKeywords" content="car maintenance tracker, periodic service schedule, odometer calculator, vehicle condition report, workshop log, auto service history" />
+  <meta name="author" content="Car Maintenance Tracker" />
+  <meta name="theme-color" content="#0f172a" />
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" id="ogTitle" content="Car Maintenance &amp; Service Tracker" />
+  <meta property="og:description" id="ogDesc" content="Interactive periodic maintenance schedule, live mileage calculator, workshop expense history, and printable A4 vehicle condition report." />
+  <meta property="og:site_name" content="Car Maintenance Tracker" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" id="twTitle" content="Car Maintenance &amp; Service Tracker" />
+  <meta name="twitter:description" id="twDesc" content="Interactive periodic maintenance schedule, live mileage calculator, workshop expense history, and printable A4 vehicle condition report." />
+
+  <!-- Dynamic JSON-LD Structured Data -->
+  <script type="application/ld+json" id="jsonLdSchema">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Car Maintenance & Service Tracker",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "description": "Universal periodic car maintenance schedule, odometer calculator, and workshop expense tracker."
+  }
+  </script>
+
+  <!-- Tailwind CSS CDN -->
+  <script>
+    (function () {
+      const origWarn = console.warn;
+      console.warn = function (...args) {
+        if (args[0] && typeof args[0] === 'string' && args[0].includes('cdn.tailwindcss.com')) return;
+        return origWarn.apply(console, args);
+      };
+    })();
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (typeof tailwind !== 'undefined') {
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+              mono: ['JetBrains Mono', 'Fira Code', 'monospace']
+            }
+          }
+        }
+      };
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .motion-enter {
+      animation: fadeSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .motion-bar {
+      transition: width 0.55s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.25s ease;
+    }
+    .motion-card {
+      transition: transform 0.18s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.18s ease;
+    }
+    .motion-card:hover {
+      transform: translateY(-2px);
+    }
+    ::-webkit-scrollbar { width: 7px; height: 7px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #475569; }
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen selection:bg-indigo-500 selection:text-white">
+
+  <!-- Ambient Glow -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden -z-10">
+    <div class="absolute -top-40 start-1/4 w-96 h-96 bg-indigo-600/15 rounded-full blur-3xl"></div>
+    <div class="absolute top-1/3 end-10 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl"></div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toastBanner" class="fixed bottom-5 end-5 z-50 hidden items-center gap-2 bg-slate-900 border border-indigo-500/40 text-slate-100 text-xs font-medium px-4 py-3 rounded-xl shadow-2xl">
+    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+    <span id="toastText">Saved</span>
+  </div>
+
+  <!-- Sticky Top Bar -->
+  <header class="sticky top-0 z-30 backdrop-blur-xl bg-slate-950/85 border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center justify-between gap-3">
+      
+      <!-- Car Identity -->
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-cyan-500 flex items-center justify-center shadow-lg shadow-indigo-500/20 shrink-0">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 17a2 2 0 100 4 2 2 0 000-4zm8 0a2 2 0 100 4 2 2 0 000-4zM3 9l2-5h14l2 5M3 9h18M3 9v8h2m16-8v8h-2M7 17h6" />
+          </svg>
+        </div>
+        <div>
+          <div class="flex items-center gap-2 flex-wrap">
+            <h1 id="headerCarTitle" class="text-base sm:text-lg font-bold tracking-tight text-white">Vehicle Maintenance</h1>
+            <span id="headerPlateBadge" class="px-2 py-0.5 text-xs font-mono font-semibold rounded-md bg-slate-800 text-indigo-300 border border-slate-700">—</span>
+            <button id="editVehicleBtn" type="button" class="text-xs text-slate-400 hover:text-indigo-300 underline decoration-dotted">Edit</button>
+          </div>
+          <p id="headerEngineSub" class="text-xs text-slate-400">Periodic Schedule &amp; Service History</p>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center flex-wrap gap-2">
+        <!-- Car Selector -->
+        <select id="carProfileSelect" aria-label="Select Car" class="bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs sm:text-sm font-medium rounded-xl ps-3 pe-7 py-2 border border-slate-700/80 focus:outline-none focus:border-indigo-500 transition cursor-pointer">
+          <option value="honda-city-2003">🚗 Honda City 2003</option>
+          <option value="hyundai-elantra-2009">🚙 Hyundai Elantra 2009</option>
+          <option value="blank-template">➕ New Car</option>
+        </select>
+
+        <!-- Single Unified Import / Export Button (CSV & JSON Tabs) -->
+        <button id="openDataHubBtn" type="button" class="inline-flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs sm:text-sm font-semibold px-3.5 py-2 rounded-xl border border-slate-700/80 transition">
+          <svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+          </svg>
+          <span>Import / Export</span>
+        </button>
+
+        <!-- A4 Report (HTML New Tab / Save PDF) -->
+        <button id="openA4ReportBtn" type="button" class="inline-flex items-center gap-1.5 bg-indigo-600 hover:bg-indigo-500 text-white text-xs sm:text-sm font-semibold px-3.5 py-2 rounded-xl shadow-md shadow-indigo-600/20 transition" title="Open printable A4 Condition Report in new tab">
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          <span>A4 Report</span>
+        </button>
+
+        <!-- Share Button -->
+        <button id="openShareModalBtn" type="button" class="inline-flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs sm:text-sm font-medium px-3 py-2 rounded-xl border border-slate-700/80 transition" title="Share Dashboard or Maintenance Report">
+          <svg class="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+          </svg>
+          <span class="hidden sm:inline">Share</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 space-y-5">
+
+    <!-- Top Row: Odometer & KPIs -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+      
+      <!-- Odometer Card -->
+      <div class="lg:col-span-5 bg-gradient-to-br from-slate-900 via-slate-900 to-indigo-950/60 rounded-2xl p-4 sm:p-5 border border-slate-800 shadow-xl flex flex-col justify-between">
+        <div class="flex items-center justify-between gap-2">
+          <span class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-indigo-400">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            Current Odometer
+          </span>
+          <span id="lastUpdatedChip" class="text-[11px] font-mono px-2.5 py-0.5 rounded-lg bg-slate-800/90 text-slate-300 border border-slate-700/70">
+            Updated: 2026-11-09
+          </span>
+        </div>
+
+        <div class="mt-3 flex flex-wrap items-center gap-2">
+          <div class="relative flex-1 min-w-[165px]">
+            <input
+              id="currentMileageInput"
+              type="number"
+              step="100"
+              min="0"
+              class="w-full bg-slate-950/90 text-white font-mono text-2xl sm:text-3xl font-bold rounded-xl ps-3.5 pe-12 py-2 border border-indigo-500/50 focus:outline-none focus:border-indigo-400 transition"
+              value="196441"
+            />
+            <span class="absolute inset-y-0 end-3.5 flex items-center text-xs font-mono font-semibold text-slate-400 pointer-events-none">km</span>
+          </div>
+
+          <div class="flex items-center gap-1.5">
+            <button type="button" data-km-step="1000" class="km-step-btn px-2.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-mono font-semibold text-slate-200 border border-slate-700 transition">+1k</button>
+            <button type="button" data-km-step="5000" class="km-step-btn px-2.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-mono font-semibold text-slate-200 border border-slate-700 transition">+5k</button>
+            <button type="button" id="resetMileageBtn" class="px-2.5 py-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-xs font-medium text-slate-400 hover:text-slate-200 border border-slate-800 transition">Reset</button>
+          </div>
+        </div>
+
+        <div class="mt-3 pt-2.5 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-400">
+          <div>Last Service: <strong id="latestServiceDateText" class="text-slate-200 font-mono">2026-11-07</strong></div>
+          <div>Workshop: <strong id="workshopMechanicText" class="text-slate-200">Alaa Hassoon Majdi</strong></div>
+        </div>
+      </div>
+
+      <!-- 4 KPI Cards -->
+      <div class="lg:col-span-7 grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <div class="motion-card bg-slate-900/90 rounded-2xl p-4 border border-slate-800 flex flex-col justify-between">
+          <span class="text-xs font-medium text-slate-400">Tracked Items</span>
+          <div class="mt-2">
+            <div id="kpiActiveCount" class="text-2xl font-bold font-mono text-white">3 / 10</div>
+            <p id="kpiActiveSub" class="text-[11px] text-emerald-400 mt-0.5">7 need baseline</p>
+          </div>
+        </div>
+
+        <div class="motion-card bg-slate-900/90 rounded-2xl p-4 border border-slate-800 flex flex-col justify-between">
+          <span class="text-xs font-medium text-slate-400">Next Service</span>
+          <div class="mt-2">
+            <div id="kpiNextDueKm" class="text-2xl font-bold font-mono text-white">7,000 km</div>
+            <p id="kpiNextDueItem" class="text-[11px] text-indigo-300 truncate mt-0.5">Engine Oil &amp; Filter</p>
+          </div>
+        </div>
+
+        <div class="motion-card bg-slate-900/90 rounded-2xl p-4 border border-slate-800 flex flex-col justify-between">
+          <span class="text-xs font-medium text-slate-400">Total Cost</span>
+          <div class="mt-2">
+            <div id="kpiTotalCost" class="text-2xl font-bold font-mono text-white">RM 4,182</div>
+            <p id="kpiTotalRecords" class="text-[11px] text-slate-400 mt-0.5">12 service logs</p>
+          </div>
+        </div>
+
+        <div class="motion-card bg-slate-900/90 rounded-2xl p-4 border border-slate-800 flex flex-col justify-between">
+          <span class="text-xs font-medium text-slate-400">Receipts &amp; Fees</span>
+          <div class="mt-2">
+            <div id="kpiTotalPaid" class="text-2xl font-bold font-mono text-cyan-300">RM 3,557</div>
+            <p id="kpiBalanceSub" class="text-[11px] text-slate-400 mt-0.5">Includes workshop fees</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Periodic Schedule Table -->
+    <section class="bg-slate-900/90 border border-slate-800 rounded-2xl shadow-xl overflow-hidden">
+      <div class="px-5 py-4 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <h2 class="text-base font-bold text-white">Periodic Maintenance Schedule</h2>
+          <p class="text-xs text-slate-400">Enter <strong class="text-slate-200">Last Serviced (km)</strong> to auto-calculate next service due.</p>
+        </div>
+
+        <div class="flex items-center flex-wrap gap-2">
+          <div class="flex items-center flex-wrap gap-1">
+            <button type="button" data-filter="all" class="sched-filter-btn px-2.5 py-1.5 rounded-xl text-xs font-semibold bg-indigo-600 text-white transition">All</button>
+            <button type="button" data-filter="active" class="sched-filter-btn px-2.5 py-1.5 rounded-xl text-xs font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Tracked</button>
+            <button type="button" data-filter="pending" class="sched-filter-btn px-2.5 py-1.5 rounded-xl text-xs font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Unset</button>
+            <button type="button" data-filter="due" class="sched-filter-btn px-2.5 py-1.5 rounded-xl text-xs font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Due</button>
+          </div>
+          <button id="addScheduleItemBtn" type="button" class="bg-slate-800 hover:bg-slate-700 text-indigo-300 text-xs font-semibold px-3 py-1.5 rounded-xl border border-slate-700 transition">
+            + Add Item
+          </button>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-start border-collapse">
+          <thead>
+            <tr class="bg-slate-950/60 text-slate-400 text-xs uppercase tracking-wider border-b border-slate-800">
+              <th class="py-3 ps-5 pe-3 font-semibold text-start">Item / Service Name</th>
+              <th class="py-3 px-3 font-semibold text-start">Interval (km)</th>
+              <th class="py-3 px-3 font-semibold text-start">Last Serviced At (km)</th>
+              <th class="py-3 px-3 font-semibold text-start">Next Service Due (km)</th>
+              <th class="py-3 px-3 font-semibold text-start">Est. Cost</th>
+              <th class="py-3 ps-3 pe-5 font-semibold text-start min-w-[210px]">Status</th>
+            </tr>
+          </thead>
+          <tbody id="periodicTableBody" class="divide-y divide-slate-800/70 text-sm"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SVG Charts Row -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+      <!-- Countdown Bars -->
+      <div class="lg:col-span-7 bg-slate-900/90 border border-slate-800 rounded-2xl p-5 shadow-xl flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <h3 class="text-sm font-bold text-white">Remaining Distance per Service</h3>
+            <span class="text-xs text-slate-400 font-mono">km left</span>
+          </div>
+          <div id="svgCountdownChart" class="w-full"></div>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-800/80 flex flex-wrap items-center gap-4 text-xs text-slate-400">
+          <span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-400"></span> Good</span>
+          <span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-amber-400"></span> Due Soon</span>
+          <span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-rose-500"></span> Overdue</span>
+          <span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-slate-600"></span> Unset</span>
+        </div>
+      </div>
+
+      <!-- Cost Donut -->
+      <div class="lg:col-span-5 bg-slate-900/90 border border-slate-800 rounded-2xl p-5 shadow-xl flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <h3 class="text-sm font-bold text-white">Cost Breakdown</h3>
+            <span class="text-xs font-mono text-indigo-400">By Category</span>
+          </div>
+          <div id="svgExpenseDonut" class="flex flex-col sm:flex-row items-center justify-center gap-5 my-2"></div>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+          <span>Parts &amp; Workshop Fees</span>
+          <span id="donutFooterTotal" class="font-mono font-semibold text-slate-200">Total: RM 4,182</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Workshop Maintenance History -->
+    <section class="bg-slate-900/90 border border-slate-800 rounded-2xl shadow-xl overflow-hidden">
+      <div class="px-5 py-4 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center gap-2.5">
+          <h2 class="text-base font-bold text-white">Maintenance History</h2>
+          <span id="historyCountBadge" class="px-2 py-0.5 text-xs font-mono font-semibold rounded-full bg-slate-800 text-slate-300 border border-slate-700">12</span>
+        </div>
+
+        <div class="flex items-center flex-wrap gap-2">
+          <input
+            id="historySearchInput"
+            type="search"
+            placeholder="Search history..."
+            class="bg-slate-950 text-slate-200 text-xs rounded-xl px-3 py-1.5 border border-slate-700/80 focus:outline-none focus:border-indigo-500 w-44 sm:w-56"
+          />
+          <button id="addRecordBtn" type="button" class="bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold px-3 py-1.5 rounded-xl transition">
+            + Add Record
+          </button>
+        </div>
+      </div>
+
+      <div id="historyListContainer" class="divide-y divide-slate-800/70"></div>
+    </section>
+
+    <!-- Specs Footer -->
+    <section id="vehicleSpecsFooter" class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-4 text-xs text-slate-400 grid grid-cols-2 lg:grid-cols-4 gap-4"></section>
+
+  </main>
+
+  <!-- ======================================================================= -->
+  <!-- MODAL 1: UNIFIED IMPORT / EXPORT HUB (TABS: CSV & JSON)                 -->
+  <!-- ======================================================================= -->
+  <div id="dataHubModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-sm p-4">
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
+      
+      <!-- Modal Header & Tabs -->
+      <div class="px-5 pt-4 pb-3 border-b border-slate-800 flex items-center justify-between gap-2">
+        <div class="flex items-center gap-2">
+          <button type="button" data-hub-tab="csv" class="hub-tab-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-emerald-600 text-white transition">CSV (Excel / Sheets)</button>
+          <button type="button" data-hub-tab="json" class="hub-tab-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">JSON (Data / Backup)</button>
+        </div>
+        <button id="closeDataHubBtn" type="button" class="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- TAB 1: CSV PANE -->
+      <div id="hubTabCsv" class="p-5 space-y-4 text-xs overflow-y-auto">
+        <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-4 space-y-3">
+          <span class="font-bold text-slate-200 uppercase tracking-wider text-[11px] block">1. Download Template or Export Current Car</span>
+          <div class="flex flex-wrap items-center gap-2">
+            <button id="downloadCsvTemplateBtn" type="button" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-emerald-300 font-semibold px-3.5 py-2 rounded-xl border border-emerald-500/30 transition">
+              <span>Download Blank CSV Template</span>
+            </button>
+            <button id="exportCurrentCsvBtn" type="button" class="inline-flex items-center gap-1.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-3.5 py-2 rounded-xl transition">
+              <span>Export Current Car (.CSV)</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-4 space-y-3">
+          <span class="font-bold text-slate-200 uppercase tracking-wider text-[11px] block">2. Import CSV File (Auto-Saves to Browser)</span>
+          <label class="flex flex-col items-center justify-center border-2 border-dashed border-slate-700 hover:border-emerald-500/60 rounded-xl p-5 cursor-pointer bg-slate-900/50 hover:bg-slate-900 transition text-center">
+            <span class="font-semibold text-slate-200">Click to select a .CSV file</span>
+            <span class="text-[11px] text-slate-400 mt-0.5">Auto-saves imported car data &amp; updates timestamp</span>
+            <input id="csvFileInput" type="file" accept=".csv,text/csv" class="hidden" />
+          </label>
+          <p id="csvStatusMsg" class="hidden font-mono text-xs pt-1"></p>
+        </div>
+      </div>
+
+      <!-- TAB 2: JSON PANE -->
+      <div id="hubTabJson" class="hidden p-5 space-y-3 text-xs flex-1 overflow-y-auto flex-col">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div class="flex flex-wrap items-center gap-2">
+            <button id="downloadJsonTemplateBtn" type="button" class="bg-slate-800 hover:bg-slate-700 text-emerald-300 font-semibold px-3 py-1.5 rounded-xl border border-emerald-500/30 transition">
+              Blank .JSON Template
+            </button>
+            <label class="cursor-pointer bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold px-3 py-1.5 rounded-xl border border-slate-700 transition">
+              Import .JSON File
+              <input id="jsonFileInput" type="file" accept=".json,application/json" class="hidden" />
+            </label>
+            <button id="exportJsonBtn" type="button" class="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-3 py-1.5 rounded-xl transition">
+              Export Current (.JSON)
+            </button>
+          </div>
+          <button id="resetStorageBtn" type="button" class="text-rose-400 hover:text-rose-300 font-medium px-2 py-1 rounded-lg hover:bg-rose-500/10 transition">
+            Reset Default
+          </button>
+        </div>
+
+        <textarea id="jsonTextarea" spellcheck="false" class="w-full min-h-[240px] bg-slate-950 text-emerald-300 font-mono text-xs p-3.5 rounded-xl border border-slate-800 focus:outline-none focus:border-indigo-500 resize-y"></textarea>
+        <p id="jsonErrorMsg" class="hidden text-xs text-rose-400 font-mono"></p>
+
+        <div class="flex items-center justify-end gap-2 pt-1">
+          <button id="copyJsonBtn" type="button" class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 font-semibold text-slate-200">Copy JSON</button>
+          <button id="applyJsonBtn" type="button" class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 font-semibold text-white">Save &amp; Apply JSON</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ======================================================================= -->
+  <!-- MODAL 2: SHARE DASHBOARD OR MAINTENANCE REPORT                          -->
+  <!-- ======================================================================= -->
+  <div id="shareModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-sm p-4">
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-md w-full overflow-hidden shadow-2xl">
+      <div class="px-5 py-4 border-b border-slate-800 flex items-center justify-between">
+        <h3 class="text-base font-bold text-white">Share Vehicle Report</h3>
+        <button id="closeShareModalBtn" type="button" class="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="p-5 space-y-3 text-xs">
+        <div id="shareSummaryPreview" class="bg-slate-950 border border-slate-800 rounded-xl p-3.5 font-mono text-slate-300 whitespace-pre-line leading-relaxed"></div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+          <button id="shareNativeDashboardBtn" type="button" class="flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-2.5 px-3 rounded-xl transition">
+            <span>Share Summary / Link</span>
+          </button>
+          <button id="shareOpenA4Btn" type="button" class="flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-2.5 px-3 rounded-xl transition">
+            <span>Open A4 Report (PDF)</span>
+          </button>
+        </div>
+        <button id="copyShareTextBtn" type="button" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold py-2.5 px-3 rounded-xl border border-slate-700 transition">
+          Copy Report Text for WhatsApp
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 3: Add History Record -->
+  <div id="addRecordModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-sm p-4">
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-lg w-full overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
+      <div class="px-5 py-4 border-b border-slate-800 flex items-center justify-between">
+        <h3 class="text-base font-bold text-white">Add Maintenance Record</h3>
+        <button id="closeAddRecordModalBtn" type="button" class="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800">✕</button>
+      </div>
+      <form id="addRecordForm" class="p-5 space-y-3 text-xs overflow-y-auto">
+        <!-- Row 1: Date & Mileage -->
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-300 font-medium mb-1">Date *</label>
+            <input id="newRecDate" type="date" required class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700" />
+          </div>
+          <div>
+            <label class="block text-slate-300 font-medium mb-1">Mileage (km)</label>
+            <select id="newRecMileageSelect" class="w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-slate-700">
+              <option value="current">Current Odometer</option>
+              <option value="unlogged">Unlogged / N/A</option>
+              <option value="__other__">Other (Enter km)...</option>
+            </select>
+            <input id="newRecMileageOther" type="number" placeholder="Enter mileage (km)..." class="hidden mt-1.5 w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-indigo-500" />
+          </div>
+        </div>
+
+        <!-- Row 2: Service Title (Select from Schedule / Common Services + Other) -->
+        <div>
+          <label class="block text-slate-300 font-medium mb-1">Service Title *</label>
+          <select id="newRecTitleSelect" class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700">
+            <!-- Populated dynamically from schedule + common services + Other -->
+          </select>
+          <input id="newRecTitleOther" type="text" placeholder="Enter custom service title..." class="hidden mt-1.5 w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-indigo-500" />
+        </div>
+
+        <!-- Row 3: Category & Status -->
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-300 font-medium mb-1">Category</label>
+            <select id="newRecCategorySelect" class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700">
+              <option value="Periodic & Fluids">Periodic &amp; Fluids</option>
+              <option value="Engine Overhaul">Engine Overhaul</option>
+              <option value="Cooling & Electrical">Cooling &amp; Electrical</option>
+              <option value="Drivetrain">Drivetrain</option>
+              <option value="Brakes & Suspension">Brakes &amp; Suspension</option>
+              <option value="General Service">General Service</option>
+              <option value="__other__">Other...</option>
+            </select>
+            <input id="newRecCategoryOther" type="text" placeholder="Enter custom category..." class="hidden mt-1.5 w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-indigo-500" />
+          </div>
+          <div>
+            <label class="block text-slate-300 font-medium mb-1">Status</label>
+            <select id="newRecStatusSelect" class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700">
+              <option value="Completed">Completed</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Scheduled">Scheduled</option>
+              <option value="__other__">Other...</option>
+            </select>
+            <input id="newRecStatusOther" type="text" placeholder="Enter custom status..." class="hidden mt-1.5 w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-indigo-500" />
+          </div>
+        </div>
+
+        <!-- Row 4: Cost, Paid & Payment Method -->
+        <div class="grid grid-cols-3 gap-3">
+          <div>
+            <label class="block text-slate-300 font-medium mb-1">Cost</label>
+            <select id="newRecCostSelect" class="w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-slate-700">
+              <option value="30">30</option>
+              <option value="35">35</option>
+              <option value="45">45</option>
+              <option value="55">55</option>
+              <option value="60">60</option>
+              <option value="65">65</option>
+              <option value="70" selected>70</option>
+              <option value="80">80</option>
+              <option value="85">85</option>
+              <option value="95">95</option>
+              <option value="100">100</option>
+              <option value="110">110</option>
+              <option value="120">120</option>
+              <option value="130">130</option>
+              <option value="140">140</option>
+              <option value="150">150</option>
+              <option value="180">180</option>
+              <option value="200">200</option>
+              <option value="240">240</option>
+              <option value="275">275</option>
+              <option value="350">350</option>
+              <option value="500">500</option>
+              <option value="workshop">Workshop Fees</option>
+              <option value="__other__">Other...</option>
+            </select>
+            <input id="newRecCostOther" type="number" step="0.01" placeholder="Enter cost..." class="hidden mt-1.5 w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-indigo-500" />
+          </div>
+          <div>
+            <label class="block text-slate-300 font-medium mb-1">Paid</label>
+            <select id="newRecPaidSelect" class="w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-slate-700">
+              <option value="same" selected>Same as Cost</option>
+              <option value="workshop">Workshop Fees</option>
+              <option value="0">0 (Unpaid)</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+              <option value="150">150</option>
+              <option value="200">200</option>
+              <option value="300">300</option>
+              <option value="500">500</option>
+              <option value="__other__">Other...</option>
+            </select>
+            <input id="newRecPaidOther" type="number" step="0.01" placeholder="Enter paid..." class="hidden mt-1.5 w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-indigo-500" />
+          </div>
+          <div>
+            <label class="block text-slate-300 font-medium mb-1">Payment Method</label>
+            <select id="newRecMethodSelect" class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700">
+              <option value="Touch 'n Go eWallet">Touch 'n Go eWallet</option>
+              <option value="Workshop Fees">Workshop Fees</option>
+              <option value="DuitNow QR">DuitNow QR</option>
+              <option value="Bank Transfer">Bank Transfer</option>
+              <option value="Cash">Cash</option>
+              <option value="Card">Card</option>
+              <option value="__other__">Other...</option>
+            </select>
+            <input id="newRecMethodOther" type="text" placeholder="Enter method..." class="hidden mt-1.5 w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-indigo-500" />
+          </div>
+        </div>
+
+        <!-- Row 5: Linked Schedule Item & Notes -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-300 font-medium mb-1">Update Schedule Item?</label>
+            <select id="newRecLinkedItem" class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700">
+              <option value="">— None —</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-slate-300 font-medium mb-1">Notes</label>
+            <select id="newRecNotesSelect" class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700">
+              <option value="Routine periodic maintenance completed.">Routine periodic maintenance</option>
+              <option value="Replaced with OEM / Genuine part.">Replaced with OEM / Genuine part</option>
+              <option value="Inspected and serviced at workshop.">Inspected &amp; serviced at workshop</option>
+              <option value="Included in workshop fees.">Included in workshop fees</option>
+              <option value="">No additional notes</option>
+              <option value="__other__">Other (Write note)...</option>
+            </select>
+            <input id="newRecNotesOther" type="text" placeholder="Type custom note..." class="hidden mt-1.5 w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-indigo-500" />
+          </div>
+        </div>
+
+        <div class="pt-2 flex justify-end gap-2">
+          <button type="button" id="cancelAddRecordBtn" class="px-4 py-2 rounded-xl bg-slate-800 text-slate-300">Cancel</button>
+          <button type="submit" class="px-4 py-2 rounded-xl bg-indigo-600 text-white font-semibold">Save Record</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL 4: Add Periodic Schedule Item -->
+  <div id="addScheduleModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-sm p-4">
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-md w-full overflow-hidden shadow-2xl">
+      <div class="px-5 py-4 border-b border-slate-800 flex items-center justify-between">
+        <h3 class="text-base font-bold text-white">Add Periodic Item</h3>
+        <button id="closeAddScheduleModalBtn" type="button" class="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800">✕</button>
+      </div>
+      <form id="addScheduleForm" class="p-5 space-y-3 text-xs">
+        <div>
+          <label class="block text-slate-300 font-medium mb-1">Item Name *</label>
+          <select id="newSchedNameSelect" class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700">
+            <option value="Brake Pads (Front)">Brake Pads (Front)</option>
+            <option value="Brake Pads (Rear)">Brake Pads (Rear)</option>
+            <option value="Tire Rotation & Alignment">Tire Rotation &amp; Alignment</option>
+            <option value="Battery Check / Replacement">Battery Check / Replacement</option>
+            <option value="Wiper Blades">Wiper Blades</option>
+            <option value="A/C Compressor Service">A/C Compressor Service</option>
+            <option value="Power Steering Fluid">Power Steering Fluid</option>
+            <option value="Timing Belt">Timing Belt</option>
+            <option value="Water Pump">Water Pump</option>
+            <option value="__other__">Other (Custom item)...</option>
+          </select>
+          <input id="newSchedNameOther" type="text" placeholder="Enter custom item name..." class="hidden mt-1.5 w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-indigo-500" />
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-300 font-medium mb-1">Category</label>
+            <select id="newSchedCatSelect" class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700">
+              <option value="Brakes">Brakes</option>
+              <option value="Fluids">Fluids</option>
+              <option value="Filters">Filters</option>
+              <option value="Ignition">Ignition</option>
+              <option value="Engine">Engine</option>
+              <option value="Cooling">Cooling</option>
+              <option value="Belts">Belts</option>
+              <option value="Tires">Tires</option>
+              <option value="Electrical">Electrical</option>
+              <option value="__other__">Other...</option>
+            </select>
+            <input id="newSchedCatOther" type="text" placeholder="Enter category..." class="hidden mt-1.5 w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-indigo-500" />
+          </div>
+          <div>
+            <label class="block text-slate-300 font-medium mb-1">Interval (km) *</label>
+            <select id="newSchedIntervalSelect" class="w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-slate-700">
+              <option value="5000">5,000 km</option>
+              <option value="7000">7,000 km</option>
+              <option value="10000">10,000 km</option>
+              <option value="15000">15,000 km</option>
+              <option value="20000">20,000 km</option>
+              <option value="30000">30,000 km</option>
+              <option value="40000" selected>40,000 km</option>
+              <option value="60000">60,000 km</option>
+              <option value="80000">80,000 km</option>
+              <option value="100000">100,000 km</option>
+              <option value="__other__">Other...</option>
+            </select>
+            <input id="newSchedIntervalOther" type="number" step="500" placeholder="Enter interval km..." class="hidden mt-1.5 w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-indigo-500" />
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-300 font-medium mb-1">Last Serviced (km)</label>
+            <select id="newSchedLastKmSelect" class="w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-slate-700">
+              <option value="unset" selected>Unset (Fill later)</option>
+              <option value="current">Current Odometer</option>
+              <option value="__other__">Other (Enter km)...</option>
+            </select>
+            <input id="newSchedLastKmOther" type="number" placeholder="Enter last km..." class="hidden mt-1.5 w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-indigo-500" />
+          </div>
+          <div>
+            <label class="block text-slate-300 font-medium mb-1">Est. Cost</label>
+            <select id="newSchedCostSelect" class="w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-slate-700">
+              <option value="35">35</option>
+              <option value="45">45</option>
+              <option value="70">70</option>
+              <option value="100">100</option>
+              <option value="120" selected>120</option>
+              <option value="150">150</option>
+              <option value="200">200</option>
+              <option value="300">300</option>
+              <option value="unset">Unset / Workshop Fees</option>
+              <option value="__other__">Other...</option>
+            </select>
+            <input id="newSchedCostOther" type="number" step="1" placeholder="Enter est. cost..." class="hidden mt-1.5 w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-indigo-500" />
+          </div>
+        </div>
+        <div class="pt-2 flex justify-end gap-2">
+          <button type="button" id="cancelAddScheduleBtn" class="px-4 py-2 rounded-xl bg-slate-800 text-slate-300">Cancel</button>
+          <button type="submit" class="px-4 py-2 rounded-xl bg-indigo-600 text-white font-semibold">Add</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL 5: Edit Car Info -->
+  <div id="editCarModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-sm p-4">
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-lg w-full overflow-hidden shadow-2xl">
+      <div class="px-5 py-4 border-b border-slate-800 flex items-center justify-between">
+        <h3 class="text-base font-bold text-white">Edit Vehicle Details</h3>
+        <button id="closeEditCarModalBtn" type="button" class="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800">✕</button>
+      </div>
+      <form id="editCarForm" class="p-5 space-y-3 text-xs">
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-300 font-medium mb-1">Make *</label>
+            <input id="editCarMake" type="text" required class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700" />
+          </div>
+          <div>
+            <label class="block text-slate-300 font-medium mb-1">Model *</label>
+            <input id="editCarModel" type="text" required class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700" />
+          </div>
+        </div>
+        <div class="grid grid-cols-3 gap-3">
+          <div>
+            <label class="block text-slate-300 font-medium mb-1">Year</label>
+            <input id="editCarYear" type="number" class="w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-slate-700" />
+          </div>
+          <div>
+            <label class="block text-slate-300 font-medium mb-1">Plate Number</label>
+            <input id="editCarPlate" type="text" class="w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-slate-700" />
+          </div>
+          <div>
+            <label class="block text-slate-300 font-medium mb-1">Currency</label>
+            <input id="editCarCurrency" type="text" class="w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-slate-700" />
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-300 font-medium mb-1">Engine</label>
+            <input id="editCarEngine" type="text" class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700" />
+          </div>
+          <div>
+            <label class="block text-slate-300 font-medium mb-1">Transmission</label>
+            <input id="editCarTrans" type="text" class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700" />
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-300 font-medium mb-1">Workshop / Mechanic</label>
+            <input id="editCarMechanic" type="text" class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700" />
+          </div>
+          <div>
+            <label class="block text-slate-300 font-medium mb-1">Parts Supplier</label>
+            <input id="editCarSupplier" type="text" class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700" />
+          </div>
+        </div>
+        <div class="pt-2 flex justify-end gap-2">
+          <button type="button" id="cancelEditCarBtn" class="px-4 py-2 rounded-xl bg-slate-800 text-slate-300">Cancel</button>
+          <button type="submit" class="px-4 py-2 rounded-xl bg-indigo-600 text-white font-semibold">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Application Script -->
+  <script>
+    const BUILTIN_PROFILES = {
+      "honda-city-2003": {
+        "schemaVersion": "2.0",
+        "lastUpdated": "2026-11-09",
+        "currency": "MYR",
+        "vehicle": {
+          "id": "honda-city-2003",
+          "make": "Honda",
+          "model": "City 1.5L (GD8)",
+          "year": 2003,
+          "registrationDate": "2004-01-20",
+          "engine": "1.5L i-DSI (L15A2)",
+          "engineNumber": "L15A2-1008930",
+          "chassisNumber": "PMHGD86603D108880",
+          "transmission": "CVT Automatic",
+          "plateNumber": "WLL 8902",
+          "currentMileageKm": 196441,
+          "latestServiceDate": "2026-11-07",
+          "workshop": {
+            "mechanicName": "Alaa Hassoon Majdi",
+            "location": "Kajang / Seri Kembangan, Selangor",
+            "partsSupplier": "TF Auto Supply Sdn Bhd (+60 19-240 0912)"
+          }
+        },
+        "periodicSchedule": [
+          { "id": "engine-oil", "name": "Engine Oil & Oil Filter", "category": "Fluids", "intervalKm": 7000, "intervalMonths": null, "lastServicedKm": 196441, "lastServicedDate": "2026-11-07", "estimatedCostMyr": 70 },
+          { "id": "gear-oil", "name": "Gear Oil (CVT)", "category": "Fluids", "intervalKm": 30000, "intervalMonths": null, "lastServicedKm": 196441, "lastServicedDate": "2026-11-07", "estimatedCostMyr": 110 },
+          { "id": "brake-fluid", "name": "Brake Fluid", "category": "Fluids", "intervalKm": 40000, "intervalMonths": 36, "lastServicedKm": 196441, "lastServicedDate": "2026-11-07", "estimatedCostMyr": 45 },
+          { "id": "spark-plugs", "name": "Spark Plugs (8 pcs)", "category": "Ignition", "intervalKm": 40000, "intervalMonths": null, "lastServicedKm": null, "lastServicedDate": "2026-04-14", "estimatedCostMyr": 130 },
+          { "id": "valve-clearance", "name": "Valve Clearance Adjustment", "category": "Engine", "intervalKm": 40000, "intervalMonths": null, "lastServicedKm": null, "lastServicedDate": "2026-04-15", "estimatedCostMyr": 120 },
+          { "id": "engine-coolant", "name": "Engine Coolant / Radiator Water", "category": "Cooling", "intervalKm": 80000, "intervalMonths": null, "lastServicedKm": null, "lastServicedDate": "2026-05-10", "estimatedCostMyr": 65 },
+          { "id": "drive-belt", "name": "Drive Belt (Serpentine Belt)", "category": "Belts", "intervalKm": 80000, "intervalMonths": null, "lastServicedKm": null, "lastServicedDate": null, "estimatedCostMyr": 35 },
+          { "id": "engine-air-filter", "name": "Engine Air Filter", "category": "Filters", "intervalKm": 20000, "intervalMonths": null, "lastServicedKm": null, "lastServicedDate": null, "estimatedCostMyr": 35 },
+          { "id": "cabin-ac-filter", "name": "Cabin A/C Filter", "category": "Filters", "intervalKm": 20000, "intervalMonths": null, "lastServicedKm": null, "lastServicedDate": null, "estimatedCostMyr": 30 },
+          { "id": "fuel-filter", "name": "Fuel Filter", "category": "Filters", "intervalKm": 80000, "intervalMonths": null, "lastServicedKm": null, "lastServicedDate": null, "estimatedCostMyr": 85 }
+        ],
+        "maintenanceHistory": [
+          { "id": "rec-2026-04-08", "date": "2026-04-08", "mileageKm": null, "title": "Engine & Head Gasket Overhaul", "category": "Engine Overhaul", "costMyr": 1500, "paidMyr": 500, "paymentMethod": "Transfer + Workshop Fees", "status": "Completed", "notes": "Head gasket overhaul, cylinder head service, engine oil & filter. Initial deposit RM 500; remaining RM 1,000 in workshop fees." },
+          { "id": "rec-2026-04-12", "date": "2026-04-12", "mileageKm": null, "title": "Short Drive Shaft Replacement", "category": "Drivetrain", "costMyr": 240, "paidMyr": 240, "paymentMethod": "Touch 'n Go eWallet", "status": "Completed", "notes": "Replaced worn short drive shaft (1 pc)." },
+          { "id": "rec-2026-04-14", "date": "2026-04-14", "mileageKm": null, "title": "Original Spark Plugs (8 pcs)", "category": "Periodic & Fluids", "costMyr": 130, "paidMyr": 130, "paymentMethod": "Workshop Fees", "status": "Completed", "notes": "2 sets of 4 original spark plugs (RM 65 x 2)." },
+          { "id": "rec-2026-04-15", "date": "2026-04-15", "mileageKm": null, "title": "Complete Timing Chain Kit (SANWA SH7027)", "category": "Engine Overhaul", "costMyr": 360, "paidMyr": 360, "paymentMethod": "Transfer", "status": "Completed", "notes": "Full timing chain, 2 guides, tensioner & sprockets (#CS2604/1373)." },
+          { "id": "rec-2026-04-17", "date": "2026-04-17", "mileageKm": null, "title": "Engine & Gearbox Mountings (Set of 3)", "category": "Brakes & Suspension", "costMyr": 350, "paidMyr": 350, "paymentMethod": "Touch 'n Go eWallet", "status": "Completed", "notes": "Replaced all 3 engine & transmission mounts (50810-SEL-T81)." },
+          { "id": "rec-2026-04-20", "date": "2026-04-20", "mileageKm": null, "title": "2x Rear Ignition Coils, Thermostat & Rear Sensors", "category": "Cooling & Electrical", "costMyr": 365, "paidMyr": 500, "paymentMethod": "BigPay DuitNow QR", "status": "Completed", "notes": "Coils (RM 270), Thermostat (RM 65), Rear Parking Sensors (RM 30). RM 500 paid toward parts & workshop fees." },
+          { "id": "rec-2026-04-25", "date": "2026-04-25", "mileageKm": null, "title": "Gearbox Oil Seals, Air Sensor, Coil Socket & A/C", "category": "Drivetrain", "costMyr": 185, "paidMyr": 500, "paymentMethod": "Transfer + Workshop Fees", "status": "Completed", "notes": "Gearbox seals (RM 105), Air Sensor (RM 55), Coil Plug (RM 25) + A/C service. RM 500 paid on account." },
+          { "id": "rec-2026-04-30", "date": "2026-04-30", "mileageKm": null, "title": "CVT Flywheel / Drive Plate Replacement", "category": "Drivetrain", "costMyr": 490, "paidMyr": 490, "paymentMethod": "TNG DuitNow QR", "status": "Completed", "notes": "OEM Flywheel with warranty paid directly to TF Auto Supply." },
+          { "id": "rec-2026-05-10", "date": "2026-05-10", "mileageKm": null, "title": "Radiator Cap (0.9 Bar) & Coolant Bleeding", "category": "Cooling & Electrical", "costMyr": 42, "paidMyr": 42, "paymentMethod": "Touch 'n Go eWallet", "status": "Completed", "notes": "New R124 88kPa radiator cap + on-site coolant bleeding & transport." },
+          { "id": "rec-2026-06-05", "date": "2026-06-05", "mileageKm": null, "title": "Coolant Temperature Sensor (ECT)", "category": "Cooling & Electrical", "costMyr": 95, "paidMyr": 95, "paymentMethod": "Workshop Fees", "status": "Completed", "notes": "Replaced ECT sensor for radiator fan trigger." },
+          { "id": "rec-2026-07-27", "date": "2026-07-27", "mileageKm": null, "title": "Engine Bay & A/C Noise Service", "category": "General Service", "costMyr": 150, "paidMyr": 150, "paymentMethod": "Workshop Fees", "status": "Completed", "notes": "Inspected and resolved rattling noise under A/C load & slopes (workshop fees)." },
+          { "id": "rec-2026-11-07", "date": "2026-11-07", "mileageKm": 196441, "title": "Engine Oil, CVT Gear Oil, Brake Fluid & Master Pump", "category": "Periodic & Fluids", "costMyr": 275, "paidMyr": 200, "paymentMethod": "TNG eWallet + Workshop Fees", "status": "Completed", "notes": "Serviced Engine Oil, CVT Oil & Brake Fluid at 196,441 km + Brake Master Pump replacement." }
+        ]
+      },
+      "hyundai-elantra-2009": {
+        "schemaVersion": "2.0",
+        "lastUpdated": "2026-11-09",
+        "currency": "MYR",
+        "vehicle": {
+          "id": "hyundai-elantra-2009",
+          "make": "Hyundai",
+          "model": "Elantra (HD)",
+          "year": 2009,
+          "registrationDate": "2009",
+          "engine": "1.6L DOHC Inline-4",
+          "engineNumber": "—",
+          "chassisNumber": "—",
+          "transmission": "4-Speed Automatic",
+          "plateNumber": "Samir's Car",
+          "currentMileageKm": 180000,
+          "latestServiceDate": "2026-11-06",
+          "workshop": {
+            "mechanicName": "Alaa Hassoon Majdi",
+            "location": "Kajang / Seri Kembangan, Selangor",
+            "partsSupplier": "TF Auto Supply Sdn Bhd (+60 19-240 0912)"
+          }
+        },
+        "periodicSchedule": [
+          { "id": "engine-oil", "name": "Engine Oil & Oil Filter", "category": "Fluids", "intervalKm": 7000, "intervalMonths": 6, "lastServicedKm": 180000, "lastServicedDate": "2026-11-06", "estimatedCostMyr": 120 },
+          { "id": "atf-fluid", "name": "Automatic Transmission Fluid (ATF)", "category": "Fluids", "intervalKm": 40000, "intervalMonths": 24, "lastServicedKm": null, "lastServicedDate": null, "estimatedCostMyr": 140 },
+          { "id": "brake-fluid", "name": "Brake Fluid", "category": "Fluids", "intervalKm": 40000, "intervalMonths": 36, "lastServicedKm": null, "lastServicedDate": null, "estimatedCostMyr": 45 },
+          { "id": "spark-plugs", "name": "Spark Plugs (4 pcs)", "category": "Ignition", "intervalKm": 40000, "intervalMonths": null, "lastServicedKm": null, "lastServicedDate": null, "estimatedCostMyr": 70 },
+          { "id": "engine-coolant", "name": "Engine Coolant", "category": "Cooling", "intervalKm": 60000, "intervalMonths": 36, "lastServicedKm": null, "lastServicedDate": "2026-04-04", "estimatedCostMyr": 70 },
+          { "id": "drive-belt", "name": "Drive Belt (Accessory Belt)", "category": "Belts", "intervalKm": 60000, "intervalMonths": null, "lastServicedKm": null, "lastServicedDate": null, "estimatedCostMyr": 55 },
+          { "id": "engine-air-filter", "name": "Engine Air Filter", "category": "Filters", "intervalKm": 20000, "intervalMonths": 12, "lastServicedKm": null, "lastServicedDate": null, "estimatedCostMyr": 35 },
+          { "id": "cabin-ac-filter", "name": "Cabin A/C Filter", "category": "Filters", "intervalKm": 20000, "intervalMonths": 12, "lastServicedKm": null, "lastServicedDate": null, "estimatedCostMyr": 35 }
+        ],
+        "maintenanceHistory": [
+          { "id": "elantra-2026-04-04", "date": "2026-04-04", "mileageKm": null, "title": "Water Pump Pipe & Drive Shaft Repair", "category": "Cooling & Electrical", "costMyr": 100, "paidMyr": 100, "paymentMethod": "Touch 'n Go eWallet", "status": "Completed", "notes": "Water pump pipe & drive shaft service." },
+          { "id": "elantra-2026-04-08", "date": "2026-04-08", "mileageKm": null, "title": "Engine Oil Seal & Bolt Leak Fix", "category": "Engine Overhaul", "costMyr": 80, "paidMyr": 80, "paymentMethod": "Workshop Fees", "status": "Completed", "notes": "Inspected and fixed oil leak around bolt rubber seal (workshop fees)." },
+          { "id": "elantra-2026-07-14", "date": "2026-07-14", "mileageKm": null, "title": "General Workshop Inspection & Service", "category": "General Service", "costMyr": 100, "paidMyr": 100, "paymentMethod": "Workshop Fees", "status": "Completed", "notes": "Routine workshop checkup and service fees." },
+          { "id": "elantra-2026-11-06", "date": "2026-11-06", "mileageKm": 180000, "title": "Periodic Engine Oil & Filter Change", "category": "Periodic & Fluids", "costMyr": 120, "paidMyr": 120, "paymentMethod": "Workshop Fees", "status": "Completed", "notes": "Engine oil and filter replacement." }
+        ]
+      },
+      "blank-template": {
+        "schemaVersion": "2.0",
+        "lastUpdated": new Date().toISOString().slice(0, 10),
+        "currency": "MYR",
+        "vehicle": {
+          "id": "custom-car",
+          "make": "Car Make",
+          "model": "Model",
+          "year": 2022,
+          "registrationDate": "—",
+          "engine": "Engine Spec",
+          "engineNumber": "—",
+          "chassisNumber": "—",
+          "transmission": "Automatic",
+          "plateNumber": "PLATE 123",
+          "currentMileageKm": 50000,
+          "latestServiceDate": new Date().toISOString().slice(0, 10),
+          "workshop": {
+            "mechanicName": "Workshop Name",
+            "location": "City",
+            "partsSupplier": "Supplier"
+          }
+        },
+        "periodicSchedule": [
+          { "id": "engine-oil", "name": "Engine Oil & Oil Filter", "category": "Fluids", "intervalKm": 10000, "intervalMonths": 6, "lastServicedKm": 50000, "lastServicedDate": new Date().toISOString().slice(0, 10), "estimatedCostMyr": 150 },
+          { "id": "transmission-fluid", "name": "Transmission / Gear Fluid", "category": "Fluids", "intervalKm": 40000, "intervalMonths": 24, "lastServicedKm": null, "lastServicedDate": null, "estimatedCostMyr": 180 },
+          { "id": "brake-fluid", "name": "Brake Fluid", "category": "Fluids", "intervalKm": 40000, "intervalMonths": 36, "lastServicedKm": null, "lastServicedDate": null, "estimatedCostMyr": 60 },
+          { "id": "spark-plugs", "name": "Spark Plugs", "category": "Ignition", "intervalKm": 40000, "intervalMonths": null, "lastServicedKm": null, "lastServicedDate": null, "estimatedCostMyr": 120 },
+          { "id": "air-filter", "name": "Engine Air Filter", "category": "Filters", "intervalKm": 20000, "intervalMonths": 12, "lastServicedKm": null, "lastServicedDate": null, "estimatedCostMyr": 45 },
+          { "id": "cabin-filter", "name": "Cabin A/C Filter", "category": "Filters", "intervalKm": 20000, "intervalMonths": 12, "lastServicedKm": null, "lastServicedDate": null, "estimatedCostMyr": 40 }
+        ],
+        "maintenanceHistory": []
+      }
+    };
+
+    const STORAGE_PREFIX = 'car_tracker_v3_';
+    const ACTIVE_KEY_STORAGE = 'car_tracker_v3_active_profile';
+    const CUSTOM_LIST_STORAGE = 'car_tracker_v3_custom_profiles';
+
+    let activeProfileKey = localStorage.getItem(ACTIVE_KEY_STORAGE) || 'honda-city-2003';
+    let appData = null;
+    let currentScheduleFilter = 'all';
+    let currentHistorySearch = '';
+
+    function showToast(msg) {
+      const t = document.getElementById('toastBanner');
+      document.getElementById('toastText').textContent = msg;
+      t.classList.remove('hidden');
+      t.classList.add('flex');
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => {
+        t.classList.add('hidden');
+        t.classList.remove('flex');
+      }, 2200);
+    }
+
+    function formatNumber(num) {
+      if (num === null || num === undefined || num === '' || isNaN(num)) return '—';
+      return Number(num).toLocaleString('en-US');
+    }
+
+    function formatCurrency(num, currency = 'MYR') {
+      if (num === null || num === undefined || num === '' || isNaN(num)) return 'Workshop Fees';
+      const prefix = currency === 'MYR' ? 'RM ' : currency + ' ';
+      return prefix + Number(num).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+    }
+
+    function getCustomProfilesMap() {
+      try {
+        return JSON.parse(localStorage.getItem(CUSTOM_LIST_STORAGE) || '{}');
+      } catch (_) {
+        return {};
+      }
+    }
+
+    function registerCustomProfileOption(id, label) {
+      const map = getCustomProfilesMap();
+      map[id] = label;
+      localStorage.setItem(CUSTOM_LIST_STORAGE, JSON.stringify(map));
+      syncProfileSelectOptions();
+    }
+
+    function syncProfileSelectOptions() {
+      const sel = document.getElementById('carProfileSelect');
+      const customMap = getCustomProfilesMap();
+      const baseOptions = [
+        { value: 'honda-city-2003', text: '🚗 Honda City 2003' },
+        { value: 'hyundai-elantra-2009', text: '🚙 Hyundai Elantra 2009' }
+      ];
+      Object.entries(customMap).forEach(([id, label]) => {
+        if (id !== 'honda-city-2003' && id !== 'hyundai-elantra-2009' && id !== 'blank-template') {
+          baseOptions.push({ value: id, text: '🚘 ' + label });
+        }
+      });
+      baseOptions.push({ value: 'blank-template', text: '➕ New Car' });
+
+      sel.innerHTML = baseOptions.map(o => `<option value="${o.value}">${o.text}</option>`).join('');
+      if ([...sel.options].some(o => o.value === activeProfileKey)) {
+        sel.value = activeProfileKey;
+      }
+    }
+
+    async function loadProfile(profileKey) {
+      activeProfileKey = profileKey;
+      localStorage.setItem(ACTIVE_KEY_STORAGE, profileKey);
+      syncProfileSelectOptions();
+
+      const saved = localStorage.getItem(STORAGE_PREFIX + profileKey);
+      if (saved) {
+        try {
+          const parsedSaved = JSON.parse(saved);
+          if (parsedSaved && parsedSaved.vehicle && Array.isArray(parsedSaved.periodicSchedule)) {
+            appData = parsedSaved;
+            renderAll();
+            return;
+          }
+        } catch (e) {
+          console.warn('Fallback from localStorage error:', e);
+        }
+      }
+
+      if (window.location.protocol !== 'file:' && BUILTIN_PROFILES[profileKey] && profileKey !== 'blank-template') {
+        try {
+          const res = await fetch(`./${profileKey}.json`, { cache: 'no-store' });
+          if (res.ok) {
+            appData = await res.json();
+            saveToLocal(false);
+            renderAll();
+            return;
+          }
+        } catch (_) {}
+      }
+
+      appData = JSON.parse(JSON.stringify(BUILTIN_PROFILES[profileKey] || BUILTIN_PROFILES['honda-city-2003']));
+      saveToLocal(false);
+      renderAll();
+    }
+
+    function saveToLocal(touchDate = true) {
+      if (!appData) return;
+      if (touchDate) {
+        appData.lastUpdated = new Date().toISOString().slice(0, 10);
+      }
+      localStorage.setItem(STORAGE_PREFIX + activeProfileKey, JSON.stringify(appData));
+      localStorage.setItem(ACTIVE_KEY_STORAGE, activeProfileKey);
+      const chip = document.getElementById('lastUpdatedChip');
+      if (chip) chip.textContent = `Updated: ${appData.lastUpdated}`;
+      updateDynamicSEO();
+    }
+
+    function updateDynamicSEO() {
+      if (!appData || !appData.vehicle) return;
+      const v = appData.vehicle;
+      const isBlank = activeProfileKey === 'blank-template' || v.make === 'Car Make';
+      const setMeta = (id, val) => { const el = document.getElementById(id); if (el) el.setAttribute('content', val); };
+
+      if (isBlank) {
+        const defaultTitle = 'Car Maintenance & Service Tracker — Periodic Schedule & Workshop Log';
+        const defaultDesc = 'Universal interactive car maintenance tracker, periodic service interval calculator, live odometer simulator, and printable A4 vehicle condition report.';
+        document.title = defaultTitle;
+        setMeta('seoDesc', defaultDesc);
+        setMeta('seoKeywords', 'car maintenance tracker, periodic service schedule, odometer calculator, vehicle condition report, workshop log');
+        setMeta('ogTitle', 'Car Maintenance & Service Tracker');
+        setMeta('ogDesc', defaultDesc);
+        setMeta('twTitle', 'Car Maintenance & Service Tracker');
+        setMeta('twDesc', defaultDesc);
+        return;
+      }
+
+      const curKm = formatNumber(v.currentMileageKm || 0);
+      const carName = `${v.year || ''} ${v.make || ''} ${v.model || ''}`.trim();
+      const plate = v.plateNumber ? ` (${v.plateNumber})` : '';
+      const titleText = `${carName}${plate} — Maintenance Tracker (${curKm} km)`;
+      const descText = `${carName}${plate} at ${curKm} km • Updated ${appData.lastUpdated || 'today'}. Periodic service schedule, next due mileage, and workshop cost history.`;
+      const keywordsText = `car maintenance tracker, service schedule, odometer tracker, workshop log, ${v.make || ''}, ${v.model || ''}, ${v.plateNumber || ''}`;
+
+      document.title = titleText;
+      setMeta('seoDesc', descText);
+      setMeta('seoKeywords', keywordsText);
+      setMeta('ogTitle', titleText);
+      setMeta('ogDesc', descText);
+      setMeta('twTitle', titleText);
+      setMeta('twDesc', descText);
+
+      // Update JSON-LD Vehicle Schema
+      const schemaEl = document.getElementById('jsonLdSchema');
+      if (schemaEl) {
+        schemaEl.textContent = JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Car",
+          "name": carName,
+          "brand": v.make || "",
+          "model": v.model || "",
+          "vehicleModelDate": String(v.year || ""),
+          "vehicleIdentificationNumber": v.chassisNumber || "",
+          "vehicleEngine": { "@type": "EngineSpecification", "name": v.engine || "" },
+          "vehicleTransmission": v.transmission || "",
+          "mileageFromOdometer": {
+            "@type": "QuantitativeValue",
+            "value": Number(v.currentMileageKm) || 0,
+            "unitCode": "KMT"
+          }
+        });
+      }
+    }
+
+    function computeItemStatus(item, currentMileage) {
+      const lastKm = item.lastServicedKm;
+      const interval = Number(item.intervalKm) || 10000;
+      if (lastKm === null || lastKm === undefined || lastKm === '' || isNaN(lastKm)) {
+        return {
+          state: 'pending',
+          label: 'Unset',
+          nextDueKm: null,
+          remainingKm: null,
+          drivenKm: null,
+          progressPct: 0,
+          badgeClass: 'bg-slate-800 text-slate-400 border-slate-700',
+          barColor: 'bg-slate-600'
+        };
+      }
+      const nextDueKm = Number(lastKm) + interval;
+      const drivenKm = Math.max(0, Number(currentMileage) - Number(lastKm));
+      const remainingKm = nextDueKm - Number(currentMileage);
+      const rawPct = Math.min(100, Math.max(0, (drivenKm / interval) * 100));
+
+      if (remainingKm <= 0) {
+        return {
+          state: 'overdue',
+          label: `Overdue ${formatNumber(Math.abs(remainingKm))} km`,
+          nextDueKm,
+          remainingKm,
+          drivenKm,
+          progressPct: 100,
+          badgeClass: 'bg-rose-500/15 text-rose-300 border-rose-500/30',
+          barColor: 'bg-rose-500'
+        };
+      }
+      if (remainingKm <= interval * 0.2 || remainingKm <= 1500) {
+        return {
+          state: 'soon',
+          label: `Due in ${formatNumber(remainingKm)} km`,
+          nextDueKm,
+          remainingKm,
+          drivenKm,
+          progressPct: Math.max(8, rawPct),
+          badgeClass: 'bg-amber-500/15 text-amber-300 border-amber-500/30',
+          barColor: 'bg-amber-400'
+        };
+      }
+      return {
+        state: 'good',
+        label: `${formatNumber(remainingKm)} km left`,
+        nextDueKm,
+        remainingKm,
+        drivenKm,
+        progressPct: Math.max(6, rawPct),
+        badgeClass: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30',
+        barColor: 'bg-emerald-400'
+      };
+    }
+
+    function renderHeaderAndKPIs() {
+      const v = appData.vehicle || {};
+      const curKm = Number(v.currentMileageKm) || 0;
+      const currency = appData.currency || 'MYR';
+
+      document.getElementById('headerCarTitle').textContent = `${v.make || ''} ${v.model || ''}`.trim() || 'Vehicle';
+      document.getElementById('headerPlateBadge').textContent = v.plateNumber || 'N/A';
+      document.getElementById('headerEngineSub').textContent = `${v.year || ''} • ${v.engine || ''} • ${v.transmission || ''}`;
+      document.getElementById('lastUpdatedChip').textContent = `Updated: ${appData.lastUpdated || '—'}`;
+      document.getElementById('currentMileageInput').value = curKm;
+      document.getElementById('latestServiceDateText').textContent = v.latestServiceDate || '—';
+      document.getElementById('workshopMechanicText').textContent = (v.workshop && v.workshop.mechanicName) ? v.workshop.mechanicName : '—';
+
+      const sched = appData.periodicSchedule || [];
+      let activeCount = 0;
+      let nearestItem = null;
+      let nearestRemaining = Infinity;
+
+      sched.forEach(item => {
+        const st = computeItemStatus(item, curKm);
+        if (st.state !== 'pending') {
+          activeCount++;
+          if (st.remainingKm < nearestRemaining) {
+            nearestRemaining = st.remainingKm;
+            nearestItem = item;
+          }
+        }
+      });
+
+      const pendingCount = sched.length - activeCount;
+      document.getElementById('kpiActiveCount').textContent = `${activeCount} / ${sched.length}`;
+      document.getElementById('kpiActiveSub').textContent = pendingCount > 0 ? `${pendingCount} unset` : 'All tracked';
+
+      if (nearestItem) {
+        document.getElementById('kpiNextDueKm').textContent = nearestRemaining <= 0
+          ? `Overdue`
+          : `${formatNumber(nearestRemaining)} km`;
+        document.getElementById('kpiNextDueItem').textContent = nearestItem.name;
+      } else {
+        document.getElementById('kpiNextDueKm').textContent = '—';
+        document.getElementById('kpiNextDueItem').textContent = 'Enter km below';
+      }
+
+      const hist = appData.maintenanceHistory || [];
+      const totalCost = hist.reduce((acc, r) => acc + (Number(r.costMyr) || 0), 0);
+      const totalPaid = hist.reduce((acc, r) => acc + (Number(r.paidMyr) || 0), 0);
+      document.getElementById('kpiTotalCost').textContent = formatCurrency(totalCost, currency);
+      document.getElementById('kpiTotalRecords').textContent = `${hist.length} records`;
+      document.getElementById('kpiTotalPaid').textContent = formatCurrency(totalPaid, currency);
+
+      const diff = totalCost - totalPaid;
+      document.getElementById('kpiBalanceSub').textContent = diff > 0
+        ? `${formatCurrency(diff, currency)} workshop fees`
+        : 'Settled (incl. workshop fees)';
+
+      updateDynamicSEO();
+    }
+
+    function renderPeriodicTable() {
+      const tbody = document.getElementById('periodicTableBody');
+      const curKm = Number(appData.vehicle?.currentMileageKm) || 0;
+      const sched = appData.periodicSchedule || [];
+
+      const filtered = sched.filter(item => {
+        const st = computeItemStatus(item, curKm);
+        if (currentScheduleFilter === 'active') return st.state !== 'pending';
+        if (currentScheduleFilter === 'pending') return st.state === 'pending';
+        if (currentScheduleFilter === 'due') return st.state === 'overdue' || st.state === 'soon';
+        return true;
+      });
+
+      if (!filtered.length) {
+        tbody.innerHTML = `<tr><td colspan="6" class="py-8 text-center text-slate-400 text-xs">No items in this filter.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = filtered.map((item, idx) => {
+        const st = computeItemStatus(item, curKm);
+        const lastKmVal = (item.lastServicedKm !== null && item.lastServicedKm !== undefined) ? item.lastServicedKm : '';
+        const nextDueDisplay = st.nextDueKm !== null
+          ? `<div class="font-mono font-bold text-sm text-white">${formatNumber(st.nextDueKm)} <span class="text-xs font-normal text-slate-400">km</span></div>`
+          : `<span class="text-xs text-slate-500">—</span>`;
+
+        const timeText = item.intervalMonths
+          ? ` <span class="text-[11px] text-slate-400">/ ${item.intervalMonths % 12 === 0 ? (item.intervalMonths / 12) + 'y' : item.intervalMonths + 'm'}</span>`
+          : '';
+
+        return `
+          <tr class="motion-enter hover:bg-slate-800/40 transition" style="animation-delay: ${idx * 25}ms">
+            <td class="py-3.5 ps-5 pe-3 align-middle">
+              <div class="flex items-center gap-2">
+                <span class="px-2 py-0.5 text-[10px] font-mono uppercase font-semibold rounded bg-slate-800 text-slate-300 border border-slate-700 shrink-0">${item.category || 'Part'}</span>
+                <span class="font-semibold text-white text-sm">${item.name}</span>
+              </div>
+            </td>
+
+            <td class="py-3.5 px-3 align-middle font-mono text-xs text-slate-200">
+              ${formatNumber(item.intervalKm)} km${timeText}
+            </td>
+
+            <td class="py-3.5 px-3 align-middle">
+              <div class="flex items-center gap-1.5 max-w-[175px]">
+                <div class="relative flex-1">
+                  <input
+                    type="number"
+                    step="100"
+                    min="0"
+                    data-sched-id="${item.id}"
+                    value="${lastKmVal}"
+                    placeholder="km..."
+                    class="sched-km-input w-full bg-slate-950 text-white font-mono text-xs font-semibold rounded-xl ps-2.5 pe-7 py-1.5 border ${st.state === 'pending' ? 'border-slate-700/80' : 'border-indigo-500/50'} focus:outline-none focus:border-indigo-400 transition"
+                  />
+                  <span class="absolute inset-y-0 end-2 flex items-center text-[10px] font-mono text-slate-500 pointer-events-none">km</span>
+                </div>
+                <button
+                  type="button"
+                  data-fill-current="${item.id}"
+                  title="Set to current mileage (${formatNumber(curKm)} km)"
+                  class="fill-cur-km-btn px-2 py-1.5 rounded-xl bg-slate-800 hover:bg-indigo-600 text-slate-300 hover:text-white text-[10px] font-mono font-semibold border border-slate-700 transition shrink-0"
+                >Now</button>
+              </div>
+            </td>
+
+            <td class="py-3.5 px-3 align-middle">
+              ${nextDueDisplay}
+            </td>
+
+            <td class="py-3.5 px-3 align-middle">
+              <input
+                type="number"
+                step="5"
+                min="0"
+                data-cost-id="${item.id}"
+                value="${item.estimatedCostMyr !== null && item.estimatedCostMyr !== undefined ? item.estimatedCostMyr : ''}"
+                placeholder="RM"
+                class="sched-cost-input w-20 bg-slate-950/70 text-slate-200 font-mono text-xs rounded-lg px-2 py-1 border border-slate-800 focus:outline-none focus:border-indigo-400"
+              />
+            </td>
+
+            <td class="py-3.5 ps-3 pe-5 align-middle">
+              <div class="flex items-center justify-between gap-2 mb-1">
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold border ${st.badgeClass}">
+                  ${st.label}
+                </span>
+                ${st.drivenKm !== null ? `<span class="text-[10px] font-mono text-slate-400">${Math.round(st.progressPct)}%</span>` : ''}
+              </div>
+              <div class="w-full h-1.5 bg-slate-950 rounded-full overflow-hidden border border-slate-800/90">
+                <div class="motion-bar h-full rounded-full ${st.barColor}" style="width: ${st.progressPct}%"></div>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+
+      // Live Input Auto-Save for Last Serviced KM
+      document.querySelectorAll('.sched-km-input').forEach(inp => {
+        inp.addEventListener('change', (e) => {
+          const id = e.target.getAttribute('data-sched-id');
+          const raw = e.target.value.trim();
+          const target = appData.periodicSchedule.find(x => x.id === id);
+          if (target) {
+            target.lastServicedKm = raw === '' ? null : Number(raw);
+            target.lastServicedDate = raw === '' ? null : new Date().toISOString().slice(0, 10);
+            saveToLocal(true);
+            renderHeaderAndKPIs();
+            renderPeriodicTable();
+            renderSvgCharts();
+            showToast(`Saved ${target.name}`);
+          }
+        });
+      });
+
+      // Live Input Auto-Save for Est. Cost
+      document.querySelectorAll('.sched-cost-input').forEach(inp => {
+        inp.addEventListener('change', (e) => {
+          const id = e.target.getAttribute('data-cost-id');
+          const raw = e.target.value.trim();
+          const target = appData.periodicSchedule.find(x => x.id === id);
+          if (target) {
+            target.estimatedCostMyr = raw === '' ? null : Number(raw);
+            saveToLocal(true);
+            showToast(`Updated ${target.name} cost`);
+          }
+        });
+      });
+
+      // One-Click "Now" Button
+      document.querySelectorAll('.fill-cur-km-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = btn.getAttribute('data-fill-current');
+          const target = appData.periodicSchedule.find(x => x.id === id);
+          if (target) {
+            target.lastServicedKm = Number(appData.vehicle?.currentMileageKm) || 0;
+            target.lastServicedDate = new Date().toISOString().slice(0, 10);
+            saveToLocal(true);
+            renderAll();
+            showToast(`${target.name} set to ${formatNumber(target.lastServicedKm)} km`);
+          }
+        });
+      });
+    }
+
+    function renderSvgCharts() {
+      renderCountdownSvg();
+      renderExpenseDonutSvg();
+    }
+
+    function renderCountdownSvg() {
+      const container = document.getElementById('svgCountdownChart');
+      const curKm = Number(appData.vehicle?.currentMileageKm) || 0;
+      const sched = appData.periodicSchedule || [];
+      const maxInterval = Math.max(...sched.map(s => Number(s.intervalKm) || 10000), 80000);
+
+      const rowsHtml = sched.map(item => {
+        const st = computeItemStatus(item, curKm);
+        let widthPct = 0;
+        let fillHex = '#475569';
+        let rightLabel = 'Unset';
+
+        if (st.state !== 'pending') {
+          widthPct = Math.max(4, Math.min(100, (Math.max(0, st.remainingKm) / maxInterval) * 100));
+          rightLabel = st.remainingKm <= 0
+            ? `Overdue (${formatNumber(Math.abs(st.remainingKm))} km)`
+            : `${formatNumber(st.remainingKm)} km`;
+          fillHex = st.state === 'overdue' ? '#f43f5e' : st.state === 'soon' ? '#fbbf24' : '#34d399';
+        }
+
+        return `
+          <div class="space-y-1">
+            <div class="flex items-center justify-between text-xs">
+              <span class="font-medium text-slate-200 truncate pe-2">${item.name}</span>
+              <span class="font-mono text-[11px] text-slate-400 shrink-0">${rightLabel}</span>
+            </div>
+            <svg class="w-full h-3 rounded-lg bg-slate-950 border border-slate-800/80 overflow-hidden" viewBox="0 0 400 12" preserveAspectRatio="none">
+              <rect x="0" y="0" width="${(widthPct * 4).toFixed(1)}" height="12" rx="3" fill="${fillHex}" />
+            <\/svg>
+          </div>
+        `;
+      }).join('');
+
+      container.innerHTML = `<div class="space-y-2">${rowsHtml}</div>`;
+    }
+
+    function renderExpenseDonutSvg() {
+      const container = document.getElementById('svgExpenseDonut');
+      const hist = appData.maintenanceHistory || [];
+      const totalsByCat = {};
+      let grandTotal = 0;
+
+      hist.forEach(r => {
+        const cost = Number(r.costMyr) || 0;
+        if (cost > 0) {
+          const cat = r.category || 'Workshop Fees';
+          totalsByCat[cat] = (totalsByCat[cat] || 0) + cost;
+          grandTotal += cost;
+        }
+      });
+
+      document.getElementById('donutFooterTotal').textContent = `Total: ${formatCurrency(grandTotal, appData.currency)}`;
+
+      const palette = ['#6366f1', '#10b981', '#f59e0b', '#06b6d4', '#ec4899', '#8b5cf6', '#f43f5e'];
+      const entries = Object.entries(totalsByCat).sort((a, b) => b[1] - a[1]);
+
+      if (!entries.length) {
+        container.innerHTML = `<div class="text-xs text-slate-500 py-8">No costs logged yet.</div>`;
+        return;
+      }
+
+      const radius = 60;
+      const circumference = 2 * Math.PI * radius;
+      let accumulatedPct = 0;
+
+      const circlesSvg = entries.map(([cat, amount], idx) => {
+        const pct = amount / grandTotal;
+        const strokeLen = pct * circumference;
+        const dashArray = `${strokeLen.toFixed(2)} ${(circumference - strokeLen).toFixed(2)}`;
+        const dashOffset = -(accumulatedPct * circumference).toFixed(2);
+        accumulatedPct += pct;
+        const color = palette[idx % palette.length];
+        return `<circle cx="80" cy="80" r="${radius}" fill="transparent" stroke="${color}" stroke-width="20" stroke-dasharray="${dashArray}" stroke-dashoffset="${dashOffset}" />`;
+      }).join('');
+
+      const legendHtml = entries.map(([cat, amount], idx) => {
+        const pct = ((amount / grandTotal) * 100).toFixed(0);
+        const color = palette[idx % palette.length];
+        return `
+          <div class="flex items-center justify-between gap-2 text-xs py-1">
+            <div class="flex items-center gap-2 truncate">
+              <span class="w-2.5 h-2.5 rounded-sm shrink-0" style="background-color:${color}"></span>
+              <span class="text-slate-200 truncate">${cat}</span>
+            </div>
+            <div class="font-mono text-slate-300 shrink-0">
+              ${formatCurrency(amount, appData.currency)} <span class="text-slate-500 text-[10px]">(${pct}%)</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      container.innerHTML = `
+        <div class="relative w-40 h-40 shrink-0 flex items-center justify-center">
+          <svg class="w-40 h-40 -rotate-90" viewBox="0 0 160 160">
+            <circle cx="80" cy="80" r="${radius}" fill="transparent" stroke="#1e293b" stroke-width="20" />
+            ${circlesSvg}
+          <\/svg>
+          <div class="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none">
+            <span class="text-[10px] uppercase tracking-wider text-slate-400">Total</span>
+            <span class="text-xs font-mono font-bold text-white mt-0.5">${formatCurrency(grandTotal, appData.currency)}</span>
+          </div>
+        </div>
+        <div class="flex-1 w-full divide-y divide-slate-800/60">${legendHtml}</div>
+      `;
+    }
+
+    function renderHistoryList() {
+      const container = document.getElementById('historyListContainer');
+      const hist = [...(appData.maintenanceHistory || [])].sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+      document.getElementById('historyCountBadge').textContent = `${hist.length}`;
+
+      const q = currentHistorySearch.toLowerCase().trim();
+      const filtered = hist.filter(r => {
+        if (!q) return true;
+        return (
+          (r.title && r.title.toLowerCase().includes(q)) ||
+          (r.category && r.category.toLowerCase().includes(q)) ||
+          (r.date && r.date.toLowerCase().includes(q)) ||
+          (r.notes && r.notes.toLowerCase().includes(q))
+        );
+      });
+
+      if (!filtered.length) {
+        container.innerHTML = `<div class="p-6 text-center text-xs text-slate-400">No records found.</div>`;
+        return;
+      }
+
+      container.innerHTML = filtered.map(rec => {
+        const costText = (rec.costMyr !== null && rec.costMyr !== undefined && rec.costMyr !== '')
+          ? formatCurrency(rec.costMyr, appData.currency)
+          : 'Workshop Fees';
+        const paidText = (rec.paidMyr !== null && rec.paidMyr !== undefined && rec.paidMyr !== '')
+          ? formatCurrency(rec.paidMyr, appData.currency)
+          : 'Workshop Fees';
+
+        return `
+          <div class="px-5 py-3.5 hover:bg-slate-800/30 transition flex flex-col md:flex-row md:items-center justify-between gap-2">
+            <div class="space-y-0.5 max-w-3xl">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="font-mono text-xs font-semibold px-2 py-0.5 rounded bg-slate-950 text-indigo-300 border border-slate-800">${rec.date || '—'}</span>
+                ${rec.mileageKm ? `<span class="font-mono text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-200">${formatNumber(rec.mileageKm)} km</span>` : ''}
+                <span class="text-[11px] font-medium px-2 py-0.5 rounded bg-slate-800/80 text-slate-300">${rec.category || 'Service'}</span>
+              </div>
+              <h4 class="text-sm font-bold text-white pt-0.5">${rec.title}</h4>
+              ${rec.notes ? `<p class="text-xs text-slate-400">${rec.notes}</p>` : ''}
+            </div>
+
+            <div class="flex sm:flex-row md:flex-col items-start md:items-end justify-between gap-1 shrink-0">
+              <div class="text-xs text-slate-400">Cost: <span class="font-mono text-sm font-bold text-white">${costText}</span></div>
+              <div class="text-[11px] text-slate-400">Paid: <span class="font-mono font-semibold text-cyan-300">${paidText}</span> <span class="text-slate-500">(${rec.paymentMethod || 'Workshop Fees'})</span></div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderFooterSpecs() {
+      const footer = document.getElementById('vehicleSpecsFooter');
+      const v = appData.vehicle || {};
+      const w = v.workshop || {};
+      footer.innerHTML = `
+        <div>
+          <span class="text-[10px] uppercase tracking-wider text-slate-500 font-semibold block">Vehicle</span>
+          <div class="mt-0.5 text-slate-200 font-medium">${v.year || ''} ${v.make || ''} ${v.model || ''} (${v.plateNumber || ''})</div>
+        </div>
+        <div>
+          <span class="text-[10px] uppercase tracking-wider text-slate-500 font-semibold block">Engine &amp; Chassis</span>
+          <div class="mt-0.5 font-mono text-slate-200">${v.engineNumber || '—'} / ${v.chassisNumber || '—'}</div>
+        </div>
+        <div>
+          <span class="text-[10px] uppercase tracking-wider text-slate-500 font-semibold block">Workshop</span>
+          <div class="mt-0.5 text-slate-200 font-medium">${w.mechanicName || '—'} (${w.location || '—'})</div>
+        </div>
+        <div>
+          <span class="text-[10px] uppercase tracking-wider text-slate-500 font-semibold block">Supplier</span>
+          <div class="mt-0.5 text-slate-200 font-medium">${w.partsSupplier || '—'}</div>
+        </div>
+      `;
+    }
+
+    function populateLinkedItemSelect() {
+      const sel = document.getElementById('newRecLinkedItem');
+      const titleSel = document.getElementById('newRecTitleSelect');
+      const mileageSel = document.getElementById('newRecMileageSelect');
+      const curKm = Number(appData.vehicle?.currentMileageKm) || 0;
+      const sched = appData.periodicSchedule || [];
+
+      if (sel) {
+        sel.innerHTML = `<option value="">— None —</option>` +
+          sched.map(s => `<option value="${s.id}">${s.name} (${formatNumber(s.intervalKm)} km)</option>`).join('');
+      }
+
+      if (titleSel) {
+        const schedOptions = sched.map(s => `<option value="${s.name}" data-linked-id="${s.id}" data-est-cost="${s.estimatedCostMyr || ''}">${s.name}</option>`).join('');
+        const extraOptions = [
+          'Brake Pads Replacement',
+          'Battery Replacement',
+          'Tire Rotation & Alignment',
+          'A/C Gas Refill & Service',
+          'Suspension / Mounting Repair',
+          'General Workshop Inspection'
+        ].map(t => `<option value="${t}">${t}</option>`).join('');
+
+        titleSel.innerHTML = `
+          <optgroup label="Periodic Schedule Items">${schedOptions}</optgroup>
+          <optgroup label="Common Workshop Services">${extraOptions}</optgroup>
+          <option value="__other__">Other (Type custom title)...</option>
+        `;
+      }
+
+      if (mileageSel) {
+        mileageSel.innerHTML = `
+          <option value="${curKm}">Current Odometer (${formatNumber(curKm)} km)</option>
+          <option value="${curKm + 1000}">${formatNumber(curKm + 1000)} km (+1,000 km)</option>
+          <option value="${curKm + 5000}">${formatNumber(curKm + 5000)} km (+5,000 km)</option>
+          <option value="unlogged">Unlogged / N/A</option>
+          <option value="__other__">Other (Enter km)...</option>
+        `;
+      }
+    }
+
+    function renderAll() {
+      renderHeaderAndKPIs();
+      renderPeriodicTable();
+      renderSvgCharts();
+      renderHistoryList();
+      renderFooterSpecs();
+      populateLinkedItemSelect();
+    }
+
+    // =========================================================================
+    // A4 PRINTABLE CAR CONDITION & MAINTENANCE REPORT (OPENS IN NEW TAB)
+    // =========================================================================
+    function generateA4ReportTab() {
+      const v = appData.vehicle || {};
+      const w = v.workshop || {};
+      const curKm = Number(v.currentMileageKm) || 0;
+      const sched = appData.periodicSchedule || [];
+      const hist = [...(appData.maintenanceHistory || [])].sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+
+      let goodCount = 0, soonCount = 0, overdueCount = 0, unsetCount = 0;
+      sched.forEach(item => {
+        const st = computeItemStatus(item, curKm);
+        if (st.state === 'good') goodCount++;
+        else if (st.state === 'soon') soonCount++;
+        else if (st.state === 'overdue') overdueCount++;
+        else unsetCount++;
+      });
+
+      const overallCondition = overdueCount > 0
+        ? { label: 'ACTION REQUIRED (OVERDUE ITEMS)', color: '#dc2626', bg: '#fef2f2' }
+        : soonCount > 0
+        ? { label: 'FAIR — UPCOMING SERVICE SOON', color: '#d97706', bg: '#fffbeb' }
+        : { label: 'EXCELLENT — UP TO DATE', color: '#059669', bg: '#ecfdf5' };
+
+      const totalCost = hist.reduce((a, r) => a + (Number(r.costMyr) || 0), 0);
+
+      const schedRowsHtml = sched.map(item => {
+        const st = computeItemStatus(item, curKm);
+        const statusColor = st.state === 'overdue' ? '#dc2626' : st.state === 'soon' ? '#d97706' : st.state === 'good' ? '#059669' : '#64748b';
+        return `
+          <tr>
+            <td><strong>${item.name}</strong> <span style="color:#64748b;font-size:10px;">(${item.category || 'Part'})</span></td>
+            <td style="font-family:monospace;">${formatNumber(item.intervalKm)} km</td>
+            <td style="font-family:monospace;">${item.lastServicedKm ? formatNumber(item.lastServicedKm) + ' km' : '—'}</td>
+            <td style="font-family:monospace;font-weight:700;">${st.nextDueKm ? formatNumber(st.nextDueKm) + ' km' : '—'}</td>
+            <td style="font-family:monospace;">${formatCurrency(item.estimatedCostMyr, appData.currency)}</td>
+            <td><span style="color:${statusColor};font-weight:700;font-size:11px;">${st.label}</span></td>
+          </tr>
+        `;
+      }).join('');
+
+      const histRowsHtml = hist.map(r => `
+        <tr>
+          <td style="font-family:monospace;white-space:nowrap;">${r.date || '—'}</td>
+          <td style="font-family:monospace;">${r.mileageKm ? formatNumber(r.mileageKm) + ' km' : '—'}</td>
+          <td><strong>${r.title}</strong>${r.notes ? `<div style="color:#475569;font-size:10px;margin-top:2px;">${r.notes}</div>` : ''}</td>
+          <td>${r.category || 'Service'}</td>
+          <td style="font-family:monospace;font-weight:600;white-space:nowrap;">${formatCurrency(r.costMyr, appData.currency)}</td>
+        </tr>
+      `).join('');
+
+      const reportHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>${v.year || ''} ${v.make || ''} ${v.model || ''} (${v.plateNumber || ''}) — Vehicle Condition & Maintenance Report</title>
+  <style>
+    @page { size: A4 portrait; margin: 12mm; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Inter, system-ui, -apple-system, sans-serif; color: #0f172a; background: #f1f5f9; padding: 24px; font-size: 12px; line-height: 1.4; }
+    .page { max-width: 210mm; margin: 0 auto; background: #ffffff; padding: 14mm; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+    .toolbar { max-width: 210mm; margin: 0 auto 14px auto; display: flex; justify-content: space-between; align-items: center; background: #0f172a; color: #fff; padding: 10px 16px; border-radius: 8px; }
+    .btn { background: #4f46e5; color: #fff; border: none; padding: 8px 16px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 12px; }
+    .btn:hover { background: #4338ca; }
+    .header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #0f172a; padding-bottom: 12px; margin-bottom: 14px; }
+    .title { font-size: 20px; font-weight: 800; letter-spacing: -0.3px; }
+    .subtitle { color: #475569; font-size: 12px; margin-top: 2px; }
+    .condition-badge { display: inline-block; padding: 6px 12px; border-radius: 6px; font-weight: 800; font-size: 11px; background: ${overallCondition.bg}; color: ${overallCondition.color}; border: 1px solid ${overallCondition.color}; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 16px; }
+    .stat-box { border: 1px solid #e2e8f0; border-radius: 6px; padding: 8px 10px; background: #f8fafc; }
+    .stat-label { font-size: 10px; text-transform: uppercase; color: #64748b; font-weight: 700; }
+    .stat-val { font-size: 15px; font-weight: 800; font-family: monospace; margin-top: 2px; color: #0f172a; }
+    h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; color: #0f172a; margin: 14px 0 8px 0; border-left: 3px solid #4f46e5; padding-left: 8px; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 14px; font-size: 11px; }
+    th, td { border: 1px solid #cbd5e1; padding: 6px 8px; text-align: left; vertical-align: top; }
+    th { background: #f1f5f9; font-weight: 700; color: #334155; font-size: 10px; text-transform: uppercase; }
+    tr:nth-child(even) td { background: #f8fafc; }
+    .footer { margin-top: 16px; padding-top: 10px; border-top: 1px solid #cbd5e1; display: flex; justify-content: space-between; font-size: 10px; color: #64748b; }
+    @media print {
+      body { background: #fff; padding: 0; }
+      .page { box-shadow: none; padding: 0; max-width: 100%; }
+      .toolbar { display: none !important; }
+    }
+  <\/style>
+<\/head>
+<body>
+  <div class="toolbar">
+    <span><strong>A4 Printable Car Condition Report</strong> — Ready to Save as PDF</span>
+    <button class="btn" onclick="window.print()">🖨️ Print / Save as A4 PDF</button>
+  </div>
+  <div class="page">
+    <div class="header">
+      <div>
+        <div class="title">${v.year || ''} ${v.make || ''} ${v.model || ''} — ${v.plateNumber || ''}</div>
+        <div class="subtitle">${v.engine || ''} • ${v.transmission || ''} • Chassis: ${v.chassisNumber || '—'} • Engine No: ${v.engineNumber || '—'}</div>
+      </div>
+      <div style="text-align:right;">
+        <div class="condition-badge">${overallCondition.label}</div>
+        <div style="font-size:10px;color:#64748b;margin-top:4px;">Report Date: ${appData.lastUpdated || new Date().toISOString().slice(0, 10)}</div>
+      </div>
+    </div>
+
+    <div class="grid-4">
+      <div class="stat-box">
+        <div class="stat-label">Current Odometer</div>
+        <div class="stat-val">${formatNumber(curKm)} km</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Latest Service</div>
+        <div class="stat-val">${v.latestServiceDate || '—'}</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Schedule Health</div>
+        <div class="stat-val">${goodCount} OK / ${soonCount} Soon / ${overdueCount} Due</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Total Logged Cost</div>
+        <div class="stat-val">${formatCurrency(totalCost, appData.currency)}</div>
+      </div>
+    </div>
+
+    <h2>1. Periodic Maintenance Schedule &amp; Condition Status</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Item / Service Name</th>
+          <th>Interval</th>
+          <th>Last Serviced</th>
+          <th>Next Service Due</th>
+          <th>Est. Cost</th>
+          <th>Condition Status</th>
+        </tr>
+      </thead>
+      <tbody>${schedRowsHtml}</tbody>
+    </table>
+
+    <h2>2. Workshop Maintenance &amp; Repair History (${hist.length} Records)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Mileage</th>
+          <th>Service / Repair Description</th>
+          <th>Category</th>
+          <th>Cost</th>
+        </tr>
+      </thead>
+      <tbody>${histRowsHtml || '<tr><td colspan="5">No service history logged.</td></tr>'}</tbody>
+    </table>
+
+    <div class="footer">
+      <span>Workshop: ${w.mechanicName || '—'} (${w.location || '—'}) • Parts: ${w.partsSupplier || '—'}</span>
+      <span>Generated by Universal Car Maintenance Tracker</span>
+    </div>
+  </div>
+<\/body>
+<\/html>`;
+
+      const win = window.open('', '_blank');
+      if (win) {
+        win.document.open();
+        win.document.write(reportHtml);
+        win.document.close();
+      } else {
+        alert('Please allow pop-ups to open the A4 Report in a new tab.');
+      }
+    }
+
+    // =========================================================================
+    // CSV SERIALIZER & PARSER
+    // =========================================================================
+    function escapeCsvCell(val) {
+      if (val === null || val === undefined) return '';
+      const str = String(val);
+      if (str.includes(',') || str.includes('"') || str.includes('\n') || str.includes('\r')) {
+        return '"' + str.replace(/"/g, '""') + '"';
+      }
+      return str;
+    }
+
+    function buildCsvFromData(dataObj) {
+      const headers = [
+        'Record_Type', 'Name_Or_Title', 'Category_Or_Field', 'Interval_Km_Or_Value',
+        'Last_Serviced_Km_Or_Mileage', 'Next_Due_Km', 'Date', 'Cost', 'Paid', 'Status_Or_Method', 'Notes'
+      ];
+      const rows = [headers.join(',')];
+      const v = dataObj.vehicle || {};
+      const w = v.workshop || {};
+      const curKm = Number(v.currentMileageKm) || 0;
+
+      const metaEntries = [
+        ['Make', v.make || ''], ['Model', v.model || ''], ['Year', v.year || ''],
+        ['Plate_Number', v.plateNumber || ''], ['Engine', v.engine || ''],
+        ['Engine_Number', v.engineNumber || ''], ['Chassis_Number', v.chassisNumber || ''],
+        ['Transmission', v.transmission || ''], ['Current_Mileage_Km', curKm],
+        ['Latest_Service_Date', v.latestServiceDate || ''], ['Currency', dataObj.currency || 'MYR'],
+        ['Mechanic_Name', w.mechanicName || ''], ['Workshop_Location', w.location || ''],
+        ['Parts_Supplier', w.partsSupplier || '']
+      ];
+      metaEntries.forEach(([key, val]) => {
+        rows.push(['META', key, 'Vehicle_Info', val, '', '', '', '', '', '', ''].map(escapeCsvCell).join(','));
+      });
+
+      (dataObj.periodicSchedule || []).forEach(item => {
+        const lastKm = (item.lastServicedKm !== null && item.lastServicedKm !== undefined && item.lastServicedKm !== '') ? Number(item.lastServicedKm) : '';
+        const nextKm = lastKm !== '' ? (lastKm + Number(item.intervalKm || 0)) : '';
+        rows.push([
+          'SCHEDULE', item.name || '', item.category || 'General', item.intervalKm || '',
+          lastKm, nextKm, item.lastServicedDate || '',
+          item.estimatedCostMyr !== null && item.estimatedCostMyr !== undefined ? item.estimatedCostMyr : '',
+          '', '', ''
+        ].map(escapeCsvCell).join(','));
+      });
+
+      (dataObj.maintenanceHistory || []).forEach(rec => {
+        rows.push([
+          'HISTORY', rec.title || '', rec.category || 'Service', '',
+          rec.mileageKm !== null && rec.mileageKm !== undefined ? rec.mileageKm : '',
+          '', rec.date || '',
+          rec.costMyr !== null && rec.costMyr !== undefined ? rec.costMyr : '',
+          rec.paidMyr !== null && rec.paidMyr !== undefined ? rec.paidMyr : '',
+          rec.paymentMethod || 'Workshop Fees', rec.notes || ''
+        ].map(escapeCsvCell).join(','));
+      });
+
+      return '\uFEFF' + rows.join('\r\n');
+    }
+
+    function parseCsvText(csvText) {
+      const cleanText = csvText.replace(/^\uFEFF/, '');
+      const rows = [];
+      let currentRow = [], currentCell = '', inQuotes = false;
+
+      for (let i = 0; i < cleanText.length; i++) {
+        const ch = cleanText[i], nextCh = cleanText[i + 1];
+        if (inQuotes) {
+          if (ch === '"' && nextCh === '"') { currentCell += '"'; i++; }
+          else if (ch === '"') inQuotes = false;
+          else currentCell += ch;
+        } else {
+          if (ch === '"') inQuotes = true;
+          else if (ch === ',') { currentRow.push(currentCell.trim()); currentCell = ''; }
+          else if (ch === '\n' || (ch === '\r' && nextCh === '\n')) {
+            if (ch === '\r') i++;
+            currentRow.push(currentCell.trim());
+            if (currentRow.some(c => c !== '')) rows.push(currentRow);
+            currentRow = []; currentCell = '';
+          } else currentCell += ch;
+        }
+      }
+      if (currentCell !== '' || currentRow.length > 0) {
+        currentRow.push(currentCell.trim());
+        if (currentRow.some(c => c !== '')) rows.push(currentRow);
+      }
+
+      if (rows.length < 2) throw new Error('CSV file is empty.');
+
+      const newObj = JSON.parse(JSON.stringify(BUILTIN_PROFILES['blank-template']));
+      newObj.periodicSchedule = [];
+      newObj.maintenanceHistory = [];
+
+      for (let r = 1; r < rows.length; r++) {
+        const cols = rows[r];
+        const type = (cols[0] || '').toUpperCase();
+        const col1 = cols[1] || '', col2 = cols[2] || '', col3 = cols[3] || '', col4 = cols[4] || '';
+        const col6 = cols[6] || '', col7 = cols[7] || '', col8 = cols[8] || '', col9 = cols[9] || '', col10 = cols[10] || '';
+
+        if (type === 'META') {
+          const key = col1.toLowerCase();
+          if (key === 'make') newObj.vehicle.make = col3;
+          else if (key === 'model') newObj.vehicle.model = col3;
+          else if (key === 'year') newObj.vehicle.year = Number(col3) || col3;
+          else if (key === 'plate_number') newObj.vehicle.plateNumber = col3;
+          else if (key === 'engine') newObj.vehicle.engine = col3;
+          else if (key === 'engine_number') newObj.vehicle.engineNumber = col3;
+          else if (key === 'chassis_number') newObj.vehicle.chassisNumber = col3;
+          else if (key === 'transmission') newObj.vehicle.transmission = col3;
+          else if (key === 'current_mileage_km') newObj.vehicle.currentMileageKm = Number(col3) || 0;
+          else if (key === 'latest_service_date') newObj.vehicle.latestServiceDate = col3;
+          else if (key === 'currency') newObj.currency = col3 || 'MYR';
+          else if (key === 'mechanic_name') newObj.vehicle.workshop.mechanicName = col3;
+          else if (key === 'workshop_location') newObj.vehicle.workshop.location = col3;
+          else if (key === 'parts_supplier') newObj.vehicle.workshop.partsSupplier = col3;
+        } else if (type === 'SCHEDULE') {
+          if (!col1) continue;
+          newObj.periodicSchedule.push({
+            id: 'sched-' + r,
+            name: col1,
+            category: col2 || 'General',
+            intervalKm: Number(col3.replace(/,/g, '')) || 10000,
+            intervalMonths: null,
+            lastServicedKm: col4 !== '' ? Number(col4.replace(/,/g, '')) : null,
+            lastServicedDate: col6 || null,
+            estimatedCostMyr: col7 !== '' ? Number(col7.replace(/,/g, '')) : null
+          });
+        } else if (type === 'HISTORY') {
+          if (!col1) continue;
+          newObj.maintenanceHistory.push({
+            id: 'hist-' + r,
+            date: col6 || '',
+            mileageKm: col4 !== '' ? Number(col4.replace(/,/g, '')) : null,
+            title: col1,
+            category: col2 || 'Service',
+            costMyr: col7 !== '' ? Number(col7.replace(/,/g, '')) : null,
+            paidMyr: col8 !== '' ? Number(col8.replace(/,/g, '')) : null,
+            paymentMethod: col9 || 'Workshop Fees',
+            status: 'Completed',
+            notes: col10 || ''
+          });
+        } else if (col1 && !isNaN(Number(col2.replace(/,/g, '')))) {
+          newObj.periodicSchedule.push({
+            id: 'sched-simple-' + r,
+            name: col1,
+            category: 'Service',
+            intervalKm: Number(col2.replace(/,/g, '')) || 10000,
+            intervalMonths: null,
+            lastServicedKm: col3 !== '' ? Number(col3.replace(/,/g, '')) : null,
+            lastServicedDate: null,
+            estimatedCostMyr: null
+          });
+        }
+      }
+
+      const slug = `${newObj.vehicle.make}-${newObj.vehicle.model}-${newObj.vehicle.year}`.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+      newObj.vehicle.id = slug || ('imported-' + Date.now());
+      newObj.lastUpdated = new Date().toISOString().slice(0, 10);
+      return newObj;
+    }
+
+    function triggerDownload(content, filename, mimeType) {
+      const blob = new Blob([content], { type: mimeType });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    function buildShareSummaryText() {
+      const v = appData.vehicle || {};
+      const curKm = Number(v.currentMileageKm) || 0;
+      const sched = appData.periodicSchedule || [];
+      const activeLines = sched
+        .filter(i => i.lastServicedKm !== null && i.lastServicedKm !== undefined && i.lastServicedKm !== '')
+        .map(i => {
+          const st = computeItemStatus(i, curKm);
+          return `• ${i.name}: Next @ ${formatNumber(st.nextDueKm)} km (${st.label})`;
+        });
+
+      return [
+        `🚗 ${v.year || ''} ${v.make || ''} ${v.model || ''} (${v.plateNumber || 'N/A'})`,
+        `📍 Odometer: ${formatNumber(curKm)} km | Updated: ${appData.lastUpdated || '—'}`,
+        activeLines.length ? `\n🔧 Tracked Services:\n${activeLines.join('\n')}` : '',
+      ].filter(Boolean).join('\n');
+    }
+
+    // =========================================================================
+    // INITIALIZATION & EVENT LISTENERS
+    // =========================================================================
+    document.addEventListener('DOMContentLoaded', () => {
+      syncProfileSelectOptions();
+      loadProfile(activeProfileKey);
+
+      // Car Profile Switcher
+      document.getElementById('carProfileSelect').addEventListener('change', (e) => {
+        loadProfile(e.target.value);
+      });
+
+      // Live Odometer Input (Auto-Saves & Updates Last Updated Date)
+      document.getElementById('currentMileageInput').addEventListener('input', (e) => {
+        const val = Number(e.target.value);
+        if (!isNaN(val) && val >= 0) {
+          appData.vehicle.currentMileageKm = val;
+          saveToLocal(true);
+          renderHeaderAndKPIs();
+          renderPeriodicTable();
+          renderSvgCharts();
+        }
+      });
+
+      // Quick Odometer +1k / +5k Buttons
+      document.querySelectorAll('.km-step-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const step = Number(btn.getAttribute('data-km-step')) || 1000;
+          appData.vehicle.currentMileageKm = (Number(appData.vehicle.currentMileageKm) || 0) + step;
+          saveToLocal(true);
+          renderAll();
+          showToast(`Odometer: ${formatNumber(appData.vehicle.currentMileageKm)} km`);
+        });
+      });
+
+      // Reset Odometer
+      document.getElementById('resetMileageBtn').addEventListener('click', () => {
+        const defKm = BUILTIN_PROFILES[activeProfileKey]?.vehicle?.currentMileageKm || 196441;
+        appData.vehicle.currentMileageKm = defKm;
+        saveToLocal(true);
+        renderAll();
+        showToast('Odometer reset');
+      });
+
+      // Schedule Filters
+      document.querySelectorAll('.sched-filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          currentScheduleFilter = btn.getAttribute('data-filter');
+          document.querySelectorAll('.sched-filter-btn').forEach(b => {
+            b.className = 'sched-filter-btn px-2.5 py-1.5 rounded-xl text-xs font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 transition';
+          });
+          btn.className = 'sched-filter-btn px-2.5 py-1.5 rounded-xl text-xs font-semibold bg-indigo-600 text-white transition';
+          renderPeriodicTable();
+        });
+      });
+
+      // History Search
+      document.getElementById('historySearchInput').addEventListener('input', (e) => {
+        currentHistorySearch = e.target.value;
+        renderHistoryList();
+      });
+
+      // Open A4 Report in New Tab
+      document.getElementById('openA4ReportBtn').addEventListener('click', generateA4ReportTab);
+
+      // =====================================================================
+      // UNIFIED IMPORT / EXPORT MODAL (CSV & JSON TABS)
+      // =====================================================================
+      const dataHubModal = document.getElementById('dataHubModal');
+      const hubTabCsv = document.getElementById('hubTabCsv');
+      const hubTabJson = document.getElementById('hubTabJson');
+      const jsonTextarea = document.getElementById('jsonTextarea');
+      const jsonErrorMsg = document.getElementById('jsonErrorMsg');
+      const csvStatusMsg = document.getElementById('csvStatusMsg');
+
+      const switchHubTab = (tabName) => {
+        document.querySelectorAll('.hub-tab-btn').forEach(b => {
+          const isMatch = b.getAttribute('data-hub-tab') === tabName;
+          b.className = isMatch
+            ? 'hub-tab-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-emerald-600 text-white transition'
+            : 'hub-tab-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 transition';
+        });
+        if (tabName === 'csv') {
+          hubTabCsv.classList.remove('hidden');
+          hubTabJson.classList.add('hidden');
+          hubTabJson.classList.remove('flex');
+        } else {
+          hubTabCsv.classList.add('hidden');
+          hubTabJson.classList.remove('hidden');
+          hubTabJson.classList.add('flex');
+          jsonTextarea.value = JSON.stringify(appData, null, 2);
+          jsonErrorMsg.classList.add('hidden');
+        }
+      };
+
+      document.querySelectorAll('.hub-tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => switchHubTab(btn.getAttribute('data-hub-tab')));
+      });
+
+      document.getElementById('openDataHubBtn').addEventListener('click', () => {
+        csvStatusMsg.classList.add('hidden');
+        jsonTextarea.value = JSON.stringify(appData, null, 2);
+        dataHubModal.classList.remove('hidden');
+        dataHubModal.classList.add('flex');
+      });
+
+      document.getElementById('closeDataHubBtn').addEventListener('click', () => {
+        dataHubModal.classList.add('hidden');
+        dataHubModal.classList.remove('flex');
+      });
+
+      // CSV Actions
+      document.getElementById('downloadCsvTemplateBtn').addEventListener('click', () => {
+        const templateData = JSON.parse(JSON.stringify(BUILTIN_PROFILES['blank-template']));
+        templateData.maintenanceHistory = [
+          { date: new Date().toISOString().slice(0, 10), mileageKm: 50000, title: 'Engine Oil & Filter', category: 'Periodic & Fluids', costMyr: 150, paidMyr: 150, paymentMethod: 'Workshop Fees', status: 'Completed', notes: '5W-30 Synthetic' }
+        ];
+        triggerDownload(buildCsvFromData(templateData), 'car-maintenance-template.csv', 'text/csv;charset=utf-8;');
+      });
+
+      document.getElementById('exportCurrentCsvBtn').addEventListener('click', () => {
+        const filename = ((appData.vehicle?.id || 'car-maintenance') + '.csv').toLowerCase();
+        triggerDownload(buildCsvFromData(appData), filename, 'text/csv;charset=utf-8;');
+      });
+
+      document.getElementById('csvFileInput').addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+          try {
+            const importedData = parseCsvText(ev.target.result);
+            appData = importedData;
+            activeProfileKey = importedData.vehicle?.id || ('imported-' + Date.now());
+            registerCustomProfileOption(activeProfileKey, `${importedData.vehicle.make} ${importedData.vehicle.model}`);
+            saveToLocal(true);
+            renderAll();
+            csvStatusMsg.textContent = `✓ Imported & saved "${file.name}" to localStorage.`;
+            csvStatusMsg.className = 'font-mono text-xs pt-1 text-emerald-400';
+            csvStatusMsg.classList.remove('hidden');
+            showToast('CSV imported & saved');
+          } catch (err) {
+            csvStatusMsg.textContent = '✗ Error: ' + err.message;
+            csvStatusMsg.className = 'font-mono text-xs pt-1 text-rose-400';
+            csvStatusMsg.classList.remove('hidden');
+          }
+        };
+        reader.readAsText(file);
+      });
+
+      // JSON Actions
+      document.getElementById('downloadJsonTemplateBtn').addEventListener('click', () => {
+        const templateData = JSON.parse(JSON.stringify(BUILTIN_PROFILES['blank-template']));
+        triggerDownload(JSON.stringify(templateData, null, 2), 'car-maintenance-template.json', 'application/json');
+      });
+
+      document.getElementById('jsonFileInput').addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+          try {
+            const parsed = JSON.parse(ev.target.result);
+            appData = parsed;
+            if (parsed.vehicle?.id) {
+              activeProfileKey = parsed.vehicle.id;
+              registerCustomProfileOption(activeProfileKey, `${parsed.vehicle.make || ''} ${parsed.vehicle.model || ''}`.trim());
+            }
+            saveToLocal(true);
+            jsonTextarea.value = JSON.stringify(appData, null, 2);
+            renderAll();
+            showToast('JSON imported & saved');
+          } catch (err) {
+            jsonErrorMsg.textContent = 'Invalid JSON: ' + err.message;
+            jsonErrorMsg.classList.remove('hidden');
+          }
+        };
+        reader.readAsText(file);
+      });
+
+      document.getElementById('exportJsonBtn').addEventListener('click', () => {
+        saveToLocal(true);
+        const filename = (appData.vehicle?.id || 'car-maintenance') + '.json';
+        triggerDownload(JSON.stringify(appData, null, 2), filename, 'application/json');
+      });
+
+      const copyTextSafe = (text, msg = 'Copied to clipboard') => {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(() => showToast(msg)).catch(() => {
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            showToast(msg);
+          });
+        } else {
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+          showToast(msg);
+        }
+      };
+
+      document.getElementById('copyJsonBtn').addEventListener('click', () => {
+        copyTextSafe(jsonTextarea.value, 'JSON copied to clipboard');
+      });
+
+      document.getElementById('applyJsonBtn').addEventListener('click', () => {
+        try {
+          const parsed = JSON.parse(jsonTextarea.value);
+          appData = parsed;
+          if (parsed.vehicle?.id) {
+            activeProfileKey = parsed.vehicle.id;
+            registerCustomProfileOption(activeProfileKey, `${parsed.vehicle.make || ''} ${parsed.vehicle.model || ''}`.trim());
+          }
+          saveToLocal(true);
+          renderAll();
+          dataHubModal.classList.add('hidden');
+          dataHubModal.classList.remove('flex');
+          showToast('JSON saved to localStorage');
+        } catch (err) {
+          jsonErrorMsg.textContent = 'JSON Error: ' + err.message;
+          jsonErrorMsg.classList.remove('hidden');
+        }
+      });
+
+      document.getElementById('resetStorageBtn').addEventListener('click', () => {
+        localStorage.removeItem(STORAGE_PREFIX + activeProfileKey);
+        appData = JSON.parse(JSON.stringify(BUILTIN_PROFILES[activeProfileKey] || BUILTIN_PROFILES['honda-city-2003']));
+        saveToLocal(false);
+        jsonTextarea.value = JSON.stringify(appData, null, 2);
+        renderAll();
+        showToast('Reset to default');
+      });
+
+      // =====================================================================
+      // SHARE MODAL
+      // =====================================================================
+      const shareModal = document.getElementById('shareModal');
+      document.getElementById('openShareModalBtn').addEventListener('click', () => {
+        document.getElementById('shareSummaryPreview').textContent = buildShareSummaryText();
+        shareModal.classList.remove('hidden');
+        shareModal.classList.add('flex');
+      });
+      document.getElementById('closeShareModalBtn').addEventListener('click', () => {
+        shareModal.classList.add('hidden');
+        shareModal.classList.remove('flex');
+      });
+      document.getElementById('shareNativeDashboardBtn').addEventListener('click', async () => {
+        const text = buildShareSummaryText();
+        if (navigator.share) {
+          try {
+            await navigator.share({ title: document.title, text, url: window.location.href });
+          } catch (_) {}
+        } else {
+          copyTextSafe(text, 'Summary copied to clipboard');
+        }
+      });
+      document.getElementById('shareOpenA4Btn').addEventListener('click', () => {
+        shareModal.classList.add('hidden');
+        shareModal.classList.remove('flex');
+        generateA4ReportTab();
+      });
+      document.getElementById('copyShareTextBtn').addEventListener('click', () => {
+        copyTextSafe(buildShareSummaryText(), 'Report text copied');
+      });
+
+      // =====================================================================
+      // ADD RECORD, ADD SCHEDULE ITEM & EDIT VEHICLE MODALS
+      // =====================================================================
+      const addRecordModal = document.getElementById('addRecordModal');
+      const closeAddModal = () => { addRecordModal.classList.add('hidden'); addRecordModal.classList.remove('flex'); };
+
+      // Helper to wire select + "Other..." text input pairs
+      const wireSelectOther = (selectId, otherInputId, onSelectChange) => {
+        const selEl = document.getElementById(selectId);
+        const inpEl = document.getElementById(otherInputId);
+        if (!selEl || !inpEl) return;
+        selEl.addEventListener('change', () => {
+          const isOther = selEl.value === '__other__';
+          inpEl.classList.toggle('hidden', !isOther);
+          inpEl.required = isOther;
+          if (isOther) inpEl.focus();
+          if (onSelectChange) onSelectChange(selEl, inpEl);
+        });
+      };
+
+      const getSelectOrOtherVal = (selId, otherId) => {
+        const selEl = document.getElementById(selId);
+        const inpEl = document.getElementById(otherId);
+        if (!selEl) return '';
+        return selEl.value === '__other__' ? (inpEl ? inpEl.value.trim() : '') : selEl.value;
+      };
+
+      wireSelectOther('newRecMileageSelect', 'newRecMileageOther');
+      wireSelectOther('newRecTitleSelect', 'newRecTitleOther', (selEl) => {
+        const opt = selEl.options[selEl.selectedIndex];
+        const linkedId = opt ? (opt.getAttribute('data-linked-id') || '') : '';
+        const estCost = opt ? (opt.getAttribute('data-est-cost') || '') : '';
+        const linkSel = document.getElementById('newRecLinkedItem');
+        if (linkSel) linkSel.value = linkedId;
+        if (estCost) {
+          const costSel = document.getElementById('newRecCostSelect');
+          const costOther = document.getElementById('newRecCostOther');
+          if ([...costSel.options].some(o => o.value === estCost)) {
+            costSel.value = estCost;
+            costOther.classList.add('hidden');
+            costOther.required = false;
+          } else {
+            costSel.value = '__other__';
+            costOther.value = estCost;
+            costOther.classList.remove('hidden');
+            costOther.required = true;
+          }
+        }
+      });
+      wireSelectOther('newRecCategorySelect', 'newRecCategoryOther');
+      wireSelectOther('newRecStatusSelect', 'newRecStatusOther');
+      wireSelectOther('newRecCostSelect', 'newRecCostOther');
+      wireSelectOther('newRecPaidSelect', 'newRecPaidOther');
+      wireSelectOther('newRecMethodSelect', 'newRecMethodOther');
+      wireSelectOther('newRecNotesSelect', 'newRecNotesOther');
+
+      // Wire Add Periodic Item modal selects + "Other..."
+      wireSelectOther('newSchedNameSelect', 'newSchedNameOther');
+      wireSelectOther('newSchedCatSelect', 'newSchedCatOther');
+      wireSelectOther('newSchedIntervalSelect', 'newSchedIntervalOther');
+      wireSelectOther('newSchedLastKmSelect', 'newSchedLastKmOther');
+      wireSelectOther('newSchedCostSelect', 'newSchedCostOther');
+
+      document.getElementById('addRecordBtn').addEventListener('click', () => {
+        populateLinkedItemSelect();
+        document.getElementById('newRecDate').value = new Date().toISOString().slice(0, 10);
+        ['newRecMileageOther', 'newRecTitleOther', 'newRecCategoryOther', 'newRecStatusOther', 'newRecCostOther', 'newRecPaidOther', 'newRecMethodOther', 'newRecNotesOther'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) { el.classList.add('hidden'); el.required = false; el.value = ''; }
+        });
+        const titleSel = document.getElementById('newRecTitleSelect');
+        const firstOpt = titleSel.options[titleSel.selectedIndex];
+        if (firstOpt && firstOpt.getAttribute('data-linked-id')) {
+          document.getElementById('newRecLinkedItem').value = firstOpt.getAttribute('data-linked-id');
+        }
+        addRecordModal.classList.remove('hidden');
+        addRecordModal.classList.add('flex');
+      });
+      document.getElementById('closeAddRecordModalBtn').addEventListener('click', closeAddModal);
+      document.getElementById('cancelAddRecordBtn').addEventListener('click', closeAddModal);
+
+      document.getElementById('addRecordForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const date = document.getElementById('newRecDate').value;
+        const mileageVal = getSelectOrOtherVal('newRecMileageSelect', 'newRecMileageOther');
+        const mileageKm = (mileageVal === 'unlogged' || mileageVal === '')
+          ? null
+          : (mileageVal === 'current' ? (Number(appData.vehicle?.currentMileageKm) || 0) : Number(mileageVal));
+
+        const title = getSelectOrOtherVal('newRecTitleSelect', 'newRecTitleOther') || 'Service Record';
+        const category = getSelectOrOtherVal('newRecCategorySelect', 'newRecCategoryOther') || 'General Service';
+        const status = getSelectOrOtherVal('newRecStatusSelect', 'newRecStatusOther') || 'Completed';
+
+        const costVal = getSelectOrOtherVal('newRecCostSelect', 'newRecCostOther');
+        const costMyr = (costVal === 'workshop' || costVal === '') ? null : Number(costVal);
+
+        const paidSelVal = document.getElementById('newRecPaidSelect').value;
+        let paidMyr = null;
+        if (paidSelVal === 'same') paidMyr = costMyr;
+        else if (paidSelVal === 'workshop') paidMyr = null;
+        else if (paidSelVal === '__other__') {
+          const rawP = document.getElementById('newRecPaidOther').value.trim();
+          paidMyr = rawP !== '' ? Number(rawP) : null;
+        } else {
+          paidMyr = Number(paidSelVal);
+        }
+
+        const paymentMethod = getSelectOrOtherVal('newRecMethodSelect', 'newRecMethodOther') || 'Workshop Fees';
+        const linkedItemId = document.getElementById('newRecLinkedItem').value;
+        const notes = getSelectOrOtherVal('newRecNotesSelect', 'newRecNotesOther');
+
+        appData.maintenanceHistory.unshift({
+          id: 'rec-' + Date.now(),
+          date,
+          mileageKm,
+          title,
+          category,
+          costMyr,
+          paidMyr,
+          paymentMethod,
+          status,
+          notes
+        });
+
+        if (mileageKm && mileageKm > (appData.vehicle.currentMileageKm || 0)) {
+          appData.vehicle.currentMileageKm = mileageKm;
+          appData.vehicle.latestServiceDate = date;
+        }
+
+        if (linkedItemId && mileageKm) {
+          const item = appData.periodicSchedule.find(x => x.id === linkedItemId);
+          if (item) {
+            item.lastServicedKm = mileageKm;
+            item.lastServicedDate = date;
+            if (costMyr !== null) item.estimatedCostMyr = costMyr;
+          }
+        }
+
+        saveToLocal(true);
+        renderAll();
+        e.target.reset();
+        closeAddModal();
+        showToast('Record added & saved');
+      });
+
+      // Add Schedule Item
+      const addScheduleModal = document.getElementById('addScheduleModal');
+      const closeSchedModal = () => { addScheduleModal.classList.add('hidden'); addScheduleModal.classList.remove('flex'); };
+      document.getElementById('addScheduleItemBtn').addEventListener('click', () => {
+        ['newSchedNameOther', 'newSchedCatOther', 'newSchedIntervalOther', 'newSchedLastKmOther', 'newSchedCostOther'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) { el.classList.add('hidden'); el.required = false; el.value = ''; }
+        });
+        addScheduleModal.classList.remove('hidden');
+        addScheduleModal.classList.add('flex');
+      });
+      document.getElementById('closeAddScheduleModalBtn').addEventListener('click', closeSchedModal);
+      document.getElementById('cancelAddScheduleBtn').addEventListener('click', closeSchedModal);
+
+      document.getElementById('addScheduleForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = getSelectOrOtherVal('newSchedNameSelect', 'newSchedNameOther') || 'Periodic Service';
+        const category = getSelectOrOtherVal('newSchedCatSelect', 'newSchedCatOther') || 'Part';
+        const intervalKm = Number(getSelectOrOtherVal('newSchedIntervalSelect', 'newSchedIntervalOther')) || 10000;
+
+        const lastVal = getSelectOrOtherVal('newSchedLastKmSelect', 'newSchedLastKmOther');
+        let lastServicedKm = null;
+        if (lastVal === 'current') lastServicedKm = Number(appData.vehicle?.currentMileageKm) || 0;
+        else if (lastVal !== 'unset' && lastVal !== '') lastServicedKm = Number(lastVal);
+
+        const costVal = getSelectOrOtherVal('newSchedCostSelect', 'newSchedCostOther');
+        const estimatedCostMyr = (costVal === 'unset' || costVal === '') ? null : Number(costVal);
+
+        appData.periodicSchedule.push({
+          id: 'sched-' + Date.now(),
+          name,
+          category,
+          intervalKm,
+          intervalMonths: null,
+          lastServicedKm,
+          lastServicedDate: lastServicedKm !== null ? new Date().toISOString().slice(0, 10) : null,
+          estimatedCostMyr
+        });
+        saveToLocal(true);
+        renderAll();
+        e.target.reset();
+        closeSchedModal();
+        showToast('Schedule item added');
+      });
+
+      // Edit Vehicle Modal
+      const editCarModal = document.getElementById('editCarModal');
+      const closeEditCar = () => { editCarModal.classList.add('hidden'); editCarModal.classList.remove('flex'); };
+      document.getElementById('editVehicleBtn').addEventListener('click', () => {
+        const v = appData.vehicle || {};
+        document.getElementById('editCarMake').value = v.make || '';
+        document.getElementById('editCarModel').value = v.model || '';
+        document.getElementById('editCarYear').value = v.year || '';
+        document.getElementById('editCarPlate').value = v.plateNumber || '';
+        document.getElementById('editCarCurrency').value = appData.currency || 'MYR';
+        document.getElementById('editCarEngine').value = v.engine || '';
+        document.getElementById('editCarTrans').value = v.transmission || '';
+        document.getElementById('editCarMechanic').value = v.workshop?.mechanicName || '';
+        document.getElementById('editCarSupplier').value = v.workshop?.partsSupplier || '';
+        editCarModal.classList.remove('hidden');
+        editCarModal.classList.add('flex');
+      });
+      document.getElementById('closeEditCarModalBtn').addEventListener('click', closeEditCar);
+      document.getElementById('cancelEditCarBtn').addEventListener('click', closeEditCar);
+
+      document.getElementById('editCarForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (!appData.vehicle) appData.vehicle = {};
+        if (!appData.vehicle.workshop) appData.vehicle.workshop = {};
+        appData.vehicle.make = document.getElementById('editCarMake').value.trim();
+        appData.vehicle.model = document.getElementById('editCarModel').value.trim();
+        appData.vehicle.year = document.getElementById('editCarYear').value.trim();
+        appData.vehicle.plateNumber = document.getElementById('editCarPlate').value.trim();
+        appData.currency = document.getElementById('editCarCurrency').value.trim() || 'MYR';
+        appData.vehicle.engine = document.getElementById('editCarEngine').value.trim();
+        appData.vehicle.transmission = document.getElementById('editCarTrans').value.trim();
+        appData.vehicle.workshop.mechanicName = document.getElementById('editCarMechanic').value.trim();
+        appData.vehicle.workshop.partsSupplier = document.getElementById('editCarSupplier').value.trim();
+        saveToLocal(true);
+        renderAll();
+        closeEditCar();
+        showToast('Vehicle info updated');
+      });
+    });
+  </script>
+</body>
+</html>
