@@ -2434,93 +2434,66 @@
 					</button>
 				</div>
 				<div class="p-5 space-y-5 overflow-y-auto">
-					<!-- Appearance & Theme Section -->
+					<!-- Reports Section -->
 					<div class="border-b border-slate-800 pb-4 space-y-2">
-						<div class="flex items-center justify-between gap-3 flex-wrap">
-							<div>
-								<h4 class="text-xs font-semibold uppercase tracking-wider text-indigo-400">Appearance &amp; Theme</h4>
-								<p class="text-[11px] text-slate-400">Choose between light, dark, or automatic system theme</p>
-							</div>
-							<div class="inline-flex rounded-xl bg-slate-950 p-1 border border-slate-800 shrink-0" id="themeToggleGroup">
-								<button
-									type="button"
-									data-theme="system"
-									class="theme-toggle-btn px-2.5 py-1 text-xs font-medium rounded-lg text-slate-400 hover:text-white transition flex items-center gap-1.5 cursor-pointer"
-									title="Follow OS/Browser theme"
-								>
-									<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-									<span>System</span>
-								</button>
-								<button
-									type="button"
-									data-theme="light"
-									class="theme-toggle-btn px-2.5 py-1 text-xs font-medium rounded-lg text-slate-400 hover:text-white transition flex items-center gap-1.5 cursor-pointer"
-									title="Light mode"
-								>
-									<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
-									<span>Light</span>
-								</button>
-								<button
-									type="button"
-									data-theme="dark"
-									class="theme-toggle-btn px-2.5 py-1 text-xs font-medium rounded-lg text-slate-400 hover:text-white transition flex items-center gap-1.5 cursor-pointer"
-									title="Dark mode"
-								>
-									<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
-									<span>Dark</span>
-								</button>
-							</div>
+						<div class="flex items-center justify-between">
+							<h4 class="text-xs font-semibold uppercase tracking-wider text-indigo-400">Reports (A4 Print &amp; PDF)</h4>
+							<span class="text-[11px] text-slate-400">Printable documents</span>
 						</div>
-					</div>
-
-					<!-- Tools & Cloud Actions -->
-					<div class="border-b border-slate-800 pb-4 space-y-2">
-						<h4 class="text-xs font-semibold uppercase tracking-wider text-indigo-400">Tools &amp; Reports</h4>
-						<div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+						<div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
 							<!-- Status Report (A4) -->
 							<button
 								id="openStatusReportBtn"
 								type="button"
-								class="inline-flex items-center justify-center gap-1.5 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold px-2.5 py-2.5 rounded-xl shadow-md shadow-indigo-600/20 transition cursor-pointer"
+								class="inline-flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold px-3 py-2.5 rounded-xl shadow-md shadow-indigo-600/20 transition cursor-pointer"
 								title="Open printable A4 Vehicle Condition & Schedule Status Report"
 							>
 								<svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
 									<path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
 								</svg>
-								<span>Status Report (A4)</span>
+								<span>Vehicle Status Report (A4)</span>
 							</button>
 
 							<!-- Service History (A4) -->
 							<button
 								id="openHistoryReportBtn"
 								type="button"
-								class="inline-flex items-center justify-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-indigo-300 text-xs font-semibold px-2.5 py-2.5 rounded-xl border border-slate-700 transition cursor-pointer"
+								class="inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-indigo-300 text-xs font-semibold px-3 py-2.5 rounded-xl border border-slate-700 hover:border-indigo-500/50 transition cursor-pointer"
 								title="Open printable A4 Filtered Service History & Expense Report"
 							>
 								<svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
 									<path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
 								</svg>
-								<span>Service History (A4)</span>
+								<span>Service History Report (A4)</span>
 							</button>
+						</div>
+					</div>
 
+					<!-- Tools & Cloud Sync Section -->
+					<div class="border-b border-slate-800 pb-4 space-y-2">
+						<div class="flex items-center justify-between">
+							<h4 class="text-xs font-semibold uppercase tracking-wider text-indigo-400">Data Hub &amp; Cloud Sync</h4>
+							<span class="text-[11px] text-slate-400">Backup &amp; sync</span>
+						</div>
+						<div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
 							<!-- Single Unified Import / Export Button (CSV & JSON Tabs) -->
 							<button
 								id="openDataHubBtn"
 								type="button"
-								class="inline-flex items-center justify-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold px-2.5 py-2.5 rounded-xl border border-slate-700 transition cursor-pointer"
+								class="inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold px-3 py-2.5 rounded-xl border border-slate-700 hover:border-slate-600 transition cursor-pointer"
 								title="Export / Import Data (CSV &amp; JSON)"
 							>
 								<svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
 									<path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
 								</svg>
-								<span>Import / Export</span>
+								<span>Import / Export (CSV &amp; JSON)</span>
 							</button>
 
 							<!-- Google Drive Cloud Sync -->
 							<button
 								id="openDriveSyncModalBtn"
 								type="button"
-								class="inline-flex items-center justify-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold px-2.5 py-2.5 rounded-xl border border-slate-700 hover:border-indigo-500/50 shadow-sm transition cursor-pointer"
+								class="inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold px-3 py-2.5 rounded-xl border border-slate-700 hover:border-indigo-500/50 shadow-sm transition cursor-pointer"
 								title="Google Account: Not Connected - Click to connect"
 							>
 								<svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24">
@@ -2676,6 +2649,45 @@
 						</div>
 						<div id="settingsSavedCarsList" class="space-y-2 max-h-48 overflow-y-auto pe-1">
 							<!-- Populated dynamically -->
+						</div>
+					</div>
+
+					<!-- Appearance & Theme Section (At Bottom) -->
+					<div class="border-t border-slate-800 pt-4 space-y-2">
+						<div class="flex items-center justify-between gap-3 flex-wrap">
+							<div>
+								<h4 class="text-xs font-semibold uppercase tracking-wider text-indigo-400">Appearance &amp; Theme</h4>
+								<p class="text-[11px] text-slate-400">Choose between light, dark, or automatic system theme</p>
+							</div>
+							<div class="inline-flex rounded-xl bg-slate-950 p-1 border border-slate-800 shrink-0" id="themeToggleGroup">
+								<button
+									type="button"
+									data-theme="system"
+									class="theme-toggle-btn px-2.5 py-1 text-xs font-medium rounded-lg text-slate-400 hover:text-white transition flex items-center gap-1.5 cursor-pointer"
+									title="Follow OS/Browser theme"
+								>
+									<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+									<span>System</span>
+								</button>
+								<button
+									type="button"
+									data-theme="light"
+									class="theme-toggle-btn px-2.5 py-1 text-xs font-medium rounded-lg text-slate-400 hover:text-white transition flex items-center gap-1.5 cursor-pointer"
+									title="Light mode"
+								>
+									<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+									<span>Light</span>
+								</button>
+								<button
+									type="button"
+									data-theme="dark"
+									class="theme-toggle-btn px-2.5 py-1 text-xs font-medium rounded-lg text-slate-400 hover:text-white transition flex items-center gap-1.5 cursor-pointer"
+									title="Dark mode"
+								>
+									<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+									<span>Dark</span>
+								</button>
+							</div>
 						</div>
 					</div>
 				</div>
