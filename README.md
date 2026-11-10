@@ -168,7 +168,8 @@ Clicking **Share** opens a modal containing:
 ### 9. Google Account & Cloud Sync
 The header features a real-time Google Account button with connection status:
 - **Connection Status Indicator**: Displays an emerald status dot and "Connected" when signed in via Google OAuth 2.0, or a slate dot and "Not Connected" when disconnected.
-- **Drive Sync Modal**: Configure Google OAuth Client ID, toggle auto-sync on changes, push current vehicle records to your personal Google Drive folder (`MotoFolio`), or pull and restore vehicles across browsers.
+- **Drive Sync Modal**: Toggle auto-sync on changes, select or create destination folders (`MotoFolio` or custom folders), push current vehicle records to your personal Google Drive, or pull and restore vehicles across browsers.
+- **Developer 1-Click Setup**: Set `GOOGLE_CLIENT_ID` once in [`config.js`](file:///e:/HTML/Bhoenix%20studio/motofolio/config.js) (or see [`.env.example`](file:///e:/HTML/Bhoenix%20studio/motofolio/.env.example)). Normal users simply click "Sign in with Google" to connect their Google Drive with 1 click without entering any API key or technical settings.
 
 ---
 

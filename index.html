@@ -104,6 +104,9 @@
 			}
 		</script>
 
+		<!-- Deployment Configuration (Google OAuth Client ID) -->
+		<script src="config.js"></script>
+
 		<!-- Google Identity Services (GIS) for Google Drive Auth -->
 		<script src="https://accounts.google.com/gsi/client" async defer></script>
 
@@ -1271,29 +1274,16 @@
 							<span>Sign in with Google</span>
 						</button>
 
-						<div class="text-[11px] text-slate-400 bg-slate-950 p-3 rounded-xl border border-slate-800 space-y-1.5">
-							<div class="font-semibold text-slate-300 flex items-center justify-between">
-								<span>OAuth Client ID (Deployment Setting)</span>
-								<span class="text-[10px] text-indigo-400 font-normal">Free &amp; 1-Time Setup</span>
+						<div class="p-3.5 rounded-xl bg-slate-950/70 border border-slate-800 text-slate-300 space-y-2 text-xs">
+							<div class="flex items-center gap-2 text-indigo-400 font-semibold">
+								<svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+								</svg>
+								<span>100% Private Google Drive Sync</span>
 							</div>
-							<p class="text-slate-400 leading-relaxed">
-								Google requires an OAuth Web Client ID to connect securely to Google Drive. Once configured by the website owner, normal users can sign in with 1 click without entering any keys.
+							<p class="text-slate-400 text-[11px] leading-relaxed">
+								Sync your garage vehicles, maintenance schedules, and expense ledgers directly to your private Google Drive folder. No third-party servers ever touch your data.
 							</p>
-							<div class="flex items-center gap-2 mt-1">
-								<input
-									id="googleClientIdInput"
-									type="text"
-									placeholder="e.g. 123456...apps.googleusercontent.com"
-									class="w-full bg-slate-900 text-white font-mono text-[11px] px-2.5 py-1.5 rounded-lg border border-slate-700 focus:outline-none focus:border-indigo-400"
-								/>
-								<button
-									id="saveClientIdBtn"
-									type="button"
-									class="shrink-0 bg-slate-800 hover:bg-slate-700 text-indigo-300 font-semibold text-xs px-3 py-1.5 rounded-lg border border-slate-700 transition cursor-pointer"
-								>
-									Save
-								</button>
-							</div>
 						</div>
 					</div>
 
@@ -5401,16 +5391,17 @@
 			let gdriveTokenClient = null;
 			let gdriveAutoSyncTimer = null;
 
-			// Optional default Google Cloud OAuth Client ID for site deployments
-			// When configured by the site owner, users can click "Sign in with Google"
-			// and pick their account immediately without entering any Client ID!
+			// Default Google Cloud OAuth Client ID for site deployments
+			// When set by the site owner in config.js or here, users experience 1-click
+			// Google Sign-in without ever having to enter any Client ID or API key!
 			const DEFAULT_GDRIVE_CLIENT_ID = "";
 
 			function getDriveClientId() {
 				return (
+					(window.MOTOFOLIO_CONFIG && window.MOTOFOLIO_CONFIG.GOOGLE_CLIENT_ID) ||
+					DEFAULT_GDRIVE_CLIENT_ID ||
 					localStorage.getItem(GDRIVE_STORAGE_CLIENT_ID) ||
 					localStorage.getItem("autolog_gdrive_client_id") ||
-					DEFAULT_GDRIVE_CLIENT_ID ||
 					""
 				);
 			}
@@ -5438,10 +5429,8 @@
 				const driveBtn = document.getElementById("openDriveSyncModalBtn");
 				const emailSpan = document.getElementById("driveAccountEmail");
 				const autoSyncCheck = document.getElementById("driveAutoSyncCheckbox");
-				const clientIdInp = document.getElementById("googleClientIdInput");
 				const folderInp = document.getElementById("driveFolderNameInput");
 
-				if (clientIdInp) clientIdInp.value = getDriveClientId();
 				if (folderInp) folderInp.value = getDriveFolderName();
 				if (autoSyncCheck) autoSyncCheck.checked = isDriveAutoSyncEnabled();
 
@@ -5473,14 +5462,8 @@
 				const clientId = getDriveClientId();
 				if (!clientId) {
 					if (interactive) {
-						if (typeof window.openDriveModal === "function") {
-							window.openDriveModal();
-						} else if (typeof openDriveModal === "function") {
-							openDriveModal();
-						}
-						const inp = document.getElementById("googleClientIdInput");
-						if (inp) inp.focus();
-						showToast("Please configure your Google OAuth Client ID to connect Google Drive", "warning");
+						showToast("Google Sign-in is not configured yet. Set GOOGLE_CLIENT_ID in config.js", "warning");
+						console.warn("MotoFolio Google Drive Sync: No GOOGLE_CLIENT_ID found. See config.js and .env.example for instructions.");
 					}
 					return;
 				}
@@ -6210,17 +6193,6 @@
 				document.getElementById("closeDriveSyncModalBtn")?.addEventListener("click", closeDriveModal);
 				document.getElementById("refreshDriveFoldersBtn")?.addEventListener("click", () => {
 					scanDriveFolders();
-				});
-
-				document.getElementById("saveClientIdBtn")?.addEventListener("click", () => {
-					const val = document.getElementById("googleClientIdInput")?.value.trim();
-					if (val) {
-						localStorage.setItem(GDRIVE_STORAGE_CLIENT_ID, val);
-						showToast("Client ID saved");
-					} else {
-						localStorage.removeItem(GDRIVE_STORAGE_CLIENT_ID);
-						showToast("Client ID cleared");
-					}
 				});
 
 				document.getElementById("saveDriveFolderNameBtn")?.addEventListener("click", async () => {
