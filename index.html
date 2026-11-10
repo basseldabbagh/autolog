@@ -73,6 +73,43 @@
 					darkMode: "class",
 					theme: {
 						extend: {
+							colors: {
+								canvas: "var(--color-bg-canvas)",
+								surface: {
+									DEFAULT: "var(--color-bg-surface)",
+									elevated: "var(--color-bg-surface-elevated)",
+									input: "var(--color-bg-input)",
+								},
+								brand: {
+									DEFAULT: "var(--color-brand-primary)",
+									hover: "var(--color-brand-hover)",
+									muted: "var(--color-brand-muted)",
+									border: "var(--color-brand-border)",
+								},
+								status: {
+									good: "var(--color-status-good)",
+									"good-bg": "var(--color-status-good-bg)",
+									"good-border": "var(--color-status-good-border)",
+									"good-text": "var(--color-status-good-text)",
+									warning: "var(--color-status-warning)",
+									"warning-bg": "var(--color-status-warning-bg)",
+									"warning-border": "var(--color-status-warning-border)",
+									"warning-text": "var(--color-status-warning-text)",
+									critical: "var(--color-status-critical)",
+									"critical-bg": "var(--color-status-critical-bg)",
+									"critical-border": "var(--color-status-critical-border)",
+									"critical-text": "var(--color-status-critical-text)",
+									pending: "var(--color-status-pending)",
+									"pending-bg": "var(--color-status-pending-bg)",
+									"pending-border": "var(--color-status-pending-border)",
+									"pending-text": "var(--color-status-pending-text)",
+								},
+								accent: {
+									cyan: "var(--color-accent-cyan)",
+									"cyan-text": "var(--color-accent-cyan-text)",
+									"cyan-bg": "var(--color-accent-cyan-bg)",
+								},
+							},
 							fontFamily: {
 								sans: ["Inter", "system-ui", "-apple-system", "sans-serif"],
 								mono: ["JetBrains Mono", "Fira Code", "monospace"],
@@ -89,6 +126,99 @@
 			rel="stylesheet"
 		/>
 		<style>
+			:root {
+				/* ================================================================= */
+				/* AUTOLOG DESIGN SYSTEM TOKENS (CSS VARIABLES)                     */
+				/* Change these variables to re-theme the entire application easily  */
+				/* ================================================================= */
+
+				/* --- Surface & Background Canvas --- */
+				--color-bg-canvas: #020617;          /* Primary page backdrop (slate-950) */
+				--color-bg-surface: #0f172a;         /* Card, panel, and modal containers (slate-900) */
+				--color-bg-surface-elevated: #1e293b;/* Secondary buttons, headers, chips (slate-800) */
+				--color-bg-input: #020617;           /* Form inputs, select fields (slate-950) */
+
+				/* --- Borders & Dividers --- */
+				--color-border-normal: #1e293b;      /* Normal borders (slate-800) */
+				--color-border-subtle: #334155;      /* Inputs and secondary outlines (slate-700) */
+				--color-border-focus: #6366f1;       /* Interactive focused field border (indigo-500) */
+
+				/* --- Typography & Text --- */
+				--color-text-primary: #f8fafc;       /* Highest contrast text, headings, KPIs (slate-100) */
+				--color-text-secondary: #94a3b8;     /* Body secondary text, metric labels (slate-400) */
+				--color-text-muted: #64748b;         /* Footers, placeholders, inactive icons (slate-500) */
+
+				/* --- Primary Brand & Accent --- */
+				--color-brand-primary: #6366f1;      /* Indigo-500 */
+				--color-brand-hover: #4f46e5;        /* Indigo-600 */
+				--color-brand-muted: rgba(99, 102, 241, 0.15);
+				--color-brand-border: rgba(99, 102, 241, 0.4);
+
+				/* --- Semantic Status Tokens --- */
+				/* Good / Nominal (> 1,000 km remaining) */
+				--color-status-good: #10b981;        /* Emerald-500 */
+				--color-status-good-bg: rgba(16, 185, 129, 0.15);
+				--color-status-good-border: rgba(16, 185, 129, 0.35);
+				--color-status-good-text: #6ee7b7;   /* Emerald-300 */
+
+				/* Warning / Due Soon (<= 1,000 km remaining) */
+				--color-status-warning: #f59e0b;     /* Amber-500 */
+				--color-status-warning-bg: rgba(245, 158, 11, 0.15);
+				--color-status-warning-border: rgba(245, 158, 11, 0.35);
+				--color-status-warning-text: #fcd34d; /* Amber-300 */
+
+				/* Critical / Overdue (<= 0 km) */
+				--color-status-critical: #f43f5e;    /* Rose-500 */
+				--color-status-critical-bg: rgba(244, 63, 94, 0.15);
+				--color-status-critical-border: rgba(244, 63, 94, 0.35);
+				--color-status-critical-text: #fda4af;/* Rose-300 */
+
+				/* Pending / Unset (no baseline entered) */
+				--color-status-pending: #64748b;     /* Slate-500 */
+				--color-status-pending-bg: rgba(51, 65, 85, 0.35);
+				--color-status-pending-border: #334155;
+				--color-status-pending-text: #94a3b8; /* Slate-400 */
+
+				/* --- Auxiliary Feature Accents --- */
+				--color-accent-cyan: #06b6d4;        /* Cyan-500 (Share actions, paid metrics) */
+				--color-accent-cyan-text: #67e8f9;   /* Cyan-300 */
+				--color-accent-cyan-bg: rgba(6, 182, 212, 0.15);
+			}
+
+			/* Status badge & bar utility classes linked to design tokens */
+			.badge-status-good {
+				background-color: var(--color-status-good-bg);
+				border-color: var(--color-status-good-border);
+				color: var(--color-status-good-text);
+			}
+			.badge-status-warning {
+				background-color: var(--color-status-warning-bg);
+				border-color: var(--color-status-warning-border);
+				color: var(--color-status-warning-text);
+			}
+			.badge-status-critical {
+				background-color: var(--color-status-critical-bg);
+				border-color: var(--color-status-critical-border);
+				color: var(--color-status-critical-text);
+			}
+			.badge-status-pending {
+				background-color: var(--color-status-pending-bg);
+				border-color: var(--color-status-pending-border);
+				color: var(--color-status-pending-text);
+			}
+			.bar-status-good {
+				background-color: var(--color-status-good);
+			}
+			.bar-status-warning {
+				background-color: var(--color-status-warning);
+			}
+			.bar-status-critical {
+				background-color: var(--color-status-critical);
+			}
+			.bar-status-pending {
+				background-color: var(--color-status-pending);
+			}
+
 			@keyframes fadeSlideUp {
 				from {
 					opacity: 0;
@@ -159,15 +289,18 @@
 				<!-- Car Identity -->
 				<div class="flex items-center gap-3">
 					<div
+						id="headerVehicleIconBox"
 						class="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-cyan-500 flex items-center justify-center shadow-lg shadow-indigo-500/20 shrink-0"
 					>
-						<svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								d="M8 17a2 2 0 100 4 2 2 0 000-4zm8 0a2 2 0 100 4 2 2 0 000-4zM3 9l2-5h14l2 5M3 9h18M3 9v8h2m16-8v8h-2M7 17h6"
-							/>
-						</svg>
+						<span id="headerVehicleIcon" class="w-5 h-5 text-white flex items-center justify-center">
+							<svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M8 17a2 2 0 100 4 2 2 0 000-4zm8 0a2 2 0 100 4 2 2 0 000-4zM3 9l2-5h14l2 5M3 9h18M3 9v8h2m16-8v8h-2M7 17h6"
+								/>
+							</svg>
+						</span>
 					</div>
 					<div>
 						<div class="flex items-center gap-2 flex-wrap">
@@ -184,9 +317,13 @@
 							<button
 								id="editVehicleBtn"
 								type="button"
-								class="text-xs text-slate-400 hover:text-indigo-300 underline decoration-dotted"
+								class="inline-flex items-center gap-1 text-xs text-slate-400 hover:text-indigo-300 transition"
+								title="Edit Vehicle Details"
 							>
-								Edit
+								<svg class="w-3 h-3 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+								</svg>
+								<span>Edit</span>
 							</button>
 						</div>
 						<p id="headerEngineSub" class="text-xs text-slate-400">Periodic Schedule &amp; Service History</p>
@@ -195,93 +332,23 @@
 
 				<!-- Action Buttons -->
 				<div class="flex items-center flex-wrap gap-2">
-					<!-- Car Selector -->
-					<select
-						id="carProfileSelect"
-						aria-label="Select Car"
-						class="bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs sm:text-sm font-medium rounded-xl ps-3 pe-7 py-2 border border-slate-700/80 focus:outline-none focus:border-indigo-500 transition cursor-pointer"
-					>
-						<optgroup label="Vehicle Types">
-							<option value="sample-sedan">🚗 Sedan (Sample)</option>
-							<option value="sample-suv">🚙 SUV / Crossover (Sample)</option>
-							<option value="sample-hatchback">🚘 Hatchback (Sample)</option>
-							<option value="sample-truck">🛻 Pickup Truck 4x4 (Sample)</option>
-							<option value="sample-sports">🏎️ Sports Car / Coupe (Sample)</option>
-							<option value="sample-ev">⚡ Electric Vehicle / EV (Sample)</option>
-							<option value="sample-hybrid">🔋 Hybrid / HEV (Sample)</option>
-							<option value="sample-van">🚐 Van / MPV (Sample)</option>
-						</optgroup>
-						<option value="blank-template">➕ Custom Car</option>
-					</select>
-
-					<!-- Google Drive Sync Button / Status Pill -->
-					<button
-						id="openDriveSyncModalBtn"
-						type="button"
-						class="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-slate-100 text-xs sm:text-sm font-semibold px-3.5 py-2 rounded-xl border border-slate-700/80 hover:border-indigo-500/50 shadow-sm transition"
-						title="Sign in with Google & Sync to Google Drive"
-					>
-						<svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24">
-							<path
-								fill="#4285F4"
-								d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
-							/>
-							<path
-								fill="#34A853"
-								d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
-							/>
-							<path
-								fill="#FBBC05"
-								d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"
-							/>
-							<path
-								fill="#EA4335"
-								d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"
-							/>
-						</svg>
-						<span id="driveHeaderStatusText">Google Drive</span>
-					</button>
-
-					<!-- Single Unified Import / Export Button (CSV & JSON Tabs) -->
-					<button
-						id="openDataHubBtn"
-						type="button"
-						class="inline-flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs sm:text-sm font-semibold px-3.5 py-2 rounded-xl border border-slate-700/80 transition"
-					>
-						<svg
-							class="w-4 h-4 text-emerald-400 shrink-0"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="2"
-							viewBox="0 0 24 24"
+					<!-- 1. Car Selector (Drive & Local Saved Cars) -->
+					<div class="relative inline-flex items-center">
+						<span id="carProfileSelectIcon" class="absolute start-3 w-4 h-4 text-indigo-400 pointer-events-none flex items-center justify-center">
+							<svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M8 17a2 2 0 100 4 2 2 0 000-4zm8 0a2 2 0 100 4 2 2 0 000-4zM3 9l2-5h14l2 5M3 9h18M3 9v8h2m16-8v8h-2M7 17h6" />
+							</svg>
+						</span>
+						<select
+							id="carProfileSelect"
+							aria-label="Select Car"
+							class="bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs sm:text-sm font-medium rounded-xl ps-9 pe-7 py-2 border border-slate-700/80 focus:outline-none focus:border-indigo-500 transition cursor-pointer"
 						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"
-							/>
-						</svg>
-						<span>Import / Export</span>
-					</button>
+							<!-- Populated dynamically with Saved Cars (Local & Drive) -->
+						</select>
+					</div>
 
-					<!-- A4 Report (HTML New Tab / Save PDF) -->
-					<button
-						id="openA4ReportBtn"
-						type="button"
-						class="inline-flex items-center gap-1.5 bg-indigo-600 hover:bg-indigo-500 text-white text-xs sm:text-sm font-semibold px-3.5 py-2 rounded-xl shadow-md shadow-indigo-600/20 transition"
-						title="Open printable A4 Condition Report in new tab"
-					>
-						<svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-							/>
-						</svg>
-						<span>A4 Report</span>
-					</button>
-
-					<!-- Share Button -->
+					<!-- 2. Share Button -->
 					<button
 						id="openShareModalBtn"
 						type="button"
@@ -302,6 +369,20 @@
 							/>
 						</svg>
 						<span class="hidden sm:inline">Share</span>
+					</button>
+
+					<!-- 3. Setting Button -->
+					<button
+						id="openSettingsBtn"
+						type="button"
+						class="inline-flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs sm:text-sm font-medium px-3 py-2 rounded-xl border border-slate-700/80 hover:border-indigo-500/50 transition"
+						title="Settings, Tools &amp; Add New Car"
+					>
+						<svg class="w-4 h-4 text-slate-300 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+							<path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+						</svg>
+						<span class="hidden sm:inline">Settings</span>
 					</button>
 				</div>
 			</div>
@@ -377,10 +458,13 @@
 					<button
 						id="resetFiltersBtn"
 						type="button"
-						class="px-2.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium border border-slate-700 transition"
+						class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium border border-slate-700 transition"
 						title="Reset to This Year / All Categories"
 					>
-						Reset
+						<svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+						</svg>
+						<span>Reset</span>
 					</button>
 				</div>
 			</section>
@@ -440,9 +524,13 @@
 							<button
 								type="button"
 								id="resetMileageBtn"
-								class="px-2.5 py-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-xs font-medium text-slate-400 hover:text-slate-200 border border-slate-800 transition"
+								class="inline-flex items-center gap-1 px-2.5 py-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-xs font-medium text-slate-400 hover:text-slate-200 border border-slate-800 transition"
+								title="Reset odometer to saved profile baseline"
 							>
-								Reset
+								<svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+								</svg>
+								<span>Reset</span>
 							</button>
 						</div>
 					</div>
@@ -453,7 +541,7 @@
 						<div>
 							Last Service: <strong id="latestServiceDateText" class="text-slate-200 font-mono">—</strong>
 						</div>
-						<div>Workshop: <strong id="workshopMechanicText" class="text-slate-200">—</strong></div>
+						<div>Last Workshop: <strong id="latestMechanicText" class="text-slate-200">—</strong></div>
 					</div>
 				</div>
 
@@ -462,7 +550,12 @@
 					<div
 						class="motion-card bg-slate-900/90 rounded-2xl p-4 border border-slate-800 flex flex-col justify-between"
 					>
-						<span class="text-xs font-medium text-slate-400">Tracked Items</span>
+						<div class="flex items-center justify-between text-xs font-medium text-slate-400">
+							<span>Tracked Items</span>
+							<svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+							</svg>
+						</div>
 						<div class="mt-2">
 							<div id="kpiActiveCount" class="text-2xl font-bold font-mono text-white">3 / 10</div>
 							<p id="kpiActiveSub" class="text-[11px] text-emerald-400 mt-0.5">7 need baseline</p>
@@ -472,7 +565,12 @@
 					<div
 						class="motion-card bg-slate-900/90 rounded-2xl p-4 border border-slate-800 flex flex-col justify-between"
 					>
-						<span class="text-xs font-medium text-slate-400">Next Service</span>
+						<div class="flex items-center justify-between text-xs font-medium text-slate-400">
+							<span>Next Service</span>
+							<svg class="w-4 h-4 text-indigo-400 shrink-0" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+							</svg>
+						</div>
 						<div class="mt-2">
 							<div id="kpiNextDueKm" class="text-2xl font-bold font-mono text-white">7,000 km</div>
 							<p id="kpiNextDueItem" class="text-[11px] text-indigo-300 truncate mt-0.5">Engine Oil &amp; Filter</p>
@@ -482,7 +580,12 @@
 					<div
 						class="motion-card bg-slate-900/90 rounded-2xl p-4 border border-slate-800 flex flex-col justify-between"
 					>
-						<span class="text-xs font-medium text-slate-400">Total Cost</span>
+						<div class="flex items-center justify-between text-xs font-medium text-slate-400">
+							<span>Total Cost</span>
+							<svg class="w-4 h-4 text-amber-400 shrink-0" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+							</svg>
+						</div>
 						<div class="mt-2">
 							<div id="kpiTotalCost" class="text-2xl font-bold font-mono text-white">RM 4,182</div>
 							<p id="kpiTotalRecords" class="text-[11px] text-slate-400 mt-0.5">12 service logs</p>
@@ -492,7 +595,12 @@
 					<div
 						class="motion-card bg-slate-900/90 rounded-2xl p-4 border border-slate-800 flex flex-col justify-between"
 					>
-						<span class="text-xs font-medium text-slate-400">Receipts &amp; Fees</span>
+						<div class="flex items-center justify-between text-xs font-medium text-slate-400">
+							<span>Receipts &amp; Fees</span>
+							<svg class="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2z" />
+							</svg>
+						</div>
 						<div class="mt-2">
 							<div id="kpiTotalPaid" class="text-2xl font-bold font-mono text-cyan-300">RM 3,557</div>
 							<p id="kpiBalanceSub" class="text-[11px] text-slate-400 mt-0.5">Includes workshop fees</p>
@@ -545,9 +653,12 @@
 						<button
 							id="addScheduleItemBtn"
 							type="button"
-							class="bg-slate-800 hover:bg-slate-700 text-indigo-300 text-xs font-semibold px-3 py-1.5 rounded-xl border border-slate-700 transition"
+							class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-indigo-300 text-xs font-semibold px-3 py-1.5 rounded-xl border border-slate-700 transition"
 						>
-							+ Add Item
+							<svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+							</svg>
+							<span>Add Item</span>
 						</button>
 					</div>
 				</div>
@@ -583,18 +694,22 @@
 						<div id="svgCountdownChart" class="w-full"></div>
 					</div>
 					<div class="mt-4 pt-3 border-t border-slate-800/80 flex flex-wrap items-center gap-4 text-xs text-slate-400">
-						<span class="inline-flex items-center gap-1.5"
-							><span class="w-2 h-2 rounded-full bg-emerald-400"></span> Good</span
-						>
-						<span class="inline-flex items-center gap-1.5"
-							><span class="w-2 h-2 rounded-full bg-amber-400"></span> Due Soon</span
-						>
-						<span class="inline-flex items-center gap-1.5"
-							><span class="w-2 h-2 rounded-full bg-rose-500"></span> Overdue</span
-						>
-						<span class="inline-flex items-center gap-1.5"
-							><span class="w-2 h-2 rounded-full bg-slate-600"></span> Unset</span
-						>
+						<span class="inline-flex items-center gap-1.5 text-emerald-400">
+							<svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+							<span>Good</span>
+						</span>
+						<span class="inline-flex items-center gap-1.5 text-amber-400">
+							<svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+							<span>Due Soon</span>
+						</span>
+						<span class="inline-flex items-center gap-1.5 text-rose-400">
+							<svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+							<span>Overdue</span>
+						</span>
+						<span class="inline-flex items-center gap-1.5 text-slate-400">
+							<svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+							<span>Unset</span>
+						</span>
 					</div>
 				</div>
 
@@ -605,7 +720,22 @@
 					<div>
 						<div class="flex items-center justify-between gap-2 mb-3">
 							<h3 class="text-sm font-bold text-white">Cost Breakdown</h3>
-							<span class="text-xs font-mono text-indigo-400">By Category</span>
+							<div class="inline-flex rounded-lg bg-slate-950 p-0.5 border border-slate-800 text-[11px]">
+								<button
+									type="button"
+									id="donutModeCatBtn"
+									class="px-2 py-0.5 rounded-md font-medium transition text-white bg-indigo-600"
+								>
+									By Category
+								</button>
+								<button
+									type="button"
+									id="donutModeMechBtn"
+									class="px-2 py-0.5 rounded-md font-medium transition text-slate-400 hover:text-slate-200"
+								>
+									By Mechanic
+								</button>
+							</div>
 						</div>
 						<div id="svgExpenseDonut" class="flex flex-col sm:flex-row items-center justify-center gap-5 my-2"></div>
 					</div>
@@ -624,8 +754,16 @@
 						<span
 							id="historyCountBadge"
 							class="px-2 py-0.5 text-xs font-mono font-semibold rounded-full bg-slate-800 text-slate-300 border border-slate-700"
-							>12</span
+							>0</span
 						>
+						<span
+							id="historyMechanicCountBadge"
+							class="px-2 py-0.5 text-xs font-medium rounded-full bg-amber-950/60 text-amber-300 border border-amber-800/60 inline-flex items-center gap-1"
+							title="Unique Mechanics / Workshops"
+						>
+							<svg class="w-3 h-3 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+							<span id="historyMechanicCountText">0 Workshops</span>
+						</span>
 					</div>
 
 					<div class="flex items-center flex-wrap gap-2">
@@ -638,9 +776,12 @@
 						<button
 							id="addRecordBtn"
 							type="button"
-							class="bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold px-3 py-1.5 rounded-xl transition"
+							class="inline-flex items-center gap-1.5 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold px-3 py-1.5 rounded-xl transition"
 						>
-							+ Add Record
+							<svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+							</svg>
+							<span>Add Record</span>
 						</button>
 					</div>
 				</div>
@@ -774,15 +915,21 @@
 							<button
 								id="drivePushCurrentBtn"
 								type="button"
-								class="flex items-center justify-center gap-1.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-2 px-3 rounded-xl transition"
+								class="inline-flex items-center justify-center gap-1.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-2 px-3 rounded-xl transition"
 							>
+								<svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+								</svg>
 								<span>Save to Drive</span>
 							</button>
 							<button
 								id="drivePullCurrentBtn"
 								type="button"
-								class="flex items-center justify-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-emerald-300 font-semibold py-2 px-3 rounded-xl border border-slate-700 transition"
+								class="inline-flex items-center justify-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-emerald-300 font-semibold py-2 px-3 rounded-xl border border-slate-700 transition"
 							>
+								<svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+								</svg>
 								<span>Fetch from Drive</span>
 							</button>
 						</div>
@@ -808,22 +955,28 @@
 						<button
 							type="button"
 							data-hub-tab="csv"
-							class="hub-tab-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-emerald-600 text-white transition"
+							class="hub-tab-btn inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold bg-emerald-600 text-white transition"
 						>
-							CSV (Excel / Sheets)
+							<svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M3 14h18m-9-4v8m-7 4h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+							</svg>
+							<span>CSV (Excel / Sheets)</span>
 						</button>
 						<button
 							type="button"
 							data-hub-tab="json"
-							class="hub-tab-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 transition"
+							class="hub-tab-btn inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 transition"
 						>
-							JSON (Data / Backup)
+							<svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+							</svg>
+							<span>JSON (Data / Backup)</span>
 						</button>
 					</div>
 					<button
 						id="closeDataHubBtn"
 						type="button"
-						class="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800"
+						class="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800 transition"
 					>
 						<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
 							<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -843,6 +996,9 @@
 								type="button"
 								class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-emerald-300 font-semibold px-3.5 py-2 rounded-xl border border-emerald-500/30 transition"
 							>
+								<svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+								</svg>
 								<span>Download Blank CSV Template</span>
 							</button>
 							<button
@@ -850,6 +1006,9 @@
 								type="button"
 								class="inline-flex items-center gap-1.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-3.5 py-2 rounded-xl transition"
 							>
+								<svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+								</svg>
 								<span>Export Current Car (.CSV)</span>
 							</button>
 						</div>
@@ -860,8 +1019,11 @@
 							>2. Import CSV File (Auto-Saves to Browser)</span
 						>
 						<label
-							class="flex flex-col items-center justify-center border-2 border-dashed border-slate-700 hover:border-emerald-500/60 rounded-xl p-5 cursor-pointer bg-slate-900/50 hover:bg-slate-900 transition text-center"
+							class="group flex flex-col items-center justify-center border-2 border-dashed border-slate-700 hover:border-emerald-500/60 rounded-xl p-5 cursor-pointer bg-slate-900/50 hover:bg-slate-900 transition text-center"
 						>
+							<svg class="w-8 h-8 text-slate-500 group-hover:text-emerald-400 mb-2 transition" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+							</svg>
 							<span class="font-semibold text-slate-200">Click to select a .CSV file</span>
 							<span class="text-[11px] text-slate-400 mt-0.5"
 								>Auto-saves imported car data &amp; updates timestamp</span
@@ -879,30 +1041,42 @@
 							<button
 								id="downloadJsonTemplateBtn"
 								type="button"
-								class="bg-slate-800 hover:bg-slate-700 text-emerald-300 font-semibold px-3 py-1.5 rounded-xl border border-emerald-500/30 transition"
+								class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-emerald-300 font-semibold px-3 py-1.5 rounded-xl border border-emerald-500/30 transition"
 							>
-								Blank .JSON Template
+								<svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+								</svg>
+								<span>Blank .JSON Template</span>
 							</button>
 							<label
-								class="cursor-pointer bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold px-3 py-1.5 rounded-xl border border-slate-700 transition"
+								class="inline-flex items-center gap-1.5 cursor-pointer bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold px-3 py-1.5 rounded-xl border border-slate-700 transition"
 							>
-								Import .JSON File
+								<svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+								</svg>
+								<span>Import .JSON File</span>
 								<input id="jsonFileInput" type="file" accept=".json,application/json" class="hidden" />
 							</label>
 							<button
 								id="exportJsonBtn"
 								type="button"
-								class="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-3 py-1.5 rounded-xl transition"
+								class="inline-flex items-center gap-1.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-3 py-1.5 rounded-xl transition"
 							>
-								Export Current (.JSON)
+								<svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
+								</svg>
+								<span>Export Current (.JSON)</span>
 							</button>
 						</div>
 						<button
 							id="resetStorageBtn"
 							type="button"
-							class="text-rose-400 hover:text-rose-300 font-medium px-2 py-1 rounded-lg hover:bg-rose-500/10 transition"
+							class="inline-flex items-center gap-1 text-rose-400 hover:text-rose-300 font-medium px-2 py-1 rounded-lg hover:bg-rose-500/10 transition"
 						>
-							Reset Default
+							<svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+							</svg>
+							<span>Reset Default</span>
 						</button>
 					</div>
 
@@ -917,16 +1091,22 @@
 						<button
 							id="copyJsonBtn"
 							type="button"
-							class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 font-semibold text-slate-200"
+							class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 font-semibold text-slate-200 transition"
 						>
-							Copy JSON
+							<svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+							</svg>
+							<span>Copy JSON</span>
 						</button>
 						<button
 							id="applyJsonBtn"
 							type="button"
-							class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 font-semibold text-white"
+							class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 font-semibold text-white transition"
 						>
-							Save &amp; Apply JSON
+							<svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+							</svg>
+							<span>Save &amp; Apply JSON</span>
 						</button>
 					</div>
 				</div>
@@ -965,6 +1145,9 @@
 							type="button"
 							class="flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-2.5 px-3 rounded-xl transition"
 						>
+							<svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+							</svg>
 							<span>Share Summary / Link</span>
 						</button>
 						<button
@@ -972,15 +1155,21 @@
 							type="button"
 							class="flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-2.5 px-3 rounded-xl transition"
 						>
+							<svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+							</svg>
 							<span>Open A4 Report (PDF)</span>
 						</button>
 					</div>
 					<button
 						id="copyShareTextBtn"
 						type="button"
-						class="w-full bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold py-2.5 px-3 rounded-xl border border-slate-700 transition"
+						class="w-full inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold py-2.5 px-3 rounded-xl border border-slate-700 transition"
 					>
-						Copy Report Text for WhatsApp
+						<svg class="w-4 h-4 shrink-0 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+						</svg>
+						<span>Copy Report Text for WhatsApp</span>
 					</button>
 				</div>
 			</div>
@@ -999,9 +1188,11 @@
 					<button
 						id="closeAddRecordModalBtn"
 						type="button"
-						class="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800"
+						class="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800 transition"
 					>
-						✕
+						<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+						</svg>
 					</button>
 				</div>
 				<form id="addRecordForm" class="p-5 space-y-3 text-xs overflow-y-auto">
@@ -1184,8 +1375,23 @@
 						</div>
 					</div>
 
-					<!-- Row 5: Linked Schedule Item & Notes -->
+					<!-- Row 5: Workshop / Mechanic & Linked Schedule Item -->
 					<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+						<div>
+							<label class="block text-slate-300 font-medium mb-1">Workshop / Mechanic</label>
+							<select
+								id="newRecMechanicSelect"
+								class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700"
+							>
+								<!-- Populated dynamically with previously used mechanics + Other -->
+							</select>
+							<input
+								id="newRecMechanicOther"
+								type="text"
+								placeholder="Enter workshop / mechanic name..."
+								class="hidden mt-1.5 w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-indigo-500"
+							/>
+						</div>
 						<div>
 							<label class="block text-slate-300 font-medium mb-1">Update Schedule Item?</label>
 							<select
@@ -1195,26 +1401,28 @@
 								<option value="">— None —</option>
 							</select>
 						</div>
-						<div>
-							<label class="block text-slate-300 font-medium mb-1">Notes</label>
-							<select
-								id="newRecNotesSelect"
-								class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700"
-							>
-								<option value="Routine periodic maintenance completed.">Routine periodic maintenance</option>
-								<option value="Replaced with OEM / Genuine part.">Replaced with OEM / Genuine part</option>
-								<option value="Inspected and serviced at workshop.">Inspected &amp; serviced at workshop</option>
-								<option value="Included in workshop fees.">Included in workshop fees</option>
-								<option value="">No additional notes</option>
-								<option value="__other__">Other (Write note)...</option>
-							</select>
-							<input
-								id="newRecNotesOther"
-								type="text"
-								placeholder="Type custom note..."
-								class="hidden mt-1.5 w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-indigo-500"
-							/>
-						</div>
+					</div>
+
+					<!-- Row 6: Notes -->
+					<div>
+						<label class="block text-slate-300 font-medium mb-1">Notes</label>
+						<select
+							id="newRecNotesSelect"
+							class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700"
+						>
+							<option value="Routine periodic maintenance completed.">Routine periodic maintenance</option>
+							<option value="Replaced with OEM / Genuine part.">Replaced with OEM / Genuine part</option>
+							<option value="Inspected and serviced at workshop.">Inspected &amp; serviced at workshop</option>
+							<option value="Included in workshop fees.">Included in workshop fees</option>
+							<option value="">No additional notes</option>
+							<option value="__other__">Other (Write note)...</option>
+						</select>
+						<input
+							id="newRecNotesOther"
+							type="text"
+							placeholder="Type custom note..."
+							class="hidden mt-1.5 w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-indigo-500"
+						/>
 					</div>
 
 					<div class="pt-2 flex justify-end gap-2">
@@ -1240,9 +1448,11 @@
 					<button
 						id="closeAddScheduleModalBtn"
 						type="button"
-						class="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800"
+						class="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800 transition"
 					>
-						✕
+						<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+						</svg>
 					</button>
 				</div>
 				<form id="addScheduleForm" class="p-5 space-y-3 text-xs">
@@ -1387,9 +1597,11 @@
 					<button
 						id="closeEditCarModalBtn"
 						type="button"
-						class="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800"
+						class="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800 transition"
 					>
-						✕
+						<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+						</svg>
 					</button>
 				</div>
 				<form id="editCarForm" class="p-5 space-y-3 text-xs">
@@ -1457,24 +1669,6 @@
 							/>
 						</div>
 					</div>
-					<div class="grid grid-cols-2 gap-3">
-						<div>
-							<label class="block text-slate-300 font-medium mb-1">Workshop / Mechanic</label>
-							<input
-								id="editCarMechanic"
-								type="text"
-								class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700"
-							/>
-						</div>
-						<div>
-							<label class="block text-slate-300 font-medium mb-1">Parts Supplier</label>
-							<input
-								id="editCarSupplier"
-								type="text"
-								class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700"
-							/>
-						</div>
-					</div>
 					<div class="pt-2 flex justify-end gap-2">
 						<button type="button" id="cancelEditCarBtn" class="px-4 py-2 rounded-xl bg-slate-800 text-slate-300">
 							Cancel
@@ -1482,6 +1676,233 @@
 						<button type="submit" class="px-4 py-2 rounded-xl bg-indigo-600 text-white font-semibold">Save</button>
 					</div>
 				</form>
+			</div>
+		</div>
+
+		<!-- MODAL 6: Settings / Add New Car Modal -->
+		<div
+			id="settingsCarModal"
+			class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-sm p-4 overflow-y-auto"
+		>
+			<div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-xl w-full max-h-[90vh] flex flex-col overflow-hidden shadow-2xl">
+				<div class="px-5 py-4 border-b border-slate-800 flex items-center justify-between shrink-0">
+					<div class="flex items-center gap-2.5">
+						<span class="p-2 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+							<svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+								<path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+							</svg>
+						</span>
+						<div>
+							<h3 class="text-base font-bold text-white">Settings &amp; Add New Car</h3>
+							<p class="text-xs text-slate-400">Configure vehicle profiles, create custom cars, or manage saved records</p>
+						</div>
+					</div>
+					<button
+						id="closeSettingsCarModalBtn"
+						type="button"
+						class="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800 transition"
+						title="Close Modal"
+					>
+						<svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+						</svg>
+					</button>
+				</div>
+				<div class="p-5 space-y-5 overflow-y-auto">
+					<!-- Tools & Cloud Actions -->
+					<div class="border-b border-slate-800 pb-4 space-y-2">
+						<h4 class="text-xs font-semibold uppercase tracking-wider text-indigo-400">Tools &amp; Cloud Sync</h4>
+						<div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+							<!-- A4 Report -->
+							<button
+								id="openA4ReportBtn"
+								type="button"
+								class="inline-flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold px-3.5 py-2.5 rounded-xl shadow-md shadow-indigo-600/20 transition cursor-pointer"
+								title="Open printable A4 Condition Report in new tab"
+							>
+								<svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+								</svg>
+								<span>A4 Report</span>
+							</button>
+
+							<!-- Single Unified Import / Export Button (CSV & JSON Tabs) -->
+							<button
+								id="openDataHubBtn"
+								type="button"
+								class="inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold px-3.5 py-2.5 rounded-xl border border-slate-700 transition cursor-pointer"
+								title="Export / Import Data (CSV &amp; JSON)"
+							>
+								<svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+								</svg>
+								<span>Import / Export</span>
+							</button>
+
+							<!-- Google Account Button (Connected / Not Connected) -->
+							<button
+								id="openDriveSyncModalBtn"
+								type="button"
+								class="inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-100 text-xs font-semibold px-3.5 py-2.5 rounded-xl border border-slate-700 hover:border-indigo-500/50 shadow-sm transition cursor-pointer"
+								title="Google Account: Not Connected - Click to connect"
+							>
+								<svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24">
+									<path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+									<path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+									<path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
+									<path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
+								</svg>
+								<span id="driveAccountStatusDot" class="w-2 h-2 rounded-full bg-slate-500"></span>
+								<span id="driveHeaderStatusText">Not Connected</span>
+							</button>
+						</div>
+					</div>
+
+					<!-- Add New Car Form -->
+					<form id="addNewCarForm" class="space-y-4 text-xs">
+						<div class="border-b border-slate-800 pb-2">
+							<h4 class="text-xs font-semibold uppercase tracking-wider text-indigo-400">Add New Vehicle</h4>
+						</div>
+
+						<!-- Base Template Selection (Single flat menu without options group) -->
+						<div>
+							<label for="modalNewCarBaseSelect" class="block text-slate-300 font-medium mb-1">
+								Base Vehicle / Template Preset *
+							</label>
+							<select
+								id="modalNewCarBaseSelect"
+								required
+								class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700 focus:outline-none focus:border-indigo-500 transition cursor-pointer"
+							>
+								<option value="blank-template">Blank Car (Empty Maintenance Schedule)</option>
+								<option value="sample-sedan">Sedan Template (Toyota Camry 2.5V)</option>
+								<option value="sample-suv">SUV / Crossover Template (Honda CR-V 1.5T AWD)</option>
+								<option value="sample-hatchback">Hatchback Template (VW Golf 1.4 TSI)</option>
+								<option value="sample-truck">Pickup Truck 4x4 Template (Ford Ranger 2.0 Bi-Turbo)</option>
+								<option value="sample-sports">Sports Car / Coupe Template (Porsche 911 Carrera)</option>
+								<option value="sample-ev">Electric Vehicle Template (Tesla Model 3 Dual Motor)</option>
+								<option value="sample-hybrid">Hybrid / HEV Template (Toyota Prius 1.8 Hybrid)</option>
+								<option value="sample-van">Van / MPV Template (Toyota Alphard 3.5)</option>
+							</select>
+							<p class="text-[11px] text-slate-400 mt-1">Pre-populates periodic maintenance intervals, fluid specs, and wear items.</p>
+						</div>
+
+						<div class="grid grid-cols-2 gap-3">
+							<div>
+								<label for="modalNewCarMake" class="block text-slate-300 font-medium mb-1">Make *</label>
+								<input
+									id="modalNewCarMake"
+									type="text"
+									required
+									placeholder="e.g. Toyota / BMW"
+									class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700 focus:outline-none focus:border-indigo-500"
+								/>
+							</div>
+							<div>
+								<label for="modalNewCarModel" class="block text-slate-300 font-medium mb-1">Model *</label>
+								<input
+									id="modalNewCarModel"
+									type="text"
+									required
+									placeholder="e.g. Camry / 330i"
+									class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700 focus:outline-none focus:border-indigo-500"
+								/>
+							</div>
+						</div>
+
+						<div class="grid grid-cols-3 gap-3">
+							<div>
+								<label for="modalNewCarYear" class="block text-slate-300 font-medium mb-1">Year</label>
+								<input
+									id="modalNewCarYear"
+									type="number"
+									placeholder="2023"
+									class="w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-slate-700 focus:outline-none focus:border-indigo-500"
+								/>
+							</div>
+							<div>
+								<label for="modalNewCarPlate" class="block text-slate-300 font-medium mb-1">Plate Number</label>
+								<input
+									id="modalNewCarPlate"
+									type="text"
+									placeholder="WXY 1234"
+									class="w-full bg-slate-950 text-white font-mono uppercase rounded-xl px-3 py-2 border border-slate-700 focus:outline-none focus:border-indigo-500"
+								/>
+							</div>
+							<div>
+								<label for="modalNewCarMileage" class="block text-slate-300 font-medium mb-1">Odometer (km)</label>
+								<input
+									id="modalNewCarMileage"
+									type="number"
+									placeholder="45000"
+									class="w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-slate-700 focus:outline-none focus:border-indigo-500"
+								/>
+							</div>
+						</div>
+
+						<div class="grid grid-cols-3 gap-3">
+							<div>
+								<label for="modalNewCarCurrency" class="block text-slate-300 font-medium mb-1">Currency</label>
+								<input
+									id="modalNewCarCurrency"
+									type="text"
+									value="USD"
+									placeholder="USD, EUR, MYR"
+									class="w-full bg-slate-950 text-white font-mono uppercase rounded-xl px-3 py-2 border border-slate-700 focus:outline-none focus:border-indigo-500"
+								/>
+							</div>
+							<div>
+								<label for="modalNewCarEngine" class="block text-slate-300 font-medium mb-1">Engine</label>
+								<input
+									id="modalNewCarEngine"
+									type="text"
+									placeholder="e.g. 2.5L I4 / Electric"
+									class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700 focus:outline-none focus:border-indigo-500"
+								/>
+							</div>
+							<div>
+								<label for="modalNewCarTrans" class="block text-slate-300 font-medium mb-1">Transmission</label>
+								<input
+									id="modalNewCarTrans"
+									type="text"
+									placeholder="e.g. Auto / 6-MT"
+									class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700 focus:outline-none focus:border-indigo-500"
+								/>
+							</div>
+						</div>
+
+						<div class="pt-2 flex justify-end gap-2">
+							<button
+								type="button"
+								id="cancelSettingsCarModalBtn"
+								class="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 hover:bg-slate-700 transition"
+							>
+								Cancel
+							</button>
+							<button
+								type="submit"
+								class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold shadow-md shadow-indigo-600/30 transition"
+							>
+								<svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+								</svg>
+								<span>Create &amp; Switch to Car</span>
+							</button>
+						</div>
+					</form>
+
+					<!-- Manage Saved Vehicles List -->
+					<div class="border-t border-slate-800 pt-4 space-y-2">
+						<div class="flex items-center justify-between">
+							<h4 class="text-xs font-semibold uppercase tracking-wider text-slate-400">Saved Vehicles (Local &amp; Drive)</h4>
+							<span id="settingsSavedCarsCount" class="text-[11px] text-slate-500">0 saved</span>
+						</div>
+						<div id="settingsSavedCarsList" class="space-y-2 max-h-48 overflow-y-auto pe-1">
+							<!-- Populated dynamically -->
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 
@@ -1505,11 +1926,6 @@
 						plateNumber: "SAMPLE 123",
 						currentMileageKm: 45000,
 						latestServiceDate: new Date().toISOString().slice(0, 10),
-						workshop: {
-							mechanicName: "Auto Care Center",
-							location: "Main Street Garage",
-							partsSupplier: "Auto Parts Depot",
-						},
 					},
 					periodicSchedule: [
 						{ id: "engine-oil", name: "Engine Oil & Filter", category: "Fluids", intervalKm: 8000, intervalMonths: 6, lastServicedKm: 42000, lastServicedDate: new Date().toISOString().slice(0, 10), estimatedCostMyr: 60 },
@@ -1520,8 +1936,8 @@
 						{ id: "spark-plugs", name: "Spark Plugs", category: "Ignition", intervalKm: 60000, intervalMonths: 48, lastServicedKm: null, lastServicedDate: null, estimatedCostMyr: 110 },
 					],
 					maintenanceHistory: [
-						{ id: "rec-01", date: new Date().toISOString().slice(0, 10), mileageKm: 42000, title: "Engine Oil & Filter Replacement", category: "Fluids", costMyr: 60, paidMyr: 60, paymentMethod: "Credit Card", status: "Completed", notes: "Full synthetic 5W-30 and OEM filter." },
-						{ id: "rec-02", date: "2026-06-10", mileageKm: 40000, title: "40,000 km Major Service", category: "Periodic Service", costMyr: 170, paidMyr: 170, paymentMethod: "Debit Card", status: "Completed", notes: "Replaced air and cabin filters, rotated tires, flushed brake fluid." },
+						{ id: "rec-01", date: new Date().toISOString().slice(0, 10), mileageKm: 42000, title: "Engine Oil & Filter Replacement", category: "Fluids", mechanic: "Auto Care Center", costMyr: 60, paidMyr: 60, paymentMethod: "Credit Card", status: "Completed", notes: "Full synthetic 5W-30 and OEM filter." },
+						{ id: "rec-02", date: "2026-06-10", mileageKm: 40000, title: "40,000 km Major Service", category: "Periodic Service", mechanic: "Auto Care Center", costMyr: 170, paidMyr: 170, paymentMethod: "Debit Card", status: "Completed", notes: "Replaced air and cabin filters, rotated tires, flushed brake fluid." },
 					],
 				},
 				"sample-suv": {
@@ -1541,11 +1957,6 @@
 						plateNumber: "SAMPLE 456",
 						currentMileageKm: 28000,
 						latestServiceDate: new Date().toISOString().slice(0, 10),
-						workshop: {
-							mechanicName: "Auto Care Center",
-							location: "Main Street Garage",
-							partsSupplier: "Auto Parts Depot",
-						},
 					},
 					periodicSchedule: [
 						{ id: "engine-oil", name: "Engine Oil & Filter", category: "Fluids", intervalKm: 10000, intervalMonths: 6, lastServicedKm: 25000, lastServicedDate: new Date().toISOString().slice(0, 10), estimatedCostMyr: 70 },
@@ -1553,7 +1964,7 @@
 						{ id: "tire-rotation", name: "Tire Rotation", category: "Tires", intervalKm: 10000, intervalMonths: 6, lastServicedKm: 25000, lastServicedDate: null, estimatedCostMyr: 35 },
 					],
 					maintenanceHistory: [
-						{ id: "rec-suv-01", date: new Date().toISOString().slice(0, 10), mileageKm: 25000, title: "Engine Oil Change & Tire Rotation", category: "Periodic Service", costMyr: 105, paidMyr: 105, paymentMethod: "Credit Card", status: "Completed", notes: "Routine maintenance." },
+						{ id: "rec-suv-01", date: new Date().toISOString().slice(0, 10), mileageKm: 25000, title: "Engine Oil Change & Tire Rotation", category: "Periodic Service", mechanic: "Auto Care Center", costMyr: 105, paidMyr: 105, paymentMethod: "Credit Card", status: "Completed", notes: "Routine maintenance." },
 					],
 				},
 				"sample-hatchback": {
@@ -1573,7 +1984,6 @@
 						plateNumber: "SAMPLE HB1",
 						currentMileageKm: 35000,
 						latestServiceDate: new Date().toISOString().slice(0, 10),
-						workshop: { mechanicName: "Auto Care Center", location: "Main Street Garage", partsSupplier: "Auto Parts Depot" },
 					},
 					periodicSchedule: [
 						{ id: "engine-oil", name: "Engine Oil & Filter", category: "Fluids", intervalKm: 7500, intervalMonths: 6, lastServicedKm: 30000, lastServicedDate: new Date().toISOString().slice(0, 10), estimatedCostMyr: 55 },
@@ -1582,7 +1992,7 @@
 						{ id: "engine-air-filter", name: "Engine Air Filter", category: "Filters", intervalKm: 20000, intervalMonths: 12, lastServicedKm: 20000, lastServicedDate: null, estimatedCostMyr: 25 },
 					],
 					maintenanceHistory: [
-						{ id: "hb-rec-01", date: new Date().toISOString().slice(0, 10), mileageKm: 30000, title: "30,000 km Service (Oil & CVT Fluid)", category: "Periodic Service", costMyr: 180, paidMyr: 180, paymentMethod: "Debit Card", status: "Completed", notes: "Routine periodic maintenance." },
+						{ id: "hb-rec-01", date: new Date().toISOString().slice(0, 10), mileageKm: 30000, title: "30,000 km Service (Oil & CVT Fluid)", category: "Periodic Service", mechanic: "Auto Care Center", costMyr: 180, paidMyr: 180, paymentMethod: "Debit Card", status: "Completed", notes: "Routine periodic maintenance." },
 					],
 				},
 				"sample-truck": {
@@ -1602,7 +2012,6 @@
 						plateNumber: "SAMPLE 4X4",
 						currentMileageKm: 52000,
 						latestServiceDate: new Date().toISOString().slice(0, 10),
-						workshop: { mechanicName: "Auto Care Center", location: "Main Street Garage", partsSupplier: "Auto Parts Depot" },
 					},
 					periodicSchedule: [
 						{ id: "diesel-oil", name: "Diesel Engine Oil & Filter", category: "Fluids", intervalKm: 10000, intervalMonths: 6, lastServicedKm: 50000, lastServicedDate: new Date().toISOString().slice(0, 10), estimatedCostMyr: 95 },
@@ -1611,7 +2020,7 @@
 						{ id: "chassis-grease", name: "Propeller Shaft U-Joint Greasing", category: "Chassis", intervalKm: 10000, intervalMonths: 6, lastServicedKm: 50000, lastServicedDate: new Date().toISOString().slice(0, 10), estimatedCostMyr: 25 },
 					],
 					maintenanceHistory: [
-						{ id: "tr-rec-01", date: new Date().toISOString().slice(0, 10), mileageKm: 50000, title: "50,000 km Oil & Greasing", category: "Periodic Service", costMyr: 120, paidMyr: 120, paymentMethod: "Company Card", status: "Completed", notes: "Diesel oil change and driveshaft greasing." },
+						{ id: "tr-rec-01", date: new Date().toISOString().slice(0, 10), mileageKm: 50000, title: "50,000 km Oil & Greasing", category: "Periodic Service", mechanic: "Auto Care Center", costMyr: 120, paidMyr: 120, paymentMethod: "Company Card", status: "Completed", notes: "Diesel oil change and driveshaft greasing." },
 					],
 				},
 				"sample-sports": {
@@ -1631,7 +2040,6 @@
 						plateNumber: "SAMPLE GT1",
 						currentMileageKm: 22000,
 						latestServiceDate: new Date().toISOString().slice(0, 10),
-						workshop: { mechanicName: "Auto Care Center", location: "Main Street Garage", partsSupplier: "Auto Parts Depot" },
 					},
 					periodicSchedule: [
 						{ id: "perf-oil", name: "Full Synthetic Sport Oil (0W-40) & Filter", category: "Fluids", intervalKm: 7500, intervalMonths: 6, lastServicedKm: 20000, lastServicedDate: new Date().toISOString().slice(0, 10), estimatedCostMyr: 110 },
@@ -1640,7 +2048,7 @@
 						{ id: "sport-brake-pads", name: "Performance Brake Pads Inspection", category: "Brakes", intervalKm: 20000, intervalMonths: null, lastServicedKm: 20000, lastServicedDate: new Date().toISOString().slice(0, 10), estimatedCostMyr: 160 },
 					],
 					maintenanceHistory: [
-						{ id: "sp-rec-01", date: new Date().toISOString().slice(0, 10), mileageKm: 20000, title: "20,000 km Performance Service", category: "Periodic Service", costMyr: 290, paidMyr: 290, paymentMethod: "Credit Card", status: "Completed", notes: "0W-40 oil, OEM filter, DOT 4 flush." },
+						{ id: "sp-rec-01", date: new Date().toISOString().slice(0, 10), mileageKm: 20000, title: "20,000 km Performance Service", category: "Periodic Service", mechanic: "Auto Care Center", costMyr: 290, paidMyr: 290, paymentMethod: "Credit Card", status: "Completed", notes: "0W-40 oil, OEM filter, DOT 4 flush." },
 					],
 				},
 				"sample-ev": {
@@ -1660,7 +2068,6 @@
 						plateNumber: "SAMPLE EV1",
 						currentMileageKm: 31000,
 						latestServiceDate: new Date().toISOString().slice(0, 10),
-						workshop: { mechanicName: "Auto Care Center", location: "Main Street Garage", partsSupplier: "Auto Parts Depot" },
 					},
 					periodicSchedule: [
 						{ id: "cabin-hepa", name: "Cabin Air & HEPA Filter", category: "Filters", intervalKm: 20000, intervalMonths: 12, lastServicedKm: 20000, lastServicedDate: new Date().toISOString().slice(0, 10), estimatedCostMyr: 45 },
@@ -1670,7 +2077,7 @@
 						{ id: "battery-coolant", name: "High-Voltage Battery Coolant", category: "Cooling", intervalKm: 80000, intervalMonths: 48, lastServicedKm: null, lastServicedDate: null, estimatedCostMyr: 120 },
 					],
 					maintenanceHistory: [
-						{ id: "ev-rec-01", date: new Date().toISOString().slice(0, 10), mileageKm: 20000, title: "20,000 km EV Annual Inspection", category: "Periodic Service", costMyr: 80, paidMyr: 80, paymentMethod: "Credit Card", status: "Completed", notes: "Rotated tires, replaced cabin HEPA filter, tested 12V battery." },
+						{ id: "ev-rec-01", date: new Date().toISOString().slice(0, 10), mileageKm: 20000, title: "20,000 km EV Annual Inspection", category: "Periodic Service", mechanic: "Auto Care Center", costMyr: 80, paidMyr: 80, paymentMethod: "Credit Card", status: "Completed", notes: "Rotated tires, replaced cabin HEPA filter, tested 12V battery." },
 					],
 				},
 				"sample-hybrid": {
@@ -1690,7 +2097,6 @@
 						plateNumber: "SAMPLE HEV",
 						currentMileageKm: 38000,
 						latestServiceDate: new Date().toISOString().slice(0, 10),
-						workshop: { mechanicName: "Auto Care Center", location: "Main Street Garage", partsSupplier: "Auto Parts Depot" },
 					},
 					periodicSchedule: [
 						{ id: "low-visc-oil", name: "Engine Oil (0W-16 / 0W-20) & Filter", category: "Fluids", intervalKm: 10000, intervalMonths: 6, lastServicedKm: 30000, lastServicedDate: new Date().toISOString().slice(0, 10), estimatedCostMyr: 65 },
@@ -1699,7 +2105,7 @@
 						{ id: "inverter-coolant", name: "Inverter Cooling System Flush", category: "Cooling", intervalKm: 80000, intervalMonths: 48, lastServicedKm: null, lastServicedDate: null, estimatedCostMyr: 75 },
 					],
 					maintenanceHistory: [
-						{ id: "hy-rec-01", date: new Date().toISOString().slice(0, 10), mileageKm: 30000, title: "30,000 km Hybrid Service", category: "Periodic Service", costMyr: 138, paidMyr: 138, paymentMethod: "Credit Card", status: "Completed", notes: "0W-16 oil change, cabin filter, and cleaned hybrid battery duct filter." },
+						{ id: "hy-rec-01", date: new Date().toISOString().slice(0, 10), mileageKm: 30000, title: "30,000 km Hybrid Service", category: "Periodic Service", mechanic: "Auto Care Center", costMyr: 138, paidMyr: 138, paymentMethod: "Credit Card", status: "Completed", notes: "0W-16 oil change, cabin filter, and cleaned hybrid battery duct filter." },
 					],
 				},
 				"sample-van": {
@@ -1719,7 +2125,6 @@
 						plateNumber: "SAMPLE VAN1",
 						currentMileageKm: 65000,
 						latestServiceDate: new Date().toISOString().slice(0, 10),
-						workshop: { mechanicName: "Auto Care Center", location: "Main Street Garage", partsSupplier: "Auto Parts Depot" },
 					},
 					periodicSchedule: [
 						{ id: "engine-oil", name: "Engine Oil & Filter (Synthetic)", category: "Fluids", intervalKm: 8000, intervalMonths: 6, lastServicedKm: 60000, lastServicedDate: new Date().toISOString().slice(0, 10), estimatedCostMyr: 65 },
@@ -1728,7 +2133,7 @@
 						{ id: "sliding-door-lube", name: "Power Sliding Door Track Lubrication", category: "Body", intervalKm: 20000, intervalMonths: 12, lastServicedKm: 60000, lastServicedDate: new Date().toISOString().slice(0, 10), estimatedCostMyr: 25 },
 					],
 					maintenanceHistory: [
-						{ id: "vn-rec-01", date: new Date().toISOString().slice(0, 10), mileageKm: 60000, title: "60,000 km Major Van Service", category: "Periodic Service", costMyr: 265, paidMyr: 265, paymentMethod: "Credit Card", status: "Completed", notes: "Engine oil, front & rear cabin filters, sliding door lube." },
+						{ id: "vn-rec-01", date: new Date().toISOString().slice(0, 10), mileageKm: 60000, title: "60,000 km Major Van Service", category: "Periodic Service", mechanic: "Auto Care Center", costMyr: 265, paidMyr: 265, paymentMethod: "Credit Card", status: "Completed", notes: "Engine oil, front & rear cabin filters, sliding door lube." },
 					],
 				},
 				"blank-template": {
@@ -1748,11 +2153,6 @@
 						plateNumber: "PLATE 123",
 						currentMileageKm: 50000,
 						latestServiceDate: new Date().toISOString().slice(0, 10),
-						workshop: {
-							mechanicName: "Workshop Name",
-							location: "City",
-							partsSupplier: "Supplier",
-						},
 					},
 					periodicSchedule: [
 						{
@@ -1897,6 +2297,17 @@
 				}, 2200);
 			}
 
+			function escapeHtml(str) {
+				if (typeof str !== "string") return str === null || str === undefined ? "" : String(str);
+				return str.replace(/[&<>'"]/g, (tag) => ({
+					"&": "&amp;",
+					"<": "&lt;",
+					">": "&gt;",
+					"'": "&#39;",
+					'"': "&quot;",
+				}[tag] || tag));
+			}
+
 			function formatNumber(num) {
 				if (num === null || num === undefined || num === "" || isNaN(num)) return "—";
 				return Number(num).toLocaleString("en-US");
@@ -1910,7 +2321,34 @@
 
 			function getCustomProfilesMap() {
 				try {
-					return JSON.parse(localStorage.getItem(CUSTOM_LIST_STORAGE) || "{}");
+					let map = JSON.parse(localStorage.getItem(CUSTOM_LIST_STORAGE) || "{}");
+					// Clean any legacy sample keys
+					const sampleKeys = ["sample-sedan", "sample-suv", "sample-hatchback", "sample-truck", "sample-sports", "sample-ev", "sample-hybrid", "sample-van", "blank-template"];
+					let changed = false;
+					sampleKeys.forEach((k) => {
+						if (k in map) {
+							delete map[k];
+							changed = true;
+						}
+					});
+					if (Object.keys(map).length === 0) {
+						// Automatically seed the primary vehicle
+						const initialId = "car-primary";
+						const initialLabel = "Toyota Camry 2.5V";
+						map[initialId] = initialLabel;
+						if (!localStorage.getItem(STORAGE_PREFIX + initialId)) {
+							const seedObj = JSON.parse(JSON.stringify(BUILTIN_PROFILES["sample-sedan"]));
+							seedObj.vehicle.id = initialId;
+							seedObj.vehicle.make = "Toyota";
+							seedObj.vehicle.model = "Camry 2.5V";
+							localStorage.setItem(STORAGE_PREFIX + initialId, JSON.stringify(seedObj));
+						}
+						changed = true;
+					}
+					if (changed) {
+						localStorage.setItem(CUSTOM_LIST_STORAGE, JSON.stringify(map));
+					}
+					return map;
 				} catch (_) {
 					return {};
 				}
@@ -1923,45 +2361,56 @@
 				syncProfileSelectOptions();
 			}
 
+			// Unified SVG Vehicle Profile Icons (stroke-width 1.75, currentColor)
+			const VEHICLE_TYPE_ICONS = {
+				"sample-sedan": `<svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13l1.5-4.5A2 2 0 016.4 7h11.2a2 2 0 011.9 1.5L21 13m-18 0h18m-18 0v5a1 1 0 001 1h1m16-6v5a1 1 0 01-1 1h-1M6 19a2 2 0 100-4 2 2 0 000 4zm12 0a2 2 0 100-4 2 2 0 000 4z"/></svg>`,
+				"sample-suv": `<svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 14l1-6a2 2 0 012-2h12a2 2 0 012 2l1 6m-18 0h18m-18 0v4a1 1 0 001 1h1m16-5v4a1 1 0 01-1 1h-1M6 18a2 2 0 100-4 2 2 0 000 4zm12 0a2 2 0 100-4 2 2 0 000 4zM7 6v2m10-2v2"/></svg>`,
+				"sample-hatchback": `<svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13l2-5a2 2 0 011.8-1h7.4a2 2 0 011.9 1.4L18 13m-15 0h17m-17 0v5a1 1 0 001 1h1m15-6v5a1 1 0 01-1 1h-1M6 19a2 2 0 100-4 2 2 0 000 4zm11 0a2 2 0 100-4 2 2 0 000 4z"/></svg>`,
+				"sample-truck": `<svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 14h18v4a1 1 0 01-1 1H4a1 1 0 01-1-1v-4zm0 0l2-6a2 2 0 011.9-1.3H12v7.3M12 14h9m-9 0V6.7M6 19a2 2 0 100-4 2 2 0 000 4zm11 0a2 2 0 100-4 2 2 0 000 4z"/></svg>`,
+				"sample-sports": `<svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 14l2.5-4a2 2 0 011.7-1h9.6a2 2 0 011.7 1L21 14m-18 0h18m-18 0v4a1 1 0 001 1h1m16-5v4a1 1 0 01-1 1h-1M6 18a2 2 0 100-4 2 2 0 000 4zm12 0a2 2 0 100-4 2 2 0 000 4zM2 11h2m16 0h2"/></svg>`,
+				"sample-ev": `<svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>`,
+				"sample-hybrid": `<svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 10a8 8 0 0114.5-4.5M20 14a8 8 0 01-14.5 4.5M12 3v3m0 12v3M3 12h3m12 0h3m-7-3l-3 4h4l-3 4"/></svg>`,
+				"sample-van": `<svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 6h12a2 2 0 012 2v2l3 2v5a1 1 0 01-1 1h-1M3 6v12a1 1 0 001 1h1m0-13h12m-6 5h6M6 19a2 2 0 100-4 2 2 0 000 4zm12 0a2 2 0 100-4 2 2 0 000 4z"/></svg>`,
+				"blank-template": `<svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>`,
+				"default": `<svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 17a2 2 0 100 4 2 2 0 000-4zm8 0a2 2 0 100 4 2 2 0 000-4zM3 9l2-5h14l2 5M3 9h18M3 9v8h2m16-8v8h-2M7 17h6"/></svg>`,
+			};
+
+			function updateVehicleIcons(profileKey) {
+				const svgHtml = VEHICLE_TYPE_ICONS[profileKey] || VEHICLE_TYPE_ICONS["default"];
+				const headerBox = document.getElementById("headerVehicleIcon");
+				const selectIcon = document.getElementById("carProfileSelectIcon");
+				if (headerBox) {
+					headerBox.innerHTML = svgHtml;
+				}
+				if (selectIcon) {
+					selectIcon.innerHTML = svgHtml;
+				}
+			}
+
 			function syncProfileSelectOptions() {
 				const sel = document.getElementById("carProfileSelect");
+				if (!sel) return;
 				const customMap = getCustomProfilesMap();
-				const sampleOptions = [
-					{ value: "sample-sedan", text: "🚗 Sedan (Sample)" },
-					{ value: "sample-suv", text: "🚙 SUV / Crossover (Sample)" },
-					{ value: "sample-hatchback", text: "🚘 Hatchback (Sample)" },
-					{ value: "sample-truck", text: "🛻 Pickup Truck 4x4 (Sample)" },
-					{ value: "sample-sports", text: "🏎️ Sports Car / Coupe (Sample)" },
-					{ value: "sample-ev", text: "⚡ Electric Vehicle / EV (Sample)" },
-					{ value: "sample-hybrid", text: "🔋 Hybrid / HEV (Sample)" },
-					{ value: "sample-van", text: "🚐 Van / MPV (Sample)" },
-				];
-				const sampleIds = new Set(sampleOptions.map((o) => o.value).concat(["blank-template"]));
-				const customOptions = [];
-				Object.entries(customMap).forEach(([id, label]) => {
-					if (!sampleIds.has(id)) {
-						customOptions.push({ value: id, text: "🚘 " + label });
-					}
-				});
+				const savedEntries = Object.entries(customMap);
 
-				let html = '<optgroup label="Vehicle Types">';
-				sampleOptions.forEach((o) => {
-					html += `<option value="${o.value}">${o.text}</option>`;
-				});
-				html += "</optgroup>";
-				if (customOptions.length > 0) {
-					html += '<optgroup label="My Custom Vehicles">';
-					customOptions.forEach((o) => {
-						html += `<option value="${o.value}">${o.text}</option>`;
+				let html = "";
+				if (savedEntries.length > 0) {
+					savedEntries.forEach(([id, label]) => {
+						html += `<option value="${id}">${escapeHtml(label)}</option>`;
 					});
-					html += "</optgroup>";
+				} else {
+					html = '<option value="" disabled selected>No Saved Vehicles</option>';
 				}
-				html += '<option value="blank-template">➕ New Car</option>';
 
 				sel.innerHTML = html;
 				if ([...sel.options].some((o) => o.value === activeProfileKey)) {
 					sel.value = activeProfileKey;
+				} else if (sel.options.length > 0 && sel.options[0].value) {
+					sel.value = sel.options[0].value;
+					activeProfileKey = sel.value;
+					localStorage.setItem(ACTIVE_KEY_STORAGE, activeProfileKey);
 				}
+				updateVehicleIcons(activeProfileKey);
 			}
 
 			async function loadProfile(profileKey) {
@@ -2091,8 +2540,9 @@
 						remainingKm: null,
 						drivenKm: null,
 						progressPct: 0,
-						badgeClass: "bg-slate-800 text-slate-400 border-slate-700",
-						barColor: "bg-slate-600",
+						badgeClass: "badge-status-pending",
+						barColor: "bar-status-pending",
+						iconSvg: `<svg class="w-3 h-3 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
 					};
 				}
 				const nextDueKm = Number(lastKm) + interval;
@@ -2108,8 +2558,9 @@
 						remainingKm,
 						drivenKm,
 						progressPct: 100,
-						badgeClass: "bg-rose-500/15 text-rose-300 border-rose-500/30",
-						barColor: "bg-rose-500",
+						badgeClass: "badge-status-critical",
+						barColor: "bar-status-critical",
+						iconSvg: `<svg class="w-3 h-3 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>`,
 					};
 				}
 				if (remainingKm <= interval * 0.2 || remainingKm <= 1500) {
@@ -2120,8 +2571,9 @@
 						remainingKm,
 						drivenKm,
 						progressPct: Math.max(8, rawPct),
-						badgeClass: "bg-amber-500/15 text-amber-300 border-amber-500/30",
-						barColor: "bg-amber-400",
+						badgeClass: "badge-status-warning",
+						barColor: "bar-status-warning",
+						iconSvg: `<svg class="w-3 h-3 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
 					};
 				}
 				return {
@@ -2131,8 +2583,9 @@
 					remainingKm,
 					drivenKm,
 					progressPct: Math.max(6, rawPct),
-					badgeClass: "bg-emerald-500/15 text-emerald-300 border-emerald-500/30",
-					barColor: "bg-emerald-400",
+					badgeClass: "badge-status-good",
+					barColor: "bar-status-good",
+					iconSvg: `<svg class="w-3 h-3 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
 				};
 			}
 
@@ -2148,8 +2601,10 @@
 				document.getElementById("lastUpdatedChip").textContent = `Updated: ${appData.lastUpdated || "—"}`;
 				document.getElementById("currentMileageInput").value = curKm;
 				document.getElementById("latestServiceDateText").textContent = v.latestServiceDate || "—";
-				document.getElementById("workshopMechanicText").textContent =
-					v.workshop && v.workshop.mechanicName ? v.workshop.mechanicName : "—";
+				const sortedHist = [...(appData.maintenanceHistory || [])].sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+				const latestRecordWithMech = sortedHist.find((r) => r.mechanic && r.mechanic.trim());
+				const mechEl = document.getElementById("latestMechanicText");
+				if (mechEl) mechEl.textContent = latestRecordWithMech ? latestRecordWithMech.mechanic : "—";
 
 				const sched = appData.periodicSchedule || [];
 				let activeCount = 0;
@@ -2184,8 +2639,13 @@
 				const filteredHist = getFilteredHistory();
 				const totalCost = filteredHist.reduce((acc, r) => acc + (Number(r.costMyr) || 0), 0);
 				const totalPaid = filteredHist.reduce((acc, r) => acc + (Number(r.paidMyr) || 0), 0);
+				const uniqueMechanics = new Set(
+					(appData.maintenanceHistory || [])
+						.map((r) => (r.mechanic || "").trim())
+						.filter(Boolean),
+				);
 				document.getElementById("kpiTotalCost").textContent = formatCurrency(totalCost, currency);
-				document.getElementById("kpiTotalRecords").textContent = `${filteredHist.length} records`;
+				document.getElementById("kpiTotalRecords").textContent = `${filteredHist.length} logs • ${uniqueMechanics.size} workshop${uniqueMechanics.size === 1 ? "" : "s"}`;
 				document.getElementById("kpiTotalPaid").textContent = formatCurrency(totalPaid, currency);
 
 				const diff = totalCost - totalPaid;
@@ -2282,8 +2742,9 @@
 
             <td class="py-3.5 ps-3 pe-5 align-middle">
               <div class="flex items-center justify-between gap-2 mb-1">
-                <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold border ${st.badgeClass}">
-                  ${st.label}
+                <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-semibold border ${st.badgeClass}">
+                  ${st.iconSvg}
+                  <span>${st.label}</span>
                 </span>
                 ${st.drivenKm !== null ? `<span class="text-[10px] font-mono text-slate-400">${Math.round(st.progressPct)}%</span>` : ""}
               </div>
@@ -2344,6 +2805,12 @@
 				});
 			}
 
+			function getThemeColor(varName, fallback) {
+				if (typeof window === "undefined" || !window.getComputedStyle) return fallback;
+				const val = getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
+				return val || fallback;
+			}
+
 			function renderSvgCharts() {
 				renderCountdownSvg();
 				renderExpenseDonutSvg();
@@ -2355,11 +2822,16 @@
 				const sched = appData.periodicSchedule || [];
 				const maxInterval = Math.max(...sched.map((s) => Number(s.intervalKm) || 10000), 80000);
 
+				const goodColor = getThemeColor("--color-status-good", "#10b981");
+				const soonColor = getThemeColor("--color-status-warning", "#f59e0b");
+				const overdueColor = getThemeColor("--color-status-critical", "#f43f5e");
+				const pendingColor = getThemeColor("--color-status-pending", "#64748b");
+
 				const rowsHtml = sched
 					.map((item) => {
 						const st = computeItemStatus(item, curKm);
 						let widthPct = 0;
-						let fillHex = "#475569";
+						let fillHex = pendingColor;
 						let rightLabel = "Unset";
 
 						if (st.state !== "pending") {
@@ -2368,7 +2840,7 @@
 								st.remainingKm <= 0
 									? `Overdue (${formatNumber(Math.abs(st.remainingKm))} km)`
 									: `${formatNumber(st.remainingKm)} km`;
-							fillHex = st.state === "overdue" ? "#f43f5e" : st.state === "soon" ? "#fbbf24" : "#34d399";
+							fillHex = st.state === "overdue" ? overdueColor : st.state === "soon" ? soonColor : goodColor;
 						}
 
 						return `
@@ -2388,26 +2860,52 @@
 				container.innerHTML = `<div class="space-y-2">${rowsHtml}</div>`;
 			}
 
+			let expenseDonutMode = "category"; // "category" | "mechanic"
+
 			function renderExpenseDonutSvg() {
 				const container = document.getElementById("svgExpenseDonut");
 				const hist = getFilteredHistory();
-				const totalsByCat = {};
+				const totalsByGroup = {};
+				const countByGroup = {};
 				let grandTotal = 0;
 
 				hist.forEach((r) => {
 					const cost = Number(r.costMyr) || 0;
+					const groupKey =
+						expenseDonutMode === "mechanic"
+							? (r.mechanic && r.mechanic.trim()) || "Unspecified Workshop"
+							: r.category || "Workshop Fees";
+
 					if (cost > 0) {
-						const cat = r.category || "Workshop Fees";
-						totalsByCat[cat] = (totalsByCat[cat] || 0) + cost;
+						totalsByGroup[groupKey] = (totalsByGroup[groupKey] || 0) + cost;
 						grandTotal += cost;
 					}
+					countByGroup[groupKey] = (countByGroup[groupKey] || 0) + 1;
 				});
 
-				document.getElementById("donutFooterTotal").textContent =
-					`Total: ${formatCurrency(grandTotal, appData.currency)}`;
+				const uniqueMechanics = new Set(
+					(appData.maintenanceHistory || [])
+						.map((r) => (r.mechanic || "").trim())
+						.filter(Boolean),
+				);
 
-				const palette = ["#6366f1", "#10b981", "#f59e0b", "#06b6d4", "#ec4899", "#8b5cf6", "#f43f5e"];
-				const entries = Object.entries(totalsByCat).sort((a, b) => b[1] - a[1]);
+				const footerTotalEl = document.getElementById("donutFooterTotal");
+				if (footerTotalEl) {
+					footerTotalEl.textContent = `Total: ${formatCurrency(grandTotal, appData.currency)} • ${uniqueMechanics.size} Workshop${uniqueMechanics.size === 1 ? "" : "s"}`;
+				}
+
+				const palette = [
+					getThemeColor("--color-brand-primary", "#6366f1"),
+					getThemeColor("--color-status-good", "#10b981"),
+					getThemeColor("--color-status-warning", "#f59e0b"),
+					getThemeColor("--color-accent-cyan", "#06b6d4"),
+					"#ec4899",
+					"#8b5cf6",
+					getThemeColor("--color-status-critical", "#f43f5e"),
+					"#14b8a6",
+					"#f97316",
+				];
+				const entries = Object.entries(totalsByGroup).sort((a, b) => b[1] - a[1]);
 
 				if (!entries.length) {
 					container.innerHTML = `<div class="text-xs text-slate-500 py-8">No costs logged yet.</div>`;
@@ -2419,7 +2917,7 @@
 				let accumulatedPct = 0;
 
 				const circlesSvg = entries
-					.map(([cat, amount], idx) => {
+					.map(([group, amount], idx) => {
 						const pct = amount / grandTotal;
 						const strokeLen = pct * circumference;
 						const dashArray = `${strokeLen.toFixed(2)} ${(circumference - strokeLen).toFixed(2)}`;
@@ -2431,16 +2929,21 @@
 					.join("");
 
 				const legendHtml = entries
-					.map(([cat, amount], idx) => {
+					.map(([group, amount], idx) => {
 						const pct = ((amount / grandTotal) * 100).toFixed(0);
+						const count = countByGroup[group] || 0;
+						const countLabel =
+							expenseDonutMode === "mechanic"
+								? `<span class="text-slate-400 text-[10px]">(${count} ${count === 1 ? "service" : "services"})</span>`
+								: "";
 						const color = palette[idx % palette.length];
 						return `
           <div class="flex items-center justify-between gap-2 text-xs py-1">
             <div class="flex items-center gap-2 truncate">
               <span class="w-2.5 h-2.5 rounded-sm shrink-0" style="background-color:${color}"></span>
-              <span class="text-slate-200 truncate">${cat}</span>
+              <span class="text-slate-200 truncate" title="${escapeHtml(group)}">${escapeHtml(group)} ${countLabel}</span>
             </div>
-            <div class="font-mono text-slate-300 shrink-0">
+            <div class="font-mono text-slate-300 shrink-0 text-end">
               ${formatCurrency(amount, appData.currency)} <span class="text-slate-500 text-[10px]">(${pct}%)</span>
             </div>
           </div>
@@ -2459,7 +2962,7 @@
             <span class="text-xs font-mono font-bold text-white mt-0.5">${formatCurrency(grandTotal, appData.currency)}</span>
           </div>
         </div>
-        <div class="flex-1 w-full divide-y divide-slate-800/60">${legendHtml}</div>
+        <div class="flex-1 w-full divide-y divide-slate-800/60 max-h-48 overflow-y-auto">${legendHtml}</div>
       `;
 			}
 
@@ -2469,12 +2972,23 @@
 				const sortedHist = [...filteredHist].sort((a, b) => (b.date || "").localeCompare(a.date || ""));
 				document.getElementById("historyCountBadge").textContent = `${sortedHist.length}`;
 
+				const uniqueMechanics = new Set(
+					(appData.maintenanceHistory || [])
+						.map((r) => (r.mechanic || "").trim())
+						.filter(Boolean),
+				);
+				const mechBadgeText = document.getElementById("historyMechanicCountText");
+				if (mechBadgeText) {
+					mechBadgeText.textContent = `${uniqueMechanics.size} Workshop${uniqueMechanics.size === 1 ? "" : "s"}`;
+				}
+
 				const q = currentHistorySearch.toLowerCase().trim();
 				const filtered = sortedHist.filter((r) => {
 					if (!q) return true;
 					return (
 						(r.title && r.title.toLowerCase().includes(q)) ||
 						(r.category && r.category.toLowerCase().includes(q)) ||
+						(r.mechanic && r.mechanic.toLowerCase().includes(q)) ||
 						(r.date && r.date.toLowerCase().includes(q)) ||
 						(r.notes && r.notes.toLowerCase().includes(q))
 					);
@@ -2503,6 +3017,7 @@
                 <span class="font-mono text-xs font-semibold px-2 py-0.5 rounded bg-slate-950 text-indigo-300 border border-slate-800">${rec.date || "—"}</span>
                 ${rec.mileageKm ? `<span class="font-mono text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-200">${formatNumber(rec.mileageKm)} km</span>` : ""}
                 <span class="text-[11px] font-medium px-2 py-0.5 rounded bg-slate-800/80 text-slate-300">${rec.category || "Service"}</span>
+                ${rec.mechanic ? `<span class="inline-flex items-center gap-1 text-[11px] font-medium px-2 py-0.5 rounded bg-amber-950/40 text-amber-300 border border-amber-800/50"><svg class="w-3 h-3 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>${escapeHtml(rec.mechanic)}</span>` : ""}
               </div>
               <h4 class="text-sm font-bold text-white pt-0.5">${rec.title}</h4>
               ${rec.notes ? `<p class="text-xs text-slate-400">${rec.notes}</p>` : ""}
@@ -2521,28 +3036,45 @@
 			function renderFooterSpecs() {
 				const footer = document.getElementById("vehicleSpecsFooter");
 				const v = appData.vehicle || {};
-				const w = v.workshop || {};
 				footer.innerHTML = `
         <div>
           <span class="text-[10px] uppercase tracking-wider text-slate-500 font-semibold block">Vehicle</span>
           <div class="mt-0.5 text-slate-200 font-medium">${v.year || ""} ${v.make || ""} ${v.model || ""} (${v.plateNumber || ""})</div>
         </div>
         <div>
-          <span class="text-[10px] uppercase tracking-wider text-slate-500 font-semibold block">Engine &amp; Chassis</span>
-          <div class="mt-0.5 font-mono text-slate-200">${v.engineNumber || "—"} / ${v.chassisNumber || "—"}</div>
+          <span class="text-[10px] uppercase tracking-wider text-slate-500 font-semibold block">Engine &amp; Number</span>
+          <div class="mt-0.5 font-mono text-slate-200">${v.engine || "—"} / ${v.engineNumber || "—"}</div>
         </div>
         <div>
-          <span class="text-[10px] uppercase tracking-wider text-slate-500 font-semibold block">Workshop</span>
-          <div class="mt-0.5 text-slate-200 font-medium">${w.mechanicName || "—"} (${w.location || "—"})</div>
+          <span class="text-[10px] uppercase tracking-wider text-slate-500 font-semibold block">Transmission &amp; Chassis</span>
+          <div class="mt-0.5 font-mono text-slate-200">${v.transmission || "—"} / ${v.chassisNumber || "—"}</div>
         </div>
         <div>
-          <span class="text-[10px] uppercase tracking-wider text-slate-500 font-semibold block">Supplier</span>
-          <div class="mt-0.5 text-slate-200 font-medium">${w.partsSupplier || "—"}</div>
+          <span class="text-[10px] uppercase tracking-wider text-slate-500 font-semibold block">Registration / Status</span>
+          <div class="mt-0.5 text-slate-200 font-medium">${v.registrationDate || "—"} • Active</div>
         </div>
       `;
 			}
 
+			function populateMechanicSelect() {
+				const sel = document.getElementById("newRecMechanicSelect");
+				if (!sel) return;
+				const hist = appData.maintenanceHistory || [];
+				const mechanics = Array.from(new Set(hist.map((r) => (r.mechanic || "").trim()).filter(Boolean)));
+				let html = '<option value="">— Unspecified / DIY —</option>';
+				if (mechanics.length > 0) {
+					html += `<optgroup label="Saved Workshops & Mechanics">`;
+					mechanics.forEach((m) => {
+						html += `<option value="${escapeHtml(m)}">${escapeHtml(m)}</option>`;
+					});
+					html += `</optgroup>`;
+				}
+				html += `<option value="__other__">Other (Enter new workshop / mechanic)...</option>`;
+				sel.innerHTML = html;
+			}
+
 			function populateLinkedItemSelect() {
+				populateMechanicSelect();
 				const sel = document.getElementById("newRecLinkedItem");
 				const titleSel = document.getElementById("newRecTitleSelect");
 				const mileageSel = document.getElementById("newRecMileageSelect");
@@ -2606,7 +3138,6 @@
 			// =========================================================================
 			function generateA4ReportTab() {
 				const v = appData.vehicle || {};
-				const w = v.workshop || {};
 				const curKm = Number(v.currentMileageKm) || 0;
 				const sched = appData.periodicSchedule || [];
 				const hist = [...(appData.maintenanceHistory || [])].sort((a, b) => (b.date || "").localeCompare(a.date || ""));
@@ -2662,8 +3193,9 @@
         <tr>
           <td style="font-family:monospace;white-space:nowrap;">${r.date || "—"}</td>
           <td style="font-family:monospace;">${r.mileageKm ? formatNumber(r.mileageKm) + " km" : "—"}</td>
-          <td><strong>${r.title}</strong>${r.notes ? `<div style="color:#475569;font-size:10px;margin-top:2px;">${r.notes}</div>` : ""}</td>
-          <td>${r.category || "Service"}</td>
+          <td><strong>${escapeHtml(r.title)}</strong>${r.notes ? `<div style="color:#475569;font-size:10px;margin-top:2px;">${escapeHtml(r.notes)}</div>` : ""}</td>
+          <td>${escapeHtml(r.mechanic || "—")}</td>
+          <td>${escapeHtml(r.category || "Service")}</td>
           <td style="font-family:monospace;font-weight:600;white-space:nowrap;">${formatCurrency(r.costMyr, appData.currency)}</td>
         </tr>
       `,
@@ -2707,7 +3239,7 @@
 <body>
   <div class="toolbar">
     <span><strong>A4 Printable Car Condition Report</strong> — Ready to Save as PDF</span>
-    <button class="btn" onclick="window.print()">🖨️ Print / Save as A4 PDF</button>
+    <button class="btn" onclick="window.print()" style="display:inline-flex;align-items:center;gap:6px;"><svg style="width:14px;height:14px;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4H7v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>Print / Save as A4 PDF</button>
   </div>
   <div class="page">
     <div class="header">
@@ -2762,16 +3294,17 @@
           <th>Date</th>
           <th>Mileage</th>
           <th>Service / Repair Description</th>
+          <th>Workshop / Mechanic</th>
           <th>Category</th>
           <th>Cost</th>
         </tr>
       </thead>
-      <tbody>${histRowsHtml || '<tr><td colspan="5">No service history logged.</td></tr>'}</tbody>
+      <tbody>${histRowsHtml || '<tr><td colspan="6">No service history logged.</td></tr>'}</tbody>
     </table>
 
     <div class="footer">
-      <span>Workshop: ${w.mechanicName || "—"} (${w.location || "—"}) • Parts: ${w.partsSupplier || "—"}</span>
-      <span>Generated by Universal Car Maintenance Tracker</span>
+      <span>Vehicle: ${v.year || ""} ${v.make || ""} ${v.model || ""} (${v.plateNumber || ""})</span>
+      <span>Generated by AutoLog Universal Car Maintenance Tracker</span>
     </div>
   </div>
 <\/body>
@@ -2812,10 +3345,10 @@
 					"Paid",
 					"Status_Or_Method",
 					"Notes",
+					"Mechanic",
 				];
 				const rows = [headers.join(",")];
 				const v = dataObj.vehicle || {};
-				const w = v.workshop || {};
 				const curKm = Number(v.currentMileageKm) || 0;
 
 				const metaEntries = [
@@ -2830,12 +3363,9 @@
 					["Current_Mileage_Km", curKm],
 					["Latest_Service_Date", v.latestServiceDate || ""],
 					["Currency", dataObj.currency || "MYR"],
-					["Mechanic_Name", w.mechanicName || ""],
-					["Workshop_Location", w.location || ""],
-					["Parts_Supplier", w.partsSupplier || ""],
 				];
 				metaEntries.forEach(([key, val]) => {
-					rows.push(["META", key, "Vehicle_Info", val, "", "", "", "", "", "", ""].map(escapeCsvCell).join(","));
+					rows.push(["META", key, "Vehicle_Info", val, "", "", "", "", "", "", "", ""].map(escapeCsvCell).join(","));
 				});
 
 				(dataObj.periodicSchedule || []).forEach((item) => {
@@ -2854,6 +3384,7 @@
 							nextKm,
 							item.lastServicedDate || "",
 							item.estimatedCostMyr !== null && item.estimatedCostMyr !== undefined ? item.estimatedCostMyr : "",
+							"",
 							"",
 							"",
 							"",
@@ -2877,6 +3408,7 @@
 							rec.paidMyr !== null && rec.paidMyr !== undefined ? rec.paidMyr : "",
 							rec.paymentMethod || "Workshop Fees",
 							rec.notes || "",
+							rec.mechanic || "",
 						]
 							.map(escapeCsvCell)
 							.join(","),
@@ -2938,7 +3470,8 @@
 						col7 = cols[7] || "",
 						col8 = cols[8] || "",
 						col9 = cols[9] || "",
-						col10 = cols[10] || "";
+						col10 = cols[10] || "",
+						col11 = cols[11] || "";
 
 					if (type === "META") {
 						const key = col1.toLowerCase();
@@ -2953,9 +3486,6 @@
 						else if (key === "current_mileage_km") newObj.vehicle.currentMileageKm = Number(col3) || 0;
 						else if (key === "latest_service_date") newObj.vehicle.latestServiceDate = col3;
 						else if (key === "currency") newObj.currency = col3 || "MYR";
-						else if (key === "mechanic_name") newObj.vehicle.workshop.mechanicName = col3;
-						else if (key === "workshop_location") newObj.vehicle.workshop.location = col3;
-						else if (key === "parts_supplier") newObj.vehicle.workshop.partsSupplier = col3;
 					} else if (type === "SCHEDULE") {
 						if (!col1) continue;
 						newObj.periodicSchedule.push({
@@ -2976,6 +3506,7 @@
 							mileageKm: col4 !== "" ? Number(col4.replace(/,/g, "")) : null,
 							title: col1,
 							category: col2 || "Service",
+							mechanic: col11 || "",
 							costMyr: col7 !== "" ? Number(col7.replace(/,/g, "")) : null,
 							paidMyr: col8 !== "" ? Number(col8.replace(/,/g, "")) : null,
 							paymentMethod: col9 || "Workshop Fees",
@@ -3029,9 +3560,9 @@
 					});
 
 				return [
-					`🚗 ${v.year || ""} ${v.make || ""} ${v.model || ""} (${v.plateNumber || "N/A"})`,
-					`📍 Odometer: ${formatNumber(curKm)} km | Updated: ${appData.lastUpdated || "—"}`,
-					activeLines.length ? `\n🔧 Tracked Services:\n${activeLines.join("\n")}` : "",
+					`AutoLog Report: ${v.year || ""} ${v.make || ""} ${v.model || ""} (${v.plateNumber || "N/A"})`.trim(),
+					`Odometer: ${formatNumber(curKm)} km | Updated: ${appData.lastUpdated || "—"}`,
+					activeLines.length ? `\nTracked Services:\n${activeLines.join("\n")}` : "",
 				]
 					.filter(Boolean)
 					.join("\n");
@@ -3069,6 +3600,8 @@
 				const unauthSec = document.getElementById("driveUnauthSection");
 				const authSec = document.getElementById("driveAuthSection");
 				const statusText = document.getElementById("driveHeaderStatusText");
+				const statusDot = document.getElementById("driveAccountStatusDot");
+				const driveBtn = document.getElementById("openDriveSyncModalBtn");
 				const emailSpan = document.getElementById("driveAccountEmail");
 				const autoSyncCheck = document.getElementById("driveAutoSyncCheckbox");
 				const clientIdInp = document.getElementById("googleClientIdInput");
@@ -3079,12 +3612,24 @@
 				if (token) {
 					if (unauthSec) unauthSec.classList.add("hidden");
 					if (authSec) authSec.classList.remove("hidden");
-					if (statusText) statusText.textContent = "✓ Drive Synced";
+					if (statusText) statusText.textContent = "Connected";
+					if (statusDot) {
+						statusDot.className = "w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]";
+					}
+					if (driveBtn) {
+						driveBtn.title = `Google Account: Connected (${email}) - Click to manage sync`;
+					}
 					if (emailSpan) emailSpan.textContent = email;
 				} else {
 					if (unauthSec) unauthSec.classList.remove("hidden");
 					if (authSec) authSec.classList.add("hidden");
-					if (statusText) statusText.textContent = "Google Drive";
+					if (statusText) statusText.textContent = "Not Connected";
+					if (statusDot) {
+						statusDot.className = "w-2 h-2 rounded-full bg-slate-500";
+					}
+					if (driveBtn) {
+						driveBtn.title = "Google Account: Not Connected - Click to connect";
+					}
 				}
 			}
 
@@ -3111,7 +3656,7 @@
 						if (resp.error) {
 							console.error("Google Auth error:", resp);
 							const statusMsg = document.getElementById("driveSyncStatusMsg");
-							if (statusMsg) statusMsg.textContent = "✗ Sign-in failed: " + resp.error;
+							if (statusMsg) statusMsg.textContent = "Sign-in failed: " + resp.error;
 							return;
 						}
 						if (resp.access_token) {
@@ -3200,7 +3745,7 @@
 
 				try {
 					if (statusMsg) statusMsg.textContent = `Syncing ${fileName} to Google Drive...`;
-					if (headerStatus) headerStatus.textContent = "☁️ Syncing...";
+					if (headerStatus) headerStatus.textContent = "Syncing...";
 
 					const folderId = await findOrCreateAutoLogFolder(token);
 					const headers = { Authorization: `Bearer ${token}` };
@@ -3264,18 +3809,18 @@
 
 					const nowTime = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
 					if (statusMsg) {
-						statusMsg.textContent = `✓ Synced "${fileName}" to AutoLog folder at ${nowTime}`;
+						statusMsg.textContent = `Synced "${fileName}" to AutoLog folder at ${nowTime}`;
 						statusMsg.className = "text-center font-mono text-[11px] text-emerald-400 pt-1";
 					}
-					if (headerStatus) headerStatus.textContent = "✓ Drive Synced";
+					if (headerStatus) headerStatus.textContent = "Drive Synced";
 					if (showNotification) showToast(`Synced ${fileName} to Drive`);
 				} catch (err) {
 					console.error("Drive Sync Error:", err);
 					if (statusMsg) {
-						statusMsg.textContent = "✗ Sync failed: " + err.message;
+						statusMsg.textContent = "Sync failed: " + err.message;
 						statusMsg.className = "text-center font-mono text-[11px] text-rose-400 pt-1";
 					}
-					if (headerStatus) headerStatus.textContent = "⚠️ Sync Failed";
+					if (headerStatus) headerStatus.textContent = "Sync Failed";
 				}
 			}
 
@@ -3326,14 +3871,14 @@
 					renderAll();
 
 					if (statusMsg) {
-						statusMsg.textContent = `✓ Fetched and loaded "${fileName}" from Google Drive.`;
+						statusMsg.textContent = `Fetched and loaded "${fileName}" from Google Drive.`;
 						statusMsg.className = "text-center font-mono text-[11px] text-emerald-400 pt-1";
 					}
 					showToast(`Loaded ${fileName} from Drive`);
 				} catch (err) {
 					console.error("Drive Fetch Error:", err);
 					if (statusMsg) {
-						statusMsg.textContent = "✗ Fetch failed: " + err.message;
+						statusMsg.textContent = "Fetch failed: " + err.message;
 						statusMsg.className = "text-center font-mono text-[11px] text-rose-400 pt-1";
 					}
 				}
@@ -3351,6 +3896,14 @@
 			// INITIALIZATION & EVENT LISTENERS
 			// =========================================================================
 			document.addEventListener("DOMContentLoaded", () => {
+				const customMap = getCustomProfilesMap();
+				if (!customMap[activeProfileKey]) {
+					const firstSavedId = Object.keys(customMap)[0];
+					if (firstSavedId) {
+						activeProfileKey = firstSavedId;
+						localStorage.setItem(ACTIVE_KEY_STORAGE, activeProfileKey);
+					}
+				}
 				syncProfileSelectOptions();
 				loadProfile(activeProfileKey);
 
@@ -3498,7 +4051,7 @@
 				}
 
 				// Open A4 Report in New Tab
-				document.getElementById("openA4ReportBtn").addEventListener("click", generateA4ReportTab);
+				document.getElementById("openA4ReportBtn")?.addEventListener("click", generateA4ReportTab);
 
 				// =====================================================================
 				// GOOGLE DRIVE SYNC MODAL & ACTIONS
@@ -3506,6 +4059,7 @@
 				const driveSyncModal = document.getElementById("driveSyncModal");
 				const openDriveModal = () => {
 					updateDriveUI();
+					if (typeof closeSettingsModal === "function") closeSettingsModal();
 					driveSyncModal.classList.remove("hidden");
 					driveSyncModal.classList.add("flex");
 				};
@@ -3587,7 +4141,8 @@
 					btn.addEventListener("click", () => switchHubTab(btn.getAttribute("data-hub-tab")));
 				});
 
-				document.getElementById("openDataHubBtn").addEventListener("click", () => {
+				document.getElementById("openDataHubBtn")?.addEventListener("click", () => {
+					if (typeof closeSettingsModal === "function") closeSettingsModal();
 					csvStatusMsg.classList.add("hidden");
 					jsonTextarea.value = JSON.stringify(appData, null, 2);
 					dataHubModal.classList.remove("hidden");
@@ -3638,12 +4193,12 @@
 							);
 							saveToLocal(true);
 							renderAll();
-							csvStatusMsg.textContent = `✓ Imported & saved "${file.name}" to localStorage.`;
+							csvStatusMsg.textContent = `Imported & saved "${file.name}" to localStorage.`;
 							csvStatusMsg.className = "font-mono text-xs pt-1 text-emerald-400";
 							csvStatusMsg.classList.remove("hidden");
 							showToast("CSV imported & saved");
 						} catch (err) {
-							csvStatusMsg.textContent = "✗ Error: " + err.message;
+							csvStatusMsg.textContent = "Error: " + err.message;
 							csvStatusMsg.className = "font-mono text-xs pt-1 text-rose-400";
 							csvStatusMsg.classList.remove("hidden");
 						}
@@ -3841,6 +4396,7 @@
 				wireSelectOther("newRecCostSelect", "newRecCostOther");
 				wireSelectOther("newRecPaidSelect", "newRecPaidOther");
 				wireSelectOther("newRecMethodSelect", "newRecMethodOther");
+				wireSelectOther("newRecMechanicSelect", "newRecMechanicOther");
 				wireSelectOther("newRecNotesSelect", "newRecNotesOther");
 
 				// Wire Add Periodic Item modal selects + "Other..."
@@ -3849,6 +4405,24 @@
 				wireSelectOther("newSchedIntervalSelect", "newSchedIntervalOther");
 				wireSelectOther("newSchedLastKmSelect", "newSchedLastKmOther");
 				wireSelectOther("newSchedCostSelect", "newSchedCostOther");
+
+				// Donut Chart Segmented Mode Toggle (Category vs Mechanic)
+				document.getElementById("donutModeCatBtn")?.addEventListener("click", () => {
+					expenseDonutMode = "category";
+					const catBtn = document.getElementById("donutModeCatBtn");
+					const mechBtn = document.getElementById("donutModeMechBtn");
+					if (catBtn) catBtn.className = "px-2 py-0.5 rounded-md font-medium transition text-white bg-indigo-600";
+					if (mechBtn) mechBtn.className = "px-2 py-0.5 rounded-md font-medium transition text-slate-400 hover:text-slate-200";
+					renderExpenseDonutSvg();
+				});
+				document.getElementById("donutModeMechBtn")?.addEventListener("click", () => {
+					expenseDonutMode = "mechanic";
+					const catBtn = document.getElementById("donutModeCatBtn");
+					const mechBtn = document.getElementById("donutModeMechBtn");
+					if (mechBtn) mechBtn.className = "px-2 py-0.5 rounded-md font-medium transition text-white bg-indigo-600";
+					if (catBtn) catBtn.className = "px-2 py-0.5 rounded-md font-medium transition text-slate-400 hover:text-slate-200";
+					renderExpenseDonutSvg();
+				});
 
 				document.getElementById("addRecordBtn").addEventListener("click", () => {
 					populateLinkedItemSelect();
@@ -3861,6 +4435,7 @@
 						"newRecCostOther",
 						"newRecPaidOther",
 						"newRecMethodOther",
+						"newRecMechanicOther",
 						"newRecNotesOther",
 					].forEach((id) => {
 						const el = document.getElementById(id);
@@ -3911,6 +4486,7 @@
 					}
 
 					const paymentMethod = getSelectOrOtherVal("newRecMethodSelect", "newRecMethodOther") || "Workshop Fees";
+					const mechanic = getSelectOrOtherVal("newRecMechanicSelect", "newRecMechanicOther");
 					const linkedItemId = document.getElementById("newRecLinkedItem").value;
 					const notes = getSelectOrOtherVal("newRecNotesSelect", "newRecNotesOther");
 
@@ -3920,6 +4496,7 @@
 						mileageKm,
 						title,
 						category,
+						mechanic: mechanic || null,
 						costMyr,
 						paidMyr,
 						paymentMethod,
@@ -4021,8 +4598,6 @@
 					document.getElementById("editCarCurrency").value = appData.currency || "MYR";
 					document.getElementById("editCarEngine").value = v.engine || "";
 					document.getElementById("editCarTrans").value = v.transmission || "";
-					document.getElementById("editCarMechanic").value = v.workshop?.mechanicName || "";
-					document.getElementById("editCarSupplier").value = v.workshop?.partsSupplier || "";
 					editCarModal.classList.remove("hidden");
 					editCarModal.classList.add("flex");
 				});
@@ -4032,7 +4607,6 @@
 				document.getElementById("editCarForm").addEventListener("submit", (e) => {
 					e.preventDefault();
 					if (!appData.vehicle) appData.vehicle = {};
-					if (!appData.vehicle.workshop) appData.vehicle.workshop = {};
 					appData.vehicle.make = document.getElementById("editCarMake").value.trim();
 					appData.vehicle.model = document.getElementById("editCarModel").value.trim();
 					appData.vehicle.year = document.getElementById("editCarYear").value.trim();
@@ -4040,12 +4614,209 @@
 					appData.currency = document.getElementById("editCarCurrency").value.trim() || "MYR";
 					appData.vehicle.engine = document.getElementById("editCarEngine").value.trim();
 					appData.vehicle.transmission = document.getElementById("editCarTrans").value.trim();
-					appData.vehicle.workshop.mechanicName = document.getElementById("editCarMechanic").value.trim();
-					appData.vehicle.workshop.partsSupplier = document.getElementById("editCarSupplier").value.trim();
 					saveToLocal(true);
 					renderAll();
 					closeEditCar();
 					showToast("Vehicle info updated");
+				});
+
+				// =====================================================================
+				// SETTINGS / ADD NEW VEHICLE MODAL
+				// =====================================================================
+				const settingsCarModal = document.getElementById("settingsCarModal");
+				const openSettingsModal = () => {
+					renderSettingsSavedCarsList();
+					settingsCarModal.classList.remove("hidden");
+					settingsCarModal.classList.add("flex");
+				};
+				const closeSettingsModal = () => {
+					settingsCarModal.classList.add("hidden");
+					settingsCarModal.classList.remove("flex");
+				};
+
+				document.getElementById("openSettingsBtn")?.addEventListener("click", openSettingsModal);
+				document.getElementById("closeSettingsCarModalBtn")?.addEventListener("click", closeSettingsModal);
+				document.getElementById("cancelSettingsCarModalBtn")?.addEventListener("click", closeSettingsModal);
+				settingsCarModal?.addEventListener("click", (e) => {
+					if (e.target === settingsCarModal) closeSettingsModal();
+				});
+
+				const TEMPLATE_PRESETS = {
+					"blank-template": { make: "", model: "", year: new Date().getFullYear(), engine: "", trans: "", currency: "USD", mileage: 0 },
+					"sample-sedan": { make: "Toyota", model: "Camry 2.5V", year: 2021, engine: "2.5L Dynamic Force I4", trans: "8-Speed Direct Shift Auto", currency: "USD", mileage: 45000 },
+					"sample-suv": { make: "Honda", model: "CR-V 1.5T AWD", year: 2022, engine: "1.5L VTEC Turbo", trans: "CVT AWD", currency: "USD", mileage: 38000 },
+					"sample-hatchback": { make: "Volkswagen", model: "Golf 1.4 TSI", year: 2020, engine: "1.4L TSI Turbo", trans: "7-Speed DSG", currency: "USD", mileage: 52000 },
+					"sample-truck": { make: "Ford", model: "Ranger 2.0 Bi-Turbo 4x4", year: 2022, engine: "2.0L EcoBlue Bi-Turbo Diesel", trans: "10-Speed SelectShift Auto", currency: "USD", mileage: 62000 },
+					"sample-sports": { make: "Porsche", model: "911 Carrera (992)", year: 2021, engine: "3.0L Twin-Turbo Flat-6", trans: "8-Speed PDK", currency: "USD", mileage: 22000 },
+					"sample-ev": { make: "Tesla", model: "Model 3 Dual Motor AWD", year: 2023, engine: "Dual AC Permanent Magnet Motors", trans: "Single-Speed Fixed Gear", currency: "USD", mileage: 28000 },
+					"sample-hybrid": { make: "Toyota", model: "Prius 1.8 Hybrid", year: 2022, engine: "1.8L Atkinson Cycle + Hybrid Synergy Drive", trans: "e-CVT", currency: "USD", mileage: 41000 },
+					"sample-van": { make: "Toyota", model: "Alphard 3.5 Executive Lounge", year: 2021, engine: "3.5L 2GR-FKS V6", trans: "8-Speed Automatic", currency: "USD", mileage: 58000 },
+				};
+
+				document.getElementById("modalNewCarBaseSelect")?.addEventListener("change", (e) => {
+					const preset = TEMPLATE_PRESETS[e.target.value];
+					if (preset) {
+						const makeEl = document.getElementById("modalNewCarMake");
+						const modelEl = document.getElementById("modalNewCarModel");
+						const yearEl = document.getElementById("modalNewCarYear");
+						const engineEl = document.getElementById("modalNewCarEngine");
+						const transEl = document.getElementById("modalNewCarTrans");
+						const currEl = document.getElementById("modalNewCarCurrency");
+						const kmEl = document.getElementById("modalNewCarMileage");
+
+						if (makeEl) makeEl.value = preset.make;
+						if (modelEl) modelEl.value = preset.model;
+						if (yearEl) yearEl.value = preset.year || "";
+						if (engineEl) engineEl.value = preset.engine;
+						if (transEl) transEl.value = preset.trans;
+						if (currEl) currEl.value = preset.currency;
+						if (kmEl) kmEl.value = preset.mileage || "";
+					}
+				});
+
+				function renderSettingsSavedCarsList() {
+					const container = document.getElementById("settingsSavedCarsList");
+					const countEl = document.getElementById("settingsSavedCarsCount");
+					if (!container) return;
+
+					const customMap = getCustomProfilesMap();
+					const sampleIds = new Set([
+						"sample-sedan",
+						"sample-suv",
+						"sample-hatchback",
+						"sample-truck",
+						"sample-sports",
+						"sample-ev",
+						"sample-hybrid",
+						"sample-van",
+						"blank-template",
+					]);
+					const savedEntries = Object.entries(customMap).filter(([id]) => !sampleIds.has(id));
+
+					if (countEl) countEl.textContent = `${savedEntries.length} saved`;
+
+					if (savedEntries.length === 0) {
+						container.innerHTML = `
+							<div class="p-3 rounded-xl bg-slate-950/60 border border-slate-800 text-center text-slate-500 text-xs">
+								No custom saved vehicles yet. Fill out the form above to create your first vehicle.
+							</div>
+						`;
+						return;
+					}
+
+					let html = "";
+					savedEntries.forEach(([id, label]) => {
+						const isActive = id === activeProfileKey;
+						html += `
+							<div class="flex items-center justify-between gap-2 p-2.5 rounded-xl bg-slate-950 border ${isActive ? "border-indigo-500/60 bg-indigo-500/5" : "border-slate-800 hover:border-slate-700"} transition">
+								<div class="flex items-center gap-2 min-w-0">
+									<span class="w-2 h-2 rounded-full ${isActive ? "bg-indigo-400 shadow-[0_0_8px_rgba(129,140,248,0.8)]" : "bg-slate-600"}"></span>
+									<span class="font-medium text-slate-200 truncate ${isActive ? "text-indigo-300 font-semibold" : ""}">${escapeHtml(label)}</span>
+									${isActive ? '<span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-indigo-500/20 text-indigo-300">Active</span>' : ""}
+								</div>
+								<div class="flex items-center gap-1.5 shrink-0">
+									${!isActive ? `
+										<button
+											type="button"
+											class="settings-switch-car-btn text-xs px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 transition"
+											data-car-id="${escapeHtml(id)}"
+										>
+											Switch
+										</button>
+									` : ""}
+									<button
+										type="button"
+										class="settings-delete-car-btn p-1.5 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 transition"
+										title="Delete saved vehicle"
+										data-car-id="${escapeHtml(id)}"
+										data-car-name="${escapeHtml(label)}"
+									>
+										<svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+											<path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+										</svg>
+									</button>
+								</div>
+							</div>
+						`;
+					});
+					container.innerHTML = html;
+
+					container.querySelectorAll(".settings-switch-car-btn").forEach((btn) => {
+						btn.addEventListener("click", () => {
+							const carId = btn.getAttribute("data-car-id");
+							if (carId) {
+								loadProfile(carId);
+								renderSettingsSavedCarsList();
+								closeSettingsModal();
+								showToast("Switched vehicle");
+							}
+						});
+					});
+
+					container.querySelectorAll(".settings-delete-car-btn").forEach((btn) => {
+						btn.addEventListener("click", () => {
+							const carId = btn.getAttribute("data-car-id");
+							const carName = btn.getAttribute("data-car-name") || "this vehicle";
+							if (confirm(`Are you sure you want to delete "${carName}"? All local records for this car will be removed.`)) {
+								localStorage.removeItem(STORAGE_PREFIX + carId);
+								const map = getCustomProfilesMap();
+								delete map[carId];
+								localStorage.setItem(CUSTOM_LIST_STORAGE, JSON.stringify(map));
+								if (activeProfileKey === carId) {
+									const remainingKeys = Object.keys(map);
+									if (remainingKeys.length > 0) {
+										loadProfile(remainingKeys[0]);
+									} else {
+										const newMap = getCustomProfilesMap();
+										loadProfile(Object.keys(newMap)[0]);
+									}
+								} else {
+									syncProfileSelectOptions();
+								}
+								renderSettingsSavedCarsList();
+								showToast(`Deleted ${carName}`);
+							}
+						});
+					});
+				}
+
+				document.getElementById("addNewCarForm")?.addEventListener("submit", (e) => {
+					e.preventDefault();
+					const baseKey = document.getElementById("modalNewCarBaseSelect").value || "blank-template";
+					const make = document.getElementById("modalNewCarMake").value.trim() || "Custom";
+					const model = document.getElementById("modalNewCarModel").value.trim() || "Vehicle";
+					const year = document.getElementById("modalNewCarYear").value.trim();
+					const plate = document.getElementById("modalNewCarPlate").value.trim();
+					const mileage = Number(document.getElementById("modalNewCarMileage").value) || 0;
+					const currency = document.getElementById("modalNewCarCurrency").value.trim() || "USD";
+					const engine = document.getElementById("modalNewCarEngine").value.trim();
+					const trans = document.getElementById("modalNewCarTrans").value.trim();
+
+					const baseObj = BUILTIN_PROFILES[baseKey] || BUILTIN_PROFILES["blank-template"];
+					const newProfile = JSON.parse(JSON.stringify(baseObj));
+
+					const newId = "car-" + Date.now();
+					newProfile.schemaVersion = "2.0";
+					newProfile.currency = currency;
+					newProfile.lastUpdated = new Date().toISOString().slice(0, 10);
+					if (!newProfile.vehicle) newProfile.vehicle = {};
+					newProfile.vehicle.id = newId;
+					newProfile.vehicle.make = make;
+					newProfile.vehicle.model = model;
+					newProfile.vehicle.year = year ? Number(year) : null;
+					newProfile.vehicle.plateNumber = plate || null;
+					newProfile.vehicle.currentMileageKm = mileage;
+					newProfile.vehicle.engine = engine || "";
+					newProfile.vehicle.transmission = trans || "";
+					newProfile.vehicle.latestServiceDate = new Date().toISOString().slice(0, 10);
+
+					localStorage.setItem(STORAGE_PREFIX + newId, JSON.stringify(newProfile));
+					registerCustomProfileOption(newId, `${make} ${model}`.trim());
+					loadProfile(newId);
+
+					closeSettingsModal();
+					e.target.reset();
+					showToast(`Vehicle "${make} ${model}" created & switched`);
 				});
 
 				// Register Service Worker for PWA (Installable App & Offline Mode)

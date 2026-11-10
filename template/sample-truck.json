@@ -1,38 +1,130 @@
-{
-  "schemaVersion": "2.0",
-  "lastUpdated": "2026-11-10",
-  "currency": "USD",
-  "vehicle": {
-    "id": "sample-truck",
-    "make": "Sample",
-    "model": "Pickup Truck 4x4",
-    "year": 2022,
-    "registrationDate": "2022-02-18",
-    "engine": "2.8L Turbo Diesel",
-    "engineNumber": "SAMPLE-DSL-004",
-    "chassisNumber": "SAMPLE-VIN-TR04",
-    "transmission": "6-Speed Automatic 4WD",
-    "plateNumber": "SAMPLE 4X4",
-    "currentMileageKm": 52000,
-    "latestServiceDate": "2026-10-20",
-    "workshop": {
-      "mechanicName": "Auto Care Center",
-      "location": "Main Street Garage",
-      "partsSupplier": "Auto Parts Depot"
-    }
-  },
-  "periodicSchedule": [
-    { "id": "diesel-engine-oil", "name": "Heavy Duty Engine Oil (15W-40 / 5W-40) & Filter", "category": "Fluids", "intervalKm": 10000, "intervalMonths": 6, "lastServicedKm": 50000, "lastServicedDate": "2026-10-20", "estimatedCostMyr": 95 },
-    { "id": "diesel-fuel-filter", "name": "Diesel Fuel Filter & Water Separator", "category": "Filters", "intervalKm": 20000, "intervalMonths": 12, "lastServicedKm": 40000, "lastServicedDate": "2026-04-10", "estimatedCostMyr": 65 },
-    { "id": "rear-diff-oil", "name": "Rear Differential Gear Oil (GL-5)", "category": "Drivetrain", "intervalKm": 40000, "intervalMonths": 24, "lastServicedKm": 40000, "lastServicedDate": "2026-04-10", "estimatedCostMyr": 50 },
-    { "id": "front-diff-transfer", "name": "Front Differential & 4WD Transfer Case Oil", "category": "Drivetrain", "intervalKm": 40000, "intervalMonths": 24, "lastServicedKm": 40000, "lastServicedDate": "2026-04-10", "estimatedCostMyr": 70 },
-    { "id": "engine-air-filter", "name": "Heavy Duty Engine Air Filter", "category": "Filters", "intervalKm": 20000, "intervalMonths": 12, "lastServicedKm": 40000, "lastServicedDate": "2026-04-10", "estimatedCostMyr": 35 },
-    { "id": "brake-fluid", "name": "Brake Fluid", "category": "Fluids", "intervalKm": 40000, "intervalMonths": 24, "lastServicedKm": 40000, "lastServicedDate": "2026-04-10", "estimatedCostMyr": 55 },
-    { "id": "propeller-grease", "name": "Propeller Shaft U-Joint Chassis Greasing", "category": "Chassis", "intervalKm": 10000, "intervalMonths": 6, "lastServicedKm": 50000, "lastServicedDate": "2026-10-20", "estimatedCostMyr": 25 },
-    { "id": "brake-pads", "name": "Heavy Duty Front Brake Pads", "category": "Brakes", "intervalKm": 35000, "intervalMonths": null, "lastServicedKm": 35000, "lastServicedDate": "2026-01-15", "estimatedCostMyr": 90 }
-  ],
-  "maintenanceHistory": [
-    { "id": "tr-rec-01", "date": "2026-10-20", "mileageKm": 50000, "title": "50,000 km Oil & Chassis Service", "category": "Periodic Service", "costMyr": 120, "paidMyr": 120, "paymentMethod": "Company Card", "status": "Completed", "notes": "Replaced diesel engine oil and filter; lubed driveshaft and U-joints." },
-    { "id": "tr-rec-02", "date": "2026-04-10", "mileageKm": 40000, "title": "40,000 km Major Drivetrain Service", "category": "Drivetrain", "costMyr": 240, "paidMyr": 240, "paymentMethod": "Debit Card", "status": "Completed", "notes": "Replaced fuel filter, front/rear differential fluids, and transfer case gear oil." }
-  ]
+﻿{
+    "schemaVersion":  "2.0",
+    "lastUpdated":  "2026-11-10",
+    "currency":  "USD",
+    "vehicle":  {
+                    "id":  "sample-truck",
+                    "make":  "Sample",
+                    "model":  "Pickup Truck 4x4",
+                    "year":  2022,
+                    "registrationDate":  "2022-02-18",
+                    "engine":  "2.8L Turbo Diesel",
+                    "engineNumber":  "SAMPLE-DSL-004",
+                    "chassisNumber":  "SAMPLE-VIN-TR04",
+                    "transmission":  "6-Speed Automatic 4WD",
+                    "plateNumber":  "SAMPLE 4X4",
+                    "currentMileageKm":  52000,
+                    "latestServiceDate":  "2026-10-20"
+                },
+    "periodicSchedule":  [
+                             {
+                                 "id":  "diesel-engine-oil",
+                                 "name":  "Heavy Duty Engine Oil (15W-40 / 5W-40) & Filter",
+                                 "category":  "Fluids",
+                                 "intervalKm":  10000,
+                                 "intervalMonths":  6,
+                                 "lastServicedKm":  50000,
+                                 "lastServicedDate":  "2026-10-20",
+                                 "estimatedCostMyr":  95
+                             },
+                             {
+                                 "id":  "diesel-fuel-filter",
+                                 "name":  "Diesel Fuel Filter & Water Separator",
+                                 "category":  "Filters",
+                                 "intervalKm":  20000,
+                                 "intervalMonths":  12,
+                                 "lastServicedKm":  40000,
+                                 "lastServicedDate":  "2026-04-10",
+                                 "estimatedCostMyr":  65
+                             },
+                             {
+                                 "id":  "rear-diff-oil",
+                                 "name":  "Rear Differential Gear Oil (GL-5)",
+                                 "category":  "Drivetrain",
+                                 "intervalKm":  40000,
+                                 "intervalMonths":  24,
+                                 "lastServicedKm":  40000,
+                                 "lastServicedDate":  "2026-04-10",
+                                 "estimatedCostMyr":  50
+                             },
+                             {
+                                 "id":  "front-diff-transfer",
+                                 "name":  "Front Differential & 4WD Transfer Case Oil",
+                                 "category":  "Drivetrain",
+                                 "intervalKm":  40000,
+                                 "intervalMonths":  24,
+                                 "lastServicedKm":  40000,
+                                 "lastServicedDate":  "2026-04-10",
+                                 "estimatedCostMyr":  70
+                             },
+                             {
+                                 "id":  "engine-air-filter",
+                                 "name":  "Heavy Duty Engine Air Filter",
+                                 "category":  "Filters",
+                                 "intervalKm":  20000,
+                                 "intervalMonths":  12,
+                                 "lastServicedKm":  40000,
+                                 "lastServicedDate":  "2026-04-10",
+                                 "estimatedCostMyr":  35
+                             },
+                             {
+                                 "id":  "brake-fluid",
+                                 "name":  "Brake Fluid",
+                                 "category":  "Fluids",
+                                 "intervalKm":  40000,
+                                 "intervalMonths":  24,
+                                 "lastServicedKm":  40000,
+                                 "lastServicedDate":  "2026-04-10",
+                                 "estimatedCostMyr":  55
+                             },
+                             {
+                                 "id":  "propeller-grease",
+                                 "name":  "Propeller Shaft U-Joint Chassis Greasing",
+                                 "category":  "Chassis",
+                                 "intervalKm":  10000,
+                                 "intervalMonths":  6,
+                                 "lastServicedKm":  50000,
+                                 "lastServicedDate":  "2026-10-20",
+                                 "estimatedCostMyr":  25
+                             },
+                             {
+                                 "id":  "brake-pads",
+                                 "name":  "Heavy Duty Front Brake Pads",
+                                 "category":  "Brakes",
+                                 "intervalKm":  35000,
+                                 "intervalMonths":  null,
+                                 "lastServicedKm":  35000,
+                                 "lastServicedDate":  "2026-01-15",
+                                 "estimatedCostMyr":  90
+                             }
+                         ],
+    "maintenanceHistory":  [
+                               {
+                                   "id":  "tr-rec-01",
+                                   "date":  "2026-10-20",
+                                   "mileageKm":  50000,
+                                   "title":  "50,000 km Oil & Chassis Service",
+                                   "category":  "Periodic Service",
+                                   "costMyr":  120,
+                                   "paidMyr":  120,
+                                   "paymentMethod":  "Company Card",
+                                   "status":  "Completed",
+                                   "notes":  "Replaced diesel engine oil and filter; lubed driveshaft and U-joints.",
+                                   "mechanic":  "Auto Care Center"
+                               },
+                               {
+                                   "id":  "tr-rec-02",
+                                   "date":  "2026-04-10",
+                                   "mileageKm":  40000,
+                                   "title":  "40,000 km Major Drivetrain Service",
+                                   "category":  "Drivetrain",
+                                   "costMyr":  240,
+                                   "paidMyr":  240,
+                                   "paymentMethod":  "Debit Card",
+                                   "status":  "Completed",
+                                   "notes":  "Replaced fuel filter, front/rear differential fluids, and transfer case gear oil.",
+                                   "mechanic":  "Auto Care Center"
+                               }
+                           ]
 }
+

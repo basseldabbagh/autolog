@@ -1,4 +1,4 @@
-const CACHE_NAME = 'autolog-v3';
+const CACHE_NAME = 'autolog-v4';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -23,12 +23,15 @@ self.addEventListener('activate', (e) => {
 // Network-first strategy: always fetch latest version; fallback to offline cache if offline
 self.addEventListener('fetch', (e) => {
   if (e.request.method !== 'GET') return;
+  // Ignore non-http(s) schemes (e.g. chrome-extension://)
+  if (!e.request.url.startsWith('http://') && !e.request.url.startsWith('https://')) return;
+
   e.respondWith(
     fetch(e.request)
       .then(res => {
         if (res && res.status === 200 && res.type === 'basic') {
           const resClone = res.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put(e.request, resClone));
+          caches.open(CACHE_NAME).then(cache => cache.put(e.request, resClone)).catch(() => {});
         }
         return res;
       })

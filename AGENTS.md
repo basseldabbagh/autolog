@@ -14,8 +14,8 @@
   1. Multi-vehicle profile switching (built-in sample profiles plus custom dynamic profiles).
   2. Dynamic odometer adjustment with fast increment steps (`+1k`, `+5k`) and reset capabilities.
   3. Real-time periodic maintenance status engine (categorized into `Good`, `Due Soon`, `Overdue`, and `Unset/Pending`).
-  4. Vector SVG charts (horizontal remaining distance bars and category expense donut) generated without heavy charting libraries.
-  5. Workshop maintenance ledger with keyword search, category filtering, labor vs. parts cost breakdown, and payment method attribution.
+  4. Vector SVG charts (horizontal remaining distance bars and toggleable category/mechanic expense donut) generated without heavy charting libraries.
+  5. Workshop maintenance ledger with keyword search, category filtering, per-record mechanic attribution and counters, labor vs. parts cost breakdown, and payment method attribution.
   6. Bi-directional data interchange hub supporting structured CSV (for spreadsheet software) and full JSON (v2.0 schema).
   7. Printable A4 Vehicle Condition Report generated in a clean popup tab with specialized print stylesheets.
   8. Native Web Share API integration with automatic fallback to clipboard copying for WhatsApp messaging.
@@ -114,7 +114,7 @@ Then navigate to `http://localhost:8000` in your web browser.
 ### Verification & Testing Procedure
 When introducing code changes:
 1. **Console Check**: Open Chrome/Edge DevTools (`F12`), navigate to the **Console** tab, and verify that no unhandled errors or syntax exceptions occur on page load.
-2. **Profile Switch Test**: Switch between available profiles and `➕ New Car`. Verify that the header title, odometer, schedule table, and history records refresh accurately.
+2. **Profile Switch & Settings Test**: Switch between saved local/Drive profiles and sample profiles using the header dropdown. Open **Settings** to verify the Add New Car modal opens with a flat template selector (no `<optgroup>`) and that newly created vehicles immediately persist and switch.
 3. **Odometer Reactivity**: Click `+1k` and `+5k`. Verify that:
    - Remaining distance updates in the table.
    - Status badges recalculate (`Good`, `Due Soon`, `Overdue`).
@@ -164,6 +164,10 @@ function escapeHtml(str) {
 ### 4. Vector SVG Chart Generation
 Do not inject external graphing dependencies (e.g., Chart.js). Generate SVGs dynamically by calculating coordinate strings and setting attributes on native SVG elements. Ensure viewBox dimensions provide responsive scaling.
 
+### 5. Design System Tokens & Vector Iconography
+- All UI colors, surfaces, status states, and chart fills must reference the CSS variables defined in `:root` (e.g., `--color-status-good`, `--color-brand-primary`, `--color-bg-canvas`).
+- Never use emojis as icons in UI elements, buttons, badges, or select menus. Always use unified, stroke-based SVG icons (`stroke="currentColor"`, `fill="none"`, `viewBox="0 0 24 24"`, and `stroke-width="1.75"` or `2`).
+
 ---
 
 ## 7. Change Rules & Maintenance Contracts
@@ -172,6 +176,7 @@ Do not inject external graphing dependencies (e.g., Chart.js). Generate SVGs dyn
 2. **Preserve Schema Compatibility**:
    - The current schema is `schemaVersion: "2.0"`.
    - Never remove or rename required fields (`vehicle.id`, `vehicle.make`, `vehicle.model`, `periodicSchedule`, `maintenanceHistory`) without implementing backwards-compatible fallback accessors.
+   - Workshop / mechanic information is attributed on individual service records (`record.mechanic`), not on the static vehicle profile. Vehicle profiles do not contain a `workshop` object.
 3. **Synchronize BUILTIN_PROFILES with `cars/*.json`**:
    - When modifying default vehicle profiles, ensure the `BUILTIN_PROFILES` object in `index.html` and the corresponding standalone file in `cars/*.json` remain identical in content.
 4. **Never Hardcode Secrets**:

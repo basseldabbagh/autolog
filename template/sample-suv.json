@@ -1,32 +1,67 @@
-{
-  "schemaVersion": "2.0",
-  "lastUpdated": "2026-11-10",
-  "currency": "USD",
-  "vehicle": {
-    "id": "sample-suv",
-    "make": "Sample",
-    "model": "SUV",
-    "year": 2023,
-    "registrationDate": "2023-03-20",
-    "engine": "2.5L AWD",
-    "engineNumber": "SAMPLE-ENG-002",
-    "chassisNumber": "SAMPLE-VIN-002",
-    "transmission": "Automatic",
-    "plateNumber": "SAMPLE 456",
-    "currentMileageKm": 28000,
-    "latestServiceDate": "2026-09-01",
-    "workshop": {
-      "mechanicName": "Auto Care Center",
-      "location": "Main Street Garage",
-      "partsSupplier": "Auto Parts Depot"
-    }
-  },
-  "periodicSchedule": [
-    { "id": "engine-oil", "name": "Engine Oil & Filter", "category": "Fluids", "intervalKm": 10000, "intervalMonths": 6, "lastServicedKm": 25000, "lastServicedDate": "2026-09-01", "estimatedCostMyr": 70 },
-    { "id": "cabin-filter", "name": "Cabin A/C Filter", "category": "Filters", "intervalKm": 20000, "intervalMonths": 12, "lastServicedKm": 20000, "lastServicedDate": "2026-04-10", "estimatedCostMyr": 30 },
-    { "id": "tire-rotation", "name": "Tire Rotation", "category": "Tires", "intervalKm": 10000, "intervalMonths": 6, "lastServicedKm": 25000, "lastServicedDate": "2026-09-01", "estimatedCostMyr": 35 }
-  ],
-  "maintenanceHistory": [
-    { "id": "rec-suv-01", "date": "2026-09-01", "mileageKm": 25000, "title": "Engine Oil Change & Tire Rotation", "category": "Periodic Service", "costMyr": 105, "paidMyr": 105, "paymentMethod": "Credit Card", "status": "Completed", "notes": "Routine maintenance." }
-  ]
+﻿{
+    "schemaVersion":  "2.0",
+    "lastUpdated":  "2026-11-10",
+    "currency":  "USD",
+    "vehicle":  {
+                    "id":  "sample-suv",
+                    "make":  "Sample",
+                    "model":  "SUV",
+                    "year":  2023,
+                    "registrationDate":  "2023-03-20",
+                    "engine":  "2.5L AWD",
+                    "engineNumber":  "SAMPLE-ENG-002",
+                    "chassisNumber":  "SAMPLE-VIN-002",
+                    "transmission":  "Automatic",
+                    "plateNumber":  "SAMPLE 456",
+                    "currentMileageKm":  28000,
+                    "latestServiceDate":  "2026-09-01"
+                },
+    "periodicSchedule":  [
+                             {
+                                 "id":  "engine-oil",
+                                 "name":  "Engine Oil & Filter",
+                                 "category":  "Fluids",
+                                 "intervalKm":  10000,
+                                 "intervalMonths":  6,
+                                 "lastServicedKm":  25000,
+                                 "lastServicedDate":  "2026-09-01",
+                                 "estimatedCostMyr":  70
+                             },
+                             {
+                                 "id":  "cabin-filter",
+                                 "name":  "Cabin A/C Filter",
+                                 "category":  "Filters",
+                                 "intervalKm":  20000,
+                                 "intervalMonths":  12,
+                                 "lastServicedKm":  20000,
+                                 "lastServicedDate":  "2026-04-10",
+                                 "estimatedCostMyr":  30
+                             },
+                             {
+                                 "id":  "tire-rotation",
+                                 "name":  "Tire Rotation",
+                                 "category":  "Tires",
+                                 "intervalKm":  10000,
+                                 "intervalMonths":  6,
+                                 "lastServicedKm":  25000,
+                                 "lastServicedDate":  "2026-09-01",
+                                 "estimatedCostMyr":  35
+                             }
+                         ],
+    "maintenanceHistory":  [
+                               {
+                                   "id":  "rec-suv-01",
+                                   "date":  "2026-09-01",
+                                   "mileageKm":  25000,
+                                   "title":  "Engine Oil Change & Tire Rotation",
+                                   "category":  "Periodic Service",
+                                   "costMyr":  105,
+                                   "paidMyr":  105,
+                                   "paymentMethod":  "Credit Card",
+                                   "status":  "Completed",
+                                   "notes":  "Routine maintenance.",
+                                   "mechanic":  "Auto Care Center"
+                               }
+                           ]
 }
+

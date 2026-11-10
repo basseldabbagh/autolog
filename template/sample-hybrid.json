@@ -1,37 +1,117 @@
-{
-  "schemaVersion": "2.0",
-  "lastUpdated": "2026-11-10",
-  "currency": "USD",
-  "vehicle": {
-    "id": "sample-hybrid",
-    "make": "Sample",
-    "model": "Hybrid Sedan 1.8L",
-    "year": 2023,
-    "registrationDate": "2023-05-12",
-    "engine": "1.8L Hybrid (Atkinson Cycle + Electric Motor)",
-    "engineNumber": "SAMPLE-HYB-007",
-    "chassisNumber": "SAMPLE-VIN-HY07",
-    "transmission": "e-CVT Electronic Continuously Variable",
-    "plateNumber": "SAMPLE HEV",
-    "currentMileageKm": 38000,
-    "latestServiceDate": "2026-09-30",
-    "workshop": {
-      "mechanicName": "Auto Care Center",
-      "location": "Main Street Garage",
-      "partsSupplier": "Auto Parts Depot"
-    }
-  },
-  "periodicSchedule": [
-    { "id": "ultra-low-oil", "name": "Engine Oil (0W-16 / 0W-20) & Filter", "category": "Fluids", "intervalKm": 10000, "intervalMonths": 6, "lastServicedKm": 30000, "lastServicedDate": "2026-09-30", "estimatedCostMyr": 65 },
-    { "id": "cabin-filter", "name": "Cabin Air Filter", "category": "Filters", "intervalKm": 20000, "intervalMonths": 12, "lastServicedKm": 30000, "lastServicedDate": "2026-09-30", "estimatedCostMyr": 25 },
-    { "id": "engine-air-filter", "name": "Engine Air Filter", "category": "Filters", "intervalKm": 20000, "intervalMonths": 12, "lastServicedKm": 30000, "lastServicedDate": "2026-09-30", "estimatedCostMyr": 28 },
-    { "id": "hybrid-battery-filter", "name": "Hybrid High-Voltage Battery Cooling Fan Filter", "category": "Filters", "intervalKm": 30000, "intervalMonths": 24, "lastServicedKm": 30000, "lastServicedDate": "2026-09-30", "estimatedCostMyr": 20 },
-    { "id": "inverter-coolant", "name": "Hybrid Inverter Coolant Loop Flush", "category": "Cooling", "intervalKm": 80000, "intervalMonths": 48, "lastServicedKm": null, "lastServicedDate": null, "estimatedCostMyr": 75 },
-    { "id": "engine-coolant", "name": "Engine Radiator Coolant Flush", "category": "Cooling", "intervalKm": 80000, "intervalMonths": 48, "lastServicedKm": null, "lastServicedDate": null, "estimatedCostMyr": 65 },
-    { "id": "brake-fluid", "name": "Brake Fluid (Electronic Brake System)", "category": "Fluids", "intervalKm": 40000, "intervalMonths": 24, "lastServicedKm": null, "lastServicedDate": null, "estimatedCostMyr": 50 },
-    { "id": "spark-plugs", "name": "Long-Life Iridium Spark Plugs", "category": "Ignition", "intervalKm": 100000, "intervalMonths": 72, "lastServicedKm": null, "lastServicedDate": null, "estimatedCostMyr": 85 }
-  ],
-  "maintenanceHistory": [
-    { "id": "hy-rec-01", "date": "2026-09-30", "mileageKm": 30000, "title": "30,000 km Hybrid Service", "category": "Periodic Service", "costMyr": 138, "paidMyr": 138, "paymentMethod": "Credit Card", "status": "Completed", "notes": "0W-16 engine oil change, oil filter, cabin air filter, and cleaned hybrid battery cooling duct filter." }
-  ]
+﻿{
+    "schemaVersion":  "2.0",
+    "lastUpdated":  "2026-11-10",
+    "currency":  "USD",
+    "vehicle":  {
+                    "id":  "sample-hybrid",
+                    "make":  "Sample",
+                    "model":  "Hybrid Sedan 1.8L",
+                    "year":  2023,
+                    "registrationDate":  "2023-05-12",
+                    "engine":  "1.8L Hybrid (Atkinson Cycle + Electric Motor)",
+                    "engineNumber":  "SAMPLE-HYB-007",
+                    "chassisNumber":  "SAMPLE-VIN-HY07",
+                    "transmission":  "e-CVT Electronic Continuously Variable",
+                    "plateNumber":  "SAMPLE HEV",
+                    "currentMileageKm":  38000,
+                    "latestServiceDate":  "2026-09-30"
+                },
+    "periodicSchedule":  [
+                             {
+                                 "id":  "ultra-low-oil",
+                                 "name":  "Engine Oil (0W-16 / 0W-20) & Filter",
+                                 "category":  "Fluids",
+                                 "intervalKm":  10000,
+                                 "intervalMonths":  6,
+                                 "lastServicedKm":  30000,
+                                 "lastServicedDate":  "2026-09-30",
+                                 "estimatedCostMyr":  65
+                             },
+                             {
+                                 "id":  "cabin-filter",
+                                 "name":  "Cabin Air Filter",
+                                 "category":  "Filters",
+                                 "intervalKm":  20000,
+                                 "intervalMonths":  12,
+                                 "lastServicedKm":  30000,
+                                 "lastServicedDate":  "2026-09-30",
+                                 "estimatedCostMyr":  25
+                             },
+                             {
+                                 "id":  "engine-air-filter",
+                                 "name":  "Engine Air Filter",
+                                 "category":  "Filters",
+                                 "intervalKm":  20000,
+                                 "intervalMonths":  12,
+                                 "lastServicedKm":  30000,
+                                 "lastServicedDate":  "2026-09-30",
+                                 "estimatedCostMyr":  28
+                             },
+                             {
+                                 "id":  "hybrid-battery-filter",
+                                 "name":  "Hybrid High-Voltage Battery Cooling Fan Filter",
+                                 "category":  "Filters",
+                                 "intervalKm":  30000,
+                                 "intervalMonths":  24,
+                                 "lastServicedKm":  30000,
+                                 "lastServicedDate":  "2026-09-30",
+                                 "estimatedCostMyr":  20
+                             },
+                             {
+                                 "id":  "inverter-coolant",
+                                 "name":  "Hybrid Inverter Coolant Loop Flush",
+                                 "category":  "Cooling",
+                                 "intervalKm":  80000,
+                                 "intervalMonths":  48,
+                                 "lastServicedKm":  null,
+                                 "lastServicedDate":  null,
+                                 "estimatedCostMyr":  75
+                             },
+                             {
+                                 "id":  "engine-coolant",
+                                 "name":  "Engine Radiator Coolant Flush",
+                                 "category":  "Cooling",
+                                 "intervalKm":  80000,
+                                 "intervalMonths":  48,
+                                 "lastServicedKm":  null,
+                                 "lastServicedDate":  null,
+                                 "estimatedCostMyr":  65
+                             },
+                             {
+                                 "id":  "brake-fluid",
+                                 "name":  "Brake Fluid (Electronic Brake System)",
+                                 "category":  "Fluids",
+                                 "intervalKm":  40000,
+                                 "intervalMonths":  24,
+                                 "lastServicedKm":  null,
+                                 "lastServicedDate":  null,
+                                 "estimatedCostMyr":  50
+                             },
+                             {
+                                 "id":  "spark-plugs",
+                                 "name":  "Long-Life Iridium Spark Plugs",
+                                 "category":  "Ignition",
+                                 "intervalKm":  100000,
+                                 "intervalMonths":  72,
+                                 "lastServicedKm":  null,
+                                 "lastServicedDate":  null,
+                                 "estimatedCostMyr":  85
+                             }
+                         ],
+    "maintenanceHistory":  [
+                               {
+                                   "id":  "hy-rec-01",
+                                   "date":  "2026-09-30",
+                                   "mileageKm":  30000,
+                                   "title":  "30,000 km Hybrid Service",
+                                   "category":  "Periodic Service",
+                                   "costMyr":  138,
+                                   "paidMyr":  138,
+                                   "paymentMethod":  "Credit Card",
+                                   "status":  "Completed",
+                                   "notes":  "0W-16 engine oil change, oil filter, cabin air filter, and cleaned hybrid battery cooling duct filter.",
+                                   "mechanic":  "Auto Care Center"
+                               }
+                           ]
 }
+

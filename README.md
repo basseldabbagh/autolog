@@ -109,8 +109,10 @@ autolog/
 
 ## 💡 How It Works
 
-### 1. Multi-Vehicle Profiles
-Select between preloaded vehicle profiles or choose **➕ New Car** to load a blank vehicle profile. When editing vehicle specifications (make, model, year, registration date, engine code, chassis number, transmission, workshop contact, parts supplier), changes persist immediately to `localStorage`.
+### 1. Multi-Vehicle Profiles & Settings
+- **Vehicle Switcher**: Select between saved vehicles (both local `localStorage` and Google Drive synced) or explore factory sample profiles directly from the header dropdown.
+- **Settings & Add New Car**: Click the **Settings** button in the header toolbar to open the Add Vehicle modal. Select from flat template presets (Sedan, SUV, Hatchback, Truck, Sports, EV, Hybrid, Van, or Blank Template) without nested option groups, enter vehicle specifications, and immediately switch to your new vehicle.
+- **Vehicle Management**: The Settings modal also lists all custom saved vehicles with fast one-click switching and deletion options.
 
 ### 2. Live Odometer Simulation
 The odometer display tracks the vehicle's active mileage:
@@ -149,6 +151,11 @@ Clicking **Share** opens a modal containing:
 - Native Web Share API integration (on mobile or supported browsers).
 - Formatted plain-text breakdown ready to paste into WhatsApp messages to mechanics, parts suppliers, or prospective buyers.
 
+### 9. Google Account & Cloud Sync
+The header features a real-time Google Account button with connection status:
+- **Connection Status Indicator**: Displays an emerald status dot and "Connected" when signed in via Google OAuth 2.0, or a slate dot and "Not Connected" when disconnected.
+- **Drive Sync Modal**: Configure Google OAuth Client ID, toggle auto-sync on changes, push current vehicle records to your personal Google Drive folder (`AutoLog Maintenance`), or pull and restore vehicles across browsers.
+
 ---
 
 ## 📐 Data Schemas & Specifications
@@ -172,12 +179,7 @@ Clicking **Share** opens a modal containing:
     "transmission": "6-Speed Automatic",
     "plateNumber": "KLM-4820",
     "currentMileageKm": 45000,
-    "latestServiceDate": "2026-01-15",
-    "workshop": {
-      "mechanicName": "Metro Auto Care",
-      "location": "Industrial Park, Metro City",
-      "partsSupplier": "Grand Auto Parts (+1 555-0142)"
-    }
+    "latestServiceDate": "2026-01-15"
   },
   "periodicSchedule": [
     {
@@ -198,6 +200,7 @@ Clicking **Share** opens a modal containing:
       "mileageKm": 42000,
       "title": "Engine Oil & Filter Service",
       "category": "Periodic & Fluids",
+      "mechanic": "Metro Auto Care",
       "costMyr": 65,
       "paidMyr": 65,
       "paymentMethod": "Credit Card",
@@ -211,16 +214,18 @@ Clicking **Share** opens a modal containing:
 ### CSV Import / Export Format
 
 The application exports a unified CSV document containing three logical record sections identified by the `Record_Type` column:
-1. `METADATA`: Key-value pairs for vehicle specs (Make, Model, Year, Plate Number, Engine Number, Workshop).
+1. `METADATA`: Key-value pairs for vehicle specs (Make, Model, Year, Plate Number, Engine Number, Transmission, Currency).
 2. `SCHEDULE`: Periodic maintenance intervals and baseline odometer readings.
-3. `HISTORY`: Individual service log records.
+3. `HISTORY`: Individual service log records including Title, Category, Mileage, Date, Cost, Paid, Method, Notes, and Mechanic/Workshop.
 
 ---
 
 ## 🛠️ Development & Customization
 
-- **No Node.js or Build Tools**: No `npm install`, `webpack`, or `vite` required.
-- **Styling**: Uses Tailwind CSS via CDN (`https://cdn.tailwindcss.com`) configured with dark mode and custom fonts.
+- **Design System Tokens (CSS Variables)**: All theme colors (backgrounds, surfaces, borders, brand colors, semantic statuses `Good`, `Due Soon`, `Overdue`, and chart palettes) are defined as CSS Custom Properties in `:root`. You can re-theme the entire application without touching HTML markup by modifying the `:root` variables in [`index.html`](file:///e:/HTML/autolog/index.html).
+- **Unified SVG Icon System (Zero Emojis)**: The UI adheres to professional design standards by using unified stroke-based SVG vector icons (`viewBox="0 0 24 24"`, `stroke="currentColor"`) for all vehicle types, status badges, action buttons, and modal dialogs.
+- **No Node.js or Build Tools**: No `npm install`, `webpack`, or `vite` required. Runs directly from `file://` or any static HTTP server.
+- **Styling**: Uses Tailwind CSS via CDN (`https://cdn.tailwindcss.com`) configured with dark mode and theme aliases for design tokens.
 - **Typography**: Uses Google Fonts (`Inter` and `JetBrains Mono`).
 - **Editing**: Open [`index.html`](file:///e:/HTML/autolog/index.html) in your editor (VS Code, Cursor, etc.), edit markup or JavaScript, and refresh your browser.
 
