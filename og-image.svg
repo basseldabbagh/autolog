@@ -111,8 +111,8 @@
     
     <!-- Vehicle Header Row -->
     <g transform="translate(28, 30)">
-      <text x="0" y="20" font-family="'Inter', sans-serif" font-size="20" font-weight="700" fill="#ffffff">2009 Hyundai Elantra</text>
-      <text x="0" y="42" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="500" fill="#94a3b8">B 1234 XYZ • 1.6L Gamma AT</text>
+      <text x="0" y="20" font-family="'Inter', sans-serif" font-size="20" font-weight="700" fill="#ffffff">2022 Executive Sedan</text>
+      <text x="0" y="42" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="500" fill="#94a3b8">WAA 1234 • 2.0L Turbocharged AT</text>
       
       <!-- Live Odometer Pill -->
       <rect x="260" y="2" width="124" height="42" rx="10" fill="#020617" stroke="#1e293b" stroke-width="1.5" />

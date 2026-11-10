@@ -39,7 +39,7 @@
 | **Storage / Persistence** | Browser `localStorage` (JSON strings) | Keys `autolog_active_profile`, `autolog_car_${id}` |
 | **Progressive Web App** | Web App Manifest & Service Worker (Offline Cache) | [`manifest.json`](file:///e:/HTML/autolog/manifest.json), [`sw.js`](file:///e:/HTML/autolog/sw.js) |
 | **Interchange Formats** | Custom CSV Parser/Serializer & JSON Schema v2.0 | Functions `buildCsvFromData()`, `parseCsvText()` |
-| **Print / PDF Engine** | Browser Print Engine (`@media print` in dynamic HTML document) | Function `generateA4Report()` |
+| **Print / PDF Engine** | Browser Print Engine (`@media print` in dynamic HTML document) | Functions `generateA4StatusReportTab()`, `generateA4HistoryReportTab()` |
 | **License** | MIT License (Public for all developers) | [`LICENSE.md`](file:///e:/HTML/autolog/LICENSE.md) |
 
 ---

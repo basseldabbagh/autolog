@@ -278,33 +278,38 @@ Typography is loaded dynamically via Google Fonts with robust fallbacks:
 
 ### 4.7 Modals
 All modals use fixed-position backdrop overlays (`fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm`):
-1. **Settings & Tools Modal (`#settingsCarModal`)**: Opened via the header Settings button. Features quick action triggers for A4 Report, Import/Export Hub, and Google Account Sync; a flat `<select id="modalNewCarBaseSelect">` (without `<optgroup>`) providing presets (Sedan, SUV, Hatchback, Truck, Sports, EV, Hybrid, Van, Blank Car); vehicle identity inputs; and a management list for switching and deleting saved local & Drive vehicles.
+1. **Settings & Tools Modal (`#settingsCarModal`)**: Opened via the header Settings button. Features:
+   - **Theme Selector**: 3-button toggle (`System`, `Light`, `Dark`) with instant root variable re-theming and persistent storage.
+   - **Dual A4 Report Triggers**: Separate buttons for **Status Report (A4)** (vehicle condition & periodic maintenance matrix) and **Service History (A4)** (filter-aware workshop ledger & expenses).
+   - **Import/Export Hub & Cloud Sync**: Direct triggers for Data Hub and Google Drive sync.
+   - **Add Vehicle Preset Selector**: Flat `<select id="modalNewCarBaseSelect">` providing presets (Sedan, SUV, Hatchback, Truck, Sports, EV, Hybrid, Van, Blank Car) with custom inputs.
+   - **Saved Garages Management**: Management list for switching and deleting saved local & Drive vehicles.
 2. **Data Hub Modal (`#dataHubModal`)**: Dual-tab interface (`CSV` tab in emerald, `JSON` tab in indigo). Includes raw JSON textarea with immediate syntax checking.
 3. **Vehicle Specs Editor (`#editCarModal`)**: Clean form for Make, Model, Year, Registration, Plate, Engine, and Transmission.
-4. **Google Drive Sync Modal (`#driveSyncModal`)**: Google OAuth 2.0 configuration, manual Push/Pull, and auto-sync toggle.
-5. **Share Modal (`#shareModal`)**: Clean preview with copy and Web Share triggers.
+4. **Google Drive Sync Modal (`#driveSyncModal`)**: Google OAuth 2.0 configuration, custom Drive folder naming, manual Push/Pull, and one-click "Sync All Local Cars to Drive".
+5. **Share Modal (`#shareModal`)**: Clean preview with copy, Web Share triggers, and direct buttons for Status Report (A4) and History Report (A4).
 6. **Add Maintenance Record Modal (`#addRecordModal`)**: Service log entry with dynamic Workshop/Mechanic selector, linked maintenance interval recalculation, and custom notes.
 7. **Add Schedule Item Modal (`#addScheduleModal`)**: Periodic interval creator.
 
 ---
 
-## 5. Printable A4 Vehicle Condition Report
+## 5. Dual Printable A4 Reports
 
-When **A4 Report** is clicked, a dedicated window opens containing a specialized HTML document designed specifically for A4 paper output:
+MotoFolio provides two specialized print-ready A4 reports generated in isolated browser tabs with standard `@media print` typography:
 
-- **Page Constraints**: Formatted with standard print styling:
-  ```css
-  @page { size: A4 portrait; margin: 12mm 15mm; }
-  @media print {
-    body { background: #fff !important; color: #0f172a !important; }
-    .no-print { display: none !important; }
-  }
-  ```
-- **Monochrome & High-Contrast Typography**: Uses black and dark slate text against pure white backgrounds to ensure crisp printing on all standard office laser and inkjet printers.
-- **Letterhead & Identity**: Displays vehicle make, model, registration date, chassis number, engine number, license plate, and current odometer reading.
-- **Schedule Audit Table**: Prints all periodic maintenance items with clean table borders and bold status markers (`GOOD`, `DUE SOON`, `OVERDUE`, `UNSET`).
-- **Complete Workshop Ledger**: Lists all recorded maintenance history entries with dates, mileage, descriptions, categories, and costs.
-- **Sign-off Block**: Contains dual verification signature lines for the Workshop Mechanic and the Vehicle Owner.
+### 5.1 Vehicle Status Report (A4)
+- **Scope**: Current vehicle health, documentation expiry, and periodic maintenance schedule.
+- **Header & Letterhead**: Vehicle specs, VIN/Chassis, Plate number, Engine code, Current odometer, and Road Tax/Insurance expiry status.
+- **Periodic Schedule Matrix**: Complete table of maintenance items, interval kilometers and months, last serviced readings, next due targets, remaining distance/days, OEM part numbers, and high-visibility status badges (`GOOD`, `DUE SOON`, `OVERDUE`, `UNSET`).
+- **Sign-off Block**: Inspector and Owner verification signature and date fields.
+- **Omission**: Omits the workshop maintenance history table to keep vehicle condition inspections concise and single-purpose.
+
+### 5.2 Service History & Expense Report (A4)
+- **Scope**: Workshop service ledger, parts vs. labor cost breakdown, and mechanic attributions.
+- **Filter-Aware**: Accurately reflects active dashboard filters (date range, selected category, or search query).
+- **Financial Breakdown**: Summary metric cards for Total Expenditure, Parts Cost, Labor & Fees, and number of workshop visits.
+- **Maintenance Ledger**: Complete tabular history including service date, odometer reading, title/description, category, parts cost, labor cost, total paid, payment method, and workshop/mechanic name.
+- **Sign-off Block**: Workshop Service Advisor and Vehicle Owner sign-off fields.
 
 ---
 

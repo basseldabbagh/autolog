@@ -49,8 +49,10 @@ All data is stored client-side in the browser's `localStorage` and can be export
 - **🕒 Distance & Time Dual-Tracking**: Periodic schedule tracks by both distance (KM) and calendar time (`intervalMonths`). The system calculates `nextDueDate` alongside `nextDueKm`, triggering warnings based on whichever comes first (KM or Date).
 - **🛞 Tire Management Hub**: Specialized maintenance rows for Tire Rotation (every 10,000 km / 6 mo), Wheel Alignment (every 10,000 km / 12 mo), and Tire Replacement (every 50,000 km / 36 mo).
 - **📑 Official Documents Widget**: Dedicated dashboard countdown widget next to Total Cost tracking Road Tax and Insurance expiry dates with real-time days-remaining indicators, warning color transitions, and an interactive edit modal.
-- **⛽ Fuel Efficiency & Engine Health Tracker**: Interactive KM/L consumption analytics designed for Honda i-DSI and modern powertrains. Includes native SVG trend charting, fuel receipt logger modal, and fuel log ledger.
-- **🏷️ OEM Part Numbers Reference**: Quick reference column and badges across the maintenance schedule and A4 printable report displaying manufacturer OEM part numbers (e.g. NGK spark plugs, Honda HMMF fluid).
+- **⛽ Fuel Efficiency & Powertrain Diagnostics**: Interactive KM/L consumption analytics and early ignition health diagnostics. Includes native SVG trend charting, fuel receipt logger modal, and fuel log ledger.
+- **🏷️ OEM Part Numbers Reference**: Quick reference column and badges across the maintenance schedule and printable reports displaying manufacturer OEM part numbers (e.g. spark plugs, transmission fluids, filters).
+- **🌓 Light / Dark Mode Toggle**: Instant theme switching in Settings between System (OS auto-detection), Light, and Dark modes without screen flash.
+- **☁️ Google Drive Sync & Multi-Car Backup**: Sign in with Google to backup vehicle profiles directly to Google Drive. Includes custom Drive folder naming and a one-click "Sync All Local Cars to Drive" button to sync your entire local garage to Drive.
 - **🛠️ Periodic Maintenance Schedule**: Track engine oil, transmission fluid, spark plugs, timing belt/chain, coolant, drive belts, and filters with status badges:
   - 🟢 **Good**: > 1,000 km and > 30 days remaining.
   - 🟡 **Due Soon**: ≤ 1,000 km or ≤ 30 days remaining.
@@ -63,7 +65,9 @@ All data is stored client-side in the browser's `localStorage` and can be export
 - **📁 Unified Data Hub**:
   - **CSV Tab**: Download blank CSV template, export current car to CSV, and import spreadsheet files with auto-save.
   - **JSON Tab**: In-browser JSON editor with syntax validation, blank template generator, direct file import, and export.
-- **📄 Printable A4 Vehicle Condition Report**: Opens a cleanly formatted vehicle condition certificate in a new browser tab with print styling (`@media print`), workshop letterhead, schedule health summary, and signature lines.
+- **📄 Dual Printable A4 Reports**: Dedicated print-ready reports opened in clean tabs with specialized `@media print` styling:
+  - **Vehicle Status Report (A4)**: Comprehensive condition certificate showing current vehicle specifications, document expiry dates, and full periodic schedule health matrix without cluttering maintenance logs.
+  - **Service History Report (A4)**: Filter-aware maintenance and expense ledger detailing parts vs. labor costs, mechanic attributions, and workshop receipts matching current dashboard filters.
 - **📲 Instant Report Sharing**: Native Web Share API integration with automatic fallback to one-click WhatsApp text summary copying.
 - **🔒 Zero-Tracking & 100% Privacy**: Client-side execution with origin-isolated storage. No backend, no telemetry, no tracking cookies.
 
