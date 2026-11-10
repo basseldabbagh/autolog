@@ -1,4 +1,4 @@
-const CACHE_NAME = 'autolog-v5';
+const CACHE_NAME = 'motofolio-v1';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',

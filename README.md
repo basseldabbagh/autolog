@@ -1,7 +1,9 @@
-# autolog — Car Maintenance & Service Tracker
+# MotoFolio — Car Maintenance & Service Tracker
 
 > **Universal interactive vehicle maintenance schedule, live odometer simulator, workshop expense logger, and printable A4 vehicle condition report.**
 > Built as a zero-dependency, single-file modern web application for car owners, DIY mechanics, workshop owners, and fleet managers. Free, open-source, and public for all developers under the MIT License.
+>
+> 🌐 **Live Website**: [https://motofolio.pages.dev/](https://motofolio.pages.dev/)
 
 ---
 
@@ -31,7 +33,7 @@
 
 ## 🌟 Overview
 
-**AutoLog** is a lightweight, high-performance vehicle lifecycle and maintenance tracking application. Unlike bulky enterprise fleet management systems or mobile apps gated behind logins and subscriptions, AutoLog runs directly in any modern browser without servers, databases, or build pipelines.
+**MotoFolio** is a lightweight, high-performance vehicle lifecycle and maintenance tracking application. Unlike bulky enterprise fleet management systems or mobile apps gated behind logins and subscriptions, MotoFolio runs directly in any modern browser without servers, databases, or build pipelines.
 
 All data is stored client-side in the browser's `localStorage` and can be exported, imported, or backed up at any time in standard **CSV** (for Microsoft Excel and Google Sheets) or **JSON** formats.
 
@@ -41,7 +43,7 @@ All data is stored client-side in the browser's `localStorage` and can be export
 
 - **📱 Progressive Web App (PWA)**: Installable directly to home screens on iOS, Android, macOS, and Windows via [`manifest.json`](file:///e:/HTML/autolog/manifest.json) and [`sw.js`](file:///e:/HTML/autolog/sw.js) with full offline caching.
 - **🔍 Global Dashboard Filters**: Slice analytics and expense charts by time period (*This Year*, *Last Year*, *Last 6 Months*, *All Time*, or *Custom Date Range*) and service category with instant recalculation.
-- **🚗 Clean Slate & Ad-Free Vehicle Onboarding**: No default vehicles seeded and zero commercial vehicle advertisements or fake data. When starting fresh or when no cars exist in storage, AutoLog displays an onboarding hub of vehicle archetype templates (Sedan, SUV, Hatchback, Truck 4x4, Sports Coupe, EV, Hybrid, MPV, or Blank) to pick and customize with your own make and model, alongside quick Google Sign-In and CSV/JSON Import/Export actions.
+- **🚗 Clean Slate & Ad-Free Vehicle Onboarding**: No default vehicles seeded and zero commercial vehicle advertisements or fake data. When starting fresh or when no cars exist in storage, MotoFolio displays an onboarding hub of vehicle archetype templates (Sedan, SUV, Hatchback, Truck 4x4, Sports Coupe, EV, Hybrid, MPV, or Blank) to pick and customize with your own make and model, alongside quick Google Sign-In and CSV/JSON Import/Export actions.
 - **🔗 Sharable Filter Sync in URL**: Active vehicle profile, dashboard date period preset, custom date ranges, category filters, periodic schedule status tabs, and history search queries are automatically synchronized with the URL query parameters (`?car=...&period=...&cat=...&sched=...&q=...`) for instant bookmarking and one-click shareable filtered views.
 - **⏱️ Live Odometer Simulation**: Update mileage manually or increment quickly with `+1k` and `+5k` buttons. Recalculates every service interval and countdown in real time.
 - **🕒 Distance & Time Dual-Tracking**: Periodic schedule tracks by both distance (KM) and calendar time (`intervalMonths`). The system calculates `nextDueDate` alongside `nextDueKm`, triggering warnings based on whichever comes first (KM or Date).
@@ -162,7 +164,7 @@ Clicking **Share** opens a modal containing:
 ### 9. Google Account & Cloud Sync
 The header features a real-time Google Account button with connection status:
 - **Connection Status Indicator**: Displays an emerald status dot and "Connected" when signed in via Google OAuth 2.0, or a slate dot and "Not Connected" when disconnected.
-- **Drive Sync Modal**: Configure Google OAuth Client ID, toggle auto-sync on changes, push current vehicle records to your personal Google Drive folder (`AutoLog Maintenance`), or pull and restore vehicles across browsers.
+- **Drive Sync Modal**: Configure Google OAuth Client ID, toggle auto-sync on changes, push current vehicle records to your personal Google Drive folder (`MotoFolio`), or pull and restore vehicles across browsers.
 
 ---
 

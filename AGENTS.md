@@ -1,13 +1,14 @@
-# AGENTS.md — AutoLog Engineering & AI Agent Operating Guide
+# AGENTS.md — MotoFolio Engineering & AI Agent Operating Guide
 
-> **Target Audience**: AI coding agents, autonomous coding tools, and software engineers contributing to or maintaining the **AutoLog** repository.
+> **Target Audience**: AI coding agents, autonomous coding tools, and software engineers contributing to or maintaining the **MotoFolio** repository.
 > **Repository Purpose**: Universal client-side vehicle maintenance tracker, periodic service interval calculator, workshop expense ledger, and printable A4 vehicle condition report.
+> **Live Production**: `https://motofolio.pages.dev/`
 
 ---
 
 ## 1. Project Overview
 
-- **What the Project Does**: AutoLog is a standalone, client-side web application designed to track vehicle maintenance schedules, periodic fluid and part replacement intervals, odometer simulation, workshop service invoices, parts costs, and export/import data via CSV and JSON. It also generates print-ready A4 condition inspection reports and WhatsApp-ready summaries.
+- **What the Project Does**: MotoFolio is a standalone, client-side web application designed to track vehicle maintenance schedules, periodic fluid and part replacement intervals, odometer simulation, workshop service invoices, parts costs, and export/import data via CSV and JSON. It also generates print-ready A4 condition inspection reports and WhatsApp-ready summaries.
 - **Target Users**: Vehicle owners, car enthusiasts, DIY mechanics, independent automotive workshop operators, and fleet coordinators.
 - **Project Type**: Single-page, client-side web application (SPA) contained entirely within a monolithic [`index.html`](file:///e:/HTML/autolog/index.html) file, accompanied by standalone JSON vehicle profile definitions in [`cars/`](file:///e:/HTML/autolog/cars/).
 - **Major Capabilities**:
@@ -189,7 +190,7 @@ Do not inject external graphing dependencies (e.g., Chart.js). Generate SVGs dyn
 
 ## 8. Agent Operating Procedure
 
-When tasked with a modification or feature request on AutoLog:
+When tasked with a modification or feature request on MotoFolio:
 
 ```mermaid
 flowchart TD

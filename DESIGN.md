@@ -1,13 +1,13 @@
-# DESIGN.md — AutoLog UI/UX Design System & Architecture
+# DESIGN.md — MotoFolio UI/UX Design System & Architecture
 
-> **Document Scope**: Complete visual design specifications, color tokens, typography systems, component hierarchy, interaction patterns, and printable layout architecture for the **AutoLog** vehicle maintenance application.
+> **Document Scope**: Complete visual design specifications, color tokens, typography systems, component hierarchy, interaction patterns, and printable layout architecture for the **MotoFolio** vehicle maintenance application.
 > **Source of Truth**: [`index.html`](file:///e:/HTML/autolog/index.html) and [`instructions/UI-UX skill.md`](file:///e:/HTML/autolog/instructions/UI-UX%20skill.md).
 
 ---
 
 ## 1. Design Overview & Philosophy
 
-AutoLog's design language is modeled after modern high-end automotive digital cockpits and performance telemetry dashboards. The visual design prioritizes:
+MotoFolio's design language is modeled after modern high-end automotive digital cockpits and performance telemetry dashboards. The visual design prioritizes:
 
 - **Dark-Mode-First High Contrast**: A rich `slate-950` backdrop with subtle luminous ambient glows (`indigo-600` and `emerald-500` blurred orbs) that reduces eye strain in workshop and garage environments.
 - **Information Density & Scannability**: Metric cards, monospaced odometer dials, and status indicators allow car owners and technicians to assess vehicle health in seconds.
@@ -21,7 +21,7 @@ AutoLog's design language is modeled after modern high-end automotive digital co
 
 ### 2.1 Design System Tokens & CSS Variables
 
-AutoLog implements a centralized design token system declared as CSS Custom Properties in `:root`. Developers and users can re-theme the entire application (canvas, surfaces, brand colors, semantic statuses, and charts) by simply adjusting these variables in the `<style>` block of `index.html`:
+MotoFolio implements a centralized design token system declared as CSS Custom Properties in `:root`. Developers and users can re-theme the entire application (canvas, surfaces, brand colors, semantic statuses, and charts) by simply adjusting these variables in the `<style>` block of `index.html`:
 
 ```css
 :root {

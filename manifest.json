@@ -1,7 +1,7 @@
 {
-  "name": "AutoLog — Universal Car Maintenance & Service Tracker",
-  "short_name": "AutoLog",
-  "id": "autolog-vehicle-tracker",
+  "name": "MotoFolio — Universal Car Maintenance & Service Tracker",
+  "short_name": "MotoFolio",
+  "id": "motofolio-vehicle-tracker",
   "description": "Universal interactive car maintenance tracker, periodic service interval calculator, live odometer simulator, and printable A4 vehicle condition report.",
   "start_url": "./index.html",
   "scope": "./",
