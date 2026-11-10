@@ -2518,29 +2518,9 @@
 
 							<!-- Google Drive Cloud Sync -->
 							<button
-								id="openDriveSyncFromSettingsBtn"
-								type="button"
-								class="inline-flex items-center justify-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold px-2.5 py-2.5 rounded-xl border border-slate-700 transition cursor-pointer"
-								title="Configure Google Drive Cloud Sync"
-							>
-								<svg class="w-4 h-4 text-amber-400 shrink-0" viewBox="0 0 24 24" fill="currentColor">
-									<path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM19 18H6c-2.21 0-4-1.79-4-4 0-2.05 1.53-3.76 3.56-3.97l1.07-.11.5-.95C8.08 7.14 9.94 6 12 6c2.62 0 4.88 1.86 5.39 4.43l.3 1.5 1.53.11c1.56.1 2.78 1.41 2.78 2.96 0 1.65-1.35 3-3 3z"/>
-								</svg>
-								<span>Google Drive</span>
-							</button>
-						</div>
-					</div>
-								<svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-								</svg>
-								<span>Import / Export</span>
-							</button>
-
-							<!-- Google Account Button (Connected / Not Connected) -->
-							<button
 								id="openDriveSyncModalBtn"
 								type="button"
-								class="inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-100 text-xs font-semibold px-3.5 py-2.5 rounded-xl border border-slate-700 hover:border-indigo-500/50 shadow-sm transition cursor-pointer"
+								class="inline-flex items-center justify-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold px-2.5 py-2.5 rounded-xl border border-slate-700 hover:border-indigo-500/50 shadow-sm transition cursor-pointer"
 								title="Google Account: Not Connected - Click to connect"
 							>
 								<svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24">
@@ -2550,7 +2530,7 @@
 									<path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
 								</svg>
 								<span id="driveAccountStatusDot" class="w-2 h-2 rounded-full bg-slate-500"></span>
-								<span id="driveHeaderStatusText">Not Connected</span>
+								<span id="driveHeaderStatusText">Google Drive</span>
 							</button>
 						</div>
 					</div>
@@ -5436,7 +5416,7 @@
 				} else {
 					if (unauthSec) unauthSec.classList.remove("hidden");
 					if (authSec) authSec.classList.add("hidden");
-					if (statusText) statusText.textContent = "Not Connected";
+					if (statusText) statusText.textContent = "Google Drive";
 					if (statusDot) {
 						statusDot.className = "w-2 h-2 rounded-full bg-slate-500";
 					}
@@ -5867,13 +5847,13 @@
 				});
 
 				// Car Profile Switcher
-				document.getElementById("carProfileSelect").addEventListener("change", (e) => {
+				document.getElementById("carProfileSelect")?.addEventListener("change", (e) => {
 					loadProfile(e.target.value);
 					syncFiltersToUrl();
 				});
 
 				// Live Odometer Input (Auto-Saves & Updates Last Updated Date)
-				document.getElementById("currentMileageInput").addEventListener("input", (e) => {
+				document.getElementById("currentMileageInput")?.addEventListener("input", (e) => {
 					if (!appData || !appData.vehicle) return;
 					const val = Number(e.target.value);
 					if (!isNaN(val) && val >= 0) {
@@ -5898,7 +5878,7 @@
 				});
 
 				// Reset Odometer
-				document.getElementById("resetMileageBtn").addEventListener("click", () => {
+				document.getElementById("resetMileageBtn")?.addEventListener("click", () => {
 					if (!appData || !appData.vehicle) return;
 					const defKm = BUILTIN_PROFILES[activeProfileKey]?.vehicle?.currentMileageKm || 0;
 					appData.vehicle.currentMileageKm = defKm;
@@ -5923,7 +5903,7 @@
 				});
 
 				// History Search
-				document.getElementById("historySearchInput").addEventListener("input", (e) => {
+				document.getElementById("historySearchInput")?.addEventListener("input", (e) => {
 					currentHistorySearch = e.target.value;
 					renderHistoryList();
 					syncFiltersToUrl();
@@ -6190,13 +6170,13 @@
 					dataHubModal.classList.add("flex");
 				});
 
-				document.getElementById("closeDataHubBtn").addEventListener("click", () => {
+				document.getElementById("closeDataHubBtn")?.addEventListener("click", () => {
 					dataHubModal.classList.add("hidden");
 					dataHubModal.classList.remove("flex");
 				});
 
 				// CSV Actions
-				document.getElementById("downloadCsvTemplateBtn").addEventListener("click", () => {
+				document.getElementById("downloadCsvTemplateBtn")?.addEventListener("click", () => {
 					const templateData = JSON.parse(JSON.stringify(BUILTIN_PROFILES["blank-template"]));
 					templateData.maintenanceHistory = [
 						{
@@ -6214,7 +6194,7 @@
 					triggerDownload(buildCsvFromData(templateData), "car-maintenance-template.csv", "text/csv;charset=utf-8;");
 				});
 
-				document.getElementById("exportCurrentCsvBtn").addEventListener("click", () => {
+				document.getElementById("exportCurrentCsvBtn")?.addEventListener("click", () => {
 					if (!appData || !appData.vehicle) {
 						showToast("No active vehicle to export. Please add or select a car first.");
 						return;
@@ -6223,7 +6203,7 @@
 					triggerDownload(buildCsvFromData(appData), filename, "text/csv;charset=utf-8;");
 				});
 
-				document.getElementById("csvFileInput").addEventListener("change", (e) => {
+				document.getElementById("csvFileInput")?.addEventListener("change", (e) => {
 					const file = e.target.files[0];
 					if (!file) return;
 					const reader = new FileReader();
@@ -6252,12 +6232,12 @@
 				});
 
 				// JSON Actions
-				document.getElementById("downloadJsonTemplateBtn").addEventListener("click", () => {
+				document.getElementById("downloadJsonTemplateBtn")?.addEventListener("click", () => {
 					const templateData = JSON.parse(JSON.stringify(BUILTIN_PROFILES["blank-template"]));
 					triggerDownload(JSON.stringify(templateData, null, 2), "car-maintenance-template.json", "application/json");
 				});
 
-				document.getElementById("jsonFileInput").addEventListener("change", (e) => {
+				document.getElementById("jsonFileInput")?.addEventListener("change", (e) => {
 					const file = e.target.files[0];
 					if (!file) return;
 					const reader = new FileReader();
@@ -6284,7 +6264,7 @@
 					reader.readAsText(file);
 				});
 
-				document.getElementById("exportJsonBtn").addEventListener("click", () => {
+				document.getElementById("exportJsonBtn")?.addEventListener("click", () => {
 					if (!appData || !appData.vehicle) {
 						showToast("No active vehicle to export. Please add or select a car first.");
 						return;
@@ -6319,11 +6299,11 @@
 					}
 				};
 
-				document.getElementById("copyJsonBtn").addEventListener("click", () => {
+				document.getElementById("copyJsonBtn")?.addEventListener("click", () => {
 					copyTextSafe(jsonTextarea.value, "JSON copied to clipboard");
 				});
 
-				document.getElementById("applyJsonBtn").addEventListener("click", () => {
+				document.getElementById("applyJsonBtn")?.addEventListener("click", () => {
 					try {
 						const parsed = JSON.parse(jsonTextarea.value);
 						appData = parsed;
@@ -6345,7 +6325,7 @@
 					}
 				});
 
-				document.getElementById("resetStorageBtn").addEventListener("click", () => {
+				document.getElementById("resetStorageBtn")?.addEventListener("click", () => {
 					if (!activeProfileKey) return;
 					localStorage.removeItem(STORAGE_PREFIX + activeProfileKey);
 					appData = JSON.parse(
@@ -6361,24 +6341,14 @@
 				// SHARE MODAL
 				// =====================================================================
 				const shareModal = document.getElementById("shareModal");
-				document.getElementById("openShareModalBtn").addEventListener("click", () => {
+				document.getElementById("openShareModalBtn")?.addEventListener("click", () => {
 					document.getElementById("shareSummaryPreview").textContent = buildShareSummaryText();
 					shareModal.classList.remove("hidden");
 					shareModal.classList.add("flex");
 				});
-				document.getElementById("closeShareModalBtn").addEventListener("click", () => {
+				document.getElementById("closeShareModalBtn")?.addEventListener("click", () => {
 					shareModal.classList.add("hidden");
 					shareModal.classList.remove("flex");
-				});
-				document.getElementById("shareNativeDashboardBtn").addEventListener("click", async () => {
-					const text = buildShareSummaryText();
-					if (navigator.share) {
-						try {
-							await navigator.share({ title: document.title, text, url: window.location.href });
-						} catch (_) {}
-					} else {
-						copyTextSafe(text, "Summary copied to clipboard");
-					}
 				});
 				document.getElementById("shareOpenStatusA4Btn")?.addEventListener("click", () => {
 					shareModal.classList.add("hidden");
@@ -6390,8 +6360,15 @@
 					shareModal.classList.remove("flex");
 					generateA4HistoryReportTab();
 				});
-				document.getElementById("copyShareTextBtn").addEventListener("click", () => {
-					copyTextSafe(buildShareSummaryText(), "Report text copied");
+				document.getElementById("copyShareTextBtn")?.addEventListener("click", async () => {
+					const text = buildShareSummaryText();
+					if (navigator.share) {
+						try {
+							await navigator.share({ title: document.title, text, url: window.location.href });
+							return;
+						} catch (_) {}
+					}
+					copyTextSafe(text, "Report text copied for WhatsApp");
 				});
 
 				// =====================================================================
@@ -6480,7 +6457,7 @@
 					renderExpenseDonutSvg();
 				});
 
-				document.getElementById("addRecordBtn").addEventListener("click", () => {
+				document.getElementById("addRecordBtn")?.addEventListener("click", () => {
 					if (!appData || !appData.vehicle) {
 						showToast("Please add or select a vehicle first.");
 						return;
@@ -6513,10 +6490,10 @@
 					addRecordModal.classList.remove("hidden");
 					addRecordModal.classList.add("flex");
 				});
-				document.getElementById("closeAddRecordModalBtn").addEventListener("click", closeAddModal);
-				document.getElementById("cancelAddRecordBtn").addEventListener("click", closeAddModal);
+				document.getElementById("closeAddRecordModalBtn")?.addEventListener("click", closeAddModal);
+				document.getElementById("cancelAddRecordBtn")?.addEventListener("click", closeAddModal);
 
-				document.getElementById("addRecordForm").addEventListener("submit", (e) => {
+				document.getElementById("addRecordForm")?.addEventListener("submit", (e) => {
 					e.preventDefault();
 					const date = document.getElementById("newRecDate").value;
 					const mileageVal = getSelectOrOtherVal("newRecMileageSelect", "newRecMileageOther");
@@ -6591,7 +6568,7 @@
 					addScheduleModal.classList.add("hidden");
 					addScheduleModal.classList.remove("flex");
 				};
-				document.getElementById("addScheduleItemBtn").addEventListener("click", () => {
+				document.getElementById("addScheduleItemBtn")?.addEventListener("click", () => {
 					if (!appData || !appData.vehicle) {
 						showToast("Please add or select a vehicle first.");
 						return;
@@ -6618,10 +6595,10 @@
 					addScheduleModal.classList.remove("hidden");
 					addScheduleModal.classList.add("flex");
 				});
-				document.getElementById("closeAddScheduleModalBtn").addEventListener("click", closeSchedModal);
-				document.getElementById("cancelAddScheduleBtn").addEventListener("click", closeSchedModal);
+				document.getElementById("closeAddScheduleModalBtn")?.addEventListener("click", closeSchedModal);
+				document.getElementById("cancelAddScheduleBtn")?.addEventListener("click", closeSchedModal);
 
-				document.getElementById("addScheduleForm").addEventListener("submit", (e) => {
+				document.getElementById("addScheduleForm")?.addEventListener("submit", (e) => {
 					e.preventDefault();
 					const name = getSelectOrOtherVal("newSchedNameSelect", "newSchedNameOther") || "Periodic Service";
 					const category = getSelectOrOtherVal("newSchedCatSelect", "newSchedCatOther") || "Part";
@@ -6663,7 +6640,7 @@
 					editCarModal.classList.add("hidden");
 					editCarModal.classList.remove("flex");
 				};
-				document.getElementById("editVehicleBtn").addEventListener("click", () => {
+				document.getElementById("editVehicleBtn")?.addEventListener("click", () => {
 					if (!appData || !appData.vehicle) {
 						showToast("Please add or select a vehicle first.");
 						return;
@@ -6683,10 +6660,10 @@
 					editCarModal.classList.remove("hidden");
 					editCarModal.classList.add("flex");
 				});
-				document.getElementById("closeEditCarModalBtn").addEventListener("click", closeEditCar);
-				document.getElementById("cancelEditCarBtn").addEventListener("click", closeEditCar);
+				document.getElementById("closeEditCarModalBtn")?.addEventListener("click", closeEditCar);
+				document.getElementById("cancelEditCarBtn")?.addEventListener("click", closeEditCar);
 
-				document.getElementById("editCarForm").addEventListener("submit", (e) => {
+				document.getElementById("editCarForm")?.addEventListener("submit", (e) => {
 					e.preventDefault();
 					if (!appData.vehicle) appData.vehicle = {};
 					appData.vehicle.make = document.getElementById("editCarMake").value.trim();
@@ -6732,6 +6709,7 @@
 					}
 				};
 
+				document.getElementById("openOfficialDocsBtn")?.addEventListener("click", openOfficialDocsModal);
 				document.getElementById("openOfficialDocsModalBtn")?.addEventListener("click", openOfficialDocsModal);
 				document.getElementById("closeOfficialDocsModalBtn")?.addEventListener("click", closeOfficialDocsModal);
 				document.getElementById("cancelOfficialDocsBtn")?.addEventListener("click", closeOfficialDocsModal);
@@ -6762,19 +6740,19 @@
 						return;
 					}
 					const curKm = appData.vehicle?.currentMileageKm || "";
-					const dateEl = document.getElementById("fuelReceiptDate");
+					const dateEl = document.getElementById("fuelInputDate");
 					if (dateEl) dateEl.value = new Date().toISOString().slice(0, 10);
-					const kmEl = document.getElementById("fuelReceiptMileage");
+					const kmEl = document.getElementById("fuelInputMileage");
 					if (kmEl) kmEl.value = curKm;
-					const lEl = document.getElementById("fuelReceiptLiters");
+					const lEl = document.getElementById("fuelInputLiters");
 					if (lEl) lEl.value = "";
-					const cEl = document.getElementById("fuelReceiptTotalCost");
+					const cEl = document.getElementById("fuelInputCost");
 					if (cEl) cEl.value = "";
-					const sEl = document.getElementById("fuelReceiptStation");
-					if (sEl) sEl.value = "Petronas Primax 95";
-					const ftEl = document.getElementById("fuelReceiptFullTank");
+					const gEl = document.getElementById("fuelInputGrade");
+					if (gEl) gEl.value = "RON 95";
+					const ftEl = document.getElementById("fuelInputFullTank");
 					if (ftEl) ftEl.checked = true;
-					const nEl = document.getElementById("fuelReceiptNotes");
+					const nEl = document.getElementById("fuelInputNotes");
 					if (nEl) nEl.value = "";
 
 					if (fuelReceiptModal) {
@@ -6798,13 +6776,13 @@
 
 				document.getElementById("fuelReceiptForm")?.addEventListener("submit", (e) => {
 					e.preventDefault();
-					const fDate = document.getElementById("fuelReceiptDate")?.value || new Date().toISOString().slice(0, 10);
-					const fMileage = Number(document.getElementById("fuelReceiptMileage")?.value) || 0;
-					const fLiters = Number(document.getElementById("fuelReceiptLiters")?.value) || 0;
-					const fCost = Number(document.getElementById("fuelReceiptTotalCost")?.value) || 0;
-					const fStation = document.getElementById("fuelReceiptStation")?.value.trim() || "";
-					const fFullTank = document.getElementById("fuelReceiptFullTank")?.checked ?? true;
-					const fNotes = document.getElementById("fuelReceiptNotes")?.value.trim() || "";
+					const fDate = document.getElementById("fuelInputDate")?.value || new Date().toISOString().slice(0, 10);
+					const fMileage = Number(document.getElementById("fuelInputMileage")?.value) || 0;
+					const fLiters = Number(document.getElementById("fuelInputLiters")?.value) || 0;
+					const fCost = Number(document.getElementById("fuelInputCost")?.value) || 0;
+					const fGrade = document.getElementById("fuelInputGrade")?.value || "RON 95";
+					const fFullTank = document.getElementById("fuelInputFullTank")?.checked ?? true;
+					const fNotes = document.getElementById("fuelInputNotes")?.value.trim() || "";
 
 					if (fMileage <= 0 || fLiters <= 0) {
 						showToast("Please enter valid mileage and liters filled.");
@@ -6818,8 +6796,9 @@
 						odometerKm: fMileage,
 						liters: fLiters,
 						costMyr: fCost > 0 ? fCost : null,
+						grade: fGrade,
 						fullTank: fFullTank,
-						station: fStation || null,
+						station: fNotes || null,
 						notes: fNotes || null,
 					});
 
