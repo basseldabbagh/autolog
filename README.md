@@ -41,7 +41,8 @@ All data is stored client-side in the browser's `localStorage` and can be export
 
 - **📱 Progressive Web App (PWA)**: Installable directly to home screens on iOS, Android, macOS, and Windows via [`manifest.json`](file:///e:/HTML/autolog/manifest.json) and [`sw.js`](file:///e:/HTML/autolog/sw.js) with full offline caching.
 - **🔍 Global Dashboard Filters**: Slice analytics and expense charts by time period (*This Year*, *Last Year*, *Last 6 Months*, *All Time*, or *Custom Date Range*) and service category with instant recalculation.
-- **🚗 Multi-Car Profile Management**: Pre-configured sample vehicle profiles (e.g., Demo Sedan, Sample Compact) and a blank template for registering new vehicles. Custom vehicles are automatically registered and saved in browser storage.
+- **🚗 Clean Slate & Ad-Free Vehicle Onboarding**: No default vehicles seeded and zero commercial vehicle advertisements or fake data. When starting fresh or when no cars exist in storage, AutoLog displays an onboarding hub of vehicle archetype templates (Sedan, SUV, Hatchback, Truck 4x4, Sports Coupe, EV, Hybrid, MPV, or Blank) to pick and customize with your own make and model, alongside quick Google Sign-In and CSV/JSON Import/Export actions.
+- **🔗 Sharable Filter Sync in URL**: Active vehicle profile, dashboard date period preset, custom date ranges, category filters, periodic schedule status tabs, and history search queries are automatically synchronized with the URL query parameters (`?car=...&period=...&cat=...&sched=...&q=...`) for instant bookmarking and one-click shareable filtered views.
 - **⏱️ Live Odometer Simulation**: Update mileage manually or increment quickly with `+1k` and `+5k` buttons. Recalculates every service interval and countdown in real time.
 - **🛠️ Periodic Maintenance Schedule**: Track engine oil, transmission fluid, spark plugs, timing belt/chain, coolant, drive belts, and filters with status badges:
   - 🟢 **Good**: > 1,000 km remaining.

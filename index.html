@@ -440,10 +440,108 @@
 
 		<!-- Main Content -->
 		<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 space-y-5">
-			<!-- Global Filters Bar -->
-			<section
-				class="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 shadow-xl flex flex-wrap items-center justify-between gap-3"
-			>
+			<!-- ======================================================================= -->
+			<!-- EMPTY GARAGE / ONBOARDING / TEMPLATE PICKER VIEW                       -->
+			<!-- ======================================================================= -->
+			<div id="emptyGarageWelcomeView" class="hidden space-y-6">
+				<!-- Welcome Hero Banner -->
+				<div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900 to-indigo-950/40 border border-slate-800 p-6 sm:p-8 shadow-2xl">
+					<div class="relative z-10 max-w-3xl space-y-4">
+						<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold">
+							<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+							<span>100% Private • Offline-First • Zero Ads • No Fake Data</span>
+						</div>
+						<h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
+							Your Vehicle Maintenance Hub
+						</h2>
+						<p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+							No car has been added to your garage yet. Choose a sample vehicle template below to pick and customize with your own make and model, connect with Google to sync from your drive, or import an existing backup file.
+						</p>
+
+						<!-- Prominent Action Row -->
+						<div class="pt-2 flex flex-wrap items-center gap-3">
+							<!-- 1. Google Drive Sign In -->
+							<button
+								id="welcomeGoogleSignInBtn"
+								type="button"
+								class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-100 text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-xl border border-slate-700 shadow-lg hover:border-indigo-500/50 transition cursor-pointer"
+								title="Sign in with Google to load or sync your fleet"
+							>
+								<svg class="w-4 h-4 shrink-0 text-amber-400" viewBox="0 0 24 24" fill="currentColor">
+									<path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM19 18H6c-2.21 0-4-1.79-4-4 0-2.05 1.53-3.76 3.56-3.97l1.07-.11.5-.95C8.08 7.14 9.94 6 12 6c2.62 0 4.88 1.86 5.39 4.43l.3 1.5 1.53.11c1.56.1 2.78 1.41 2.78 2.96 0 1.65-1.35 3-3 3z"/>
+								</svg>
+								<span>Sign In with Google</span>
+							</button>
+
+							<!-- 2. Import Data Hub -->
+							<button
+								id="welcomeImportBtn"
+								type="button"
+								class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-xl shadow-lg shadow-indigo-600/30 transition cursor-pointer"
+								title="Import an existing vehicle from JSON or CSV"
+							>
+								<svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+								</svg>
+								<span>Import Data (.JSON / .CSV)</span>
+							</button>
+
+							<!-- 3. Export Blank Template -->
+							<button
+								id="welcomeExportBlankBtn"
+								type="button"
+								class="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white text-xs sm:text-sm font-medium px-4 py-2.5 rounded-xl border border-slate-800 hover:border-slate-700 transition cursor-pointer"
+								title="Download a clean spreadsheet template"
+							>
+								<svg class="w-4 h-4 shrink-0 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+								</svg>
+								<span>Blank CSV Template</span>
+							</button>
+
+							<!-- 4. Blank / Custom Start -->
+							<button
+								id="welcomeCreateBlankBtn"
+								type="button"
+								class="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white text-xs sm:text-sm font-medium px-4 py-2.5 rounded-xl border border-slate-800 hover:border-slate-700 transition cursor-pointer"
+								title="Start with a blank custom vehicle"
+							>
+								<svg class="w-4 h-4 shrink-0 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+								</svg>
+								<span>Start Blank Car</span>
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<!-- Sample Templates Section Header -->
+				<div class="flex items-center justify-between flex-wrap gap-2 pt-2">
+					<div>
+						<h3 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+							<svg class="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+							</svg>
+							<span>Vehicle Archetype Samples</span>
+						</h3>
+						<p class="text-xs text-slate-400">
+							Pick any template below to customize with your vehicle's make, model, and mileage:
+						</p>
+					</div>
+				</div>
+
+				<!-- Sample Templates Grid (Populated dynamically) -->
+				<div id="sampleTemplatesGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+			</div>
+
+			<!-- ======================================================================= -->
+			<!-- VEHICLE DASHBOARD (ACTIVE CAR VIEW)                                     -->
+			<!-- ======================================================================= -->
+			<div id="vehicleDashboardView" class="space-y-5">
+				<!-- Global Filters Bar -->
+				<section
+					class="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 shadow-xl flex flex-wrap items-center justify-between gap-3"
+				>
 				<div class="flex items-center gap-2">
 					<span class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-indigo-500/20 text-indigo-400">
 						<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -844,6 +942,7 @@
 				id="vehicleSpecsFooter"
 				class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-4 text-xs text-slate-400 grid grid-cols-2 lg:grid-cols-4 gap-4"
 			></section>
+			</div>
 		</main>
 
 		<!-- ======================================================================= -->
@@ -1220,6 +1319,16 @@
 							<path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
 						</svg>
 						<span>Copy Report Text for WhatsApp</span>
+					</button>
+					<button
+						id="copyShareUrlBtn"
+						type="button"
+						class="w-full inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-cyan-300 font-semibold py-2.5 px-3 rounded-xl border border-slate-700 transition"
+					>
+						<svg class="w-4 h-4 shrink-0 text-cyan-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+						</svg>
+						<span>Copy Sharable Link (with Current Filters)</span>
 					</button>
 				</div>
 			</div>
@@ -1825,15 +1934,15 @@
 								required
 								class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700 focus:outline-none focus:border-indigo-500 transition cursor-pointer"
 							>
-								<option value="blank-template">Blank Car (Empty Maintenance Schedule)</option>
-								<option value="sample-sedan">Sedan Template (Toyota Camry 2.5V)</option>
-								<option value="sample-suv">SUV / Crossover Template (Honda CR-V 1.5T AWD)</option>
-								<option value="sample-hatchback">Hatchback Template (VW Golf 1.4 TSI)</option>
-								<option value="sample-truck">Pickup Truck 4x4 Template (Ford Ranger 2.0 Bi-Turbo)</option>
-								<option value="sample-sports">Sports Car / Coupe Template (Porsche 911 Carrera)</option>
-								<option value="sample-ev">Electric Vehicle Template (Tesla Model 3 Dual Motor)</option>
-								<option value="sample-hybrid">Hybrid / HEV Template (Toyota Prius 1.8 Hybrid)</option>
-								<option value="sample-van">Van / MPV Template (Toyota Alphard 3.5)</option>
+								<option value="blank-template">Blank Car (Empty Schedule &amp; History)</option>
+								<option value="sample-sedan">Sedan (4-Door Passenger Sedan)</option>
+								<option value="sample-suv">SUV / Crossover (All-Wheel Drive)</option>
+								<option value="sample-hatchback">Hatchback (Compact City Car)</option>
+								<option value="sample-truck">Pickup Truck 4x4 (Heavy-Duty Utility)</option>
+								<option value="sample-sports">Sports Car / Coupe (Performance)</option>
+								<option value="sample-ev">Electric Vehicle (Battery EV)</option>
+								<option value="sample-hybrid">Hybrid / HEV (Gas-Electric Hybrid)</option>
+								<option value="sample-van">Van / MPV (Passenger Van)</option>
 							</select>
 							<p class="text-[11px] text-slate-400 mt-1">Pre-populates periodic maintenance intervals, fluid specs, and wear items.</p>
 						</div>
@@ -1845,7 +1954,7 @@
 									id="modalNewCarMake"
 									type="text"
 									required
-									placeholder="e.g. Toyota / BMW"
+									placeholder="e.g. Make / Brand"
 									class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700 focus:outline-none focus:border-indigo-500"
 								/>
 							</div>
@@ -1855,7 +1964,7 @@
 									id="modalNewCarModel"
 									type="text"
 									required
-									placeholder="e.g. Camry / 330i"
+									placeholder="e.g. Model Name"
 									class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700 focus:outline-none focus:border-indigo-500"
 								/>
 							</div>
@@ -2274,7 +2383,7 @@
 			const ACTIVE_KEY_STORAGE = "car_tracker_v3_active_profile";
 			const CUSTOM_LIST_STORAGE = "car_tracker_v3_custom_profiles";
 
-			let activeProfileKey = localStorage.getItem(ACTIVE_KEY_STORAGE) || "sample-sedan";
+			let activeProfileKey = localStorage.getItem(ACTIVE_KEY_STORAGE) || null;
 			let appData = null;
 			let currentScheduleFilter = "all";
 			let currentHistorySearch = "";
@@ -2369,6 +2478,11 @@
 				return prefix + Number(num).toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 2 });
 			}
 
+			function hasSavedCars() {
+				const map = getCustomProfilesMap();
+				return Object.keys(map).length > 0;
+			}
+
 			function getCustomProfilesMap() {
 				try {
 					let map = JSON.parse(localStorage.getItem(CUSTOM_LIST_STORAGE) || "{}");
@@ -2381,20 +2495,13 @@
 							changed = true;
 						}
 					});
-					if (Object.keys(map).length === 0) {
-						// Automatically seed the primary vehicle
-						const initialId = "car-primary";
-						const initialLabel = "Toyota Camry 2.5V";
-						map[initialId] = initialLabel;
-						if (!localStorage.getItem(STORAGE_PREFIX + initialId)) {
-							const seedObj = JSON.parse(JSON.stringify(BUILTIN_PROFILES["sample-sedan"]));
-							seedObj.vehicle.id = initialId;
-							seedObj.vehicle.make = "Toyota";
-							seedObj.vehicle.model = "Camry 2.5V";
-							localStorage.setItem(STORAGE_PREFIX + initialId, JSON.stringify(seedObj));
-						}
+					// Remove legacy auto-seeded "car-primary" if it's the auto-seeded Toyota Camry
+					if (map["car-primary"] && (map["car-primary"] === "Toyota Camry 2.5V" || map["car-primary"] === "Toyota Camry" || map["car-primary"].toLowerCase().includes("toyota"))) {
+						delete map["car-primary"];
+						localStorage.removeItem(STORAGE_PREFIX + "car-primary");
 						changed = true;
 					}
+					// NEVER auto-seed any car! Let the garage be clean and private without forced fake data or ads.
 					if (changed) {
 						localStorage.setItem(CUSTOM_LIST_STORAGE, JSON.stringify(map));
 					}
@@ -2425,6 +2532,294 @@
 				"default": `<svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 17a2 2 0 100 4 2 2 0 000-4zm8 0a2 2 0 100 4 2 2 0 000-4zM3 9l2-5h14l2 5M3 9h18M3 9v8h2m16-8v8h-2M7 17h6"/></svg>`,
 			};
 
+			const WELCOME_SAMPLE_TEMPLATES = [
+				{
+					key: "sample-sedan",
+					title: "Sedan",
+					subtitle: "4-Door Passenger Sedan",
+					desc: "Standard periodic maintenance intervals for daily commuter sedans with inline-4 engines.",
+					tags: ["Oil: 8,000 km", "Air & Cabin Filters", "Brake Fluid", "Spark Plugs"],
+				},
+				{
+					key: "sample-suv",
+					title: "SUV / Crossover",
+					subtitle: "All-Wheel Drive (AWD)",
+					desc: "Extended schedule covering drivetrain fluids, tire rotation, and AWD maintenance.",
+					tags: ["Oil: 10,000 km", "AWD Diff Fluids", "Cabin Filter", "Tire Rotation"],
+				},
+				{
+					key: "sample-hatchback",
+					title: "Compact Hatchback",
+					subtitle: "City Commuter & Compact",
+					desc: "Agile commuter maintenance schedule with turbocharger & gearbox care.",
+					tags: ["Oil: 8,000 km", "DSG / Trans Fluid", "Engine Air Filter", "Brake Pads"],
+				},
+				{
+					key: "sample-truck",
+					title: "Pickup Truck 4x4",
+					subtitle: "Heavy-Duty Utility",
+					desc: "Heavy-load schedule for turbo diesel 4WD pickups, transfer cases, and diffs.",
+					tags: ["Diesel Fuel Filter", "Transfer Case", "Front & Rear Diff", "Heavy Fluids"],
+				},
+				{
+					key: "sample-sports",
+					title: "Sports Coupe",
+					subtitle: "Performance Sports Car",
+					desc: "High-spec intervals for performance sports cars and high-temp braking.",
+					tags: ["High-Temp Brake Fluid", "Performance Alignment", "Spark Plugs", "PDK / Gearbox"],
+				},
+				{
+					key: "sample-ev",
+					title: "Electric Vehicle (EV)",
+					subtitle: "Battery Electric (BEV)",
+					desc: "Zero-engine-oil schedule. Highlighting coolant, cabin filter, and brakes.",
+					tags: ["Zero Engine Oil", "Cabin Air Filter", "Battery Coolant", "Brake Calipers"],
+				},
+				{
+					key: "sample-hybrid",
+					title: "Hybrid (HEV)",
+					subtitle: "Gas-Electric Hybrid",
+					desc: "Dual powertrain service schedule for full hybrids and PHEVs.",
+					tags: ["Oil: 10,000 km", "Inverter Coolant", "Hybrid Battery Fan", "e-CVT Fluid"],
+				},
+				{
+					key: "sample-van",
+					title: "Passenger Van / MPV",
+					subtitle: "Multi-Purpose Van",
+					desc: "High-durability maintenance schedule for passenger vans and MPVs.",
+					tags: ["Oil: 10,000 km", "Transmission Fluid", "Dual AC Filters", "Suspension Check"],
+				},
+				{
+					key: "blank-template",
+					title: "Blank / Custom",
+					subtitle: "Start from Scratch",
+					desc: "Clean slate with empty schedule & history. Define your own periodic intervals from zero.",
+					tags: ["Clean Slate", "Empty Schedule", "Any Vehicle Type"],
+				},
+			];
+
+			function renderWelcomeTemplates() {
+				const container = document.getElementById("sampleTemplatesGrid");
+				if (!container) return;
+				let html = "";
+				WELCOME_SAMPLE_TEMPLATES.forEach((tpl) => {
+					const svgIcon = VEHICLE_TYPE_ICONS[tpl.key] || VEHICLE_TYPE_ICONS["default"];
+					html += `
+						<div class="bg-slate-900/90 border border-slate-800 hover:border-indigo-500/50 rounded-2xl p-5 flex flex-col justify-between transition-all duration-200 hover:shadow-xl hover:shadow-indigo-500/10 group">
+							<div>
+								<div class="flex items-center gap-3 mb-3">
+									<div class="w-10 h-10 rounded-xl bg-slate-800 group-hover:bg-indigo-600/20 text-indigo-400 p-2 border border-slate-700/60 transition shrink-0">
+										${svgIcon}
+									</div>
+									<div class="min-w-0">
+										<h4 class="font-bold text-white text-sm group-hover:text-indigo-300 transition truncate">${escapeHtml(tpl.title)}</h4>
+										<p class="text-[11px] text-slate-400 truncate">${escapeHtml(tpl.subtitle)}</p>
+									</div>
+								</div>
+								<p class="text-xs text-slate-400 mb-3 leading-relaxed">${escapeHtml(tpl.desc)}</p>
+								<div class="flex flex-wrap gap-1.5 mb-4">
+									${tpl.tags.map((t) => `<span class="px-2 py-0.5 rounded-md bg-slate-950 text-slate-300 border border-slate-800 text-[10px] font-mono">${escapeHtml(t)}</span>`).join("")}
+								</div>
+							</div>
+							<button
+								type="button"
+								class="welcome-pick-template-btn w-full inline-flex items-center justify-center gap-2 py-2 px-3 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-md shadow-indigo-600/20 transition cursor-pointer"
+								data-template-key="${tpl.key}"
+							>
+								<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+								</svg>
+								<span>Pick &amp; Customize</span>
+							</button>
+						</div>
+					`;
+				});
+				container.innerHTML = html;
+
+				container.querySelectorAll(".welcome-pick-template-btn").forEach((btn) => {
+					btn.addEventListener("click", () => {
+						const key = btn.getAttribute("data-template-key");
+						openAddCarModalWithPreset(key);
+					});
+				});
+			}
+
+			function openAddCarModalWithPreset(presetKey) {
+				if (typeof openSettingsModal === "function") openSettingsModal();
+				const baseSel = document.getElementById("modalNewCarBaseSelect");
+				if (baseSel) {
+					baseSel.value = presetKey || "blank-template";
+					const evt = new Event("change");
+					baseSel.dispatchEvent(evt);
+				}
+				const makeInput = document.getElementById("modalNewCarMake");
+				if (makeInput) {
+					makeInput.value = "";
+					setTimeout(() => makeInput.focus(), 150);
+				}
+			}
+
+			// =========================================================================
+			// URL FILTERS SYNCHRONIZATION (SHARABLE URLS)
+			// =========================================================================
+			let isRestoringFromUrl = false;
+
+			function syncFiltersToUrl() {
+				if (isRestoringFromUrl) return;
+				try {
+					const url = new URL(window.location.href);
+					const params = url.searchParams;
+
+					// 1. Active Car Profile
+					if (activeProfileKey && hasSavedCars()) {
+						params.set("car", activeProfileKey);
+					} else {
+						params.delete("car");
+						params.delete("profile");
+					}
+
+					// 2. Global Date Preset
+					if (globalDatePreset && globalDatePreset !== "this-year") {
+						params.set("period", globalDatePreset);
+					} else {
+						params.delete("period");
+					}
+
+					// 3. Custom Date Range
+					if (globalDatePreset === "custom") {
+						if (globalDateStart) params.set("start", globalDateStart);
+						else params.delete("start");
+						if (globalDateEnd) params.set("end", globalDateEnd);
+						else params.delete("end");
+					} else {
+						params.delete("start");
+						params.delete("end");
+					}
+
+					// 4. Category Filter
+					if (globalCategory && globalCategory !== "all") {
+						params.set("cat", globalCategory);
+					} else {
+						params.delete("cat");
+					}
+
+					// 5. Periodic Schedule Status Tab Filter
+					if (currentScheduleFilter && currentScheduleFilter !== "all") {
+						params.set("sched", currentScheduleFilter);
+					} else {
+						params.delete("sched");
+					}
+
+					// 6. History Keyword Search Query
+					const q = (currentHistorySearch || "").trim();
+					if (q) {
+						params.set("q", q);
+					} else {
+						params.delete("q");
+					}
+
+					const newSearch = params.toString() ? "?" + params.toString() : "";
+					const targetUrl = url.pathname + newSearch + url.hash;
+					if (window.location.search !== newSearch) {
+						window.history.replaceState(null, "", targetUrl);
+					}
+				} catch (e) {
+					console.warn("syncFiltersToUrl error:", e);
+				}
+			}
+
+			function restoreFiltersFromUrl() {
+				isRestoringFromUrl = true;
+				try {
+					const params = new URLSearchParams(window.location.search);
+
+					// 1. Active Car Profile
+					const urlCar = params.get("car") || params.get("profile");
+					const customMap = getCustomProfilesMap();
+					if (urlCar && customMap[urlCar]) {
+						activeProfileKey = urlCar;
+						localStorage.setItem(ACTIVE_KEY_STORAGE, urlCar);
+					}
+
+					// 2. Date Preset
+					const urlPeriod = params.get("period");
+					if (urlPeriod && ["this-year", "last-year", "last-6m", "all-time", "custom"].includes(urlPeriod)) {
+						globalDatePreset = urlPeriod;
+						const datePresetEl = document.getElementById("filterDatePreset");
+						if (datePresetEl) datePresetEl.value = urlPeriod;
+					}
+
+					// 3. Custom Dates
+					const urlStart = params.get("start");
+					const urlEnd = params.get("end");
+					if (urlStart) globalDateStart = urlStart;
+					if (urlEnd) globalDateEnd = urlEnd;
+
+					if (globalDatePreset === "custom") {
+						const customBoxEl = document.getElementById("filterCustomDateBox");
+						const dateStartEl = document.getElementById("filterDateStart");
+						const dateEndEl = document.getElementById("filterDateEnd");
+						if (customBoxEl) {
+							customBoxEl.classList.remove("hidden");
+							customBoxEl.classList.add("flex");
+						}
+						if (dateStartEl && globalDateStart) dateStartEl.value = globalDateStart;
+						if (dateEndEl && globalDateEnd) dateEndEl.value = globalDateEnd;
+					} else if (globalDatePreset) {
+						const now = new Date();
+						const year = now.getFullYear();
+						if (globalDatePreset === "this-year") {
+							globalDateStart = `${year}-01-01`;
+							globalDateEnd = `${year}-12-31`;
+						} else if (globalDatePreset === "last-year") {
+							globalDateStart = `${year - 1}-01-01`;
+							globalDateEnd = `${year - 1}-12-31`;
+						} else if (globalDatePreset === "last-6m") {
+							const past = new Date();
+							past.setMonth(past.getMonth() - 6);
+							globalDateStart = past.toISOString().slice(0, 10);
+							globalDateEnd = now.toISOString().slice(0, 10);
+						} else if (globalDatePreset === "all-time") {
+							globalDateStart = null;
+							globalDateEnd = null;
+						}
+					}
+
+					// 4. Category
+					const urlCat = params.get("cat");
+					if (urlCat) {
+						globalCategory = urlCat;
+						const catSelectEl = document.getElementById("filterCategorySelect");
+						if (catSelectEl) catSelectEl.value = urlCat;
+					}
+
+					// 5. Schedule Filter
+					const urlSched = params.get("sched");
+					if (urlSched && ["all", "active", "pending", "due"].includes(urlSched)) {
+						currentScheduleFilter = urlSched;
+						document.querySelectorAll(".sched-filter-btn").forEach((b) => {
+							if (b.getAttribute("data-filter") === urlSched) {
+								b.className = "sched-filter-btn px-2.5 py-1.5 rounded-xl text-xs font-semibold bg-indigo-600 text-white transition";
+							} else {
+								b.className = "sched-filter-btn px-2.5 py-1.5 rounded-xl text-xs font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 transition";
+							}
+						});
+					}
+
+					// 6. History Search Query
+					const urlQ = params.get("q");
+					if (urlQ) {
+						currentHistorySearch = urlQ;
+						const searchInput = document.getElementById("historySearchInput");
+						if (searchInput) searchInput.value = urlQ;
+					}
+				} catch (e) {
+					console.warn("restoreFiltersFromUrl error:", e);
+				} finally {
+					isRestoringFromUrl = false;
+				}
+			}
+
 			function updateVehicleIcons(profileKey) {
 				const svgHtml = VEHICLE_TYPE_ICONS[profileKey] || VEHICLE_TYPE_ICONS["default"];
 				const headerBox = document.getElementById("headerVehicleIcon");
@@ -2453,17 +2848,29 @@
 				}
 
 				sel.innerHTML = html;
-				if ([...sel.options].some((o) => o.value === activeProfileKey)) {
+				if (activeProfileKey && [...sel.options].some((o) => o.value === activeProfileKey)) {
 					sel.value = activeProfileKey;
 				} else if (sel.options.length > 0 && sel.options[0].value) {
 					sel.value = sel.options[0].value;
 					activeProfileKey = sel.value;
 					localStorage.setItem(ACTIVE_KEY_STORAGE, activeProfileKey);
+				} else {
+					sel.value = "";
+					activeProfileKey = null;
 				}
-				updateVehicleIcons(activeProfileKey);
+				updateVehicleIcons(activeProfileKey || "default");
 			}
 
 			async function loadProfile(profileKey) {
+				if (!profileKey) {
+					activeProfileKey = null;
+					appData = null;
+					localStorage.removeItem(ACTIVE_KEY_STORAGE);
+					syncProfileSelectOptions();
+					renderAll();
+					return;
+				}
+
 				activeProfileKey = profileKey;
 				localStorage.setItem(ACTIVE_KEY_STORAGE, profileKey);
 				syncProfileSelectOptions();
@@ -2494,8 +2901,15 @@
 					} catch (_) {}
 				}
 
-				appData = JSON.parse(JSON.stringify(BUILTIN_PROFILES[profileKey] || BUILTIN_PROFILES["sample-sedan"]));
-				saveToLocal(false);
+				if (BUILTIN_PROFILES[profileKey]) {
+					appData = JSON.parse(JSON.stringify(BUILTIN_PROFILES[profileKey]));
+					saveToLocal(false);
+					renderAll();
+					return;
+				}
+
+				activeProfileKey = null;
+				appData = null;
 				renderAll();
 			}
 
@@ -2697,6 +3111,7 @@
 			}
 
 			function renderHeaderAndKPIs() {
+				if (!appData || !appData.vehicle) return;
 				const v = appData.vehicle || {};
 				const curKm = Number(v.currentMileageKm) || 0;
 				const currency = appData.currency || "MYR";
@@ -2764,6 +3179,7 @@
 			}
 
 			function renderPeriodicTable() {
+				if (!appData || !appData.vehicle) return;
 				const tbody = document.getElementById("periodicTableBody");
 				const curKm = Number(appData.vehicle?.currentMileageKm) || 0;
 				const sched = appData.periodicSchedule || [];
@@ -2919,6 +3335,7 @@
 			}
 
 			function renderSvgCharts() {
+				if (!appData || !appData.vehicle) return;
 				renderCountdownSvg();
 				renderExpenseDonutSvg();
 			}
@@ -3074,6 +3491,7 @@
 			}
 
 			function renderHistoryList() {
+				if (!appData || !appData.vehicle) return;
 				const container = document.getElementById("historyListContainer");
 				const filteredHist = getFilteredHistory();
 				const sortedHist = [...filteredHist].sort((a, b) => (b.date || "").localeCompare(a.date || ""));
@@ -3141,6 +3559,7 @@
 			}
 
 			function renderFooterSpecs() {
+				if (!appData || !appData.vehicle) return;
 				const footer = document.getElementById("vehicleSpecsFooter");
 				const v = appData.vehicle || {};
 				footer.innerHTML = `
@@ -3181,6 +3600,7 @@
 			}
 
 			function populateLinkedItemSelect() {
+				if (!appData || !appData.vehicle) return;
 				populateMechanicSelect();
 				const sel = document.getElementById("newRecLinkedItem");
 				const titleSel = document.getElementById("newRecTitleSelect");
@@ -3231,6 +3651,35 @@
 			}
 
 			function renderAll() {
+				const welcomeView = document.getElementById("emptyGarageWelcomeView");
+				const dashboardView = document.getElementById("vehicleDashboardView");
+				const hasCars = hasSavedCars() && appData && appData.vehicle;
+
+				if (!hasCars) {
+					if (welcomeView) welcomeView.classList.remove("hidden");
+					if (dashboardView) dashboardView.classList.add("hidden");
+					syncProfileSelectOptions();
+					updateVehicleIcons("blank-template");
+					const titleEl = document.getElementById("headerCarTitle");
+					if (titleEl) titleEl.textContent = "Vehicle Maintenance";
+					const plateEl = document.getElementById("headerPlateBadge");
+					if (plateEl) plateEl.classList.add("hidden");
+					const editBtn = document.getElementById("editVehicleBtn");
+					if (editBtn) editBtn.classList.add("hidden");
+					const subEl = document.getElementById("headerEngineSub");
+					if (subEl) subEl.textContent = "No car selected • Pick a template below to get started";
+					renderWelcomeTemplates();
+					syncFiltersToUrl();
+					return;
+				}
+
+				if (welcomeView) welcomeView.classList.add("hidden");
+				if (dashboardView) dashboardView.classList.remove("hidden");
+				const plateEl = document.getElementById("headerPlateBadge");
+				if (plateEl) plateEl.classList.remove("hidden");
+				const editBtn = document.getElementById("editVehicleBtn");
+				if (editBtn) editBtn.classList.remove("hidden");
+
 				syncCategoryFilterOptions();
 				renderHeaderAndKPIs();
 				renderPeriodicTable();
@@ -3238,12 +3687,17 @@
 				renderHistoryList();
 				renderFooterSpecs();
 				populateLinkedItemSelect();
+				syncFiltersToUrl();
 			}
 
 			// =========================================================================
 			// A4 PRINTABLE CAR CONDITION & MAINTENANCE REPORT (OPENS IN NEW TAB)
 			// =========================================================================
 			function generateA4ReportTab() {
+				if (!appData || !appData.vehicle) {
+					showToast("Please add or select a vehicle first");
+					return;
+				}
 				const v = appData.vehicle || {};
 				const curKm = Number(v.currentMileageKm) || 0;
 				const sched = appData.periodicSchedule || [];
@@ -3440,6 +3894,9 @@
 			}
 
 			function buildCsvFromData(dataObj) {
+				if (!dataObj || !dataObj.vehicle) {
+					dataObj = BUILTIN_PROFILES["blank-template"];
+				}
 				const headers = [
 					"Record_Type",
 					"Name_Or_Title",
@@ -3656,6 +4113,9 @@
 			}
 
 			function buildShareSummaryText() {
+				if (!appData || !appData.vehicle) {
+					return "AutoLog — Universal Vehicle Maintenance Tracker\n" + window.location.href;
+				}
 				const v = appData.vehicle || {};
 				const curKm = Number(v.currentMileageKm) || 0;
 				const sched = appData.periodicSchedule || [];
@@ -3845,7 +4305,7 @@
 				const token = getDriveAccessToken();
 				const statusMsg = document.getElementById("driveSyncStatusMsg");
 				const headerStatus = document.getElementById("driveHeaderStatusText");
-				if (!token) return;
+				if (!token || !appData || !appData.vehicle) return;
 
 				const carId = (appData?.vehicle?.id || activeProfileKey || "car-maintenance").toLowerCase();
 				const fileName = `${carId}.csv`;
@@ -4004,23 +4464,50 @@
 			// =========================================================================
 			document.addEventListener("DOMContentLoaded", () => {
 				const customMap = getCustomProfilesMap();
-				if (!customMap[activeProfileKey]) {
-					const firstSavedId = Object.keys(customMap)[0];
-					if (firstSavedId) {
-						activeProfileKey = firstSavedId;
+				const savedKeys = Object.keys(customMap);
+
+				restoreFiltersFromUrl();
+
+				if (activeProfileKey && !customMap[activeProfileKey]) {
+					activeProfileKey = savedKeys.length > 0 ? savedKeys[0] : null;
+					if (activeProfileKey) {
 						localStorage.setItem(ACTIVE_KEY_STORAGE, activeProfileKey);
+					} else {
+						localStorage.removeItem(ACTIVE_KEY_STORAGE);
 					}
+				} else if (!activeProfileKey && savedKeys.length > 0) {
+					activeProfileKey = savedKeys[0];
+					localStorage.setItem(ACTIVE_KEY_STORAGE, activeProfileKey);
 				}
+
 				syncProfileSelectOptions();
-				loadProfile(activeProfileKey);
+
+				if (activeProfileKey && customMap[activeProfileKey]) {
+					loadProfile(activeProfileKey);
+				} else {
+					activeProfileKey = null;
+					appData = null;
+					renderAll();
+				}
+
+				window.addEventListener("popstate", () => {
+					restoreFiltersFromUrl();
+					if (activeProfileKey && getCustomProfilesMap()[activeProfileKey]) {
+						loadProfile(activeProfileKey);
+					} else {
+						renderAll();
+					}
+				});
 
 				// Car Profile Switcher
 				document.getElementById("carProfileSelect").addEventListener("change", (e) => {
 					loadProfile(e.target.value);
+					syncFiltersToUrl();
 				});
 
 				// Live Odometer Input (Auto-Saves & Updates Last Updated Date)
 				document.getElementById("currentMileageInput").addEventListener("input", (e) => {
+					if (!appData || !appData.vehicle) return;
 					const val = Number(e.target.value);
 					if (!isNaN(val) && val >= 0) {
 						appData.vehicle.currentMileageKm = val;
@@ -4034,6 +4521,7 @@
 				// Quick Odometer +1k / +5k Buttons
 				document.querySelectorAll(".km-step-btn").forEach((btn) => {
 					btn.addEventListener("click", () => {
+						if (!appData || !appData.vehicle) return;
 						const step = Number(btn.getAttribute("data-km-step")) || 1000;
 						appData.vehicle.currentMileageKm = (Number(appData.vehicle.currentMileageKm) || 0) + step;
 						saveToLocal(true);
@@ -4044,7 +4532,8 @@
 
 				// Reset Odometer
 				document.getElementById("resetMileageBtn").addEventListener("click", () => {
-					const defKm = BUILTIN_PROFILES[activeProfileKey]?.vehicle?.currentMileageKm || 45000;
+					if (!appData || !appData.vehicle) return;
+					const defKm = BUILTIN_PROFILES[activeProfileKey]?.vehicle?.currentMileageKm || 0;
 					appData.vehicle.currentMileageKm = defKm;
 					saveToLocal(true);
 					renderAll();
@@ -4062,6 +4551,7 @@
 						btn.className =
 							"sched-filter-btn px-2.5 py-1.5 rounded-xl text-xs font-semibold bg-indigo-600 text-white transition";
 						renderPeriodicTable();
+						syncFiltersToUrl();
 					});
 				});
 
@@ -4069,6 +4559,7 @@
 				document.getElementById("historySearchInput").addEventListener("input", (e) => {
 					currentHistorySearch = e.target.value;
 					renderHistoryList();
+					syncFiltersToUrl();
 				});
 
 				// =====================================================================
@@ -4121,7 +4612,10 @@
 				};
 
 				if (datePresetEl) {
-					datePresetEl.addEventListener("change", (e) => applyDatePreset(e.target.value));
+					datePresetEl.addEventListener("change", (e) => {
+						applyDatePreset(e.target.value);
+						syncFiltersToUrl();
+					});
 				}
 				if (dateStartEl) {
 					dateStartEl.addEventListener("change", (e) => {
@@ -4129,6 +4623,7 @@
 						renderHeaderAndKPIs();
 						renderSvgCharts();
 						renderHistoryList();
+						syncFiltersToUrl();
 					});
 				}
 				if (dateEndEl) {
@@ -4137,6 +4632,7 @@
 						renderHeaderAndKPIs();
 						renderSvgCharts();
 						renderHistoryList();
+						syncFiltersToUrl();
 					});
 				}
 				if (catSelectEl) {
@@ -4145,6 +4641,7 @@
 						renderHeaderAndKPIs();
 						renderSvgCharts();
 						renderHistoryList();
+						syncFiltersToUrl();
 					});
 				}
 				if (resetFiltersBtn) {
@@ -4153,6 +4650,7 @@
 						catSelectEl.value = "all";
 						globalCategory = "all";
 						applyDatePreset("this-year");
+						syncFiltersToUrl();
 						showToast("Filters reset to This Year / All");
 					});
 				}
@@ -4281,6 +4779,10 @@
 				});
 
 				document.getElementById("exportCurrentCsvBtn").addEventListener("click", () => {
+					if (!appData || !appData.vehicle) {
+						showToast("No active vehicle to export. Please add or select a car first.");
+						return;
+					}
 					const filename = ((appData.vehicle?.id || "car-maintenance") + ".csv").toLowerCase();
 					triggerDownload(buildCsvFromData(appData), filename, "text/csv;charset=utf-8;");
 				});
@@ -4347,6 +4849,10 @@
 				});
 
 				document.getElementById("exportJsonBtn").addEventListener("click", () => {
+					if (!appData || !appData.vehicle) {
+						showToast("No active vehicle to export. Please add or select a car first.");
+						return;
+					}
 					saveToLocal(true);
 					const filename = (appData.vehicle?.id || "car-maintenance") + ".json";
 					triggerDownload(JSON.stringify(appData, null, 2), filename, "application/json");
@@ -4404,9 +4910,10 @@
 				});
 
 				document.getElementById("resetStorageBtn").addEventListener("click", () => {
+					if (!activeProfileKey) return;
 					localStorage.removeItem(STORAGE_PREFIX + activeProfileKey);
 					appData = JSON.parse(
-						JSON.stringify(BUILTIN_PROFILES[activeProfileKey] || BUILTIN_PROFILES["sample-sedan"]),
+						JSON.stringify(BUILTIN_PROFILES[activeProfileKey] || BUILTIN_PROFILES["blank-template"]),
 					);
 					saveToLocal(false);
 					jsonTextarea.value = JSON.stringify(appData, null, 2);
@@ -4532,6 +5039,10 @@
 				});
 
 				document.getElementById("addRecordBtn").addEventListener("click", () => {
+					if (!appData || !appData.vehicle) {
+						showToast("Please add or select a vehicle first.");
+						return;
+					}
 					populateLinkedItemSelect();
 					document.getElementById("newRecDate").value = new Date().toISOString().slice(0, 10);
 					[
@@ -4639,6 +5150,10 @@
 					addScheduleModal.classList.remove("flex");
 				};
 				document.getElementById("addScheduleItemBtn").addEventListener("click", () => {
+					if (!appData || !appData.vehicle) {
+						showToast("Please add or select a vehicle first.");
+						return;
+					}
 					[
 						"newSchedNameOther",
 						"newSchedCatOther",
@@ -4697,6 +5212,10 @@
 					editCarModal.classList.remove("flex");
 				};
 				document.getElementById("editVehicleBtn").addEventListener("click", () => {
+					if (!appData || !appData.vehicle) {
+						showToast("Please add or select a vehicle first.");
+						return;
+					}
 					const v = appData.vehicle || {};
 					document.getElementById("editCarMake").value = v.make || "";
 					document.getElementById("editCarModel").value = v.model || "";
@@ -4750,14 +5269,14 @@
 
 				const TEMPLATE_PRESETS = {
 					"blank-template": { make: "", model: "", year: new Date().getFullYear(), engine: "", trans: "", currency: "USD", mileage: 0 },
-					"sample-sedan": { make: "Toyota", model: "Camry 2.5V", year: 2021, engine: "2.5L Dynamic Force I4", trans: "8-Speed Direct Shift Auto", currency: "USD", mileage: 45000 },
-					"sample-suv": { make: "Honda", model: "CR-V 1.5T AWD", year: 2022, engine: "1.5L VTEC Turbo", trans: "CVT AWD", currency: "USD", mileage: 38000 },
-					"sample-hatchback": { make: "Volkswagen", model: "Golf 1.4 TSI", year: 2020, engine: "1.4L TSI Turbo", trans: "7-Speed DSG", currency: "USD", mileage: 52000 },
-					"sample-truck": { make: "Ford", model: "Ranger 2.0 Bi-Turbo 4x4", year: 2022, engine: "2.0L EcoBlue Bi-Turbo Diesel", trans: "10-Speed SelectShift Auto", currency: "USD", mileage: 62000 },
-					"sample-sports": { make: "Porsche", model: "911 Carrera (992)", year: 2021, engine: "3.0L Twin-Turbo Flat-6", trans: "8-Speed PDK", currency: "USD", mileage: 22000 },
-					"sample-ev": { make: "Tesla", model: "Model 3 Dual Motor AWD", year: 2023, engine: "Dual AC Permanent Magnet Motors", trans: "Single-Speed Fixed Gear", currency: "USD", mileage: 28000 },
-					"sample-hybrid": { make: "Toyota", model: "Prius 1.8 Hybrid", year: 2022, engine: "1.8L Atkinson Cycle + Hybrid Synergy Drive", trans: "e-CVT", currency: "USD", mileage: 41000 },
-					"sample-van": { make: "Toyota", model: "Alphard 3.5 Executive Lounge", year: 2021, engine: "3.5L 2GR-FKS V6", trans: "8-Speed Automatic", currency: "USD", mileage: 58000 },
+					"sample-sedan": { make: "", model: "Sedan 2.0L", year: 2022, engine: "2.0L Inline-4", trans: "8-Speed Automatic", currency: "USD", mileage: 45000 },
+					"sample-suv": { make: "", model: "SUV AWD", year: 2022, engine: "1.5L Turbo AWD", trans: "CVT AWD", currency: "USD", mileage: 38000 },
+					"sample-hatchback": { make: "", model: "Hatchback 1.4T", year: 2021, engine: "1.4L Turbo", trans: "7-Speed DSG", currency: "USD", mileage: 52000 },
+					"sample-truck": { make: "", model: "Pickup 4x4", year: 2022, engine: "2.0L Turbo Diesel", trans: "10-Speed Automatic", currency: "USD", mileage: 62000 },
+					"sample-sports": { make: "", model: "Sports Coupe", year: 2021, engine: "3.0L Twin-Turbo", trans: "8-Speed PDK", currency: "USD", mileage: 22000 },
+					"sample-ev": { make: "", model: "Electric EV", year: 2023, engine: "Dual AC Electric Motor", trans: "Single-Speed Fixed Gear", currency: "USD", mileage: 28000 },
+					"sample-hybrid": { make: "", model: "Hybrid HEV", year: 2022, engine: "1.8L Atkinson + Hybrid", trans: "e-CVT", currency: "USD", mileage: 41000 },
+					"sample-van": { make: "", model: "Van MPV 3.5L", year: 2021, engine: "3.5L V6", trans: "8-Speed Automatic", currency: "USD", mileage: 58000 },
 				};
 
 				document.getElementById("modalNewCarBaseSelect")?.addEventListener("change", (e) => {
@@ -4874,8 +5393,11 @@
 									if (remainingKeys.length > 0) {
 										loadProfile(remainingKeys[0]);
 									} else {
-										const newMap = getCustomProfilesMap();
-										loadProfile(Object.keys(newMap)[0]);
+										activeProfileKey = null;
+										appData = null;
+										localStorage.removeItem(ACTIVE_KEY_STORAGE);
+										syncProfileSelectOptions();
+										renderAll();
 									}
 								} else {
 									syncProfileSelectOptions();
@@ -4924,6 +5446,23 @@
 					closeSettingsModal();
 					e.target.reset();
 					showToast(`Vehicle "${make} ${model}" created & switched`);
+				});
+
+				// Welcome View Action Buttons
+				document.getElementById("welcomeGoogleSignInBtn")?.addEventListener("click", () => {
+					openDriveModal();
+				});
+				document.getElementById("welcomeImportBtn")?.addEventListener("click", () => {
+					document.getElementById("openDataHubBtn")?.click();
+				});
+				document.getElementById("welcomeExportBlankBtn")?.addEventListener("click", () => {
+					document.getElementById("downloadCsvTemplateBtn")?.click();
+				});
+				document.getElementById("welcomeCreateBlankBtn")?.addEventListener("click", () => {
+					openAddCarModalWithPreset("blank-template");
+				});
+				document.getElementById("copyShareUrlBtn")?.addEventListener("click", () => {
+					copyTextSafe(window.location.href, "Sharable link with current filters copied to clipboard!");
 				});
 
 				// Register Service Worker for PWA (Installable App & Offline Mode)
