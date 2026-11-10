@@ -88,6 +88,8 @@ Open your browser at `http://localhost:8000` to access the application.
 ```
 autolog/
 ├── index.html               # Monolithic standalone web application (UI, CSS, JS, SVGs)
+├── favicon.svg              # Scalable vector favicon & PWA icon
+├── og-image.svg             # High-resolution (1200x630) social share Open Graph & Twitter Card banner
 ├── manifest.json            # PWA Web App Manifest (installable on desktop & mobile)
 ├── sw.js                    # Service Worker (offline asset caching & background sync)
 ├── README.md                # Developer documentation and quick start guide

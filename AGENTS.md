@@ -48,6 +48,8 @@
 ```
 autolog/
 ├── index.html               # Authoritative web application: contains UI markup, CSS, JS, templates
+├── favicon.svg              # Scalable vector favicon & PWA icon
+├── og-image.svg             # High-resolution (1200x630) social share Open Graph & Twitter Card banner
 ├── manifest.json            # PWA manifest: app metadata, standalone display mode, SVG maskable icons
 ├── sw.js                    # Service worker: cache-first offline asset delivery
 ├── README.md                # Developer & user-facing documentation

@@ -16,40 +16,90 @@
 		/>
 		<meta name="author" content="AutoLog" />
 		<meta name="theme-color" content="#0f172a" />
-		<link rel="manifest" href="./manifest.json" />
+
+		<!-- Favicon & Touch Icons -->
+		<link rel="icon" type="image/svg+xml" href="./favicon.svg" />
 		<link
-			rel="apple-touch-icon"
+			rel="alternate icon"
+			type="image/svg+xml"
 			href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='128' fill='%234f46e5'/%3E%3Cpath d='M120 360a40 40 0 100 80 40 40 0 000-80zm272 0a40 40 0 100 80 40 40 0 000-80zM80 200l40-100h272l40 100M80 200h352M80 200v160h40m312-160v160h-40M160 360h192' fill='none' stroke='%23ffffff' stroke-width='32' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"
 		/>
+		<link rel="apple-touch-icon" sizes="180x180" href="./favicon.svg" />
+		<link rel="mask-icon" href="./favicon.svg" color="#4f46e5" />
+		<link rel="manifest" href="./manifest.json" />
 
-		<!-- Open Graph / Social Sharing -->
+		<!-- Robots, Canonical & Crawlers -->
+		<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+		<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+		<link rel="canonical" id="canonicalLink" href="./" />
+		<meta name="revisit-after" content="7 days" />
+
+		<!-- Mobile, App & Browser Capabilities -->
+		<meta name="application-name" content="AutoLog" />
+		<meta name="apple-mobile-web-app-title" content="AutoLog" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="mobile-web-app-capable" content="yes" />
+		<meta name="format-detection" content="telephone=no" />
+
+		<!-- Open Graph / Facebook / WhatsApp -->
 		<meta property="og:type" content="website" />
+		<meta property="og:url" id="ogUrl" content="./" />
+		<meta property="og:site_name" content="AutoLog" />
+		<meta property="og:locale" content="en_US" />
 		<meta property="og:title" id="ogTitle" content="AutoLog — Car Maintenance &amp; Service Tracker" />
 		<meta
 			property="og:description"
 			id="ogDesc"
 			content="Interactive periodic maintenance schedule, live mileage calculator, workshop expense history, and printable A4 vehicle condition report."
 		/>
-		<meta property="og:site_name" content="AutoLog" />
+		<meta property="og:image" id="ogImage" content="./og-image.svg" />
+		<meta property="og:image:secure_url" id="ogImageSecure" content="./og-image.svg" />
+		<meta property="og:image:type" content="image/svg+xml" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:alt" id="ogImageAlt" content="AutoLog — Car Maintenance &amp; Service Tracker" />
 
-		<!-- Twitter Card -->
+		<!-- Twitter / X Cards -->
 		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:site" content="@AutoLog" />
+		<meta name="twitter:creator" content="@AutoLog" />
 		<meta name="twitter:title" id="twTitle" content="AutoLog — Car Maintenance &amp; Service Tracker" />
 		<meta
 			name="twitter:description"
 			id="twDesc"
 			content="Interactive periodic maintenance schedule, live mileage calculator, workshop expense history, and printable A4 vehicle condition report."
 		/>
+		<meta name="twitter:image" id="twImage" content="./og-image.svg" />
+		<meta name="twitter:image:alt" id="twImageAlt" content="AutoLog — Car Maintenance &amp; Service Tracker" />
 
 		<!-- Dynamic JSON-LD Structured Data -->
 		<script type="application/ld+json" id="jsonLdSchema">
 			{
 				"@context": "https://schema.org",
-				"@type": "WebApplication",
-				"name": "AutoLog",
-				"applicationCategory": "UtilitiesApplication",
-				"operatingSystem": "All",
-				"description": "Universal periodic car maintenance schedule, odometer calculator, and workshop expense tracker."
+				"@graph": [
+					{
+						"@type": "WebApplication",
+						"name": "AutoLog",
+						"applicationCategory": "UtilitiesApplication",
+						"operatingSystem": "All",
+						"browserRequirements": "Requires modern web browser with HTML5 and ES6 support",
+						"description": "Universal interactive car maintenance tracker, periodic service interval calculator, live odometer simulator, and printable A4 vehicle condition report.",
+						"offers": {
+							"@type": "Offer",
+							"price": "0",
+							"priceCurrency": "USD"
+						},
+						"featureList": [
+							"Periodic service interval calculations",
+							"Dynamic odometer simulation",
+							"Workshop maintenance expense ledger",
+							"Printable A4 vehicle condition reports",
+							"Google Drive cloud backup and sync",
+							"Offline Progressive Web App (PWA) support"
+						]
+					}
+				]
 			}
 		</script>
 
@@ -2474,6 +2524,43 @@
 					const el = document.getElementById(id);
 					if (el) el.setAttribute("content", val);
 				};
+				const setHref = (id, val) => {
+					const el = document.getElementById(id);
+					if (el) el.setAttribute("href", val);
+				};
+
+				// Clean canonical URL without search/hash fragments
+				let canonicalUrl = "./";
+				try {
+					if (typeof window !== "undefined" && window.location && window.location.origin) {
+						canonicalUrl = window.location.origin + window.location.pathname;
+					}
+				} catch (e) {}
+				setHref("canonicalLink", canonicalUrl);
+				setMeta("ogUrl", canonicalUrl);
+
+				const webAppDefinition = {
+					"@type": "WebApplication",
+					name: "AutoLog",
+					applicationCategory: "UtilitiesApplication",
+					operatingSystem: "All",
+					browserRequirements: "Requires modern web browser with HTML5 and ES6 support",
+					description:
+						"Universal interactive car maintenance tracker, periodic service interval calculator, live odometer simulator, and printable A4 vehicle condition report.",
+					offers: {
+						"@type": "Offer",
+						price: "0",
+						priceCurrency: "USD",
+					},
+					featureList: [
+						"Periodic service interval calculations",
+						"Dynamic odometer simulation",
+						"Workshop maintenance expense ledger",
+						"Printable A4 vehicle condition reports",
+						"Google Drive cloud backup and sync",
+						"Offline Progressive Web App (PWA) support",
+					],
+				};
 
 				if (isBlank) {
 					const defaultTitle = "Car Maintenance & Service Tracker — Periodic Schedule & Workshop Log";
@@ -2487,8 +2574,18 @@
 					);
 					setMeta("ogTitle", "Car Maintenance & Service Tracker");
 					setMeta("ogDesc", defaultDesc);
+					setMeta("ogImageAlt", "AutoLog — Universal Car Maintenance & Service Tracker");
 					setMeta("twTitle", "Car Maintenance & Service Tracker");
 					setMeta("twDesc", defaultDesc);
+					setMeta("twImageAlt", "AutoLog — Universal Car Maintenance & Service Tracker");
+
+					const schemaEl = document.getElementById("jsonLdSchema");
+					if (schemaEl) {
+						schemaEl.textContent = JSON.stringify({
+							"@context": "https://schema.org",
+							"@graph": [webAppDefinition],
+						});
+					}
 					return;
 				}
 
@@ -2504,27 +2601,37 @@
 				setMeta("seoKeywords", keywordsText);
 				setMeta("ogTitle", titleText);
 				setMeta("ogDesc", descText);
+				setMeta("ogImageAlt", `${carName} maintenance status and periodic service schedule on AutoLog`);
 				setMeta("twTitle", titleText);
 				setMeta("twDesc", descText);
+				setMeta("twImageAlt", `${carName} maintenance status and periodic service schedule on AutoLog`);
 
-				// Update JSON-LD Vehicle Schema
+				// Update JSON-LD Graph Schema
 				const schemaEl = document.getElementById("jsonLdSchema");
 				if (schemaEl) {
 					schemaEl.textContent = JSON.stringify({
 						"@context": "https://schema.org",
-						"@type": "Car",
-						name: carName,
-						brand: v.make || "",
-						model: v.model || "",
-						vehicleModelDate: String(v.year || ""),
-						vehicleIdentificationNumber: v.chassisNumber || "",
-						vehicleEngine: { "@type": "EngineSpecification", name: v.engine || "" },
-						vehicleTransmission: v.transmission || "",
-						mileageFromOdometer: {
-							"@type": "QuantitativeValue",
-							value: Number(v.currentMileageKm) || 0,
-							unitCode: "KMT",
-						},
+						"@graph": [
+							webAppDefinition,
+							{
+								"@type": "Car",
+								name: carName,
+								brand: {
+									"@type": "Brand",
+									name: v.make || "",
+								},
+								model: v.model || "",
+								vehicleModelDate: String(v.year || ""),
+								vehicleIdentificationNumber: v.chassisNumber || "",
+								vehicleEngine: { "@type": "EngineSpecification", name: v.engine || "" },
+								vehicleTransmission: v.transmission || "",
+								mileageFromOdometer: {
+									"@type": "QuantitativeValue",
+									value: Number(v.currentMileageKm) || 0,
+									unitCode: "KMT",
+								},
+							},
+						],
 					});
 				}
 			}
