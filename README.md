@@ -44,10 +44,15 @@ All data is stored client-side in the browser's `localStorage` and can be export
 - **🚗 Clean Slate & Ad-Free Vehicle Onboarding**: No default vehicles seeded and zero commercial vehicle advertisements or fake data. When starting fresh or when no cars exist in storage, AutoLog displays an onboarding hub of vehicle archetype templates (Sedan, SUV, Hatchback, Truck 4x4, Sports Coupe, EV, Hybrid, MPV, or Blank) to pick and customize with your own make and model, alongside quick Google Sign-In and CSV/JSON Import/Export actions.
 - **🔗 Sharable Filter Sync in URL**: Active vehicle profile, dashboard date period preset, custom date ranges, category filters, periodic schedule status tabs, and history search queries are automatically synchronized with the URL query parameters (`?car=...&period=...&cat=...&sched=...&q=...`) for instant bookmarking and one-click shareable filtered views.
 - **⏱️ Live Odometer Simulation**: Update mileage manually or increment quickly with `+1k` and `+5k` buttons. Recalculates every service interval and countdown in real time.
+- **🕒 Distance & Time Dual-Tracking**: Periodic schedule tracks by both distance (KM) and calendar time (`intervalMonths`). The system calculates `nextDueDate` alongside `nextDueKm`, triggering warnings based on whichever comes first (KM or Date).
+- **🛞 Tire Management Hub**: Specialized maintenance rows for Tire Rotation (every 10,000 km / 6 mo), Wheel Alignment (every 10,000 km / 12 mo), and Tire Replacement (every 50,000 km / 36 mo).
+- **📑 Official Documents Widget**: Dedicated dashboard countdown widget next to Total Cost tracking Road Tax and Insurance expiry dates with real-time days-remaining indicators, warning color transitions, and an interactive edit modal.
+- **⛽ Fuel Efficiency & Engine Health Tracker**: Interactive KM/L consumption analytics designed for Honda i-DSI and modern powertrains. Includes native SVG trend charting, fuel receipt logger modal, and fuel log ledger.
+- **🏷️ OEM Part Numbers Reference**: Quick reference column and badges across the maintenance schedule and A4 printable report displaying manufacturer OEM part numbers (e.g. NGK spark plugs, Honda HMMF fluid).
 - **🛠️ Periodic Maintenance Schedule**: Track engine oil, transmission fluid, spark plugs, timing belt/chain, coolant, drive belts, and filters with status badges:
-  - 🟢 **Good**: > 1,000 km remaining.
-  - 🟡 **Due Soon**: ≤ 1,000 km remaining.
-  - 🔴 **Overdue**: Past due mileage (≤ 0 km).
+  - 🟢 **Good**: > 1,000 km and > 30 days remaining.
+  - 🟡 **Due Soon**: ≤ 1,000 km or ≤ 30 days remaining.
+  - 🔴 **Overdue**: Past due mileage (≤ 0 km) or past expiry date.
   - ⚪ **Unset / Pending**: Awaiting baseline odometer entry.
 - **📊 Interactive SVG Charts**:
   - Horizontal countdown bar chart showing distance remaining per service item.
@@ -182,7 +187,9 @@ The header features a real-time Google Account button with connection status:
     "transmission": "6-Speed Automatic",
     "plateNumber": "KLM-4820",
     "currentMileageKm": 45000,
-    "latestServiceDate": "2026-01-15"
+    "latestServiceDate": "2026-01-15",
+    "roadTaxExpiry": "2027-01-20",
+    "insuranceExpiry": "2027-01-20"
   },
   "periodicSchedule": [
     {
@@ -193,7 +200,19 @@ The header features a real-time Google Account button with connection status:
       "intervalMonths": 6,
       "lastServicedKm": 42000,
       "lastServicedDate": "2025-11-15",
-      "estimatedCostMyr": 65
+      "estimatedCostMyr": 65,
+      "oemPartNumber": "15400-RAF-T01"
+    }
+  ],
+  "fuelLogs": [
+    {
+      "id": "fuel-101",
+      "date": "2026-10-18",
+      "odometerKm": 44500,
+      "liters": 34.2,
+      "costMyr": 70.11,
+      "fullTank": true,
+      "station": "Petronas Primax 95"
     }
   ],
   "maintenanceHistory": [

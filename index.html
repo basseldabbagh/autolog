@@ -621,7 +621,7 @@
 			<section class="grid grid-cols-1 lg:grid-cols-12 gap-4">
 				<!-- Odometer Card -->
 				<div
-					class="lg:col-span-5 bg-gradient-to-br from-slate-900 via-slate-900 to-indigo-950/60 rounded-2xl p-4 sm:p-5 border border-slate-800 shadow-xl flex flex-col justify-between"
+					class="lg:col-span-4 bg-gradient-to-br from-slate-900 via-slate-900 to-indigo-950/60 rounded-2xl p-4 sm:p-5 border border-slate-800 shadow-xl flex flex-col justify-between"
 				>
 					<div class="flex items-center justify-between gap-2">
 						<span
@@ -693,65 +693,105 @@
 					</div>
 				</div>
 
-				<!-- 4 KPI Cards -->
-				<div class="lg:col-span-7 grid grid-cols-2 sm:grid-cols-4 gap-3">
+				<!-- 5 KPI & Document Cards -->
+				<div class="lg:col-span-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
 					<div
-						class="motion-card bg-slate-900/90 rounded-2xl p-4 border border-slate-800 flex flex-col justify-between"
+						class="motion-card bg-slate-900/90 rounded-2xl p-3.5 border border-slate-800 flex flex-col justify-between"
 					>
 						<div class="flex items-center justify-between text-xs font-medium text-slate-400">
-							<span>Tracked Items</span>
+							<span class="truncate">Tracked Items</span>
 							<svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
 								<path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
 							</svg>
 						</div>
 						<div class="mt-2">
-							<div id="kpiActiveCount" class="text-2xl font-bold font-mono text-white">3 / 10</div>
-							<p id="kpiActiveSub" class="text-[11px] text-emerald-400 mt-0.5">7 need baseline</p>
+							<div id="kpiActiveCount" class="text-xl sm:text-2xl font-bold font-mono text-white">3 / 10</div>
+							<p id="kpiActiveSub" class="text-[11px] text-emerald-400 truncate mt-0.5">7 need baseline</p>
 						</div>
 					</div>
 
 					<div
-						class="motion-card bg-slate-900/90 rounded-2xl p-4 border border-slate-800 flex flex-col justify-between"
+						class="motion-card bg-slate-900/90 rounded-2xl p-3.5 border border-slate-800 flex flex-col justify-between"
 					>
 						<div class="flex items-center justify-between text-xs font-medium text-slate-400">
-							<span>Next Service</span>
+							<span class="truncate">Next Service</span>
 							<svg class="w-4 h-4 text-indigo-400 shrink-0" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
 								<path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
 							</svg>
 						</div>
 						<div class="mt-2">
-							<div id="kpiNextDueKm" class="text-2xl font-bold font-mono text-white">7,000 km</div>
+							<div id="kpiNextDueKm" class="text-xl sm:text-2xl font-bold font-mono text-white">7,000 km</div>
 							<p id="kpiNextDueItem" class="text-[11px] text-indigo-300 truncate mt-0.5">Engine Oil &amp; Filter</p>
 						</div>
 					</div>
 
 					<div
-						class="motion-card bg-slate-900/90 rounded-2xl p-4 border border-slate-800 flex flex-col justify-between"
+						class="motion-card bg-slate-900/90 rounded-2xl p-3.5 border border-slate-800 flex flex-col justify-between"
 					>
 						<div class="flex items-center justify-between text-xs font-medium text-slate-400">
-							<span>Total Cost</span>
+							<span class="truncate">Total Cost</span>
 							<svg class="w-4 h-4 text-amber-400 shrink-0" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
 								<path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 							</svg>
 						</div>
 						<div class="mt-2">
-							<div id="kpiTotalCost" class="text-2xl font-bold font-mono text-white">RM 4,182</div>
-							<p id="kpiTotalRecords" class="text-[11px] text-slate-400 mt-0.5">12 service logs</p>
+							<div id="kpiTotalCost" class="text-xl sm:text-2xl font-bold font-mono text-white">RM 4,182</div>
+							<p id="kpiTotalRecords" class="text-[11px] text-slate-400 truncate mt-0.5">12 service logs</p>
+						</div>
+					</div>
+
+					<!-- Official Documents Widget (Road Tax & Insurance) -->
+					<div
+						class="motion-card bg-slate-900/90 rounded-2xl p-3.5 border border-slate-800 flex flex-col justify-between"
+					>
+						<div class="flex items-center justify-between text-xs font-medium text-slate-400">
+							<span class="truncate">Official Docs</span>
+							<button
+								type="button"
+								id="openOfficialDocsBtn"
+								class="text-slate-400 hover:text-indigo-400 p-0.5 rounded transition"
+								title="Renew / Edit Road Tax &amp; Insurance"
+							>
+								<svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+								</svg>
+							</button>
+						</div>
+						<div class="mt-1.5 space-y-1.5">
+							<div>
+								<div class="flex items-center justify-between text-[11px]">
+									<span class="text-slate-300">Road Tax</span>
+									<span id="kpiRoadTaxDays" class="font-mono font-bold text-emerald-400">—</span>
+								</div>
+								<div class="w-full h-1 bg-slate-950 rounded-full overflow-hidden mt-0.5">
+									<div id="kpiRoadTaxBar" class="h-full bg-emerald-500 rounded-full transition-all" style="width: 100%"></div>
+								</div>
+							</div>
+							<div>
+								<div class="flex items-center justify-between text-[11px]">
+									<span class="text-slate-300">Insurance</span>
+									<span id="kpiInsuranceDays" class="font-mono font-bold text-cyan-400">—</span>
+								</div>
+								<div class="w-full h-1 bg-slate-950 rounded-full overflow-hidden mt-0.5">
+									<div id="kpiInsuranceBar" class="h-full bg-cyan-500 rounded-full transition-all" style="width: 100%"></div>
+								</div>
+							</div>
+							<p id="kpiDocsSub" class="text-[10px] text-slate-400 truncate mt-0.5">Expiry tracking</p>
 						</div>
 					</div>
 
 					<div
-						class="motion-card bg-slate-900/90 rounded-2xl p-4 border border-slate-800 flex flex-col justify-between"
+						class="motion-card bg-slate-900/90 rounded-2xl p-3.5 border border-slate-800 flex flex-col justify-between"
 					>
 						<div class="flex items-center justify-between text-xs font-medium text-slate-400">
-							<span>Receipts &amp; Fees</span>
+							<span class="truncate">Receipts &amp; Fees</span>
 							<svg class="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
 								<path stroke-linecap="round" stroke-linejoin="round" d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2z" />
 							</svg>
 						</div>
 						<div class="mt-2">
-							<div id="kpiTotalPaid" class="text-2xl font-bold font-mono text-cyan-300">RM 3,557</div>
-							<p id="kpiBalanceSub" class="text-[11px] text-slate-400 mt-0.5">Includes workshop fees</p>
+							<div id="kpiTotalPaid" class="text-xl sm:text-2xl font-bold font-mono text-cyan-300">RM 3,557</div>
+							<p id="kpiBalanceSub" class="text-[11px] text-slate-400 truncate mt-0.5">Includes workshop fees</p>
 						</div>
 					</div>
 				</div>
@@ -815,12 +855,13 @@
 					<table class="w-full text-start border-collapse">
 						<thead>
 							<tr class="bg-slate-950/60 text-slate-400 text-xs uppercase tracking-wider border-b border-slate-800">
-								<th class="py-3 ps-5 pe-3 font-semibold text-start">Item / Service Name</th>
-								<th class="py-3 px-3 font-semibold text-start">Interval (km)</th>
-								<th class="py-3 px-3 font-semibold text-start">Last Serviced At (km)</th>
-								<th class="py-3 px-3 font-semibold text-start">Next Service Due (km)</th>
+								<th class="py-3 ps-5 pe-3 font-semibold text-start">Item / Service &amp; OEM Part</th>
+								<th class="py-3 px-3 font-semibold text-start">Interval</th>
+								<th class="py-3 px-3 font-semibold text-start">Last Serviced</th>
+								<th class="py-3 px-3 font-semibold text-start">Next Due (KM)</th>
+								<th class="py-3 px-3 font-semibold text-start">Next Due (Date)</th>
 								<th class="py-3 px-3 font-semibold text-start">Est. Cost</th>
-								<th class="py-3 ps-3 pe-5 font-semibold text-start min-w-[210px]">Status</th>
+								<th class="py-3 ps-3 pe-5 font-semibold text-start min-w-[210px]">Status &amp; Urgency</th>
 							</tr>
 						</thead>
 						<tbody id="periodicTableBody" class="divide-y divide-slate-800/70 text-sm"></tbody>
@@ -890,6 +931,90 @@
 					<div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
 						<span>Parts &amp; Workshop Fees</span>
 						<span id="donutFooterTotal" class="font-mono font-semibold text-slate-200">Total: RM 4,182</span>
+					</div>
+				</div>
+			</section>
+
+			<!-- Fuel Efficiency & i-DSI Health Tracker Section -->
+			<section class="bg-slate-900/90 border border-slate-800 rounded-2xl shadow-xl overflow-hidden p-5 space-y-4">
+				<div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800/80 pb-3">
+					<div>
+						<div class="flex items-center gap-2">
+							<svg class="w-5 h-5 text-emerald-400 shrink-0" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+							</svg>
+							<h2 class="text-base font-bold text-white">Fuel Efficiency &amp; i-DSI Health Tracker</h2>
+						</div>
+						<p class="text-xs text-slate-400 mt-0.5">
+							Average consumption (KM/L). Vital early diagnostic for Honda i-DSI 8-spark-plug &amp; dual-ignition coil efficiency.
+						</p>
+					</div>
+					<div class="flex items-center gap-2">
+						<button
+							type="button"
+							id="addFuelReceiptBtn"
+							class="inline-flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold px-3 py-1.5 rounded-xl transition"
+						>
+							<svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+							</svg>
+							<span>+ Log Fuel Receipt</span>
+						</button>
+					</div>
+				</div>
+
+				<!-- Fuel KPIs -->
+				<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+					<div class="bg-slate-950/70 border border-slate-800 rounded-xl p-3">
+						<span class="text-[11px] font-medium text-slate-400">Average Consumption</span>
+						<div id="fuelAvgKmL" class="text-2xl font-bold font-mono text-emerald-400 mt-1">—</div>
+						<p class="text-[10px] text-slate-500 mt-0.5">Target: ~15.0 - 17.0 km/L</p>
+					</div>
+					<div class="bg-slate-950/70 border border-slate-800 rounded-xl p-3">
+						<span class="text-[11px] font-medium text-slate-400">Latest Fill-up</span>
+						<div id="fuelLatestKmL" class="text-2xl font-bold font-mono text-white mt-1">—</div>
+						<p id="fuelLatestDistSub" class="text-[10px] text-slate-500 mt-0.5">—</p>
+					</div>
+					<div class="bg-slate-950/70 border border-slate-800 rounded-xl p-3">
+						<span class="text-[11px] font-medium text-slate-400">Fuel Cost / km</span>
+						<div id="fuelCostPerKm" class="text-2xl font-bold font-mono text-indigo-300 mt-1">—</div>
+						<p id="fuelSpendSub" class="text-[10px] text-slate-500 mt-0.5">Total spent: RM —</p>
+					</div>
+					<div class="bg-slate-950/70 border border-slate-800 rounded-xl p-3 flex flex-col justify-between">
+						<span class="text-[11px] font-medium text-slate-400">i-DSI Ignition Health</span>
+						<div id="fuelIgnitionBadge" class="mt-1">
+							<span class="inline-flex items-center gap-1.5 px-2 py-1 rounded text-xs font-semibold bg-slate-800 text-slate-400">
+								<span>Monitoring baseline...</span>
+							</span>
+						</div>
+						<p class="text-[10px] text-slate-500 mt-1">Drops &lt; 13 km/L indicate coil leakage</p>
+					</div>
+				</div>
+
+				<!-- SVG Trend Chart & Recent Fill-ups Table Grid -->
+				<div class="grid grid-cols-1 lg:grid-cols-12 gap-4 pt-1">
+					<div class="lg:col-span-7 bg-slate-950/60 border border-slate-800/80 rounded-xl p-4 flex flex-col justify-between">
+						<div class="flex items-center justify-between mb-2">
+							<span class="text-xs font-semibold text-slate-300">Fuel Economy Trend (KM/L)</span>
+							<span class="text-[11px] font-mono text-emerald-400">Target Line: 15.0 km/L</span>
+						</div>
+						<div id="svgFuelTrendChart" class="w-full min-h-[140px] flex items-center justify-center"></div>
+					</div>
+
+					<div class="lg:col-span-5 bg-slate-950/60 border border-slate-800/80 rounded-xl p-4 overflow-hidden flex flex-col justify-between">
+						<div>
+							<div class="flex items-center justify-between mb-2">
+								<span class="text-xs font-semibold text-slate-300">Fuel Receipts Log</span>
+								<span id="fuelLogCountBadge" class="text-[10px] font-mono text-slate-400">0 logs</span>
+							</div>
+							<div id="fuelReceiptsList" class="space-y-2 max-h-[160px] overflow-y-auto pe-1 text-xs"></div>
+						</div>
+						<div class="pt-2 text-[10px] text-slate-500 border-t border-slate-800/80 flex justify-between items-center mt-2">
+							<span>Full tank calculation method</span>
+							<button type="button" id="loadSampleFuelBtn" class="text-indigo-400 hover:text-indigo-300 transition underline">
+								Load i-DSI Samples
+							</button>
+						</div>
 					</div>
 				</div>
 			</section>
@@ -1677,6 +1802,7 @@
 								<option value="20000">20,000 km</option>
 								<option value="30000">30,000 km</option>
 								<option value="40000" selected>40,000 km</option>
+								<option value="50000">50,000 km</option>
 								<option value="60000">60,000 km</option>
 								<option value="80000">80,000 km</option>
 								<option value="100000">100,000 km</option>
@@ -1691,6 +1817,52 @@
 							/>
 						</div>
 					</div>
+
+					<!-- Dual-Tracking & OEM Reference Fields -->
+					<div class="grid grid-cols-2 gap-3">
+						<div>
+							<label class="block text-slate-300 font-medium mb-1">Interval (Months)</label>
+							<select
+								id="newSchedMonthsSelect"
+								class="w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-slate-700"
+							>
+								<option value="none">No time interval</option>
+								<option value="3">3 months</option>
+								<option value="6" selected>6 months</option>
+								<option value="12">12 months (1 year)</option>
+								<option value="24">24 months (2 years)</option>
+								<option value="36">36 months (3 years)</option>
+								<option value="48">48 months (4 years)</option>
+								<option value="__other__">Other (Custom)...</option>
+							</select>
+							<input
+								id="newSchedMonthsOther"
+								type="number"
+								min="1"
+								placeholder="Enter months..."
+								class="hidden mt-1.5 w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-indigo-500"
+							/>
+						</div>
+						<div>
+							<label class="block text-slate-300 font-medium mb-1">Last Serviced Date</label>
+							<input
+								id="newSchedLastDate"
+								type="date"
+								class="w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-slate-700 focus:outline-none focus:border-indigo-400"
+							/>
+						</div>
+					</div>
+
+					<div>
+						<label class="block text-slate-300 font-medium mb-1">OEM Part Number / Specification</label>
+						<input
+							id="newSchedOemPart"
+							type="text"
+							placeholder="e.g. NGK BKR6E-11 / Honda HMMF 08260-99904..."
+							class="w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-slate-700 focus:outline-none focus:border-indigo-400"
+						/>
+					</div>
+
 					<div class="grid grid-cols-2 gap-3">
 						<div>
 							<label class="block text-slate-300 font-medium mb-1">Last Serviced (km)</label>
@@ -1740,6 +1912,181 @@
 							Cancel
 						</button>
 						<button type="submit" class="px-4 py-2 rounded-xl bg-indigo-600 text-white font-semibold">Add</button>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<!-- MODAL: Official Documents Renewal (Road Tax & Insurance) -->
+		<div
+			id="officialDocsModal"
+			class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-sm p-4"
+		>
+			<div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-md w-full overflow-hidden shadow-2xl">
+				<div class="px-5 py-4 border-b border-slate-800 flex items-center justify-between">
+					<div class="flex items-center gap-2">
+						<svg class="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+						</svg>
+						<h3 class="text-base font-bold text-white">Official Documents Renewal</h3>
+					</div>
+					<button
+						id="closeOfficialDocsModalBtn"
+						type="button"
+						class="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800 transition"
+					>
+						<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+						</svg>
+					</button>
+				</div>
+				<form id="officialDocsForm" class="p-5 space-y-4 text-xs">
+					<div>
+						<label class="block text-slate-300 font-medium mb-1">Road Tax Expiry Date *</label>
+						<input
+							id="inputRoadTaxExpiry"
+							type="date"
+							required
+							class="w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-slate-700 focus:outline-none focus:border-indigo-400"
+						/>
+						<p class="text-[10px] text-slate-400 mt-1">Vehicle road tax renewal date (JPJ Malaysia).</p>
+					</div>
+					<div>
+						<label class="block text-slate-300 font-medium mb-1">Insurance Policy Expiry Date *</label>
+						<input
+							id="inputInsuranceExpiry"
+							type="date"
+							required
+							class="w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-slate-700 focus:outline-none focus:border-indigo-400"
+						/>
+						<p class="text-[10px] text-slate-400 mt-1">Comprehensive / 3rd party motor insurance policy renewal date.</p>
+					</div>
+					<div class="pt-2 flex justify-end gap-2">
+						<button type="button" id="cancelOfficialDocsBtn" class="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 hover:bg-slate-700 transition">
+							Cancel
+						</button>
+						<button type="submit" class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold transition">
+							Save Renewal Dates
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<!-- MODAL: Add Fuel Receipt -->
+		<div
+			id="fuelReceiptModal"
+			class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-sm p-4"
+		>
+			<div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-md w-full overflow-hidden shadow-2xl">
+				<div class="px-5 py-4 border-b border-slate-800 flex items-center justify-between">
+					<div class="flex items-center gap-2">
+						<svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+						</svg>
+						<h3 class="text-base font-bold text-white">Log Fuel Receipt</h3>
+					</div>
+					<button
+						id="closeFuelReceiptModalBtn"
+						type="button"
+						class="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800 transition"
+					>
+						<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+						</svg>
+					</button>
+				</div>
+				<form id="fuelReceiptForm" class="p-5 space-y-3.5 text-xs">
+					<div class="grid grid-cols-2 gap-3">
+						<div>
+							<label class="block text-slate-300 font-medium mb-1">Receipt Date *</label>
+							<input
+								id="fuelInputDate"
+								type="date"
+								required
+								class="w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-slate-700 focus:outline-none focus:border-indigo-400"
+							/>
+						</div>
+						<div>
+							<label class="block text-slate-300 font-medium mb-1">Odometer (km) *</label>
+							<input
+								id="fuelInputMileage"
+								type="number"
+								step="1"
+								min="0"
+								required
+								placeholder="e.g. 196441"
+								class="w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-slate-700 focus:outline-none focus:border-indigo-400"
+							/>
+						</div>
+					</div>
+					<div class="grid grid-cols-2 gap-3">
+						<div>
+							<label class="block text-slate-300 font-medium mb-1">Fuel Volume (Liters) *</label>
+							<input
+								id="fuelInputLiters"
+								type="number"
+								step="0.01"
+								min="0.1"
+								required
+								placeholder="e.g. 35.5"
+								class="w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-slate-700 focus:outline-none focus:border-indigo-400"
+							/>
+						</div>
+						<div>
+							<label class="block text-slate-300 font-medium mb-1">Total Cost (RM) *</label>
+							<input
+								id="fuelInputCost"
+								type="number"
+								step="0.01"
+								min="0"
+								required
+								placeholder="e.g. 72.50"
+								class="w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-slate-700 focus:outline-none focus:border-indigo-400"
+							/>
+						</div>
+					</div>
+					<div class="grid grid-cols-2 gap-3">
+						<div>
+							<label class="block text-slate-300 font-medium mb-1">Fuel Grade</label>
+							<select
+								id="fuelInputGrade"
+								class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700 focus:outline-none focus:border-indigo-400"
+							>
+								<option value="RON 95" selected>RON 95</option>
+								<option value="RON 97">RON 97</option>
+								<option value="RON 100">RON 100</option>
+								<option value="Diesel">Diesel</option>
+							</select>
+						</div>
+						<div class="flex items-center pt-5">
+							<label class="inline-flex items-center gap-2 cursor-pointer text-slate-300 select-none">
+								<input
+									id="fuelInputFullTank"
+									type="checkbox"
+									checked
+									class="rounded bg-slate-950 border-slate-700 text-indigo-600 focus:ring-0 w-4 h-4"
+								/>
+								<span>Full Tank Fill-up</span>
+							</label>
+						</div>
+					</div>
+					<div>
+						<label class="block text-slate-300 font-medium mb-1">Receipt Notes / Station</label>
+						<input
+							id="fuelInputNotes"
+							type="text"
+							placeholder="e.g. Petronas Seri Kembangan / Shell..."
+							class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700 focus:outline-none focus:border-indigo-400"
+						/>
+					</div>
+					<div class="pt-2 flex justify-end gap-2">
+						<button type="button" id="cancelFuelReceiptBtn" class="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 hover:bg-slate-700 transition">
+							Cancel
+						</button>
+						<button type="submit" class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold transition">
+							Save Fuel Receipt
+						</button>
 					</div>
 				</form>
 			</div>
@@ -1825,6 +2172,24 @@
 								id="editCarTrans"
 								type="text"
 								class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700"
+							/>
+						</div>
+					</div>
+					<div class="grid grid-cols-2 gap-3">
+						<div>
+							<label class="block text-slate-300 font-medium mb-1">Road Tax Expiry</label>
+							<input
+								id="editCarRoadTax"
+								type="date"
+								class="w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-slate-700 focus:outline-none focus:border-indigo-400"
+							/>
+						</div>
+						<div>
+							<label class="block text-slate-300 font-medium mb-1">Insurance Expiry</label>
+							<input
+								id="editCarInsurance"
+								type="date"
+								class="w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-slate-700 focus:outline-none focus:border-indigo-400"
 							/>
 						</div>
 					</div>
@@ -2068,6 +2433,62 @@
 		<!-- Application Script -->
 		<script>
 			const BUILTIN_PROFILES = {
+				"honda-city-2003": {
+					schemaVersion: "2.0",
+					lastUpdated: "2026-11-10",
+					currency: "MYR",
+					vehicle: {
+						id: "honda-city-2003",
+						make: "Honda",
+						model: "City 1.5L (GD8)",
+						year: 2003,
+						registrationDate: "2004-01-20",
+						engine: "1.5L i-DSI (L15A2)",
+						engineNumber: "L15A2-1008930",
+						chassisNumber: "PMHGD86603D108880",
+						transmission: "CVT Automatic",
+						plateNumber: "WLL 8902",
+						currentMileageKm: 196441,
+						latestServiceDate: "2026-11-07",
+						roadTaxExpiry: "2027-01-20",
+						insuranceExpiry: "2027-01-20"
+					},
+					periodicSchedule: [
+						{ id: "engine-oil", name: "Engine Oil & Oil Filter", category: "Fluids", intervalKm: 7000, intervalMonths: 6, lastServicedKm: 196441, lastServicedDate: "2026-11-07", estimatedCostMyr: 70, oemPartNumber: "Honda SN 10W-30 / 15400-RAF-T01" },
+						{ id: "gear-oil", name: "Gear Oil (CVT)", category: "Fluids", intervalKm: 30000, intervalMonths: 24, lastServicedKm: 196441, lastServicedDate: "2026-11-07", estimatedCostMyr: 110, oemPartNumber: "Honda HMMF 08260-99904" },
+						{ id: "brake-fluid", name: "Brake Fluid", category: "Fluids", intervalKm: 40000, intervalMonths: 24, lastServicedKm: 196441, lastServicedDate: "2026-11-07", estimatedCostMyr: 45, oemPartNumber: "Honda DOT 4 08203-0004" },
+						{ id: "spark-plugs", name: "Spark Plugs (8 pcs)", category: "Ignition", intervalKm: 40000, intervalMonths: 24, lastServicedKm: 194000, lastServicedDate: "2026-04-14", estimatedCostMyr: 130, oemPartNumber: "NGK BKR6E-11 (8 pcs) / 98079-5614E" },
+						{ id: "valve-clearance", name: "Valve Clearance Adjustment", category: "Engine", intervalKm: 40000, intervalMonths: 24, lastServicedKm: 194000, lastServicedDate: "2026-04-15", estimatedCostMyr: 120, oemPartNumber: "IN 0.15-0.19mm / EX 0.26-0.30mm" },
+						{ id: "engine-coolant", name: "Engine Coolant / Radiator Water", category: "Cooling", intervalKm: 80000, intervalMonths: 24, lastServicedKm: 194500, lastServicedDate: "2026-05-10", estimatedCostMyr: 65, oemPartNumber: "Honda Type 2 / Cap: R124 0.9 Bar" },
+						{ id: "drive-belt", name: "Drive Belt (Serpentine Belt)", category: "Belts", intervalKm: 80000, intervalMonths: 36, lastServicedKm: null, lastServicedDate: null, estimatedCostMyr: 35, oemPartNumber: "Honda 38920-PWA-004 (5PK1144)" },
+						{ id: "engine-air-filter", name: "Engine Air Filter", category: "Filters", intervalKm: 20000, intervalMonths: 12, lastServicedKm: null, lastServicedDate: null, estimatedCostMyr: 35, oemPartNumber: "Honda 17220-PWA-003" },
+						{ id: "cabin-ac-filter", name: "Cabin A/C Filter", category: "Filters", intervalKm: 20000, intervalMonths: 12, lastServicedKm: null, lastServicedDate: null, estimatedCostMyr: 30, oemPartNumber: "Honda 80291-SAA-505" },
+						{ id: "fuel-filter", name: "Fuel Filter", category: "Filters", intervalKm: 80000, intervalMonths: 48, lastServicedKm: null, lastServicedDate: null, estimatedCostMyr: 85, oemPartNumber: "Honda 16010-SAA-000" },
+						{ id: "tire-rotation", name: "Tire Rotation & Balancing", category: "Tires", intervalKm: 10000, intervalMonths: 6, lastServicedKm: 196441, lastServicedDate: "2026-11-07", estimatedCostMyr: 40, oemPartNumber: "175/65R14 (Rotate Front/Rear)" },
+						{ id: "tire-replacement", name: "Tire Replacement (Front/Set)", category: "Tires", intervalKm: 50000, intervalMonths: 36, lastServicedKm: 196441, lastServicedDate: "2026-11-07", estimatedCostMyr: 320, oemPartNumber: "175/65R14 82H (Front Replaced Nov 7, 2026)" },
+						{ id: "wheel-alignment", name: "Wheel Alignment & Camber", category: "Tires", intervalKm: 10000, intervalMonths: 12, lastServicedKm: 196441, lastServicedDate: "2026-11-07", estimatedCostMyr: 50, oemPartNumber: "Toe: 0° ± 2mm / Camber: 0°00'" }
+					],
+					fuelLogs: [
+						{ id: "fuel-01", date: "2026-10-18", mileageKm: 195500, liters: 38.5, costMyr: 78.93, fullTank: true, fuelGrade: "RON 95", notes: "Full tank fill-up. Good fuel economy." },
+						{ id: "fuel-02", date: "2026-10-27", mileageKm: 196000, liters: 31.8, costMyr: 65.19, fullTank: true, fuelGrade: "RON 95", notes: "500 km run. ~15.7 km/L. Smooth idle." },
+						{ id: "fuel-03", date: "2026-11-07", mileageKm: 196441, liters: 27.2, costMyr: 55.76, fullTank: true, fuelGrade: "RON 95", notes: "441 km run. ~16.2 km/L. New front tires & alignment." }
+					],
+					maintenanceHistory: [
+						{ id: "rec-2026-04-08", date: "2026-04-08", mileageKm: null, title: "Engine & Head Gasket Overhaul", category: "Engine Overhaul", mechanic: "Alaa Hassoon Majdi", costMyr: 1500, paidMyr: 500, paymentMethod: "Transfer + Workshop Fees", status: "Completed", notes: "Head gasket overhaul, cylinder head service, engine oil & filter. Initial deposit RM 500; remaining RM 1,000 in workshop fees." },
+						{ id: "rec-2026-04-12", date: "2026-04-12", mileageKm: null, title: "Short Drive Shaft Replacement", category: "Drivetrain", mechanic: "Alaa Hassoon Majdi", costMyr: 240, paidMyr: 240, paymentMethod: "Touch 'n Go eWallet", status: "Completed", notes: "Replaced worn short drive shaft (1 pc)." },
+						{ id: "rec-2026-04-14", date: "2026-04-14", mileageKm: null, title: "Original Spark Plugs (8 pcs)", category: "Periodic & Fluids", mechanic: "TF Auto Supply Sdn Bhd", costMyr: 130, paidMyr: 130, paymentMethod: "Workshop Fees", status: "Completed", notes: "2 sets of 4 original spark plugs (RM 65 x 2). OEM NGK BKR6E-11 (4 front, 4 rear)." },
+						{ id: "rec-2026-04-15", date: "2026-04-15", mileageKm: null, title: "Complete Timing Chain Kit (SANWA SH7027)", category: "Engine Overhaul", mechanic: "TF Auto Supply Sdn Bhd", costMyr: 360, paidMyr: 360, paymentMethod: "Transfer", status: "Completed", notes: "Full timing chain, 2 guides, tensioner & sprockets (#CS2604/1373)." },
+						{ id: "rec-2026-04-17", date: "2026-04-17", mileageKm: null, title: "Engine & Gearbox Mountings (Set of 3)", category: "Brakes & Suspension", mechanic: "TF Auto Supply Sdn Bhd", costMyr: 350, paidMyr: 350, paymentMethod: "Touch 'n Go eWallet", status: "Completed", notes: "Replaced all 3 engine & transmission mounts (50810-SEL-T81)." },
+						{ id: "rec-2026-04-20", date: "2026-04-20", mileageKm: null, title: "2x Rear Ignition Coils, Thermostat & Rear Sensors", category: "Cooling & Electrical", mechanic: "TF Auto Supply Sdn Bhd", costMyr: 365, paidMyr: 500, paymentMethod: "BigPay DuitNow QR", status: "Completed", notes: "Coils (RM 270), Thermostat Tama 135c2 (RM 65), Rear Parking Sensors (RM 30). RM 500 paid toward parts & workshop fees." },
+						{ id: "rec-2026-04-25", date: "2026-04-25", mileageKm: null, title: "Gearbox Oil Seals, Air Sensor, Coil Socket & A/C", category: "Drivetrain", mechanic: "Alaa Hassoon Majdi", costMyr: 185, paidMyr: 500, paymentMethod: "Transfer + Workshop Fees", status: "Completed", notes: "Gearbox seals (RM 105), Air Sensor (RM 55), Coil Plug (RM 25) + A/C service. RM 500 paid on account." },
+						{ id: "rec-2026-04-30", date: "2026-04-30", mileageKm: null, title: "CVT Flywheel / Drive Plate Replacement", category: "Drivetrain", mechanic: "TF Auto Supply Sdn Bhd", costMyr: 490, paidMyr: 490, paymentMethod: "TNG DuitNow QR", status: "Completed", notes: "OEM Flywheel with warranty paid directly to TF Auto Supply." },
+						{ id: "rec-2026-05-10", date: "2026-05-10", mileageKm: null, title: "Radiator Cap (0.9 Bar) & Coolant Bleeding", category: "Cooling & Electrical", mechanic: "Alaa Hassoon Majdi", costMyr: 42, paidMyr: 42, paymentMethod: "Touch 'n Go eWallet", status: "Completed", notes: "New R124 88kPa radiator cap + on-site coolant bleeding & transport." },
+						{ id: "rec-2026-06-05", date: "2026-06-05", mileageKm: null, title: "Coolant Temperature Sensor (ECT)", category: "Cooling & Electrical", mechanic: "Alaa Hassoon Majdi", costMyr: 95, paidMyr: 95, paymentMethod: "Workshop Fees", status: "Completed", notes: "Replaced ECT sensor for radiator fan trigger." },
+						{ id: "rec-2026-07-27", date: "2026-07-27", mileageKm: null, title: "Engine Bay & A/C Noise Service", category: "General Service", mechanic: "Alaa Hassoon Majdi", costMyr: 150, paidMyr: 150, paymentMethod: "Workshop Fees", status: "Completed", notes: "Inspected and resolved rattling noise under A/C load & slopes (workshop fees)." },
+						{ id: "rec-2026-11-07", date: "2026-11-07", mileageKm: 196441, title: "Engine Oil, CVT Gear Oil, Brake Fluid & Master Pump", category: "Periodic & Fluids", mechanic: "Alaa Hassoon Majdi", costMyr: 275, paidMyr: 200, paymentMethod: "TNG eWallet + Workshop Fees", status: "Completed", notes: "Serviced Engine Oil, CVT Oil & Brake Fluid at 196,441 km + Brake Master Pump replacement." },
+						{ id: "rec-2026-11-07-tires", date: "2026-11-07", mileageKm: 196441, title: "Front Tires Replacement & Computer Wheel Alignment", category: "Brakes & Suspension", mechanic: "Workshop & Tire Center", costMyr: 360, paidMyr: 360, paymentMethod: "Touch 'n Go eWallet", status: "Completed", notes: "Replaced 2x front tires (175/65R14 82H), performed high-speed wheel balancing, and precision computer wheel alignment at 196,441 km." }
+					]
+				},
 				"sample-sedan": {
 					schemaVersion: "2.0",
 					lastUpdated: new Date().toISOString().slice(0, 10),
@@ -2091,6 +2512,8 @@
 						{ id: "cabin-filter", name: "Cabin Air Filter", category: "Filters", intervalKm: 20000, intervalMonths: 12, lastServicedKm: 40000, lastServicedDate: null, estimatedCostMyr: 25 },
 						{ id: "engine-filter", name: "Engine Air Filter", category: "Filters", intervalKm: 20000, intervalMonths: 12, lastServicedKm: 40000, lastServicedDate: null, estimatedCostMyr: 30 },
 						{ id: "tire-rotation", name: "Tire Rotation & Balance", category: "Tires", intervalKm: 10000, intervalMonths: 6, lastServicedKm: 40000, lastServicedDate: null, estimatedCostMyr: 40 },
+						{ id: "wheel-alignment", name: "Wheel Alignment", category: "Tires", intervalKm: 10000, intervalMonths: 12, lastServicedKm: 40000, lastServicedDate: null, estimatedCostMyr: 50 },
+						{ id: "tire-replacement", name: "Tire Replacement", category: "Tires", intervalKm: 50000, intervalMonths: 36, lastServicedKm: null, lastServicedDate: null, estimatedCostMyr: 320 },
 						{ id: "brake-fluid", name: "Brake Fluid Flush", category: "Fluids", intervalKm: 40000, intervalMonths: 24, lastServicedKm: 40000, lastServicedDate: null, estimatedCostMyr: 75 },
 						{ id: "spark-plugs", name: "Spark Plugs", category: "Ignition", intervalKm: 60000, intervalMonths: 48, lastServicedKm: null, lastServicedDate: null, estimatedCostMyr: 110 },
 					],
@@ -2121,6 +2544,8 @@
 						{ id: "engine-oil", name: "Engine Oil & Filter", category: "Fluids", intervalKm: 10000, intervalMonths: 6, lastServicedKm: 25000, lastServicedDate: new Date().toISOString().slice(0, 10), estimatedCostMyr: 70 },
 						{ id: "cabin-filter", name: "Cabin A/C Filter", category: "Filters", intervalKm: 20000, intervalMonths: 12, lastServicedKm: 20000, lastServicedDate: null, estimatedCostMyr: 30 },
 						{ id: "tire-rotation", name: "Tire Rotation", category: "Tires", intervalKm: 10000, intervalMonths: 6, lastServicedKm: 25000, lastServicedDate: null, estimatedCostMyr: 35 },
+						{ id: "wheel-alignment", name: "Wheel Alignment", category: "Tires", intervalKm: 10000, intervalMonths: 12, lastServicedKm: 25000, lastServicedDate: null, estimatedCostMyr: 50 },
+						{ id: "tire-replacement", name: "Tire Replacement", category: "Tires", intervalKm: 50000, intervalMonths: 36, lastServicedKm: null, lastServicedDate: null, estimatedCostMyr: 450 },
 					],
 					maintenanceHistory: [
 						{ id: "rec-suv-01", date: new Date().toISOString().slice(0, 10), mileageKm: 25000, title: "Engine Oil Change & Tire Rotation", category: "Periodic Service", mechanic: "Auto Care Center", costMyr: 105, paidMyr: 105, paymentMethod: "Credit Card", status: "Completed", notes: "Routine maintenance." },
@@ -2529,6 +2954,7 @@
 				"sample-hybrid": `<svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 10a8 8 0 0114.5-4.5M20 14a8 8 0 01-14.5 4.5M12 3v3m0 12v3M3 12h3m12 0h3m-7-3l-3 4h4l-3 4"/></svg>`,
 				"sample-van": `<svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 6h12a2 2 0 012 2v2l3 2v5a1 1 0 01-1 1h-1M3 6v12a1 1 0 001 1h1m0-13h12m-6 5h6M6 19a2 2 0 100-4 2 2 0 000 4zm12 0a2 2 0 100-4 2 2 0 000 4z"/></svg>`,
 				"blank-template": `<svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>`,
+				"honda-city-2003": `<svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13l1.5-4.5A2 2 0 016.4 7h11.2a2 2 0 011.9 1.5L21 13m-18 0h18m-18 0v5a1 1 0 001 1h1m16-6v5a1 1 0 01-1 1h-1M6 19a2 2 0 100-4 2 2 0 000 4zm12 0a2 2 0 100-4 2 2 0 000 4z"/></svg>`,
 				"default": `<svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 17a2 2 0 100 4 2 2 0 000-4zm8 0a2 2 0 100 4 2 2 0 000-4zM3 9l2-5h14l2 5M3 9h18M3 9v8h2m16-8v8h-2M7 17h6"/></svg>`,
 			};
 
@@ -2891,7 +3317,10 @@
 
 				if (window.location.protocol !== "file:" && profileKey !== "blank-template") {
 					try {
-						const res = await fetch(`./template/${profileKey}.json`, { cache: "no-store" });
+						let res = await fetch(`./template/${profileKey}.json`, { cache: "no-store" });
+						if (!res.ok) {
+							res = await fetch(`./cars/${profileKey}.json`, { cache: "no-store" });
+						}
 						if (res.ok) {
 							appData = await res.json();
 							saveToLocal(false);
@@ -3052,62 +3481,233 @@
 
 			function computeItemStatus(item, currentMileage) {
 				const lastKm = item.lastServicedKm;
-				const interval = Number(item.intervalKm) || 10000;
-				if (lastKm === null || lastKm === undefined || lastKm === "" || isNaN(lastKm)) {
+				const intervalKm = Number(item.intervalKm) || 10000;
+				const intervalMonths = item.intervalMonths ? Number(item.intervalMonths) : (item.interval_months ? Number(item.interval_months) : null);
+				const lastDateStr = item.lastServicedDate || item.last_serviced_date || null;
+
+				const hasKm = (lastKm !== null && lastKm !== undefined && lastKm !== "" && !isNaN(Number(lastKm)));
+				const hasDate = (lastDateStr && intervalMonths);
+
+				if (!hasKm && !hasDate) {
 					return {
 						state: "pending",
 						label: "Unset",
 						nextDueKm: null,
+						nextDueDate: null,
 						remainingKm: null,
+						daysRemaining: null,
 						drivenKm: null,
 						progressPct: 0,
 						badgeClass: "badge-status-pending",
 						barColor: "bar-status-pending",
 						iconSvg: `<svg class="w-3 h-3 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
+						dueTrigger: "none",
 					};
 				}
-				const nextDueKm = Number(lastKm) + interval;
-				const drivenKm = Math.max(0, Number(currentMileage) - Number(lastKm));
-				const remainingKm = nextDueKm - Number(currentMileage);
-				const rawPct = Math.min(100, Math.max(0, (drivenKm / interval) * 100));
 
-				if (remainingKm <= 0) {
-					return {
-						state: "overdue",
-						label: `Overdue ${formatNumber(Math.abs(remainingKm))} km`,
-						nextDueKm,
-						remainingKm,
-						drivenKm,
-						progressPct: 100,
-						badgeClass: "badge-status-critical",
-						barColor: "bar-status-critical",
-						iconSvg: `<svg class="w-3 h-3 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>`,
-					};
+				// 1. Distance Calculation
+				let nextDueKm = null;
+				let drivenKm = null;
+				let remainingKm = null;
+				let kmPct = 0;
+				let kmState = "good";
+
+				if (hasKm) {
+					nextDueKm = Number(lastKm) + intervalKm;
+					drivenKm = Math.max(0, Number(currentMileage) - Number(lastKm));
+					remainingKm = nextDueKm - Number(currentMileage);
+					kmPct = Math.min(100, Math.max(0, (drivenKm / intervalKm) * 100));
+
+					if (remainingKm <= 0) kmState = "overdue";
+					else if (remainingKm <= Math.min(1500, intervalKm * 0.2) || remainingKm <= 1000) kmState = "soon";
+					else kmState = "good";
 				}
-				if (remainingKm <= interval * 0.2 || remainingKm <= 1500) {
-					return {
-						state: "soon",
-						label: `Due in ${formatNumber(remainingKm)} km`,
-						nextDueKm,
-						remainingKm,
-						drivenKm,
-						progressPct: Math.max(8, rawPct),
-						badgeClass: "badge-status-warning",
-						barColor: "bar-status-warning",
-						iconSvg: `<svg class="w-3 h-3 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
-					};
+
+				// 2. Time Calculation (Dual-Tracking)
+				let nextDueDate = null;
+				let daysRemaining = null;
+				let timePct = 0;
+				let timeState = "good";
+
+				if (hasDate) {
+					const lastDate = new Date(lastDateStr);
+					if (!isNaN(lastDate.getTime())) {
+						const d = new Date(lastDate);
+						d.setMonth(d.getMonth() + intervalMonths);
+						nextDueDate = d.toISOString().slice(0, 10);
+
+						const today = new Date();
+						today.setHours(0, 0, 0, 0);
+						const due = new Date(d);
+						due.setHours(0, 0, 0, 0);
+
+						daysRemaining = Math.ceil((due.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
+						const totalDays = intervalMonths * 30.4375;
+						const elapsedDays = Math.max(0, totalDays - daysRemaining);
+						timePct = Math.min(100, Math.max(0, (elapsedDays / totalDays) * 100));
+
+						if (daysRemaining <= 0) timeState = "overdue";
+						else if (daysRemaining <= 30) timeState = "soon";
+						else timeState = "good";
+					}
 				}
+
+				// 3. Whichever comes first (KM or Date triggers urgency)
+				let state = "good";
+				let label = "";
+				let dueTrigger = "km";
+
+				if (kmState === "overdue" || timeState === "overdue") {
+					state = "overdue";
+					if (kmState === "overdue" && timeState === "overdue") {
+						label = `Overdue (${formatNumber(Math.abs(remainingKm))} km & ${Math.abs(daysRemaining)}d)`;
+						dueTrigger = "both";
+					} else if (timeState === "overdue") {
+						label = `Overdue ${Math.abs(daysRemaining)}d ago`;
+						dueTrigger = "date";
+					} else {
+						label = `Overdue ${formatNumber(Math.abs(remainingKm))} km`;
+						dueTrigger = "km";
+					}
+				} else if (kmState === "soon" || timeState === "soon") {
+					state = "soon";
+					if (kmState === "soon" && timeState === "soon") {
+						label = `Due Soon (${formatNumber(remainingKm)} km / ${daysRemaining}d)`;
+						dueTrigger = "both";
+					} else if (timeState === "soon") {
+						label = `Due in ${daysRemaining} day${daysRemaining === 1 ? "" : "s"}`;
+						dueTrigger = "date";
+					} else {
+						label = `Due in ${formatNumber(remainingKm)} km`;
+						dueTrigger = "km";
+					}
+				} else {
+					state = "good";
+					if (remainingKm !== null && daysRemaining !== null) {
+						label = `${formatNumber(remainingKm)} km / ${daysRemaining}d left`;
+					} else if (remainingKm !== null) {
+						label = `${formatNumber(remainingKm)} km left`;
+					} else if (daysRemaining !== null) {
+						label = `${daysRemaining} days left`;
+					} else {
+						label = "Good";
+					}
+				}
+
+				const progressPct = Math.min(100, Math.max(state === "good" ? 6 : state === "soon" ? 8 : 100, Math.max(kmPct, timePct)));
+
+				const badgeClass =
+					state === "overdue"
+						? "badge-status-critical"
+						: state === "soon"
+							? "badge-status-warning"
+							: "badge-status-good";
+
+				const barColor =
+					state === "overdue"
+						? "bar-status-critical"
+						: state === "soon"
+							? "bar-status-warning"
+							: "bar-status-good";
+
+				const iconSvg =
+					state === "overdue"
+						? `<svg class="w-3 h-3 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>`
+						: state === "soon"
+							? `<svg class="w-3 h-3 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`
+							: `<svg class="w-3 h-3 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`;
+
 				return {
-					state: "good",
-					label: `${formatNumber(remainingKm)} km left`,
+					state,
+					label,
 					nextDueKm,
+					nextDueDate,
 					remainingKm,
+					daysRemaining,
 					drivenKm,
-					progressPct: Math.max(6, rawPct),
-					badgeClass: "badge-status-good",
-					barColor: "bar-status-good",
-					iconSvg: `<svg class="w-3 h-3 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
+					progressPct,
+					badgeClass,
+					barColor,
+					iconSvg,
+					dueTrigger,
 				};
+			}
+
+			function renderOfficialDocumentsWidget() {
+				if (!appData || !appData.vehicle) return;
+				const v = appData.vehicle || {};
+				const roadTaxExpiry = v.roadTaxExpiry || (v.registrationDate ? "2027-01-20" : null);
+				const insuranceExpiry = v.insuranceExpiry || (v.registrationDate ? "2027-01-20" : null);
+
+				const today = new Date();
+				today.setHours(0, 0, 0, 0);
+
+				function getDocDays(expStr) {
+					if (!expStr) return null;
+					const expDate = new Date(expStr);
+					if (isNaN(expDate.getTime())) return null;
+					expDate.setHours(0, 0, 0, 0);
+					return Math.ceil((expDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
+				}
+
+				const rtDays = getDocDays(roadTaxExpiry);
+				const insDays = getDocDays(insuranceExpiry);
+
+				const rtDaysEl = document.getElementById("kpiRoadTaxDays");
+				const rtBarEl = document.getElementById("kpiRoadTaxBar");
+				const insDaysEl = document.getElementById("kpiInsuranceDays");
+				const insBarEl = document.getElementById("kpiInsuranceBar");
+				const docsSubEl = document.getElementById("kpiDocsSub");
+
+				if (rtDays !== null && rtDaysEl && rtBarEl) {
+					if (rtDays <= 0) {
+						rtDaysEl.textContent = `${Math.abs(rtDays)}d Overdue`;
+						rtDaysEl.className = "font-mono font-bold text-rose-400 text-xs";
+						rtBarEl.className = "h-full bg-rose-500 rounded-full transition-all";
+						rtBarEl.style.width = "100%";
+					} else if (rtDays <= 30) {
+						rtDaysEl.textContent = `${rtDays}d left`;
+						rtDaysEl.className = "font-mono font-bold text-amber-400 text-xs";
+						rtBarEl.className = "h-full bg-amber-500 rounded-full transition-all";
+						rtBarEl.style.width = `${Math.max(10, Math.min(100, (rtDays / 365) * 100))}%`;
+					} else {
+						rtDaysEl.textContent = `${rtDays}d left`;
+						rtDaysEl.className = "font-mono font-bold text-emerald-400 text-xs";
+						rtBarEl.className = "h-full bg-emerald-500 rounded-full transition-all";
+						rtBarEl.style.width = `${Math.max(10, Math.min(100, (rtDays / 365) * 100))}%`;
+					}
+				} else if (rtDaysEl) {
+					rtDaysEl.textContent = "Unset";
+					rtDaysEl.className = "font-mono font-medium text-slate-500 text-xs";
+					if (rtBarEl) rtBarEl.style.width = "0%";
+				}
+
+				if (insDays !== null && insDaysEl && insBarEl) {
+					if (insDays <= 0) {
+						insDaysEl.textContent = `${Math.abs(insDays)}d Overdue`;
+						insDaysEl.className = "font-mono font-bold text-rose-400 text-xs";
+						insBarEl.className = "h-full bg-rose-500 rounded-full transition-all";
+						insBarEl.style.width = "100%";
+					} else if (insDays <= 30) {
+						insDaysEl.textContent = `${insDays}d left`;
+						insDaysEl.className = "font-mono font-bold text-amber-400 text-xs";
+						insBarEl.className = "h-full bg-amber-500 rounded-full transition-all";
+						insBarEl.style.width = `${Math.max(10, Math.min(100, (insDays / 365) * 100))}%`;
+					} else {
+						insDaysEl.textContent = `${insDays}d left`;
+						insDaysEl.className = "font-mono font-bold text-cyan-400 text-xs";
+						insBarEl.className = "h-full bg-cyan-500 rounded-full transition-all";
+						insBarEl.style.width = `${Math.max(10, Math.min(100, (insDays / 365) * 100))}%`;
+					}
+				} else if (insDaysEl) {
+					insDaysEl.textContent = "Unset";
+					insDaysEl.className = "font-mono font-medium text-slate-500 text-xs";
+					if (insBarEl) insBarEl.style.width = "0%";
+				}
+
+				if (docsSubEl) {
+					docsSubEl.textContent = roadTaxExpiry ? `Expires: ${roadTaxExpiry}` : "Click pencil to set dates";
+				}
 			}
 
 			function renderHeaderAndKPIs() {
@@ -3137,7 +3737,7 @@
 					const st = computeItemStatus(item, curKm);
 					if (st.state !== "pending") {
 						activeCount++;
-						if (st.remainingKm < nearestRemaining) {
+						if (st.remainingKm !== null && st.remainingKm < nearestRemaining) {
 							nearestRemaining = st.remainingKm;
 							nearestItem = item;
 						}
@@ -3174,6 +3774,7 @@
 				document.getElementById("kpiBalanceSub").textContent =
 					diff > 0 ? `${formatCurrency(diff, currency)} workshop fees` : "Settled (incl. workshop fees)";
 
+				renderOfficialDocumentsWidget();
 				updateFilterSummaryUI();
 				updateDynamicSEO();
 			}
@@ -3193,7 +3794,7 @@
 				});
 
 				if (!filtered.length) {
-					tbody.innerHTML = `<tr><td colspan="6" class="py-8 text-center text-slate-400 text-xs">No items in this filter.</td></tr>`;
+					tbody.innerHTML = `<tr><td colspan="7" class="py-8 text-center text-slate-400 text-xs">No items in this filter.</td></tr>`;
 					return;
 				}
 
@@ -3207,17 +3808,31 @@
 								? `<div class="font-mono font-bold text-sm text-white">${formatNumber(st.nextDueKm)} <span class="text-xs font-normal text-slate-400">km</span></div>`
 								: `<span class="text-xs text-slate-500">—</span>`;
 
+						const nextDateDisplay =
+							st.nextDueDate !== null
+								? `<div><div class="font-mono font-bold text-xs text-white">${st.nextDueDate}</div><div class="text-[10px] font-mono mt-0.5 ${st.daysRemaining <= 0 ? "text-rose-400 font-bold" : st.daysRemaining <= 30 ? "text-amber-400 font-semibold" : "text-slate-400"}">${st.daysRemaining <= 0 ? Math.abs(st.daysRemaining) + "d overdue" : "in " + st.daysRemaining + "d"}</div></div>`
+								: `<span class="text-xs text-slate-500">—</span>`;
+
 						const timeText = item.intervalMonths
 							? ` <span class="text-[11px] text-slate-400">/ ${item.intervalMonths % 12 === 0 ? item.intervalMonths / 12 + "y" : item.intervalMonths + "m"}</span>`
+							: "";
+
+						const oemBadge = item.oemPartNumber
+							? `<div class="mt-1 flex items-center gap-1 text-[11px] font-mono text-indigo-300 bg-indigo-950/60 px-2 py-0.5 rounded border border-indigo-800/40 w-fit" title="OEM Part Number / Specification"><svg class="w-3 h-3 text-indigo-400 shrink-0" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/></svg><span>${escapeHtml(item.oemPartNumber)}</span></div>`
+							: "";
+
+						const lastDateBadge = item.lastServicedDate
+							? `<div class="text-[10px] font-mono text-slate-400 mt-1 flex items-center gap-1"><svg class="w-2.5 h-2.5 text-slate-500 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg><span>${escapeHtml(item.lastServicedDate)}</span></div>`
 							: "";
 
 						return `
           <tr class="motion-enter hover:bg-slate-800/40 transition" style="animation-delay: ${idx * 25}ms">
             <td class="py-3.5 ps-5 pe-3 align-middle">
               <div class="flex items-center gap-2">
-                <span class="px-2 py-0.5 text-[10px] font-mono uppercase font-semibold rounded bg-slate-800 text-slate-300 border border-slate-700 shrink-0">${item.category || "Part"}</span>
-                <span class="font-semibold text-white text-sm">${item.name}</span>
+                <span class="px-2 py-0.5 text-[10px] font-mono uppercase font-semibold rounded bg-slate-800 text-slate-300 border border-slate-700 shrink-0">${escapeHtml(item.category || "Part")}</span>
+                <span class="font-semibold text-white text-sm">${escapeHtml(item.name)}</span>
               </div>
+              ${oemBadge}
             </td>
 
             <td class="py-3.5 px-3 align-middle font-mono text-xs text-slate-200">
@@ -3245,10 +3860,15 @@
                   class="fill-cur-km-btn px-2 py-1.5 rounded-xl bg-slate-800 hover:bg-indigo-600 text-slate-300 hover:text-white text-[10px] font-mono font-semibold border border-slate-700 transition shrink-0"
                 >Now</button>
               </div>
+              ${lastDateBadge}
             </td>
 
             <td class="py-3.5 px-3 align-middle">
               ${nextDueDisplay}
+            </td>
+
+            <td class="py-3.5 px-3 align-middle">
+              ${nextDateDisplay}
             </td>
 
             <td class="py-3.5 px-3 align-middle">
@@ -3269,7 +3889,7 @@
                   ${st.iconSvg}
                   <span>${st.label}</span>
                 </span>
-                ${st.drivenKm !== null ? `<span class="text-[10px] font-mono text-slate-400">${Math.round(st.progressPct)}%</span>` : ""}
+                ${st.progressPct !== null ? `<span class="text-[10px] font-mono text-slate-400">${Math.round(st.progressPct)}%</span>` : ""}
               </div>
               <div class="w-full h-1.5 bg-slate-950 rounded-full overflow-hidden border border-slate-800/90">
                 <div class="motion-bar h-full rounded-full ${st.barColor}" style="width: ${st.progressPct}%"></div>
@@ -3307,22 +3927,267 @@
 						if (target) {
 							target.estimatedCostMyr = raw === "" ? null : Number(raw);
 							saveToLocal(true);
-							showToast(`Updated ${target.name} cost`);
+							renderHeaderAndKPIs();
+							renderPeriodicTable();
+							renderSvgCharts();
+							showToast(`Saved cost for ${target.name}`);
 						}
 					});
 				});
 
-				// One-Click "Now" Button
+				// "Now" (Current Mileage) Quick-Fill Button
 				document.querySelectorAll(".fill-cur-km-btn").forEach((btn) => {
 					btn.addEventListener("click", () => {
 						const id = btn.getAttribute("data-fill-current");
 						const target = appData.periodicSchedule.find((x) => x.id === id);
 						if (target) {
-							target.lastServicedKm = Number(appData.vehicle?.currentMileageKm) || 0;
+							target.lastServicedKm = curKm;
 							target.lastServicedDate = new Date().toISOString().slice(0, 10);
 							saveToLocal(true);
-							renderAll();
-							showToast(`${target.name} set to ${formatNumber(target.lastServicedKm)} km`);
+							renderHeaderAndKPIs();
+							renderPeriodicTable();
+							renderSvgCharts();
+							showToast(`Set ${target.name} to ${formatNumber(curKm)} km`);
+						}
+					});
+				});
+			}
+
+			// =========================================================================
+			// FUEL EFFICIENCY & i-DSI HEALTH MONITOR
+			// =========================================================================
+			function getFuelLogs() {
+				if (!appData) return [];
+				if (!Array.isArray(appData.fuelLogs)) {
+					appData.fuelLogs = [];
+				}
+				return appData.fuelLogs;
+			}
+
+			function computeFuelStats() {
+				const logs = [...getFuelLogs()].sort((a, b) => (Number(a.mileageKm) || 0) - (Number(b.mileageKm) || 0));
+				if (logs.length < 2) {
+					const singleTotalSpend = logs.reduce((a, b) => a + (Number(b.costMyr) || 0), 0);
+					const singleTotalLiters = logs.reduce((a, b) => a + (Number(b.liters) || 0), 0);
+					return {
+						avgKmL: null,
+						latestKmL: null,
+						totalDist: 0,
+						totalLiters: singleTotalLiters,
+						totalSpend: singleTotalSpend,
+						costPerKm: null,
+						entries: logs.map((l) => ({ ...l, kmL: null, distKm: null })),
+					};
+				}
+
+				let totalDist = 0;
+				let totalLiters = 0;
+				let totalSpend = 0;
+				const entries = [];
+
+				for (let i = 0; i < logs.length; i++) {
+					const cur = logs[i];
+					totalSpend += Number(cur.costMyr) || 0;
+					if (i === 0) {
+						entries.push({ ...cur, kmL: null, distKm: null });
+						continue;
+					}
+					const prev = logs[i - 1];
+					const dist = (Number(cur.mileageKm) || 0) - (Number(prev.mileageKm) || 0);
+					const liters = Number(cur.liters) || 0;
+					const kmL = dist > 0 && liters > 0 ? dist / liters : null;
+					if (dist > 0 && liters > 0) {
+						totalDist += dist;
+						totalLiters += liters;
+					}
+					entries.push({ ...cur, kmL, distKm: dist });
+				}
+
+				const avgKmL = totalDist > 0 && totalLiters > 0 ? totalDist / totalLiters : null;
+				const latestValid = [...entries].reverse().find((e) => e.kmL !== null);
+				const latestKmL = latestValid ? latestValid.kmL : null;
+				const costPerKm = totalDist > 0 && totalSpend > 0 ? totalSpend / totalDist : null;
+
+				return {
+					avgKmL,
+					latestKmL,
+					totalDist,
+					totalLiters,
+					totalSpend,
+					costPerKm,
+					entries,
+				};
+			}
+
+			function renderFuelEfficiencySection() {
+				const stats = computeFuelStats();
+				const avgEl = document.getElementById("fuelAvgKmL");
+				const latestEl = document.getElementById("fuelLatestKmL");
+				const latestSubEl = document.getElementById("fuelLatestDistSub");
+				const costEl = document.getElementById("fuelCostPerKm");
+				const spendSubEl = document.getElementById("fuelSpendSub");
+				const badgeEl = document.getElementById("fuelIgnitionBadge");
+				const countBadgeEl = document.getElementById("fuelLogCountBadge");
+
+				if (countBadgeEl) countBadgeEl.textContent = `${stats.entries.length} receipt${stats.entries.length === 1 ? "" : "s"}`;
+
+				if (stats.avgKmL !== null) {
+					if (avgEl) avgEl.textContent = `${stats.avgKmL.toFixed(1)} KM/L`;
+					if (costEl) costEl.textContent = stats.costPerKm !== null ? `RM ${stats.costPerKm.toFixed(2)}` : "—";
+					if (spendSubEl) spendSubEl.textContent = `Total: RM ${stats.totalSpend.toFixed(2)} (${stats.totalDist} km)`;
+				} else {
+					if (avgEl) avgEl.textContent = "—";
+					if (costEl) costEl.textContent = "—";
+					if (spendSubEl) spendSubEl.textContent = "Add 2+ receipts to calculate";
+				}
+
+				if (stats.latestKmL !== null) {
+					if (latestEl) latestEl.textContent = `${stats.latestKmL.toFixed(1)} KM/L`;
+					const lastEntry = [...stats.entries].reverse().find((e) => e.kmL !== null);
+					if (latestSubEl && lastEntry) {
+						latestSubEl.textContent = `${lastEntry.distKm} km on ${lastEntry.liters}L`;
+					}
+				} else {
+					if (latestEl) latestEl.textContent = "—";
+					if (latestSubEl) latestSubEl.textContent = "Needs consecutive fill-ups";
+				}
+
+				if (badgeEl) {
+					if (stats.avgKmL === null) {
+						badgeEl.innerHTML = `<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-xs font-semibold bg-slate-800 text-slate-400 border border-slate-700"><span>Awaiting fuel data...</span></span>`;
+					} else if (stats.avgKmL >= 14.0) {
+						badgeEl.innerHTML = `<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-xs font-semibold bg-emerald-950/80 text-emerald-300 border border-emerald-800"><svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span>Nominal (8 Plugs Healthy)</span></span>`;
+					} else if (stats.avgKmL >= 12.0) {
+						badgeEl.innerHTML = `<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-xs font-semibold bg-amber-950/80 text-amber-300 border border-amber-800"><svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg><span>Fair (Monitor Rear Coils)</span></span>`;
+					} else {
+						badgeEl.innerHTML = `<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-xs font-semibold bg-rose-950/80 text-rose-300 border border-rose-800"><svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg><span>Warning (Check Ignition &amp; Plugs)</span></span>`;
+					}
+				}
+
+				renderFuelSvgChart(stats);
+				renderFuelReceiptsList(stats);
+			}
+
+			function renderFuelSvgChart(stats) {
+				const container = document.getElementById("svgFuelTrendChart");
+				if (!container) return;
+
+				const validEntries = (stats.entries || []).filter((e) => e.kmL !== null && !isNaN(e.kmL));
+
+				if (validEntries.length < 2) {
+					container.innerHTML = `<div class="py-8 text-center text-slate-500 text-xs font-mono">Log 2 or more fill-up receipts to generate fuel efficiency trend line.</div>`;
+					return;
+				}
+
+				const width = 450;
+				const height = 130;
+				const padLeft = 40;
+				const padRight = 20;
+				const padTop = 15;
+				const padBottom = 25;
+
+				const maxVal = Math.max(20, ...validEntries.map((e) => e.kmL)) + 1;
+				const minVal = Math.max(5, Math.min(10, ...validEntries.map((e) => e.kmL)) - 1);
+				const targetKmL = 15.0;
+
+				const plotW = width - padLeft - padRight;
+				const plotH = height - padTop - padBottom;
+
+				const getY = (val) => padTop + plotH - ((val - minVal) / (maxVal - minVal)) * plotH;
+				const getX = (idx) => padLeft + (idx / (validEntries.length - 1)) * plotW;
+
+				const targetY = getY(targetKmL);
+
+				const pointsStr = validEntries.map((e, idx) => `${getX(idx).toFixed(1)},${getY(e.kmL).toFixed(1)}`).join(" ");
+
+				const dotsHtml = validEntries
+					.map(
+						(e, idx) => `
+					<circle cx="${getX(idx).toFixed(1)}" cy="${getY(e.kmL).toFixed(1)}" r="4" fill="#10b981" stroke="#0f172a" stroke-width="2">
+						<title>${e.date || ""}: ${e.kmL.toFixed(1)} KM/L (${formatNumber(e.mileageKm)} km)</title>
+					</circle>
+					<text x="${getX(idx).toFixed(1)}" y="${(getY(e.kmL) - 7).toFixed(1)}" text-anchor="middle" font-size="9" font-family="monospace" fill="#e2e8f0" font-weight="bold">${e.kmL.toFixed(1)}</text>
+				`,
+					)
+					.join("");
+
+				const xLabelsHtml = validEntries
+					.map((e, idx) => {
+						const dateStr = (e.date || "").slice(5);
+						return `<text x="${getX(idx).toFixed(1)}" y="${height - 5}" text-anchor="middle" font-size="9" font-family="monospace" fill="#94a3b8">${dateStr}</text>`;
+					})
+					.join("");
+
+				container.innerHTML = `
+					<svg class="w-full h-auto overflow-visible" viewBox="0 0 ${width} ${height}">
+						<!-- Target line 15 km/L -->
+						<line x1="${padLeft}" y1="${targetY}" x2="${width - padRight}" y2="${targetY}" stroke="#10b981" stroke-width="1.25" stroke-dasharray="4,4" opacity="0.6" />
+						<text x="${width - padRight}" y="${targetY - 3}" text-anchor="end" font-size="8" font-family="monospace" fill="#10b981">Target: 15 km/L</text>
+
+						<!-- Axis grid lines -->
+						<line x1="${padLeft}" y1="${padTop + plotH}" x2="${width - padRight}" y2="${padTop + plotH}" stroke="#334155" stroke-width="1" />
+
+						<!-- Trend Line -->
+						<polyline points="${pointsStr}" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+
+						<!-- Data dots -->
+						${dotsHtml}
+
+						<!-- X-axis Labels -->
+						${xLabelsHtml}
+					</svg>
+				`;
+			}
+
+			function renderFuelReceiptsList(stats) {
+				const container = document.getElementById("fuelReceiptsList");
+				if (!container) return;
+
+				const entries = [...(stats.entries || [])].reverse();
+
+				if (!entries.length) {
+					container.innerHTML = `<div class="py-6 text-center text-slate-500 text-xs">No fuel receipts recorded yet. Click "+ Log Fuel Receipt" above.</div>`;
+					return;
+				}
+
+				container.innerHTML = entries
+					.map((entry) => {
+						const kmLBadge =
+							entry.kmL !== null
+								? `<span class="px-2 py-0.5 rounded font-mono font-bold text-xs ${entry.kmL >= 14 ? "bg-emerald-950/80 text-emerald-300 border border-emerald-800" : entry.kmL >= 12 ? "bg-amber-950/80 text-amber-300 border border-amber-800" : "bg-rose-950/80 text-rose-300 border border-rose-800"}">${entry.kmL.toFixed(1)} KM/L</span>`
+								: `<span class="px-1.5 py-0.5 rounded font-mono text-[10px] text-slate-500 bg-slate-900 border border-slate-800">First Tank</span>`;
+
+						return `
+					<div class="flex items-center justify-between p-2 rounded-xl bg-slate-900/80 border border-slate-800 text-xs hover:border-slate-700 transition">
+						<div>
+							<div class="flex items-center gap-2">
+								<span class="font-mono font-bold text-white">${formatNumber(entry.mileageKm)} km</span>
+								<span class="text-[10px] text-slate-400 font-mono">${entry.date || "—"}</span>
+								${entry.fuelGrade ? `<span class="text-[9px] px-1.5 py-0.2 rounded bg-slate-800 text-slate-300 border border-slate-700 font-mono">${escapeHtml(entry.fuelGrade)}</span>` : ""}
+							</div>
+							<div class="text-[11px] text-slate-400 mt-0.5">
+								${entry.liters} L • RM ${Number(entry.costMyr || 0).toFixed(2)} ${entry.notes ? `• <span class="text-slate-300">${escapeHtml(entry.notes)}</span>` : ""}
+							</div>
+						</div>
+						<div class="flex items-center gap-2 shrink-0">
+							${kmLBadge}
+							<button type="button" data-delete-fuel="${entry.id}" class="text-slate-500 hover:text-rose-400 p-1 transition" title="Delete fuel record">
+								<svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+							</button>
+						</div>
+					</div>
+				`;
+					})
+					.join("");
+
+				container.querySelectorAll("[data-delete-fuel]").forEach((btn) => {
+					btn.addEventListener("click", () => {
+						const id = btn.getAttribute("data-delete-fuel");
+						if (id && appData.fuelLogs) {
+							appData.fuelLogs = appData.fuelLogs.filter((f) => f.id !== id);
+							saveToLocal(true);
+							renderFuelEfficiencySection();
+							showToast("Fuel receipt deleted");
 						}
 					});
 				});
@@ -3684,6 +4549,7 @@
 				renderHeaderAndKPIs();
 				renderPeriodicTable();
 				renderSvgCharts();
+				renderFuelEfficiencySection();
 				renderHistoryList();
 				renderFooterSpecs();
 				populateLinkedItemSelect();
@@ -3735,12 +4601,18 @@
 									: st.state === "good"
 										? "#059669"
 										: "#64748b";
+						const oemText = item.oemPartNumber
+							? `<div style="font-size:10px;font-family:monospace;color:#0284c7;font-weight:600;">OEM: ${escapeHtml(item.oemPartNumber)}</div>`
+							: "";
+						const intervalText = `${formatNumber(item.intervalKm)} km${item.intervalMonths ? ` / ${item.intervalMonths} mo` : ""}`;
+						const lastText = `${item.lastServicedKm ? formatNumber(item.lastServicedKm) + " km" : "—"}${item.lastServicedDate ? `<div style="font-size:10px;color:#64748b;">${item.lastServicedDate}</div>` : ""}`;
+						const nextDueText = `${st.nextDueKm ? formatNumber(st.nextDueKm) + " km" : "—"}${st.nextDueDate ? `<div style="font-size:10px;color:#475569;font-weight:600;">📅 ${st.nextDueDate}</div>` : ""}`;
 						return `
           <tr>
-            <td><strong>${item.name}</strong> <span style="color:#64748b;font-size:10px;">(${item.category || "Part"})</span></td>
-            <td style="font-family:monospace;">${formatNumber(item.intervalKm)} km</td>
-            <td style="font-family:monospace;">${item.lastServicedKm ? formatNumber(item.lastServicedKm) + " km" : "—"}</td>
-            <td style="font-family:monospace;font-weight:700;">${st.nextDueKm ? formatNumber(st.nextDueKm) + " km" : "—"}</td>
+            <td><strong>${escapeHtml(item.name)}</strong> <span style="color:#64748b;font-size:10px;">(${escapeHtml(item.category || "Part")})</span>${oemText}</td>
+            <td style="font-family:monospace;">${intervalText}</td>
+            <td style="font-family:monospace;">${lastText}</td>
+            <td style="font-family:monospace;font-weight:700;">${nextDueText}</td>
             <td style="font-family:monospace;">${formatCurrency(item.estimatedCostMyr, appData.currency)}</td>
             <td><span style="color:${statusColor};font-weight:700;font-size:11px;">${st.label}</span></td>
           </tr>
@@ -3807,6 +4679,7 @@
       <div>
         <div class="title">${v.year || ""} ${v.make || ""} ${v.model || ""} — ${v.plateNumber || ""}</div>
         <div class="subtitle">${v.engine || ""} • ${v.transmission || ""} • Chassis: ${v.chassisNumber || "—"} • Engine No: ${v.engineNumber || "—"}</div>
+        <div style="font-size:11px;color:#475569;margin-top:3px;">Road Tax Expiry: <strong>${v.roadTaxExpiry || "—"}</strong> • Insurance Expiry: <strong>${v.insuranceExpiry || "—"}</strong></div>
       </div>
       <div style="text-align:right;">
         <div class="condition-badge">${overallCondition.label}</div>
@@ -3837,7 +4710,7 @@
     <table>
       <thead>
         <tr>
-          <th>Item / Service Name</th>
+          <th>Item / Service Name &amp; OEM Part</th>
           <th>Interval</th>
           <th>Last Serviced</th>
           <th>Next Service Due</th>
@@ -3926,6 +4799,8 @@
 					["Transmission", v.transmission || ""],
 					["Current_Mileage_Km", curKm],
 					["Latest_Service_Date", v.latestServiceDate || ""],
+					["Road_Tax_Expiry", v.roadTaxExpiry || ""],
+					["Insurance_Expiry", v.insuranceExpiry || ""],
 					["Currency", dataObj.currency || "MYR"],
 				];
 				metaEntries.forEach(([key, val]) => {
@@ -3950,8 +4825,8 @@
 							item.estimatedCostMyr !== null && item.estimatedCostMyr !== undefined ? item.estimatedCostMyr : "",
 							"",
 							"",
-							"",
-							"",
+							item.oemPartNumber || "",
+							item.intervalMonths || "",
 						]
 							.map(escapeCsvCell)
 							.join(","),
@@ -4049,6 +4924,8 @@
 						else if (key === "transmission") newObj.vehicle.transmission = col3;
 						else if (key === "current_mileage_km") newObj.vehicle.currentMileageKm = Number(col3) || 0;
 						else if (key === "latest_service_date") newObj.vehicle.latestServiceDate = col3;
+						else if (key === "road_tax_expiry") newObj.vehicle.roadTaxExpiry = col3;
+						else if (key === "insurance_expiry") newObj.vehicle.insuranceExpiry = col3;
 						else if (key === "currency") newObj.currency = col3 || "MYR";
 					} else if (type === "SCHEDULE") {
 						if (!col1) continue;
@@ -4057,10 +4934,11 @@
 							name: col1,
 							category: col2 || "General",
 							intervalKm: Number(col3.replace(/,/g, "")) || 10000,
-							intervalMonths: null,
+							intervalMonths: col11 ? Number(col11.replace(/,/g, "")) || null : null,
 							lastServicedKm: col4 !== "" ? Number(col4.replace(/,/g, "")) : null,
 							lastServicedDate: col6 || null,
 							estimatedCostMyr: col7 !== "" ? Number(col7.replace(/,/g, "")) : null,
+							oemPartNumber: col10 || "",
 						});
 					} else if (type === "HISTORY") {
 						if (!col1) continue;
@@ -4463,10 +5341,19 @@
 			// INITIALIZATION & EVENT LISTENERS
 			// =========================================================================
 			document.addEventListener("DOMContentLoaded", () => {
-				const customMap = getCustomProfilesMap();
-				const savedKeys = Object.keys(customMap);
+				let customMap = getCustomProfilesMap();
+				let savedKeys = Object.keys(customMap);
 
 				restoreFiltersFromUrl();
+
+				// If no vehicles are saved, default to the user's Honda City 2003
+				if (savedKeys.length === 0) {
+					customMap["honda-city-2003"] = "Honda City 1.5L (GD8)";
+					localStorage.setItem(CUSTOM_LIST_STORAGE, JSON.stringify(customMap));
+					savedKeys = Object.keys(customMap);
+					activeProfileKey = "honda-city-2003";
+					localStorage.setItem(ACTIVE_KEY_STORAGE, activeProfileKey);
+				}
 
 				if (activeProfileKey && !customMap[activeProfileKey]) {
 					activeProfileKey = savedKeys.length > 0 ? savedKeys[0] : null;
@@ -5017,6 +5904,7 @@
 				wireSelectOther("newSchedNameSelect", "newSchedNameOther");
 				wireSelectOther("newSchedCatSelect", "newSchedCatOther");
 				wireSelectOther("newSchedIntervalSelect", "newSchedIntervalOther");
+				wireSelectOther("newSchedMonthsSelect", "newSchedMonthsOther");
 				wireSelectOther("newSchedLastKmSelect", "newSchedLastKmOther");
 				wireSelectOther("newSchedCostSelect", "newSchedCostOther");
 
@@ -5158,6 +6046,7 @@
 						"newSchedNameOther",
 						"newSchedCatOther",
 						"newSchedIntervalOther",
+						"newSchedMonthsOther",
 						"newSchedLastKmOther",
 						"newSchedCostOther",
 					].forEach((id) => {
@@ -5168,6 +6057,10 @@
 							el.value = "";
 						}
 					});
+					const lastDateEl = document.getElementById("newSchedLastDate");
+					if (lastDateEl) lastDateEl.value = "";
+					const oemEl = document.getElementById("newSchedOemPart");
+					if (oemEl) oemEl.value = "";
 					addScheduleModal.classList.remove("hidden");
 					addScheduleModal.classList.add("flex");
 				});
@@ -5179,6 +6072,10 @@
 					const name = getSelectOrOtherVal("newSchedNameSelect", "newSchedNameOther") || "Periodic Service";
 					const category = getSelectOrOtherVal("newSchedCatSelect", "newSchedCatOther") || "Part";
 					const intervalKm = Number(getSelectOrOtherVal("newSchedIntervalSelect", "newSchedIntervalOther")) || 10000;
+					const monthsVal = getSelectOrOtherVal("newSchedMonthsSelect", "newSchedMonthsOther");
+					const intervalMonths = monthsVal && monthsVal !== "none" ? Number(monthsVal) : null;
+					const lastDateVal = document.getElementById("newSchedLastDate")?.value || null;
+					const oemPartVal = document.getElementById("newSchedOemPart")?.value.trim() || null;
 
 					const lastVal = getSelectOrOtherVal("newSchedLastKmSelect", "newSchedLastKmOther");
 					let lastServicedKm = null;
@@ -5193,10 +6090,11 @@
 						name,
 						category,
 						intervalKm,
-						intervalMonths: null,
+						intervalMonths,
 						lastServicedKm,
-						lastServicedDate: lastServicedKm !== null ? new Date().toISOString().slice(0, 10) : null,
+						lastServicedDate: lastDateVal || (lastServicedKm !== null ? new Date().toISOString().slice(0, 10) : null),
 						estimatedCostMyr,
+						oemPartNumber: oemPartVal,
 					});
 					saveToLocal(true);
 					renderAll();
@@ -5224,6 +6122,10 @@
 					document.getElementById("editCarCurrency").value = appData.currency || "MYR";
 					document.getElementById("editCarEngine").value = v.engine || "";
 					document.getElementById("editCarTrans").value = v.transmission || "";
+					const rtEl = document.getElementById("editCarRoadTax");
+					if (rtEl) rtEl.value = v.roadTaxExpiry || "";
+					const insEl = document.getElementById("editCarInsurance");
+					if (insEl) insEl.value = v.insuranceExpiry || "";
 					editCarModal.classList.remove("hidden");
 					editCarModal.classList.add("flex");
 				});
@@ -5240,10 +6142,157 @@
 					appData.currency = document.getElementById("editCarCurrency").value.trim() || "MYR";
 					appData.vehicle.engine = document.getElementById("editCarEngine").value.trim();
 					appData.vehicle.transmission = document.getElementById("editCarTrans").value.trim();
+					const rtEl = document.getElementById("editCarRoadTax");
+					if (rtEl) appData.vehicle.roadTaxExpiry = rtEl.value || null;
+					const insEl = document.getElementById("editCarInsurance");
+					if (insEl) appData.vehicle.insuranceExpiry = insEl.value || null;
 					saveToLocal(true);
 					renderAll();
 					closeEditCar();
 					showToast("Vehicle info updated");
+				});
+
+				// =====================================================================
+				// OFFICIAL DOCUMENTS MODAL (ROAD TAX & INSURANCE)
+				// =====================================================================
+				const officialDocsModal = document.getElementById("officialDocsModal");
+				const openOfficialDocsModal = () => {
+					if (!appData || !appData.vehicle) {
+						showToast("Please add or select a vehicle first.");
+						return;
+					}
+					const v = appData.vehicle || {};
+					const rtInp = document.getElementById("inputRoadTaxExpiry");
+					if (rtInp) rtInp.value = v.roadTaxExpiry || "";
+					const insInp = document.getElementById("inputInsuranceExpiry");
+					if (insInp) insInp.value = v.insuranceExpiry || "";
+					if (officialDocsModal) {
+						officialDocsModal.classList.remove("hidden");
+						officialDocsModal.classList.add("flex");
+					}
+				};
+				const closeOfficialDocsModal = () => {
+					if (officialDocsModal) {
+						officialDocsModal.classList.add("hidden");
+						officialDocsModal.classList.remove("flex");
+					}
+				};
+
+				document.getElementById("openOfficialDocsModalBtn")?.addEventListener("click", openOfficialDocsModal);
+				document.getElementById("closeOfficialDocsModalBtn")?.addEventListener("click", closeOfficialDocsModal);
+				document.getElementById("cancelOfficialDocsBtn")?.addEventListener("click", closeOfficialDocsModal);
+				officialDocsModal?.addEventListener("click", (e) => {
+					if (e.target === officialDocsModal) closeOfficialDocsModal();
+				});
+
+				document.getElementById("officialDocsForm")?.addEventListener("submit", (e) => {
+					e.preventDefault();
+					if (!appData.vehicle) appData.vehicle = {};
+					const rtInp = document.getElementById("inputRoadTaxExpiry");
+					const insInp = document.getElementById("inputInsuranceExpiry");
+					appData.vehicle.roadTaxExpiry = rtInp?.value || null;
+					appData.vehicle.insuranceExpiry = insInp?.value || null;
+					saveToLocal(true);
+					renderAll();
+					closeOfficialDocsModal();
+					showToast("Official documents dates saved");
+				});
+
+				// =====================================================================
+				// FUEL RECEIPT MODAL & ACTIONS
+				// =====================================================================
+				const fuelReceiptModal = document.getElementById("fuelReceiptModal");
+				const openFuelReceiptModal = () => {
+					if (!appData || !appData.vehicle) {
+						showToast("Please add or select a vehicle first.");
+						return;
+					}
+					const curKm = appData.vehicle?.currentMileageKm || "";
+					const dateEl = document.getElementById("fuelReceiptDate");
+					if (dateEl) dateEl.value = new Date().toISOString().slice(0, 10);
+					const kmEl = document.getElementById("fuelReceiptMileage");
+					if (kmEl) kmEl.value = curKm;
+					const lEl = document.getElementById("fuelReceiptLiters");
+					if (lEl) lEl.value = "";
+					const cEl = document.getElementById("fuelReceiptTotalCost");
+					if (cEl) cEl.value = "";
+					const sEl = document.getElementById("fuelReceiptStation");
+					if (sEl) sEl.value = "Petronas Primax 95";
+					const ftEl = document.getElementById("fuelReceiptFullTank");
+					if (ftEl) ftEl.checked = true;
+					const nEl = document.getElementById("fuelReceiptNotes");
+					if (nEl) nEl.value = "";
+
+					if (fuelReceiptModal) {
+						fuelReceiptModal.classList.remove("hidden");
+						fuelReceiptModal.classList.add("flex");
+					}
+				};
+				const closeFuelReceiptModal = () => {
+					if (fuelReceiptModal) {
+						fuelReceiptModal.classList.add("hidden");
+						fuelReceiptModal.classList.remove("flex");
+					}
+				};
+
+				document.getElementById("addFuelReceiptBtn")?.addEventListener("click", openFuelReceiptModal);
+				document.getElementById("closeFuelReceiptModalBtn")?.addEventListener("click", closeFuelReceiptModal);
+				document.getElementById("cancelFuelReceiptBtn")?.addEventListener("click", closeFuelReceiptModal);
+				fuelReceiptModal?.addEventListener("click", (e) => {
+					if (e.target === fuelReceiptModal) closeFuelReceiptModal();
+				});
+
+				document.getElementById("fuelReceiptForm")?.addEventListener("submit", (e) => {
+					e.preventDefault();
+					const fDate = document.getElementById("fuelReceiptDate")?.value || new Date().toISOString().slice(0, 10);
+					const fMileage = Number(document.getElementById("fuelReceiptMileage")?.value) || 0;
+					const fLiters = Number(document.getElementById("fuelReceiptLiters")?.value) || 0;
+					const fCost = Number(document.getElementById("fuelReceiptTotalCost")?.value) || 0;
+					const fStation = document.getElementById("fuelReceiptStation")?.value.trim() || "";
+					const fFullTank = document.getElementById("fuelReceiptFullTank")?.checked ?? true;
+					const fNotes = document.getElementById("fuelReceiptNotes")?.value.trim() || "";
+
+					if (fMileage <= 0 || fLiters <= 0) {
+						showToast("Please enter valid mileage and liters filled.");
+						return;
+					}
+
+					if (!Array.isArray(appData.fuelLogs)) appData.fuelLogs = [];
+					appData.fuelLogs.push({
+						id: "fuel-" + Date.now(),
+						date: fDate,
+						odometerKm: fMileage,
+						liters: fLiters,
+						costMyr: fCost > 0 ? fCost : null,
+						fullTank: fFullTank,
+						station: fStation || null,
+						notes: fNotes || null,
+					});
+
+					appData.fuelLogs.sort((a, b) => (a.odometerKm || 0) - (b.odometerKm || 0));
+
+					if (fMileage > (appData.vehicle.currentMileageKm || 0)) {
+						appData.vehicle.currentMileageKm = fMileage;
+						appData.vehicle.latestServiceDate = fDate;
+					}
+
+					saveToLocal(true);
+					renderAll();
+					closeFuelReceiptModal();
+					showToast("Fuel receipt logged & saved");
+				});
+
+				document.getElementById("loadSampleFuelBtn")?.addEventListener("click", () => {
+					if (!appData || !appData.vehicle) return;
+					const sampleLogs = [
+						{ id: "fuel-101", date: "2026-10-18", odometerKm: 195380, liters: 34.2, costMyr: 70.11, fullTank: true, station: "Petronas Primax 95", notes: "Highway commute" },
+						{ id: "fuel-102", date: "2026-10-29", odometerKm: 195910, liters: 33.1, costMyr: 67.85, fullTank: true, station: "Shell FuelSave 95", notes: "City driving" },
+						{ id: "fuel-103", date: "2026-11-07", odometerKm: 196441, liters: 32.8, costMyr: 67.24, fullTank: true, station: "Petronas Primax 95", notes: "Post-tire replacement & alignment run" }
+					];
+					appData.fuelLogs = sampleLogs;
+					saveToLocal(true);
+					renderFuelEfficiencySection();
+					showToast("Loaded Honda City i-DSI sample fuel logs");
 				});
 
 				// =====================================================================
