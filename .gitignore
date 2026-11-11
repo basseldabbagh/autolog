@@ -1,3 +1,7 @@
 /Reference/
 /Cars/
+/cars/
 /instructions/
+.env
+.env.*
+!.env.example
