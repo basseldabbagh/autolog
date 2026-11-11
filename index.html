@@ -5380,7 +5380,6 @@
 			// =========================================================================
 			// GOOGLE DRIVE CLOUD SYNC (MULTI-CAR CSV IN 1 FOLDER)
 			// =========================================================================
-			const GDRIVE_STORAGE_CLIENT_ID = "motofolio_gdrive_client_id";
 			const GDRIVE_STORAGE_TOKEN = "motofolio_gdrive_token";
 			const GDRIVE_STORAGE_EMAIL = "motofolio_gdrive_email";
 			const GDRIVE_STORAGE_FOLDER_ID = "motofolio_gdrive_folder_id";
@@ -5391,19 +5390,9 @@
 			let gdriveTokenClient = null;
 			let gdriveAutoSyncTimer = null;
 
-			// Default Google Cloud OAuth Client ID for site deployments
-			// When set by the site owner in config.js or here, users experience 1-click
-			// Google Sign-in without ever having to enter any Client ID or API key!
-			const DEFAULT_GDRIVE_CLIENT_ID = "";
-
 			function getDriveClientId() {
-				return (
-					(window.MOTOFOLIO_CONFIG && window.MOTOFOLIO_CONFIG.GOOGLE_CLIENT_ID) ||
-					DEFAULT_GDRIVE_CLIENT_ID ||
-					localStorage.getItem(GDRIVE_STORAGE_CLIENT_ID) ||
-					localStorage.getItem("autolog_gdrive_client_id") ||
-					""
-				);
+				const id = window.MOTOFOLIO_CONFIG && window.MOTOFOLIO_CONFIG.GOOGLE_CLIENT_ID;
+				return typeof id === "string" ? id.trim() : "";
 			}
 
 			function getDriveFolderName() {
@@ -5498,11 +5487,7 @@
 
 							updateDriveUI();
 							showToast("Google Drive connected");
-							if (typeof window.openDriveModal === "function") {
-								window.openDriveModal();
-							} else if (typeof openDriveModal === "function") {
-								openDriveModal();
-							}
+							window.openDriveModal?.();
 							await scanDriveFolders();
 							await syncAllCarsWithDrive(true);
 						}
@@ -7140,15 +7125,10 @@
 
 				// Welcome View Action Buttons
 				document.getElementById("welcomeGoogleSignInBtn")?.addEventListener("click", () => {
-					const clientId = getDriveClientId();
-					if (clientId) {
+					if (getDriveClientId()) {
 						initGoogleDriveAuth(true);
 					} else {
-						if (typeof window.openDriveModal === "function") {
-							window.openDriveModal();
-						} else {
-							openDriveModal();
-						}
+						openDriveModal();
 					}
 				});
 				document.getElementById("welcomeImportBtn")?.addEventListener("click", () => {
