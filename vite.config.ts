@@ -1,4 +1,4 @@
-import { defineConfig, type Connect, type Plugin } from "vite";
+import { defineConfig, loadEnv, type Connect, type Plugin } from "vite";
 import fs from "node:fs";
 import path from "node:path";
 
@@ -96,17 +96,44 @@ function copyStaticRuntimeAssets(): Plugin {
   };
 }
 
-export default defineConfig({
-  base: "./",
-  envPrefix: ["VITE_", "GOOGLE_CLIENT_ID"],
-  plugins: [cleanLegalRoutes(), copyStaticRuntimeAssets()],
-  build: {
-    rollupOptions: {
-      input: {
-        main: path.resolve(process.cwd(), "index.html"),
-        "privacy-policy": path.resolve(process.cwd(), "pages/privacy-policy.html"),
-        "terms-of-service": path.resolve(process.cwd(), "pages/terms-of-service.html"),
+/** Injects Google Search Console site verification meta tag from environment variables (.env). */
+function injectGoogleSiteVerification(token?: string): Plugin {
+  return {
+    name: "inject-google-site-verification",
+    transformIndexHtml(html) {
+      if (!token) return html;
+      const cleanToken = token.replace(/^[\\"'`]+|[\\"'`]+$/g, "").trim();
+      if (!cleanToken) return html;
+      const tag = `<meta name="google-site-verification" content="${cleanToken}" />`;
+      if (html.includes("<!-- GOOGLE_SITE_VERIFICATION -->")) {
+        return html.replace("<!-- GOOGLE_SITE_VERIFICATION -->", tag);
+      }
+      return html.replace("</head>", `\t\t${tag}\n\t</head>`);
+    },
+  };
+}
+
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), "");
+  const verificationToken =
+    env.GOOGLE_SITE_VERIFICATION || env.VITE_GOOGLE_SITE_VERIFICATION || "";
+
+  return {
+    base: "./",
+    envPrefix: ["VITE_", "GOOGLE_CLIENT_ID", "GOOGLE_SITE_VERIFICATION"],
+    plugins: [
+      cleanLegalRoutes(),
+      copyStaticRuntimeAssets(),
+      injectGoogleSiteVerification(verificationToken),
+    ],
+    build: {
+      rollupOptions: {
+        input: {
+          main: path.resolve(process.cwd(), "index.html"),
+          "privacy-policy": path.resolve(process.cwd(), "pages/privacy-policy.html"),
+          "terms-of-service": path.resolve(process.cwd(), "pages/terms-of-service.html"),
+        },
       },
     },
-  },
+  };
 });
