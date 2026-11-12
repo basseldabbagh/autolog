@@ -26,8 +26,12 @@ let gdriveAutoSyncTimer: ReturnType<typeof setTimeout> | null = null;
 let onRenderAllCallback: (() => void) | null = null;
 
 export function getDriveClientId(): string {
-  const id = window.MOTOFOLIO_CONFIG && window.MOTOFOLIO_CONFIG.GOOGLE_CLIENT_ID;
-  return typeof id === "string" ? id.trim() : "";
+  const runtimeId = window.MOTOFOLIO_CONFIG?.GOOGLE_CLIENT_ID;
+  if (typeof runtimeId === "string" && runtimeId.trim()) {
+    return runtimeId.trim();
+  }
+  const envId = import.meta.env.VITE_GOOGLE_CLIENT_ID || import.meta.env.GOOGLE_CLIENT_ID;
+  return typeof envId === "string" ? envId.trim() : "";
 }
 
 export function getDriveFolderName(): string {

@@ -35,5 +35,6 @@ function copyStaticRuntimeAssets(): Plugin {
 
 export default defineConfig({
   base: "./",
+  envPrefix: ["VITE_", "GOOGLE_CLIENT_ID"],
   plugins: [copyStaticRuntimeAssets()],
 });

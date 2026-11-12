@@ -1,3 +1,5 @@
+/// <reference types="vite/client" />
+
 export interface VehicleInfo {
   id: string;
   make: string;
@@ -131,6 +133,11 @@ export interface GoogleTokenClient {
 }
 
 declare global {
+  interface ImportMetaEnv {
+    readonly VITE_GOOGLE_CLIENT_ID?: string;
+    readonly GOOGLE_CLIENT_ID?: string;
+  }
+
   interface Window {
     MOTOFOLIO_CONFIG?: {
       GOOGLE_CLIENT_ID?: string;
