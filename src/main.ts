@@ -1,5 +1,6 @@
 import { initTailwindConfig } from "./config/tailwind";
 import { initChartListeners } from "./features/charts";
+import { initCookieConsent } from "./features/cookieConsent";
 import { initDataHubListeners } from "./features/dataHub";
 import { initFuelListeners } from "./features/fuel";
 import { autoSyncToGoogleDrive, initGoogleDriveListeners } from "./features/googleDrive";
@@ -95,6 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initShareListeners();
   initGoogleDriveListeners(renderAll);
   initVehicleAndSettingsListeners(renderAll);
+  initCookieConsent();
 
   // Register Service Worker for PWA (Installable App & Offline Mode)
   if ("serviceWorker" in navigator && window.location.protocol.startsWith("http")) {
@@ -104,5 +106,14 @@ document.addEventListener("DOMContentLoaded", () => {
         reg.update();
       })
       .catch((err) => console.log("SW registration note:", err));
+  }
+
+  // Dismiss App Preloader smoothly
+  const preloader = document.getElementById("appPreloader");
+  if (preloader) {
+    setTimeout(() => {
+      preloader.classList.add("opacity-0", "pointer-events-none");
+      setTimeout(() => preloader.remove(), 400);
+    }, 250);
   }
 });

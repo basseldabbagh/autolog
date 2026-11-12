@@ -3,28 +3,31 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Terms of Service — MotoFolio</title>
+		<title>Terms of Service — My MotoFolio</title>
 		<meta
 			name="description"
-			content="Terms of Service for MotoFolio — open-source client-side vehicle maintenance tracker, service interval calculator, and Google Drive sync tool."
+			content="Terms of Service for My MotoFolio — open-source client-side vehicle maintenance tracker, service interval calculator, and Google Drive sync tool."
 		/>
 		<meta name="robots" content="index, follow" />
-		<meta name="theme-color" content="#0f172a" />
+		<meta name="theme-color" content="#0a192f" />
 
-		<!-- Favicon & Canonical -->
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="apple-touch-icon" sizes="180x180" href="/favicon.svg" />
+		<!-- Favicon & Touch Icons -->
+		<link id="appFavicon" rel="icon" type="image/png" href="/images/identity/favicon-light.png" />
+		<link rel="icon" type="image/png" href="/images/identity/favicon.png" media="(prefers-color-scheme: light)" />
+		<link rel="icon" type="image/png" href="/images/identity/favicon-light.png" media="(prefers-color-scheme: dark)" />
+		<link id="appTouchIcon" rel="apple-touch-icon" sizes="180x180" href="/images/identity/appicon.png" />
+		<link rel="mask-icon" href="/images/identity/icon.png" color="#ff6b35" />
 		<link rel="manifest" href="/manifest.json" />
 		<link rel="canonical" href="https://motofolio.pages.dev/terms-of-service" />
 
 		<!-- Open Graph -->
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content="https://motofolio.pages.dev/terms-of-service" />
-		<meta property="og:site_name" content="MotoFolio" />
-		<meta property="og:title" content="Terms of Service — MotoFolio" />
+		<meta property="og:site_name" content="My MotoFolio" />
+		<meta property="og:title" content="Terms of Service — My MotoFolio" />
 		<meta
 			property="og:description"
-			content="Terms of Service, automotive safety disclaimer, MIT open-source license terms, and third-party Google Drive integration terms for MotoFolio."
+			content="Terms of Service, automotive safety disclaimer, MIT open-source license terms, and third-party Google Drive integration terms for My MotoFolio."
 		/>
 		<meta property="og:image" content="/og-image.svg" />
 
@@ -56,25 +59,50 @@
 			<span id="toastText">Saved</span>
 		</div>
 
+		<!-- Cookie Consent Banner -->
+		<div
+			id="cookieConsentBanner"
+			class="fixed bottom-5 start-5 end-5 sm:end-auto sm:max-w-md z-[9990] hidden motion-enter bg-slate-900/95 backdrop-blur-md border border-slate-700/80 rounded-2xl p-4 sm:p-5 shadow-2xl space-y-3"
+			role="dialog"
+			aria-live="polite"
+			aria-label="Cookie and Storage Policy"
+		>
+			<div class="flex items-start gap-3">
+				<div class="w-8 h-8 rounded-xl bg-indigo-500/15 text-indigo-400 flex items-center justify-center shrink-0 border border-indigo-500/25">
+					<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18zM9 10a1 1 0 100-2 1 1 0 000 2zm6 0a1 1 0 100-2 1 1 0 000 2zm-4 5a1 1 0 100-2 1 1 0 000 2z" />
+					</svg>
+				</div>
+				<div class="space-y-1">
+					<h4 class="text-xs sm:text-sm font-bold text-white tracking-tight">Cookie &amp; Storage Policy</h4>
+					<p class="text-xs text-slate-300 leading-relaxed">
+						My MotoFolio uses local browser storage and essential cookies to save your vehicle fleet, maintenance intervals, and preferences offline on your device.
+					</p>
+					<div class="flex items-center gap-2.5 pt-1 text-[11px]">
+						<a href="/privacy-policy" class="text-indigo-400 hover:text-indigo-300 underline underline-offset-2 transition">Privacy Policy</a>
+						<span class="text-slate-600">•</span>
+						<a href="/terms-of-service" class="text-indigo-400 hover:text-indigo-300 underline underline-offset-2 transition">Terms of Service</a>
+					</div>
+				</div>
+			</div>
+			<div class="flex items-center justify-end gap-2 pt-1">
+				<button
+					id="cookieConsentAcceptBtn"
+					type="button"
+					class="w-full sm:w-auto px-4 py-2 text-xs font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white shadow-md shadow-indigo-600/20 transition cursor-pointer"
+				>
+					Accept &amp; Continue
+				</button>
+			</div>
+		</div>
+
 		<!-- Sticky Top Bar -->
 		<header class="sticky top-0 z-30 backdrop-blur-xl bg-slate-950/85 border-b border-slate-800/80">
 			<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center justify-between gap-3">
-				<a href="/" class="flex items-center gap-3 group">
-					<div
-						class="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-cyan-500 flex items-center justify-center shadow-lg shadow-indigo-500/20 shrink-0"
-					>
-						<svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								d="M8 17a2 2 0 100 4 2 2 0 000-4zm8 0a2 2 0 100 4 2 2 0 000-4zM3 9l2-5h14l2 5M3 9h18M3 9v8h2m16-8v8h-2M7 17h6"
-							/>
-						</svg>
-					</div>
-					<div>
-						<span class="text-xs font-mono font-extrabold uppercase tracking-widest text-indigo-400 block">MotoFolio</span>
-						<span class="text-sm font-bold text-white group-hover:text-indigo-300 transition">Legal &amp; Terms</span>
-					</div>
+				<a href="/" class="flex items-center gap-2.5 group" title="My MotoFolio">
+					<img src="/images/identity/logo-light.png" alt="My MotoFolio" class="h-6 w-auto hidden dark:block" />
+					<img src="/images/identity/logo.png" alt="My MotoFolio" class="h-6 w-auto block dark:hidden" />
+					<span class="text-xs font-bold text-slate-400 group-hover:text-indigo-400 transition">Legal &amp; Terms</span>
 				</a>
 
 				<nav aria-label="Legal navigation" class="flex items-center flex-wrap gap-2">
@@ -303,9 +331,10 @@
 		<!-- Footer -->
 		<footer class="border-t border-slate-800/80 bg-slate-950/60 mt-auto">
 			<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400">
-				<div class="flex items-center gap-2">
-					<span class="font-mono font-bold text-indigo-400">MotoFolio</span>
-					<span class="text-slate-600">•</span>
+				<div class="flex items-center gap-2 flex-wrap">
+					<img src="/images/identity/icon-light.png" alt="My MotoFolio" class="w-5 h-5 object-contain shrink-0 hidden dark:inline-block theme-logo-dark" />
+					<img src="/images/identity/icon.png" alt="My MotoFolio" class="w-5 h-5 object-contain shrink-0 inline-block dark:hidden theme-logo-light" />
+					<span class="font-mono font-bold text-indigo-400">My MotoFolio</span>
 					<span>Client-Side Vehicle Maintenance Tracker (MIT License)</span>
 				</div>
 				<div class="flex items-center gap-4">

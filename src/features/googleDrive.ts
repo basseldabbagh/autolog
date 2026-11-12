@@ -93,7 +93,7 @@ export async function scanDriveFolders(): Promise<void> {
 
   try {
     container.classList.remove("hidden");
-    container.innerHTML = `<div class="p-2 text-slate-400 text-center flex items-center justify-center gap-2"><svg class="w-3.5 h-3.5 animate-spin text-indigo-400" viewBox="0 0 24 24" fill="none"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg><span>Scanning folders...</span></div>`;
+    container.innerHTML = `<div class="p-2 text-slate-400 text-center flex items-center justify-center gap-2"><img src="/images/identity/spinner-light.png" class="w-4 h-4 spinning spininng hidden dark:inline-block" alt="" /><img src="/images/identity/spinner.png" class="w-4 h-4 spinning spininng inline-block dark:hidden" alt="" /><span>Scanning folders...</span></div>`;
 
     const q = encodeURIComponent("mimeType = 'application/vnd.google-apps.folder' and trashed = false");
     const res = await fetch(`https://www.googleapis.com/drive/v3/files?q=${q}&fields=files(id,name)&pageSize=30`, {

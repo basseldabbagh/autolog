@@ -3,6 +3,29 @@ import { showToast } from "../utils/format";
 
 const THEME_STORAGE_KEY = "autolog_theme_mode";
 
+/** Updates favicon and touch appicon dynamically based on active theme schema. */
+export function updateThemeIdentityAssets(isDark: boolean): void {
+  try {
+    const faviconEls = document.querySelectorAll<HTMLLinkElement>('link[rel~="icon"]');
+    const touchIconEl = document.getElementById("appTouchIcon") as HTMLLinkElement | null;
+    const themeColorMeta = document.querySelector('meta[name="theme-color"]') as HTMLMetaElement | null;
+
+    faviconEls.forEach((el) => {
+      el.removeAttribute("media");
+      el.href = isDark ? "/images/identity/favicon-light.png" : "/images/identity/favicon.png";
+    });
+
+    if (touchIconEl) {
+      touchIconEl.href = isDark ? "/images/identity/appicon.png" : "/images/identity/appicon-light.png";
+    }
+    if (themeColorMeta) {
+      themeColorMeta.content = isDark ? "#0a192f" : "#f4f8fc";
+    }
+  } catch {
+    // ignore
+  }
+}
+
 export function applyInitialThemeClass(): void {
   try {
     const theme = (localStorage.getItem(THEME_STORAGE_KEY) || "system") as ThemeMode;
@@ -16,6 +39,7 @@ export function applyInitialThemeClass(): void {
     } else {
       document.documentElement.classList.remove("dark");
     }
+    updateThemeIdentityAssets(isDark);
   } catch {
     // ignore storage errors
   }
@@ -49,6 +73,7 @@ export function initThemeFeature(): void {
       document.documentElement.classList.remove("dark");
     }
     updateThemeToggleUI(themeMode);
+    updateThemeIdentityAssets(isDark);
   };
 
   themeToggleButtons.forEach((btn) => {

@@ -7,7 +7,7 @@ export function buildShareSummaryText(): string {
   const appData = getAppData();
   if (!appData || !appData.vehicle) {
     return (
-      "MotoFolio — Universal Vehicle Maintenance Tracker\n" +
+      "My MotoFolio — Universal Vehicle Maintenance Tracker\n" +
       (window.location.origin.includes("pages.dev") ? window.location.href : "https://motofolio.pages.dev/")
     );
   }
@@ -22,7 +22,7 @@ export function buildShareSummaryText(): string {
     });
 
   return [
-    `MotoFolio Report: ${v.year || ""} ${v.make || ""} ${v.model || ""} (${v.plateNumber || "N/A"})`.trim(),
+    `My MotoFolio Report: ${v.year || ""} ${v.make || ""} ${v.model || ""} (${v.plateNumber || "N/A"})`.trim(),
     `Odometer: ${formatNumber(curKm)} km | Updated: ${appData.lastUpdated || "—"}`,
     activeLines.length ? `\nTracked Services:\n${activeLines.join("\n")}` : "",
   ]
