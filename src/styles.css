@@ -443,6 +443,41 @@ html:not(.dark) #editVehicleBtn:hover {
 }
 
 /* Ensure saturated action buttons retain crisp white text in Light Mode */
+html:not(.dark) #pwaInstallPrompt,
+html:not(.dark) #cookieConsentBanner {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  color: #0a192f !important;
+  box-shadow: 0 20px 25px -5px rgba(10, 25, 47, 0.1), 0 8px 10px -6px rgba(10, 25, 47, 0.1) !important;
+}
+html:not(.dark) #pwaInstallPrompt #pwaInstallTitle,
+html:not(.dark) #pwaInstallPrompt h4,
+html:not(.dark) #cookieConsentBanner h4 {
+  color: #0a192f !important;
+}
+html:not(.dark) #pwaInstallPrompt p,
+html:not(.dark) #cookieConsentBanner p {
+  color: #475569 !important;
+}
+html:not(.dark) #pwaInstallPrompt div.border-b {
+  border-color: #e2e8f0 !important;
+}
+html:not(.dark) #pwaInstallCancelBtn {
+  background-color: #f1f5f9 !important;
+  color: #1e293b !important;
+  border-color: #cbd5e1 !important;
+}
+html:not(.dark) #pwaInstallCancelBtn:hover {
+  background-color: #e2e8f0 !important;
+  color: #0f172a !important;
+}
+html:not(.dark) #pwaInstallCloseBtn {
+  color: #94a3b8 !important;
+}
+html:not(.dark) #pwaInstallCloseBtn:hover {
+  color: #0f172a !important;
+}
+
 html:not(.dark) button[class*="bg-indigo-600"],
 html:not(.dark) button[class*="bg-indigo-500"],
 html:not(.dark) button[class*="bg-orange-600"],

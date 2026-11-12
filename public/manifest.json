@@ -1,0 +1,62 @@
+{
+  "name": "My MotoFolio — Universal Car Maintenance & Service Tracker",
+  "short_name": "My MotoFolio",
+  "id": "my-motofolio-vehicle-tracker",
+  "description": "Universal interactive car maintenance tracker, periodic service interval calculator, live odometer simulator, and printable A4 vehicle condition report.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0a192f",
+  "theme_color": "#0a192f",
+  "orientation": "any",
+  "categories": ["utilities", "productivity", "lifestyle"],
+  "lang": "en-US",
+  "icons": [
+    {
+      "src": "/images/identity/icon.png",
+      "sizes": "192x192 512x512 1024x1024",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/identity/appicon.png",
+      "sizes": "192x192 512x512 1024x1024",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/identity/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Add Maintenance Record",
+      "short_name": "Add Record",
+      "description": "Log a new workshop or DIY vehicle maintenance record",
+      "url": "./index.html#action=add-record",
+      "icons": [
+        {
+          "src": "/images/identity/icon.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Print A4 Vehicle Report",
+      "short_name": "A4 Report",
+      "description": "Generate an instant printable A4 Vehicle Condition & Inspection Report",
+      "url": "./index.html#action=print-report",
+      "icons": [
+        {
+          "src": "/images/identity/icon.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
+  ]
+}

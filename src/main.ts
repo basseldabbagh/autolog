@@ -1,6 +1,7 @@
 import { initTailwindConfig } from "./config/tailwind";
 import { initChartListeners } from "./features/charts";
 import { initCookieConsent } from "./features/cookieConsent";
+import { initPwaInstall } from "./features/pwaInstall";
 import { initDataHubListeners } from "./features/dataHub";
 import { initFuelListeners } from "./features/fuel";
 import { autoSyncToGoogleDrive, initGoogleDriveListeners } from "./features/googleDrive";
@@ -97,6 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initGoogleDriveListeners(renderAll);
   initVehicleAndSettingsListeners(renderAll);
   initCookieConsent();
+  initPwaInstall();
 
   // Register Service Worker for PWA (Installable App & Offline Mode)
   if ("serviceWorker" in navigator && window.location.protocol.startsWith("http")) {
