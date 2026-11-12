@@ -10,7 +10,7 @@
 
 - **What the Project Does**: MotoFolio is a standalone, client-side web application designed to track vehicle maintenance schedules, periodic fluid and part replacement intervals, odometer simulation, workshop service invoices, parts costs, and export/import data via CSV and JSON. It also generates print-ready A4 condition inspection reports and WhatsApp-ready summaries.
 - **Target Users**: Vehicle owners, car enthusiasts, DIY mechanics, independent automotive workshop operators, and fleet coordinators.
-- **Project Type**: Single-page, client-side web application (SPA) contained entirely within a monolithic [`index.html`](file:///e:/HTML/autolog/index.html) file, accompanied by standalone JSON vehicle profile definitions in [`cars/`](file:///e:/HTML/autolog/cars/).
+- **Project Type**: Single-page, client-side web application (SPA) with pure HTML markup in [`index.html`](file:///e:/HTML/Bhoenix%20studio/motofolio/index.html), modular TypeScript feature files and a single custom stylesheet in [`src/`](file:///e:/HTML/Bhoenix%20studio/motofolio/src/), bundled via Vite, and accompanied by standalone JSON vehicle profile definitions in [`cars/`](file:///e:/HTML/Bhoenix%20studio/motofolio/cars/) and [`template/`](file:///e:/HTML/Bhoenix%20studio/motofolio/template/).
 - **Major Capabilities**:
   1. Multi-vehicle profile switching (built-in sample profiles plus custom dynamic profiles).
   2. Dynamic odometer adjustment with fast increment steps (`+1k`, `+5k`) and reset capabilities.
@@ -21,9 +21,9 @@
   7. Printable A4 Vehicle Condition Report generated in a clean popup tab with specialized print stylesheets.
   8. Native Web Share API integration with automatic fallback to clipboard copying for WhatsApp messaging.
 - **Architectural Invariants & Boundaries**:
-  - **Zero Build Step**: The project must NOT require Node.js, npm, bundlers (Vite, Webpack, Rollup), or transpilers. It must run immediately when opened from a local file (`file://`) or served by any basic static HTTP server.
-  - **Single Source of Truth**: All runtime application state is managed in-memory via the `appData` global object, synchronized on change to the browser's `localStorage`.
-  - **No Server Dependencies**: There is no backend API, server-side database, or cloud sync. All persistence is strictly client-side.
+  - **Modular Feature Separation**: `index.html` contains only HTML markup (plus external CDN/module links). All logic lives in feature-specific `.ts` modules under `src/`, and all custom CSS (design tokens, keyframes, light-mode overrides) lives in the single `src/styles.css` file while layout and component styling uses Tailwind CSS.
+  - **Single Source of Truth**: All runtime application state is managed in-memory via `src/state/store.ts` (`appData`), synchronized on change to the browser's `localStorage`.
+  - **No Server Dependencies**: There is no backend API, server-side database, or cloud sync server. All persistence is strictly client-side (plus optional direct browser OAuth to Google Drive).
 
 ---
 
@@ -31,10 +31,10 @@
 
 | Layer | Technology | Direct File Evidence |
 |---|---|---|
-| **Markup & Structure** | HTML5 (Semantic elements, Dialogs/Modals, SVG) | [`index.html`](file:///e:/HTML/autolog/index.html) |
-| **Styling & Theme** | Tailwind CSS (CDN `v3.x`), CSS Keyframes, Media Queries | `<script src="https://cdn.tailwindcss.com">` |
+| **Markup & Structure** | HTML5 (Semantic elements, Dialogs/Modals, SVG) | [`index.html`](file:///e:/HTML/Bhoenix%20studio/motofolio/index.html) |
+| **Styling & Theme** | Tailwind CSS (CDN `v3.x`) + single custom stylesheet | `<script src="https://cdn.tailwindcss.com">`, [`src/styles.css`](file:///e:/HTML/Bhoenix%20studio/motofolio/src/styles.css) |
 | **Typography** | Google Fonts: `Inter` (sans) and `JetBrains Mono` (code/numbers) | `<link href="https://fonts.googleapis.com/css2?...">` |
-| **Logic & Scripting** | Vanilla JavaScript (ES2020+, Async/Await, Web APIs) | `<script>` block in [`index.html`](file:///e:/HTML/autolog/index.html#L760) |
+| **Logic & Scripting** | Modular TypeScript (ES2020+, Strict Mode) via Vite | [`src/main.ts`](file:///e:/HTML/Bhoenix%20studio/motofolio/src/main.ts), [`src/features/`](file:///e:/HTML/Bhoenix%20studio/motofolio/src/features/) |
 | **Visualizations** | Native SVG DOM generation (No Chart.js, D3, or Canvas) | Functions `renderCountdownChart()`, `renderExpenseDonut()` |
 | **Storage / Persistence** | Browser `localStorage` (JSON strings) | Keys `autolog_active_profile`, `autolog_car_${id}` |
 | **Progressive Web App** | Web App Manifest & Service Worker (Offline Cache) | [`manifest.json`](file:///e:/HTML/autolog/manifest.json), [`sw.js`](file:///e:/HTML/autolog/sw.js) |
@@ -175,13 +175,13 @@ Do not inject external graphing dependencies (e.g., Chart.js). Generate SVGs dyn
 
 ## 7. Change Rules & Maintenance Contracts
 
-1. **Maintain Single-File Portability**: All HTML, JavaScript logic, modal markup, and component templates must remain in `index.html` unless the user explicitly requests modularization into separate files.
+1. **Keep HTML Pure & Feature Modules Separated**: Keep HTML markup in `index.html`, keep custom CSS consolidated in the single `src/styles.css` file (prefer Tailwind utility classes for everything else), and place TypeScript logic in the appropriate feature module under `src/features/` (or `src/state/`, `src/utils/`, `src/config/`).
 2. **Preserve Schema Compatibility**:
    - The current schema is `schemaVersion: "2.0"`.
    - Never remove or rename required fields (`vehicle.id`, `vehicle.make`, `vehicle.model`, `periodicSchedule`, `maintenanceHistory`) without implementing backwards-compatible fallback accessors.
    - Workshop / mechanic information is attributed on individual service records (`record.mechanic`), not on the static vehicle profile. Vehicle profiles do not contain a `workshop` object.
 3. **Synchronize BUILTIN_PROFILES with `cars/*.json`**:
-   - When modifying default vehicle profiles, ensure the `BUILTIN_PROFILES` object in `index.html` and the corresponding standalone file in `cars/*.json` remain identical in content.
+   - When modifying default vehicle profiles, ensure `BUILTIN_PROFILES` in `src/config/profiles.ts` and the corresponding standalone file in `cars/*.json` / `template/*.json` remain identical in content.
 4. **Never Hardcode Secrets**:
    - Do not include API keys, passwords, or personal credentials in code, documentation, or commits.
    - All workshop contact numbers, vendor contacts, and vehicle examples in documentation must use sanitized placeholder data.

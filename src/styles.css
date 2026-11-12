@@ -1,0 +1,257 @@
+:root {
+  /* ================================================================= */
+  /* MOTOFOLIO DESIGN SYSTEM TOKENS (CSS VARIABLES)                    */
+  /* Change these variables to re-theme the entire application easily  */
+  /* ================================================================= */
+
+  /* --- Surface & Background Canvas --- */
+  --color-bg-canvas: #020617;          /* Primary page backdrop (slate-950) */
+  --color-bg-surface: #0f172a;         /* Card, panel, and modal containers (slate-900) */
+  --color-bg-surface-elevated: #1e293b;/* Secondary buttons, headers, chips (slate-800) */
+  --color-bg-input: #020617;           /* Form inputs, select fields (slate-950) */
+
+  /* --- Borders & Dividers --- */
+  --color-border-normal: #1e293b;      /* Normal borders (slate-800) */
+  --color-border-subtle: #334155;      /* Inputs and secondary outlines (slate-700) */
+  --color-border-focus: #6366f1;       /* Interactive focused field border (indigo-500) */
+
+  /* --- Typography & Text --- */
+  --color-text-primary: #f8fafc;       /* Highest contrast text, headings, KPIs (slate-100) */
+  --color-text-secondary: #94a3b8;     /* Body secondary text, metric labels (slate-400) */
+  --color-text-muted: #64748b;         /* Footers, placeholders, inactive icons (slate-500) */
+
+  /* --- Primary Brand & Accent --- */
+  --color-brand-primary: #6366f1;      /* Indigo-500 */
+  --color-brand-hover: #4f46e5;        /* Indigo-600 */
+  --color-brand-muted: rgba(99, 102, 241, 0.15);
+  --color-brand-border: rgba(99, 102, 241, 0.4);
+
+  /* --- Semantic Status Tokens --- */
+  /* Good / Nominal (> 1,000 km remaining) */
+  --color-status-good: #10b981;        /* Emerald-500 */
+  --color-status-good-bg: rgba(16, 185, 129, 0.15);
+  --color-status-good-border: rgba(16, 185, 129, 0.35);
+  --color-status-good-text: #6ee7b7;   /* Emerald-300 */
+
+  /* Warning / Due Soon (<= 1,000 km remaining) */
+  --color-status-warning: #f59e0b;     /* Amber-500 */
+  --color-status-warning-bg: rgba(245, 158, 11, 0.15);
+  --color-status-warning-border: rgba(245, 158, 11, 0.35);
+  --color-status-warning-text: #fcd34d; /* Amber-300 */
+
+  /* Critical / Overdue (<= 0 km) */
+  --color-status-critical: #f43f5e;    /* Rose-500 */
+  --color-status-critical-bg: rgba(244, 63, 94, 0.15);
+  --color-status-critical-border: rgba(244, 63, 94, 0.35);
+  --color-status-critical-text: #fda4af;/* Rose-300 */
+
+  /* Pending / Unset (no baseline entered) */
+  --color-status-pending: #64748b;     /* Slate-500 */
+  --color-status-pending-bg: rgba(51, 65, 85, 0.35);
+  --color-status-pending-border: #334155;
+  --color-status-pending-text: #94a3b8; /* Slate-400 */
+
+  /* --- Auxiliary Feature Accents --- */
+  --color-accent-cyan: #06b6d4;        /* Cyan-500 (Share actions, paid metrics) */
+  --color-accent-cyan-text: #67e8f9;   /* Cyan-300 */
+  --color-accent-cyan-bg: rgba(6, 182, 212, 0.15);
+}
+
+/* Status badge & bar utility classes linked to design tokens */
+.badge-status-good {
+  background-color: var(--color-status-good-bg);
+  border-color: var(--color-status-good-border);
+  color: var(--color-status-good-text);
+}
+.badge-status-warning {
+  background-color: var(--color-status-warning-bg);
+  border-color: var(--color-status-warning-border);
+  color: var(--color-status-warning-text);
+}
+.badge-status-critical {
+  background-color: var(--color-status-critical-bg);
+  border-color: var(--color-status-critical-border);
+  color: var(--color-status-critical-text);
+}
+.badge-status-pending {
+  background-color: var(--color-status-pending-bg);
+  border-color: var(--color-status-pending-border);
+  color: var(--color-status-pending-text);
+}
+.bar-status-good {
+  background-color: var(--color-status-good);
+}
+.bar-status-warning {
+  background-color: var(--color-status-warning);
+}
+.bar-status-critical {
+  background-color: var(--color-status-critical);
+}
+.bar-status-pending {
+  background-color: var(--color-status-pending);
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.motion-enter {
+  animation: fadeSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.motion-bar {
+  transition:
+    width 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.25s ease;
+}
+.motion-card {
+  transition:
+    transform 0.18s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.18s ease;
+}
+.motion-card:hover {
+  transform: translateY(-2px);
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Remove number input spinner arrows (WebKit & Firefox) */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* Balanced start and end padding for select elements */
+select {
+  padding-inline-start: 0.75rem !important;
+  padding-inline-end: 2rem !important;
+  background-repeat: no-repeat;
+  background-position: right 0.65rem center;
+}
+#carProfileSelect {
+  padding-inline-start: 2.25rem !important;
+  padding-inline-end: 2rem !important;
+}
+
+/* ================================================================= */
+/* LIGHT MODE OVERRIDES                                              */
+/* Active when .dark class is removed from <html>                   */
+/* ================================================================= */
+html:not(.dark) {
+  color-scheme: light;
+  --color-bg-canvas: #f8fafc;
+  --color-bg-surface: #ffffff;
+  --color-bg-surface-elevated: #f1f5f9;
+  --color-bg-input: #ffffff;
+  --color-border-normal: #e2e8f0;
+  --color-border-subtle: #cbd5e1;
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-muted: #64748b;
+}
+html:not(.dark) body {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+html:not(.dark) .bg-slate-950 {
+  background-color: #ffffff !important;
+}
+html:not(.dark) .bg-slate-950\/90,
+html:not(.dark) .bg-slate-950\/80,
+html:not(.dark) .bg-slate-950\/70,
+html:not(.dark) .bg-slate-950\/60,
+html:not(.dark) .bg-slate-950\/40,
+html:not(.dark) .bg-slate-950\/30 {
+  background-color: #f8fafc !important;
+}
+html:not(.dark) .bg-slate-900 {
+  background-color: #ffffff !important;
+}
+html:not(.dark) .bg-slate-900\/90,
+html:not(.dark) .bg-slate-900\/80,
+html:not(.dark) .bg-slate-900\/70,
+html:not(.dark) .bg-slate-900\/60,
+html:not(.dark) .bg-slate-900\/50,
+html:not(.dark) .bg-slate-900\/40 {
+  background-color: #ffffff !important;
+}
+html:not(.dark) .bg-slate-800 {
+  background-color: #f1f5f9 !important;
+}
+html:not(.dark) .bg-slate-800\/60,
+html:not(.dark) .bg-slate-800\/50,
+html:not(.dark) .bg-slate-800\/40,
+html:not(.dark) .bg-slate-800\/20 {
+  background-color: #f1f5f9 !important;
+}
+html:not(.dark) .hover\:bg-slate-800:hover,
+html:not(.dark) .hover\:bg-slate-700:hover {
+  background-color: #e2e8f0 !important;
+}
+html:not(.dark) .border-slate-800,
+html:not(.dark) .border-slate-800\/80,
+html:not(.dark) .border-slate-800\/70,
+html:not(.dark) .border-slate-800\/60,
+html:not(.dark) .border-slate-700,
+html:not(.dark) .border-slate-700\/80,
+html:not(.dark) .border-slate-700\/50 {
+  border-color: #e2e8f0 !important;
+}
+html:not(.dark) .text-white,
+html:not(.dark) .text-slate-100,
+html:not(.dark) .text-slate-200 {
+  color: #0f172a !important;
+}
+html:not(.dark) .text-slate-300 {
+  color: #334155 !important;
+}
+html:not(.dark) .text-slate-400 {
+  color: #64748b !important;
+}
+html:not(.dark) input,
+html:not(.dark) select,
+html:not(.dark) textarea {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+html:not(.dark) input::placeholder,
+html:not(.dark) textarea::placeholder {
+  color: #94a3b8 !important;
+}
+html:not(.dark) .divide-slate-800 > :not([hidden]) ~ :not([hidden]),
+html:not(.dark) .divide-slate-800\/70 > :not([hidden]) ~ :not([hidden]) {
+  border-color: #e2e8f0 !important;
+}
+html:not(.dark) ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+html:not(.dark) ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+}
+html:not(.dark) ::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
