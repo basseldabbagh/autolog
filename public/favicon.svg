@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="50%" stop-color="#4f46e5" />
+      <stop offset="100%" stop-color="#3730a3" />
+    </linearGradient>
+    <linearGradient id="glowGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+    <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0f172a" flood-opacity="0.45" />
+    </filter>
+  </defs>
+
+  <!-- Background Squircle -->
+  <rect width="512" height="512" rx="128" fill="url(#bgGrad)" />
+  <rect width="504" height="504" x="4" y="4" rx="124" fill="url(#glowGrad)" stroke="#ffffff" stroke-width="4" stroke-opacity="0.3" />
+
+  <!-- Car & Gauge Icon Group -->
+  <g filter="url(#dropShadow)" transform="translate(0, 8)">
+    <!-- Sleek Car Silhouette -->
+    <!-- Car Body -->
+    <path d="M112 300 L144 196 C152 170 174 152 202 152 L310 152 C338 152 360 170 368 196 L400 300 C416 304 428 318 428 336 L428 376 C428 388 418 398 406 398 L396 398 C384 398 374 388 374 376 L374 364 L138 364 L138 376 C138 388 128 398 116 398 L106 398 C94 398 84 388 84 376 L84 336 C84 318 96 304 112 300 Z" 
+          fill="#0f172a" opacity="0.2" />
+
+    <!-- Windshield & Roof Outline -->
+    <path d="M148 204 L170 156 C176 142 190 134 206 134 L306 134 C322 134 336 142 342 156 L364 204" 
+          fill="none" stroke="#ffffff" stroke-width="26" stroke-linecap="round" stroke-linejoin="round" />
+
+    <!-- Main Front Profile -->
+    <path d="M96 230 C96 216 108 204 122 204 L390 204 C404 204 416 216 416 230 L424 296 C428 328 404 356 372 356 L140 356 C108 356 84 328 88 296 Z" 
+          fill="#ffffff" />
+
+    <!-- Windshield Glass -->
+    <path d="M146 204 L168 160 C171 154 177 150 184 150 L328 150 C335 150 341 154 344 160 L366 204 Z" 
+          fill="#38bdf8" opacity="0.9" />
+
+    <!-- Headlights -->
+    <path d="M112 248 C112 236 122 228 138 228 L170 228 C182 228 188 240 182 250 L168 266 C162 274 152 278 142 278 L126 278 C118 278 112 272 112 264 Z" 
+          fill="#38bdf8" />
+    <path d="M400 248 C400 236 390 228 374 228 L342 228 C330 228 324 240 330 250 L344 266 C350 274 360 278 370 278 L386 278 C394 278 400 272 400 264 Z" 
+          fill="#38bdf8" />
+
+    <!-- Radiator Grille -->
+    <rect x="206" y="238" width="100" height="34" rx="8" fill="#1e1b4b" />
+    <line x1="220" y1="247" x2="292" y2="247" stroke="#818cf8" stroke-width="4" stroke-linecap="round" />
+    <line x1="220" y1="255" x2="292" y2="255" stroke="#818cf8" stroke-width="4" stroke-linecap="round" />
+    <line x1="220" y1="263" x2="292" y2="263" stroke="#818cf8" stroke-width="4" stroke-linecap="round" />
+
+    <!-- Wheels / Tires -->
+    <rect x="94" y="324" width="48" height="54" rx="14" fill="#0f172a" />
+    <rect x="370" y="324" width="48" height="54" rx="14" fill="#0f172a" />
+
+    <!-- Front Lower Bumper Lip -->
+    <path d="M152 322 L360 322" stroke="#4f46e5" stroke-width="14" stroke-linecap="round" />
+
+    <!-- Golden Service Checkmark / Wrench Emblem at Center Bottom -->
+    <circle cx="256" cy="322" r="28" fill="#10b981" stroke="#ffffff" stroke-width="5" />
+    <path d="M246 322 L253 329 L268 314" fill="none" stroke="#ffffff" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+</svg>

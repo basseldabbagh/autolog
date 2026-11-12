@@ -58,7 +58,16 @@ function cleanLegalRoutes(): Plugin {
 
 /** Copies static runtime files and JSON profile folders into dist/ on production build. */
 function copyStaticRuntimeAssets(): Plugin {
-  const staticFiles = ["config.js", "manifest.json", "sw.js", "favicon.svg", "og-image.svg"];
+  const staticFiles = [
+    "config.js",
+    "manifest.json",
+    "sw.js",
+    "favicon.svg",
+    "og-image.svg",
+    "robots.txt",
+    "sitemap.xml",
+    "llms.txt",
+  ];
   const staticDirs = ["cars", "template"];
 
   return {

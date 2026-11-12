@@ -21,7 +21,7 @@
 		<link rel="canonical" href="https://motofolio.pages.dev/privacy-policy" />
 
 		<!-- Open Graph -->
-		<meta property="og:type" content="website" />
+		<meta property="og:type" content="article" />
 		<meta property="og:url" content="https://motofolio.pages.dev/privacy-policy" />
 		<meta property="og:site_name" content="My MotoFolio" />
 		<meta property="og:title" content="Privacy Policy — My MotoFolio" />
@@ -29,7 +29,60 @@
 			property="og:description"
 			content="Learn how My MotoFolio handles your vehicle records locally in your browser and optionally syncs CSV backups directly to your private Google Drive."
 		/>
-		<meta property="og:image" content="/og-image.svg" />
+		<meta property="og:image" content="https://motofolio.pages.dev/images/identity/logo.png" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+
+		<!-- Twitter / X Cards -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:site" content="@MyMotoFolio" />
+		<meta name="twitter:title" content="Privacy Policy — My MotoFolio" />
+		<meta
+			name="twitter:description"
+			content="Learn how My MotoFolio handles your vehicle records locally in your browser and optionally syncs CSV backups directly to your private Google Drive."
+		/>
+		<meta name="twitter:image" content="https://motofolio.pages.dev/images/identity/logo.png" />
+
+		<!-- JSON-LD Structured Data (Breadcrumbs & WebPage) -->
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@graph": [
+					{
+						"@type": "WebPage",
+						"@id": "https://motofolio.pages.dev/privacy-policy#webpage",
+						"url": "https://motofolio.pages.dev/privacy-policy",
+						"name": "Privacy Policy — My MotoFolio",
+						"description": "Privacy Policy for My MotoFolio — client-side vehicle maintenance tracker with local browser storage and optional direct Google Drive sync.",
+						"isPartOf": {
+							"@type": "WebSite",
+							"@id": "https://motofolio.pages.dev/#website",
+							"name": "My MotoFolio",
+							"url": "https://motofolio.pages.dev/"
+						},
+						"inLanguage": "en-US"
+					},
+					{
+						"@type": "BreadcrumbList",
+						"@id": "https://motofolio.pages.dev/privacy-policy#breadcrumb",
+						"itemListElement": [
+							{
+								"@type": "ListItem",
+								"position": 1,
+								"name": "Home",
+								"item": "https://motofolio.pages.dev/"
+							},
+							{
+								"@type": "ListItem",
+								"position": 2,
+								"name": "Privacy Policy",
+								"item": "https://motofolio.pages.dev/privacy-policy"
+							}
+						]
+					}
+				]
+			}
+		</script>
 
 		<!-- Tailwind CSS CDN & Fonts -->
 		<script src="https://cdn.tailwindcss.com"></script>
@@ -44,6 +97,14 @@
 	<body
 		class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col selection:bg-indigo-500 selection:text-white"
 	>
+		<!-- Skip to Main Content Link (Accessibility WCAG 2.4.1) -->
+		<a
+			href="#mainContent"
+			class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:start-4 focus:z-[100002] focus:px-4 focus:py-2.5 focus:bg-orange-600 focus:text-white focus:font-semibold focus:rounded-xl focus:shadow-2xl focus:outline-none focus:ring-2 focus:ring-white"
+		>
+			Skip to main content
+		</a>
+
 		<!-- Ambient Glow -->
 		<div class="fixed inset-0 pointer-events-none overflow-hidden -z-10">
 			<div class="absolute -top-40 start-1/4 w-96 h-96 bg-indigo-600/15 rounded-full blur-3xl"></div>
@@ -89,7 +150,7 @@
 				<button
 					id="cookieConsentAcceptBtn"
 					type="button"
-					class="w-full sm:w-auto px-4 py-2 text-xs font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white shadow-md shadow-indigo-600/20 transition cursor-pointer"
+					class="w-full sm:w-auto px-4 py-2 text-xs font-bold rounded-xl bg-indigo-700 hover:bg-indigo-600 text-white shadow-md shadow-indigo-900/30 transition cursor-pointer"
 				>
 					Accept &amp; Continue
 				</button>
@@ -127,11 +188,19 @@
 				<img
 					src="/images/identity/appicon.png"
 					alt="My MotoFolio"
+					width="44"
+					height="44"
+					loading="lazy"
+					decoding="async"
 					class="w-11 h-11 rounded-xl shadow-sm object-cover shrink-0 hidden dark:block"
 				/>
 				<img
 					src="/images/identity/appicon-light.png"
 					alt="My MotoFolio"
+					width="44"
+					height="44"
+					loading="lazy"
+					decoding="async"
 					class="w-11 h-11 rounded-xl shadow-sm object-cover shrink-0 block dark:hidden"
 				/>
 				<div class="min-w-0 flex-1">
@@ -151,7 +220,7 @@
 				<button
 					id="pwaInstallConfirmBtn"
 					type="button"
-					class="px-3.5 py-1.5 text-xs font-semibold rounded-xl bg-orange-600 hover:bg-orange-500 text-white shadow-md shadow-orange-600/20 transition cursor-pointer"
+					class="px-3.5 py-1.5 text-xs font-bold rounded-xl bg-orange-500 hover:bg-orange-400 text-slate-950 shadow-md shadow-orange-500/20 transition cursor-pointer"
 				>
 					Install
 				</button>
@@ -159,11 +228,11 @@
 		</div>
 
 		<!-- Sticky Top Bar -->
-		<header class="sticky top-0 z-30 backdrop-blur-xl bg-slate-950/85 border-b border-slate-800/80">
+		<header class="sticky top-0 z-30 backdrop-blur-xl bg-slate-950/85 border-b border-slate-800/80" role="banner">
 			<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center justify-between gap-3">
-				<a href="/" class="flex items-center gap-2.5 group" title="My MotoFolio">
-					<img src="/images/identity/logo-light.png" alt="My MotoFolio" class="h-6 w-auto hidden dark:block" />
-					<img src="/images/identity/logo.png" alt="My MotoFolio" class="h-6 w-auto block dark:hidden" />
+				<a href="/" class="flex items-center gap-2.5 group" title="My MotoFolio Home">
+					<img src="/images/identity/logo-light.png" alt="My MotoFolio" width="168" height="24" loading="eager" decoding="async" class="h-6 w-auto hidden dark:block" />
+					<img src="/images/identity/logo.png" alt="My MotoFolio" width="168" height="24" loading="eager" decoding="async" class="h-6 w-auto block dark:hidden" />
 					<span class="text-xs font-bold text-slate-400 group-hover:text-indigo-400 transition">Legal &amp; Privacy</span>
 				</a>
 
@@ -227,7 +296,7 @@
 		</header>
 
 		<!-- Main Content -->
-		<main class="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6 motion-enter">
+		<main id="mainContent" role="main" aria-label="Privacy Policy" class="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6 motion-enter">
 			<!-- Hero Banner -->
 			<section class="rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900 to-indigo-950/40 border border-slate-800 p-6 sm:p-8 shadow-2xl space-y-4">
 				<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-xs font-semibold">
@@ -468,11 +537,11 @@
 		</main>
 
 		<!-- Footer -->
-		<footer class="border-t border-slate-800/80 bg-slate-950/60 mt-auto">
+		<footer class="border-t border-slate-800/80 bg-slate-950/60 mt-auto" role="contentinfo">
 			<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400">
 				<div class="flex items-center gap-2 flex-wrap">
-					<img src="/images/identity/icon-light.png" alt="My MotoFolio" class="w-5 h-5 object-contain shrink-0 hidden dark:inline-block theme-logo-dark" />
-					<img src="/images/identity/icon.png" alt="My MotoFolio" class="w-5 h-5 object-contain shrink-0 inline-block dark:hidden theme-logo-light" />
+					<img src="/images/identity/icon-light.png" alt="My MotoFolio" width="20" height="20" loading="lazy" decoding="async" class="w-5 h-5 object-contain shrink-0 hidden dark:inline-block theme-logo-dark" />
+					<img src="/images/identity/icon.png" alt="My MotoFolio" width="20" height="20" loading="lazy" decoding="async" class="w-5 h-5 object-contain shrink-0 inline-block dark:hidden theme-logo-light" />
 					<span class="font-mono font-bold text-indigo-400">My MotoFolio</span>
 					<span>Client-Side Vehicle Maintenance Tracker (MIT License)</span>
 				</div>

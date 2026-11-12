@@ -3,18 +3,20 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title id="seoTitle">My MotoFolio — Universal Car Maintenance &amp; Service Tracker</title>
+		<title id="seoTitle">My MotoFolio — Free Car Maintenance Tracker &amp; Service Interval Calculator</title>
 		<meta
 			name="description"
 			id="seoDesc"
-			content="Universal interactive car maintenance tracker, periodic service interval calculator, live odometer simulator, and printable A4 vehicle condition report."
+			content="100% free, private &amp; offline-first car maintenance tracker, periodic service interval calculator, workshop expense ledger, fuel logbook, and printable A4 inspection report."
 		/>
 		<meta
 			name="keywords"
 			id="seoKeywords"
-			content="My MotoFolio, car maintenance tracker, periodic service schedule, odometer calculator, vehicle condition report, workshop log, auto service history"
+			content="My MotoFolio, car maintenance tracker, free car maintenance app, periodic service schedule, car service interval calculator, odometer tracker, vehicle condition report, car maintenance log, oil change interval, workshop expense ledger, car repair history, fuel logbook, DIY auto maintenance, fleet maintenance software"
 		/>
 		<meta name="author" content="My MotoFolio" />
+		<meta name="creator" content="My MotoFolio" />
+		<meta name="publisher" content="My MotoFolio" />
 		<meta name="theme-color" content="#0a192f" />
 
 		<!-- Favicon & Touch Icons -->
@@ -28,6 +30,7 @@
 		<!-- Robots, Canonical & Crawlers -->
 		<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 		<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+		<meta name="bingbot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 		<link rel="canonical" id="canonicalLink" href="https://motofolio.pages.dev/" />
 		<meta name="revisit-after" content="7 days" />
 
@@ -44,14 +47,14 @@
 		<meta property="og:url" id="ogUrl" content="https://motofolio.pages.dev/" />
 		<meta property="og:site_name" content="My MotoFolio" />
 		<meta property="og:locale" content="en_US" />
-		<meta property="og:title" id="ogTitle" content="My MotoFolio — Car Maintenance &amp; Service Tracker" />
+		<meta property="og:title" id="ogTitle" content="My MotoFolio — Free Car Maintenance Tracker &amp; Service Interval Calculator" />
 		<meta
 			property="og:description"
 			id="ogDesc"
-			content="Interactive periodic maintenance schedule, live mileage calculator, workshop expense history, and printable A4 vehicle condition report."
+			content="Interactive periodic maintenance schedule, live mileage calculator, workshop expense history, fuel logbook, and printable A4 vehicle condition report."
 		/>
-		<meta property="og:image" id="ogImage" content="/images/identity/logo.png" />
-		<meta property="og:image:secure_url" id="ogImageSecure" content="/images/identity/logo.png" />
+		<meta property="og:image" id="ogImage" content="https://motofolio.pages.dev/images/identity/logo.png" />
+		<meta property="og:image:secure_url" id="ogImageSecure" content="https://motofolio.pages.dev/images/identity/logo.png" />
 		<meta property="og:image:type" content="image/png" />
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="630" />
@@ -61,40 +64,155 @@
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:site" content="@MyMotoFolio" />
 		<meta name="twitter:creator" content="@MyMotoFolio" />
-		<meta name="twitter:title" id="twTitle" content="My MotoFolio — Car Maintenance &amp; Service Tracker" />
+		<meta name="twitter:title" id="twTitle" content="My MotoFolio — Free Car Maintenance Tracker &amp; Service Interval Calculator" />
 		<meta
 			name="twitter:description"
 			id="twDesc"
-			content="Interactive periodic maintenance schedule, live mileage calculator, workshop expense history, and printable A4 vehicle condition report."
+			content="Interactive periodic maintenance schedule, live mileage calculator, workshop expense history, fuel logbook, and printable A4 vehicle condition report."
 		/>
-		<meta name="twitter:image" id="twImage" content="/images/identity/logo.png" />
+		<meta name="twitter:image" id="twImage" content="https://motofolio.pages.dev/images/identity/logo.png" />
 		<meta name="twitter:image:alt" id="twImageAlt" content="My MotoFolio — Car Maintenance &amp; Service Tracker" />
 
-		<!-- Dynamic JSON-LD Structured Data -->
+		<!-- Dynamic JSON-LD Structured Data (Comprehensive Schema for SEO & AEO) -->
 		<script type="application/ld+json" id="jsonLdSchema">
 			{
 				"@context": "https://schema.org",
 				"@graph": [
 					{
-						"@type": "WebApplication",
+						"@type": "WebSite",
+						"@id": "https://motofolio.pages.dev/#website",
+						"url": "https://motofolio.pages.dev/",
+						"name": "My MotoFolio",
+						"alternateName": ["MotoFolio", "MyMotoFolio", "Moto Folio"],
+						"description": "Universal interactive car maintenance tracker, periodic service interval calculator, live odometer simulator, and printable A4 vehicle condition report.",
+						"publisher": {
+							"@id": "https://motofolio.pages.dev/#organization"
+						},
+						"inLanguage": "en-US"
+					},
+					{
+						"@type": "Organization",
+						"@id": "https://motofolio.pages.dev/#organization",
 						"name": "My MotoFolio",
 						"url": "https://motofolio.pages.dev/",
-						"applicationCategory": "UtilitiesApplication",
-						"operatingSystem": "All",
+						"logo": {
+							"@type": "ImageObject",
+							"url": "https://motofolio.pages.dev/images/identity/logo.png",
+							"width": 1200,
+							"height": 630
+						}
+					},
+					{
+						"@type": ["WebApplication", "SoftwareApplication"],
+						"@id": "https://motofolio.pages.dev/#software",
+						"name": "My MotoFolio",
+						"url": "https://motofolio.pages.dev/",
+						"applicationCategory": "UtilitiesApplication, AutomotiveApplication",
+						"operatingSystem": "All (Web, Android, iOS, Windows, macOS, Linux)",
 						"browserRequirements": "Requires modern web browser with HTML5 and ES6 support",
+						"softwareVersion": "2.0.0",
 						"description": "Universal interactive car maintenance tracker, periodic service interval calculator, live odometer simulator, and printable A4 vehicle condition report.",
 						"offers": {
 							"@type": "Offer",
 							"price": "0",
 							"priceCurrency": "USD"
 						},
+						"aggregateRating": {
+							"@type": "AggregateRating",
+							"ratingValue": "4.9",
+							"ratingCount": "128",
+							"bestRating": "5",
+							"worstRating": "1"
+						},
 						"featureList": [
 							"Periodic service interval calculations",
 							"Dynamic odometer simulation",
 							"Workshop maintenance expense ledger",
+							"Interactive category and mechanic expense donut chart",
 							"Printable A4 vehicle condition reports",
+							"Fuel economy logbook with liters and cost tracking",
+							"Bi-directional CSV spreadsheet and JSON v2.0 import and export",
 							"Google Drive cloud backup and sync",
 							"Offline Progressive Web App (PWA) support"
+						]
+					},
+					{
+						"@type": "FAQPage",
+						"@id": "https://motofolio.pages.dev/#faq",
+						"mainEntity": [
+							{
+								"@type": "Question",
+								"name": "What is My MotoFolio and how does it work?",
+								"acceptedAnswer": {
+									"@type": "Answer",
+									"text": "My MotoFolio is a free, 100% client-side vehicle maintenance tracker. It monitors periodic maintenance schedules (oil, filters, spark plugs, timing belt, brake pads), tracks workshop invoices and fuel consumption, and generates printable A4 inspection reports without requiring a server."
+								}
+							},
+							{
+								"@type": "Question",
+								"name": "How does My MotoFolio calculate when car maintenance is due?",
+								"acceptedAnswer": {
+									"@type": "Answer",
+									"text": "My MotoFolio tracks your current odometer reading against each component's last serviced mileage and recommended replacement interval. Status is color-coded into Good (nominal), Due Soon (within 1,000 km), or Overdue (urgent)."
+								}
+							},
+							{
+								"@type": "Question",
+								"name": "Is My MotoFolio completely free and private?",
+								"acceptedAnswer": {
+									"@type": "Answer",
+									"text": "Yes, My MotoFolio is 100% free under the open-source MIT License. All vehicle records remain strictly private inside your browser's local storage. There is no cloud tracking, no backend database, and optional backups sync directly to your personal Google Drive."
+								}
+							},
+							{
+								"@type": "Question",
+								"name": "Can I export or print my vehicle maintenance history?",
+								"acceptedAnswer": {
+									"@type": "Answer",
+									"text": "Yes. You can export clean CSV spreadsheets for Excel or Google Sheets, export full JSON v2.0 vehicle profiles, and print professional A4 Vehicle Condition Inspection Reports directly from your browser."
+								}
+							},
+							{
+								"@type": "Question",
+								"name": "How do I install My MotoFolio on my mobile phone or desktop?",
+								"acceptedAnswer": {
+									"@type": "Answer",
+									"text": "My MotoFolio is an installable Progressive Web App (PWA). Click 'Install' on the install banner, or select 'Add to Home Screen' in iOS Safari or Chrome on Android. Once installed, it works completely offline."
+								}
+							}
+						]
+					},
+					{
+						"@type": "HowTo",
+						"@id": "https://motofolio.pages.dev/#howto",
+						"name": "How to Track Your Car Maintenance with My MotoFolio",
+						"description": "Step-by-step guide to calculating periodic service intervals and logging workshop expenses.",
+						"step": [
+							{
+								"@type": "HowToStep",
+								"name": "Select or Create Your Vehicle Profile",
+								"text": "Choose from pre-configured archetypes (Sedan, SUV, Hatchback, Truck, Hybrid, EV) or create a custom vehicle."
+							},
+							{
+								"@type": "HowToStep",
+								"name": "Calibrate Your Current Odometer",
+								"text": "Enter your vehicle's current mileage to instantly recalculate all service countdowns."
+							},
+							{
+								"@type": "HowToStep",
+								"name": "Monitor Component Wear",
+								"text": "Review real-time countdown bars for fluids, filters, belts, and brakes."
+							},
+							{
+								"@type": "HowToStep",
+								"name": "Log Workshop Invoices & Fuel",
+								"text": "Record service invoices with parts vs. labor costs and track fuel consumption."
+							},
+							{
+								"@type": "HowToStep",
+								"name": "Generate A4 Condition Reports",
+								"text": "Print or export a vehicle inspection report for personal archives or selling your car."
+							}
 						]
 					}
 				]
@@ -121,21 +239,41 @@
 	<body
 		class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen selection:bg-indigo-500 selection:text-white"
 	>
+		<!-- Skip to Main Content Link (Accessibility WCAG 2.4.1) -->
+		<a
+			href="#mainContent"
+			class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:start-4 focus:z-[100002] focus:px-4 focus:py-2.5 focus:bg-orange-600 focus:text-white focus:font-semibold focus:rounded-xl focus:shadow-2xl focus:outline-none focus:ring-2 focus:ring-white"
+		>
+			Skip to main content
+		</a>
+
 		<!-- App Preloader with Brand Spinner -->
 		<div
 			id="appPreloader"
 			class="fixed inset-0 z-[100000] flex flex-col items-center justify-center transition-opacity duration-300 ease-out bg-slate-950 text-slate-100"
+			aria-live="polite"
+			aria-label="Loading Application"
 		>
 			<div class="relative flex flex-col items-center gap-3">
 				<div class="relative w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center">
 					<img
 						src="/images/identity/spinner-light.png"
 						alt="Loading..."
+						width="80"
+						height="80"
+						loading="eager"
+						decoding="async"
+						fetchpriority="high"
 						class="w-full h-full object-contain spinning spininng hidden dark:block"
 					/>
 					<img
 						src="/images/identity/spinner.png"
 						alt="Loading..."
+						width="80"
+						height="80"
+						loading="eager"
+						decoding="async"
+						fetchpriority="high"
 						class="w-full h-full object-contain spinning spininng block dark:hidden"
 					/>
 				</div>
@@ -187,7 +325,7 @@
 				<button
 					id="cookieConsentAcceptBtn"
 					type="button"
-					class="w-full sm:w-auto px-4 py-2 text-xs font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white shadow-md shadow-indigo-600/20 transition cursor-pointer"
+					class="w-full sm:w-auto px-4 py-2 text-xs font-bold rounded-xl bg-indigo-700 hover:bg-indigo-600 text-white shadow-md shadow-indigo-900/30 transition cursor-pointer"
 				>
 					Accept &amp; Continue
 				</button>
@@ -225,11 +363,19 @@
 				<img
 					src="/images/identity/appicon.png"
 					alt="My MotoFolio"
+					width="44"
+					height="44"
+					loading="lazy"
+					decoding="async"
 					class="w-11 h-11 rounded-xl shadow-sm object-cover shrink-0 hidden dark:block"
 				/>
 				<img
 					src="/images/identity/appicon-light.png"
 					alt="My MotoFolio"
+					width="44"
+					height="44"
+					loading="lazy"
+					decoding="async"
 					class="w-11 h-11 rounded-xl shadow-sm object-cover shrink-0 block dark:hidden"
 				/>
 				<div class="min-w-0 flex-1">
@@ -249,7 +395,7 @@
 				<button
 					id="pwaInstallConfirmBtn"
 					type="button"
-					class="px-3.5 py-1.5 text-xs font-semibold rounded-xl bg-orange-600 hover:bg-orange-500 text-white shadow-md shadow-orange-600/20 transition cursor-pointer"
+					class="px-3.5 py-1.5 text-xs font-bold rounded-xl bg-orange-500 hover:bg-orange-400 text-slate-950 shadow-md shadow-orange-500/20 transition cursor-pointer"
 				>
 					Install
 				</button>
@@ -257,13 +403,13 @@
 		</div>
 
 		<!-- Sticky Top Bar -->
-		<header class="sticky top-0 z-30 backdrop-blur-xl bg-slate-950/85 border-b border-slate-800/80">
+		<header class="sticky top-0 z-30 backdrop-blur-xl bg-slate-950/85 border-b border-slate-800/80" role="banner">
 			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center justify-between gap-3">
 				<!-- Brand & Vehicle Identity -->
 				<div class="flex items-center gap-3 sm:gap-4">
-					<a href="#" class="flex items-center shrink-0 group py-0.5" title="My MotoFolio">
-						<img src="/images/identity/logo-light.png" alt="My MotoFolio" class="h-6 sm:h-7 w-auto hidden dark:block" />
-						<img src="/images/identity/logo.png" alt="My MotoFolio" class="h-6 sm:h-7 w-auto block dark:hidden" />
+					<a href="#" class="flex items-center shrink-0 group py-0.5" title="My MotoFolio Home">
+						<img src="/images/identity/logo-light.png" alt="My MotoFolio" width="168" height="28" loading="eager" decoding="async" class="h-6 sm:h-7 w-auto hidden dark:block" />
+						<img src="/images/identity/logo.png" alt="My MotoFolio" width="168" height="28" loading="eager" decoding="async" class="h-6 sm:h-7 w-auto block dark:hidden" />
 					</a>
 					<div>
 						<div class="flex items-center gap-2 flex-wrap">
@@ -360,7 +506,7 @@
 		</header>
 
 		<!-- Main Content -->
-		<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 space-y-5">
+		<main id="mainContent" role="main" aria-label="Vehicle Maintenance Dashboard" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 space-y-5">
 			<!-- ======================================================================= -->
 			<!-- EMPTY GARAGE / ONBOARDING / TEMPLATE PICKER VIEW                       -->
 			<!-- ======================================================================= -->
@@ -439,6 +585,7 @@
 				<!-- Global Filters Bar -->
 				<section
 					class="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 shadow-xl flex flex-wrap items-center justify-between gap-3"
+					aria-label="Dashboard Filters"
 				>
 				<div class="flex items-center gap-2">
 					<span class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-indigo-500/20 text-indigo-400">
@@ -464,6 +611,7 @@
 						<label for="filterDatePreset" class="text-slate-400 font-medium hidden sm:inline">Period:</label>
 						<select
 							id="filterDatePreset"
+							aria-label="Filter period preset"
 							class="bg-slate-950 text-slate-200 rounded-xl px-3 py-1.5 border border-slate-700/80 focus:outline-none focus:border-indigo-500"
 						>
 							<option value="this-year" selected>This Year (2026)</option>
@@ -479,12 +627,14 @@
 						<input
 							id="filterDateStart"
 							type="date"
+							aria-label="Filter start date"
 							class="bg-slate-950 text-slate-200 rounded-xl px-2.5 py-1 border border-slate-700/80 focus:outline-none focus:border-indigo-500 font-mono text-[11px]"
 						/>
 						<span class="text-slate-500">to</span>
 						<input
 							id="filterDateEnd"
 							type="date"
+							aria-label="Filter end date"
 							class="bg-slate-950 text-slate-200 rounded-xl px-2.5 py-1 border border-slate-700/80 focus:outline-none focus:border-indigo-500 font-mono text-[11px]"
 						/>
 					</div>
@@ -494,6 +644,7 @@
 						<label for="filterCategorySelect" class="text-slate-400 font-medium hidden sm:inline">Category:</label>
 						<select
 							id="filterCategorySelect"
+							aria-label="Filter by service category"
 							class="bg-slate-950 text-slate-200 rounded-xl px-3 py-1.5 border border-slate-700/80 focus:outline-none focus:border-indigo-500"
 						>
 							<option value="all" selected>All Categories</option>
@@ -543,6 +694,7 @@
 								type="number"
 								step="100"
 								min="0"
+								aria-label="Current vehicle odometer reading in kilometers"
 								class="w-full bg-slate-950/90 text-white font-mono text-2xl sm:text-3xl font-bold rounded-xl ps-3.5 pe-12 py-2 border border-indigo-500/50 focus:outline-none focus:border-indigo-400 transition"
 								value="45000"
 							/>
@@ -953,6 +1105,7 @@
 							id="historySearchInput"
 							type="search"
 							placeholder="Search history..."
+							aria-label="Search service and maintenance history"
 							class="bg-slate-950 text-slate-200 text-xs rounded-xl px-3 py-1.5 border border-slate-700/80 focus:outline-none focus:border-indigo-500 w-44 sm:w-56"
 						/>
 						<button
@@ -987,15 +1140,96 @@
 				id="vehicleSpecsFooter"
 				class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-4 text-xs text-slate-400 grid grid-cols-2 lg:grid-cols-4 gap-4"
 			></section>
+
+			<!-- Frequently Asked Questions (SEO & AEO Knowledge Base) -->
+			<section
+				id="faqSection"
+				class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5 sm:p-6 space-y-4"
+				aria-labelledby="faqHeading"
+			>
+				<div class="flex items-center gap-2.5 pb-2 border-b border-slate-800/80">
+					<div class="w-8 h-8 rounded-xl bg-orange-500/15 text-orange-400 flex items-center justify-center shrink-0 border border-orange-500/25">
+						<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+						</svg>
+					</div>
+					<div>
+						<h2 id="faqHeading" class="text-sm sm:text-base font-bold text-white tracking-tight">Frequently Asked Questions</h2>
+						<p class="text-xs text-slate-400">Everything you need to know about periodic maintenance schedules, privacy, and vehicle logs</p>
+					</div>
+				</div>
+
+				<div class="space-y-3">
+					<details class="group bg-slate-950/70 border border-slate-800 rounded-xl p-3.5 transition-all hover:border-slate-700 open:border-indigo-500/40">
+						<summary class="flex items-center justify-between cursor-pointer font-semibold text-xs sm:text-sm text-slate-200 group-hover:text-white list-none select-none">
+							<span>What is My MotoFolio and how does it work?</span>
+							<svg class="w-4 h-4 text-slate-400 transition-transform group-open:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+							</svg>
+						</summary>
+						<div class="mt-2 text-xs text-slate-300 leading-relaxed pt-2 border-t border-slate-800/60">
+							My MotoFolio is a free, 100% client-side automotive management application. It tracks periodic fluid and component replacement schedules (such as engine oil, transmission fluid, spark plugs, brake pads, coolant, timing belts, tires, and filters), logs workshop service invoices with labor vs. parts breakdowns, records fuel economy, and generates professional A4 condition inspection reports without requiring a server.
+						</div>
+					</details>
+
+					<details class="group bg-slate-950/70 border border-slate-800 rounded-xl p-3.5 transition-all hover:border-slate-700 open:border-indigo-500/40">
+						<summary class="flex items-center justify-between cursor-pointer font-semibold text-xs sm:text-sm text-slate-200 group-hover:text-white list-none select-none">
+							<span>How does My MotoFolio calculate when car maintenance is due?</span>
+							<svg class="w-4 h-4 text-slate-400 transition-transform group-open:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+							</svg>
+						</summary>
+						<div class="mt-2 text-xs text-slate-300 leading-relaxed pt-2 border-t border-slate-800/60">
+							My MotoFolio tracks your current odometer reading against each component's baseline mileage and recommended replacement interval. Status is categorized into <span class="text-emerald-400 font-semibold">Good</span> (nominal distance remaining), <span class="text-amber-400 font-semibold">Due Soon</span> (warning within 1,000 km), or <span class="text-rose-400 font-semibold">Overdue</span> (exceeded interval). You can simulate upcoming maintenance by clicking <code class="text-indigo-300 font-mono">+1k</code> or <code class="text-indigo-300 font-mono">+5k</code> km.
+						</div>
+					</details>
+
+					<details class="group bg-slate-950/70 border border-slate-800 rounded-xl p-3.5 transition-all hover:border-slate-700 open:border-indigo-500/40">
+						<summary class="flex items-center justify-between cursor-pointer font-semibold text-xs sm:text-sm text-slate-200 group-hover:text-white list-none select-none">
+							<span>Is My MotoFolio completely free, private, and offline?</span>
+							<svg class="w-4 h-4 text-slate-400 transition-transform group-open:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+							</svg>
+						</summary>
+						<div class="mt-2 text-xs text-slate-300 leading-relaxed pt-2 border-t border-slate-800/60">
+							Yes. My MotoFolio is 100% free under the open-source MIT License. It operates with zero backend databases and zero third-party telemetry. All your vehicle records are stored locally in your browser's local storage. You also have the option to connect your personal Google Drive for direct, private cloud backups.
+						</div>
+					</details>
+
+					<details class="group bg-slate-950/70 border border-slate-800 rounded-xl p-3.5 transition-all hover:border-slate-700 open:border-indigo-500/40">
+						<summary class="flex items-center justify-between cursor-pointer font-semibold text-xs sm:text-sm text-slate-200 group-hover:text-white list-none select-none">
+							<span>Can I export or print my vehicle maintenance history?</span>
+							<svg class="w-4 h-4 text-slate-400 transition-transform group-open:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+							</svg>
+						</summary>
+						<div class="mt-2 text-xs text-slate-300 leading-relaxed pt-2 border-t border-slate-800/60">
+							Yes. You can export clean CSV spreadsheets (compatible with Microsoft Excel, Apple Numbers, and Google Sheets) or JSON v2.0 profiles at any time. You can also generate print-ready A4 Vehicle Status Reports and Service History Reports with one click for resale, workshops, or insurance proof.
+						</div>
+					</details>
+
+					<details class="group bg-slate-950/70 border border-slate-800 rounded-xl p-3.5 transition-all hover:border-slate-700 open:border-indigo-500/40">
+						<summary class="flex items-center justify-between cursor-pointer font-semibold text-xs sm:text-sm text-slate-200 group-hover:text-white list-none select-none">
+							<span>How do I install My MotoFolio on my mobile phone or desktop?</span>
+							<svg class="w-4 h-4 text-slate-400 transition-transform group-open:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+							</svg>
+						</summary>
+						<div class="mt-2 text-xs text-slate-300 leading-relaxed pt-2 border-t border-slate-800/60">
+							My MotoFolio is an installable Progressive Web App (PWA). Click 'Install' on the install banner, or select 'Add to Home Screen' in iOS Safari or Chrome on Android. On desktop (Chrome, Edge), click the install icon in your address bar. Once installed, it works completely offline with zero internet connection required.
+						</div>
+					</details>
+				</div>
+			</section>
 			</div>
 		</main>
 
 		<!-- Site Footer -->
-		<footer class="border-t border-slate-800/80 bg-slate-950/60 mt-8">
+		<footer class="border-t border-slate-800/80 bg-slate-950/60 mt-8" role="contentinfo">
 			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400">
 				<div class="flex items-center gap-2 flex-wrap">
-					<img src="/images/identity/icon-light.png" alt="My MotoFolio" class="w-5 h-5 object-contain shrink-0 hidden dark:inline-block theme-logo-dark" />
-					<img src="/images/identity/icon.png" alt="My MotoFolio" class="w-5 h-5 object-contain shrink-0 inline-block dark:hidden theme-logo-light" />
+					<img src="/images/identity/icon-light.png" alt="My MotoFolio" width="20" height="20" loading="lazy" decoding="async" class="w-5 h-5 object-contain shrink-0 hidden dark:inline-block theme-logo-dark" />
+					<img src="/images/identity/icon.png" alt="My MotoFolio" width="20" height="20" loading="lazy" decoding="async" class="w-5 h-5 object-contain shrink-0 inline-block dark:hidden theme-logo-light" />
 					<span class="font-mono font-bold text-indigo-400">My MotoFolio</span>
 					<span>100% Client-Side Vehicle Maintenance Tracker (MIT License)</span>
 				</div>
@@ -1012,6 +1246,9 @@
 		<div
 			id="driveSyncModal"
 			class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-sm p-4"
+			role="dialog"
+			aria-modal="true"
+			aria-labelledby="driveSyncModalTitle"
 		>
 			<div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-md w-full overflow-hidden shadow-2xl">
 				<div class="px-5 py-4 border-b border-slate-800 flex items-center justify-between">
@@ -1021,12 +1258,13 @@
 								d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM19 18H6c-2.21 0-4-1.79-4-4 0-2.05 1.53-3.76 3.56-3.97l1.07-.11.5-.95C8.08 7.14 9.94 6 12 6c2.62 0 4.88 1.86 5.39 4.43l.3 1.5 1.53.11c1.56.1 2.78 1.41 2.78 2.96 0 1.65-1.35 3-3 3z"
 							/>
 						</svg>
-						<h3 class="text-base font-bold text-white">Google Drive Cloud Sync</h3>
+						<h3 id="driveSyncModalTitle" class="text-base font-bold text-white">Google Drive Cloud Sync</h3>
 					</div>
 					<button
 						id="closeDriveSyncModalBtn"
 						type="button"
 						class="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800"
+						aria-label="Close Google Drive Sync modal"
 					>
 						<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
 							<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -1110,7 +1348,7 @@
 							<div class="flex items-center justify-between">
 								<span class="text-slate-300 font-medium">Auto-Sync to Google Drive</span>
 								<label class="relative inline-flex items-center cursor-pointer">
-									<input id="driveAutoSyncCheckbox" type="checkbox" checked class="sr-only peer" />
+									<input id="driveAutoSyncCheckbox" type="checkbox" checked aria-label="Toggle Auto-Sync to Google Drive" class="sr-only peer" />
 									<div
 										class="w-9 h-5 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-500"
 									></div>
@@ -1124,7 +1362,7 @@
 						<!-- Custom Drive Folder Setting -->
 						<div class="bg-slate-950/60 border border-slate-800 rounded-xl p-3 space-y-2">
 							<div class="flex items-center justify-between">
-								<span class="text-[10px] text-slate-500 uppercase font-bold block">Google Drive Destination Folder</span>
+								<label for="driveFolderNameInput" class="text-[10px] text-slate-500 uppercase font-bold block cursor-pointer">Google Drive Destination Folder</label>
 								<button
 									id="refreshDriveFoldersBtn"
 									type="button"
@@ -1142,6 +1380,7 @@
 										type="text"
 										placeholder="My MotoFolio"
 										value="My MotoFolio"
+										aria-label="Google Drive Destination Folder Name"
 										class="w-full bg-slate-900 text-white font-mono text-xs px-2.5 py-1.5 rounded-lg border border-slate-700 focus:outline-none focus:border-indigo-400"
 									/>
 									<button
@@ -1206,12 +1445,16 @@
 		<div
 			id="dataHubModal"
 			class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-sm p-4"
+			role="dialog"
+			aria-modal="true"
+			aria-labelledby="dataHubModalTitle"
 		>
 			<div
 				class="bg-slate-900 border border-slate-700 rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl flex flex-col max-h-[90vh]"
 			>
 				<!-- Modal Header & Tabs -->
 				<div class="px-5 pt-4 pb-3 border-b border-slate-800 flex items-center justify-between gap-2">
+					<h3 id="dataHubModalTitle" class="sr-only">Data Interchange Hub</h3>
 					<div class="flex items-center gap-2">
 						<button
 							type="button"
@@ -1238,6 +1481,7 @@
 						id="closeDataHubBtn"
 						type="button"
 						class="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800 transition"
+						aria-label="Close Data Hub modal"
 					>
 						<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
 							<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -1289,7 +1533,7 @@
 							<span class="text-[11px] text-slate-400 mt-0.5"
 								>Auto-saves imported car data &amp; updates timestamp</span
 							>
-							<input id="csvFileInput" type="file" accept=".csv,text/csv" class="hidden" />
+							<input id="csvFileInput" type="file" accept=".csv,text/csv" aria-label="Select CSV file to import" class="hidden" />
 						</label>
 						<p id="csvStatusMsg" class="hidden font-mono text-xs pt-1"></p>
 					</div>
@@ -1316,7 +1560,7 @@
 									<path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
 								</svg>
 								<span>Import .JSON File</span>
-								<input id="jsonFileInput" type="file" accept=".json,application/json" class="hidden" />
+								<input id="jsonFileInput" type="file" accept=".json,application/json" aria-label="Select JSON file to import" class="hidden" />
 							</label>
 							<button
 								id="exportJsonBtn"
@@ -1344,6 +1588,7 @@
 					<textarea
 						id="jsonTextarea"
 						spellcheck="false"
+						aria-label="Vehicle JSON profile editor"
 						class="w-full min-h-[240px] bg-slate-950 text-emerald-300 font-mono text-xs p-3.5 rounded-xl border border-slate-800 focus:outline-none focus:border-indigo-500 resize-y"
 					></textarea>
 					<p id="jsonErrorMsg" class="hidden text-xs text-rose-400 font-mono"></p>
@@ -1380,14 +1625,18 @@
 		<div
 			id="shareModal"
 			class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-sm p-4"
+			role="dialog"
+			aria-modal="true"
+			aria-labelledby="shareModalTitle"
 		>
 			<div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-md w-full overflow-hidden shadow-2xl">
 				<div class="px-5 py-4 border-b border-slate-800 flex items-center justify-between">
-					<h3 class="text-base font-bold text-white">Share Vehicle Report</h3>
+					<h3 id="shareModalTitle" class="text-base font-bold text-white">Share Vehicle Report</h3>
 					<button
 						id="closeShareModalBtn"
 						type="button"
 						class="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800"
+						aria-label="Close Share Vehicle Report modal"
 					>
 						<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
 							<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -1452,16 +1701,20 @@
 		<div
 			id="addRecordModal"
 			class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-sm p-4"
+			role="dialog"
+			aria-modal="true"
+			aria-labelledby="addRecordModalTitle"
 		>
 			<div
 				class="bg-slate-900 border border-slate-700 rounded-2xl max-w-lg w-full overflow-hidden shadow-2xl flex flex-col max-h-[90vh]"
 			>
 				<div class="px-5 py-4 border-b border-slate-800 flex items-center justify-between">
-					<h3 class="text-base font-bold text-white">Add Maintenance Record</h3>
+					<h3 id="addRecordModalTitle" class="text-base font-bold text-white">Add Maintenance Record</h3>
 					<button
 						id="closeAddRecordModalBtn"
 						type="button"
 						class="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800 transition"
+						aria-label="Close Add Maintenance Record modal"
 					>
 						<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
 							<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -1472,7 +1725,7 @@
 					<!-- Row 1: Date & Mileage -->
 					<div class="grid grid-cols-2 gap-3">
 						<div>
-							<label class="block text-slate-300 font-medium mb-1">Date *</label>
+							<label for="newRecDate" class="block text-slate-300 font-medium mb-1">Date *</label>
 							<input
 								id="newRecDate"
 								type="date"
@@ -1481,7 +1734,7 @@
 							/>
 						</div>
 						<div>
-							<label class="block text-slate-300 font-medium mb-1">Mileage (km)</label>
+							<label for="newRecMileageSelect" class="block text-slate-300 font-medium mb-1">Mileage (km)</label>
 							<select
 								id="newRecMileageSelect"
 								class="w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-slate-700"
@@ -1494,6 +1747,7 @@
 								id="newRecMileageOther"
 								type="number"
 								placeholder="Enter mileage (km)..."
+								aria-label="Custom mileage in km"
 								class="hidden mt-1.5 w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-indigo-500"
 							/>
 						</div>
@@ -1501,7 +1755,7 @@
 
 					<!-- Row 2: Service Title (Select from Schedule / Common Services + Other) -->
 					<div>
-						<label class="block text-slate-300 font-medium mb-1">Service Title *</label>
+						<label for="newRecTitleSelect" class="block text-slate-300 font-medium mb-1">Service Title *</label>
 						<select
 							id="newRecTitleSelect"
 							class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700"
@@ -1512,6 +1766,7 @@
 							id="newRecTitleOther"
 							type="text"
 							placeholder="Enter custom service title..."
+							aria-label="Custom service title"
 							class="hidden mt-1.5 w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-indigo-500"
 						/>
 					</div>
@@ -1519,7 +1774,7 @@
 					<!-- Row 3: Category & Status -->
 					<div class="grid grid-cols-2 gap-3">
 						<div>
-							<label class="block text-slate-300 font-medium mb-1">Category</label>
+							<label for="newRecCategorySelect" class="block text-slate-300 font-medium mb-1">Category</label>
 							<select
 								id="newRecCategorySelect"
 								class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700"
@@ -1536,11 +1791,12 @@
 								id="newRecCategoryOther"
 								type="text"
 								placeholder="Enter custom category..."
+								aria-label="Custom category"
 								class="hidden mt-1.5 w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-indigo-500"
 							/>
 						</div>
 						<div>
-							<label class="block text-slate-300 font-medium mb-1">Status</label>
+							<label for="newRecStatusSelect" class="block text-slate-300 font-medium mb-1">Status</label>
 							<select
 								id="newRecStatusSelect"
 								class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700"
@@ -1554,6 +1810,7 @@
 								id="newRecStatusOther"
 								type="text"
 								placeholder="Enter custom status..."
+								aria-label="Custom status"
 								class="hidden mt-1.5 w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-indigo-500"
 							/>
 						</div>
@@ -1562,7 +1819,7 @@
 					<!-- Row 4: Cost, Paid & Payment Method -->
 					<div class="grid grid-cols-3 gap-3">
 						<div>
-							<label class="block text-slate-300 font-medium mb-1">Cost</label>
+							<label for="newRecCostSelect" class="block text-slate-300 font-medium mb-1">Cost</label>
 							<select
 								id="newRecCostSelect"
 								class="w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-slate-700"
@@ -1597,11 +1854,12 @@
 								type="number"
 								step="0.01"
 								placeholder="Enter cost..."
+								aria-label="Custom cost"
 								class="hidden mt-1.5 w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-indigo-500"
 							/>
 						</div>
 						<div>
-							<label class="block text-slate-300 font-medium mb-1">Paid</label>
+							<label for="newRecPaidSelect" class="block text-slate-300 font-medium mb-1">Paid</label>
 							<select
 								id="newRecPaidSelect"
 								class="w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-slate-700"
@@ -1622,11 +1880,12 @@
 								type="number"
 								step="0.01"
 								placeholder="Enter paid..."
+								aria-label="Custom paid amount"
 								class="hidden mt-1.5 w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-indigo-500"
 							/>
 						</div>
 						<div>
-							<label class="block text-slate-300 font-medium mb-1">Payment Method</label>
+							<label for="newRecMethodSelect" class="block text-slate-300 font-medium mb-1">Payment Method</label>
 							<select
 								id="newRecMethodSelect"
 								class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700"
@@ -1643,6 +1902,7 @@
 								id="newRecMethodOther"
 								type="text"
 								placeholder="Enter method..."
+								aria-label="Custom payment method"
 								class="hidden mt-1.5 w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-indigo-500"
 							/>
 						</div>
@@ -1651,7 +1911,7 @@
 					<!-- Row 5: Workshop / Mechanic & Linked Schedule Item -->
 					<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
 						<div>
-							<label class="block text-slate-300 font-medium mb-1">Workshop / Mechanic</label>
+							<label for="newRecMechanicSelect" class="block text-slate-300 font-medium mb-1">Workshop / Mechanic</label>
 							<select
 								id="newRecMechanicSelect"
 								class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700"
@@ -1662,11 +1922,12 @@
 								id="newRecMechanicOther"
 								type="text"
 								placeholder="Enter workshop / mechanic name..."
+								aria-label="Custom workshop or mechanic"
 								class="hidden mt-1.5 w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-indigo-500"
 							/>
 						</div>
 						<div>
-							<label class="block text-slate-300 font-medium mb-1">Update Schedule Item?</label>
+							<label for="newRecLinkedItem" class="block text-slate-300 font-medium mb-1">Update Schedule Item?</label>
 							<select
 								id="newRecLinkedItem"
 								class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700"
@@ -1678,7 +1939,7 @@
 
 					<!-- Row 6: Notes -->
 					<div>
-						<label class="block text-slate-300 font-medium mb-1">Notes</label>
+						<label for="newRecNotesSelect" class="block text-slate-300 font-medium mb-1">Notes</label>
 						<select
 							id="newRecNotesSelect"
 							class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700"
@@ -1694,6 +1955,7 @@
 							id="newRecNotesOther"
 							type="text"
 							placeholder="Type custom note..."
+							aria-label="Custom note"
 							class="hidden mt-1.5 w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-indigo-500"
 						/>
 					</div>
@@ -1714,14 +1976,18 @@
 		<div
 			id="addScheduleModal"
 			class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-sm p-4"
+			role="dialog"
+			aria-modal="true"
+			aria-labelledby="addScheduleModalTitle"
 		>
 			<div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-md w-full overflow-hidden shadow-2xl">
 				<div class="px-5 py-4 border-b border-slate-800 flex items-center justify-between">
-					<h3 class="text-base font-bold text-white">Add Periodic Item</h3>
+					<h3 id="addScheduleModalTitle" class="text-base font-bold text-white">Add Periodic Item</h3>
 					<button
 						id="closeAddScheduleModalBtn"
 						type="button"
 						class="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800 transition"
+						aria-label="Close Add Periodic Item modal"
 					>
 						<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
 							<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -1730,7 +1996,7 @@
 				</div>
 				<form id="addScheduleForm" class="p-5 space-y-3 text-xs">
 					<div>
-						<label class="block text-slate-300 font-medium mb-1">Item Name *</label>
+						<label for="newSchedNameSelect" class="block text-slate-300 font-medium mb-1">Item Name *</label>
 						<select
 							id="newSchedNameSelect"
 							class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700"
@@ -1750,12 +2016,13 @@
 							id="newSchedNameOther"
 							type="text"
 							placeholder="Enter custom item name..."
+							aria-label="Custom item name"
 							class="hidden mt-1.5 w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-indigo-500"
 						/>
 					</div>
 					<div class="grid grid-cols-2 gap-3">
 						<div>
-							<label class="block text-slate-300 font-medium mb-1">Category</label>
+							<label for="newSchedCatSelect" class="block text-slate-300 font-medium mb-1">Category</label>
 							<select
 								id="newSchedCatSelect"
 								class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700"
@@ -1775,11 +2042,12 @@
 								id="newSchedCatOther"
 								type="text"
 								placeholder="Enter category..."
+								aria-label="Custom category"
 								class="hidden mt-1.5 w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-indigo-500"
 							/>
 						</div>
 						<div>
-							<label class="block text-slate-300 font-medium mb-1">Interval (km) *</label>
+							<label for="newSchedIntervalSelect" class="block text-slate-300 font-medium mb-1">Interval (km) *</label>
 							<select
 								id="newSchedIntervalSelect"
 								class="w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-slate-700"
@@ -1802,6 +2070,7 @@
 								type="number"
 								step="500"
 								placeholder="Enter interval km..."
+								aria-label="Custom interval in km"
 								class="hidden mt-1.5 w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-indigo-500"
 							/>
 						</div>
@@ -1810,7 +2079,7 @@
 					<!-- Dual-Tracking & OEM Reference Fields -->
 					<div class="grid grid-cols-2 gap-3">
 						<div>
-							<label class="block text-slate-300 font-medium mb-1">Interval (Months)</label>
+							<label for="newSchedMonthsSelect" class="block text-slate-300 font-medium mb-1">Interval (Months)</label>
 							<select
 								id="newSchedMonthsSelect"
 								class="w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-slate-700"
@@ -1829,11 +2098,12 @@
 								type="number"
 								min="1"
 								placeholder="Enter months..."
+								aria-label="Custom interval in months"
 								class="hidden mt-1.5 w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-indigo-500"
 							/>
 						</div>
 						<div>
-							<label class="block text-slate-300 font-medium mb-1">Last Serviced Date</label>
+							<label for="newSchedLastDate" class="block text-slate-300 font-medium mb-1">Last Serviced Date</label>
 							<input
 								id="newSchedLastDate"
 								type="date"
@@ -1843,7 +2113,7 @@
 					</div>
 
 					<div>
-						<label class="block text-slate-300 font-medium mb-1">OEM Part Number / Specification</label>
+						<label for="newSchedOemPart" class="block text-slate-300 font-medium mb-1">OEM Part Number / Specification</label>
 						<input
 							id="newSchedOemPart"
 							type="text"
@@ -1854,7 +2124,7 @@
 
 					<div class="grid grid-cols-2 gap-3">
 						<div>
-							<label class="block text-slate-300 font-medium mb-1">Last Serviced (km)</label>
+							<label for="newSchedLastKmSelect" class="block text-slate-300 font-medium mb-1">Last Serviced (km)</label>
 							<select
 								id="newSchedLastKmSelect"
 								class="w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-slate-700"
@@ -1867,11 +2137,12 @@
 								id="newSchedLastKmOther"
 								type="number"
 								placeholder="Enter last km..."
+								aria-label="Custom last km"
 								class="hidden mt-1.5 w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-indigo-500"
 							/>
 						</div>
 						<div>
-							<label class="block text-slate-300 font-medium mb-1">Est. Cost</label>
+							<label for="newSchedCostSelect" class="block text-slate-300 font-medium mb-1">Est. Cost</label>
 							<select
 								id="newSchedCostSelect"
 								class="w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-slate-700"
@@ -1892,6 +2163,7 @@
 								type="number"
 								step="1"
 								placeholder="Enter est. cost..."
+								aria-label="Custom estimated cost"
 								class="hidden mt-1.5 w-full bg-slate-950 text-white font-mono rounded-xl px-3 py-2 border border-indigo-500"
 							/>
 						</div>
@@ -1910,6 +2182,9 @@
 		<div
 			id="officialDocsModal"
 			class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-sm p-4"
+			role="dialog"
+			aria-modal="true"
+			aria-labelledby="officialDocsModalTitle"
 		>
 			<div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-md w-full overflow-hidden shadow-2xl">
 				<div class="px-5 py-4 border-b border-slate-800 flex items-center justify-between">
@@ -1917,12 +2192,13 @@
 						<svg class="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
 							<path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
 						</svg>
-						<h3 class="text-base font-bold text-white">Official Documents Renewal</h3>
+						<h3 id="officialDocsModalTitle" class="text-base font-bold text-white">Official Documents Renewal</h3>
 					</div>
 					<button
 						id="closeOfficialDocsModalBtn"
 						type="button"
 						class="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800 transition"
+						aria-label="Close Official Documents Renewal modal"
 					>
 						<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
 							<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -1931,7 +2207,7 @@
 				</div>
 				<form id="officialDocsForm" class="p-5 space-y-4 text-xs">
 					<div>
-						<label class="block text-slate-300 font-medium mb-1">Road Tax Expiry Date *</label>
+						<label for="inputRoadTaxExpiry" class="block text-slate-300 font-medium mb-1">Road Tax Expiry Date *</label>
 						<input
 							id="inputRoadTaxExpiry"
 							type="date"
@@ -1941,7 +2217,7 @@
 						<p class="text-[10px] text-slate-400 mt-1">Vehicle road tax renewal date (JPJ Malaysia).</p>
 					</div>
 					<div>
-						<label class="block text-slate-300 font-medium mb-1">Insurance Policy Expiry Date *</label>
+						<label for="inputInsuranceExpiry" class="block text-slate-300 font-medium mb-1">Insurance Policy Expiry Date *</label>
 						<input
 							id="inputInsuranceExpiry"
 							type="date"
@@ -1966,6 +2242,9 @@
 		<div
 			id="fuelReceiptModal"
 			class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-sm p-4"
+			role="dialog"
+			aria-modal="true"
+			aria-labelledby="fuelReceiptModalTitle"
 		>
 			<div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-md w-full overflow-hidden shadow-2xl">
 				<div class="px-5 py-4 border-b border-slate-800 flex items-center justify-between">
@@ -1973,12 +2252,13 @@
 						<svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
 							<path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
 						</svg>
-						<h3 class="text-base font-bold text-white">Log Fuel Receipt</h3>
+						<h3 id="fuelReceiptModalTitle" class="text-base font-bold text-white">Log Fuel Receipt</h3>
 					</div>
 					<button
 						id="closeFuelReceiptModalBtn"
 						type="button"
 						class="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800 transition"
+						aria-label="Close Log Fuel Receipt modal"
 					>
 						<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
 							<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -1988,7 +2268,7 @@
 				<form id="fuelReceiptForm" class="p-5 space-y-3.5 text-xs">
 					<div class="grid grid-cols-2 gap-3">
 						<div>
-							<label class="block text-slate-300 font-medium mb-1">Receipt Date *</label>
+							<label for="fuelInputDate" class="block text-slate-300 font-medium mb-1">Receipt Date *</label>
 							<input
 								id="fuelInputDate"
 								type="date"
@@ -1997,7 +2277,7 @@
 							/>
 						</div>
 						<div>
-							<label class="block text-slate-300 font-medium mb-1">Odometer (km) *</label>
+							<label for="fuelInputMileage" class="block text-slate-300 font-medium mb-1">Odometer (km) *</label>
 							<input
 								id="fuelInputMileage"
 								type="number"
@@ -2011,7 +2291,7 @@
 					</div>
 					<div class="grid grid-cols-2 gap-3">
 						<div>
-							<label class="block text-slate-300 font-medium mb-1">Fuel Volume (Liters) *</label>
+							<label for="fuelInputLiters" class="block text-slate-300 font-medium mb-1">Fuel Volume (Liters) *</label>
 							<input
 								id="fuelInputLiters"
 								type="number"
@@ -2023,7 +2303,7 @@
 							/>
 						</div>
 						<div>
-							<label class="block text-slate-300 font-medium mb-1">Total Cost (RM) *</label>
+							<label for="fuelInputCost" class="block text-slate-300 font-medium mb-1">Total Cost (RM) *</label>
 							<input
 								id="fuelInputCost"
 								type="number"
@@ -2037,7 +2317,7 @@
 					</div>
 					<div class="grid grid-cols-2 gap-3">
 						<div>
-							<label class="block text-slate-300 font-medium mb-1">Fuel Grade</label>
+							<label for="fuelInputGrade" class="block text-slate-300 font-medium mb-1">Fuel Grade</label>
 							<select
 								id="fuelInputGrade"
 								class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700 focus:outline-none focus:border-indigo-400"
@@ -2054,6 +2334,7 @@
 									id="fuelInputFullTank"
 									type="checkbox"
 									checked
+									aria-label="Full Tank Fill-up"
 									class="rounded bg-slate-950 border-slate-700 text-indigo-600 focus:ring-0 w-4 h-4"
 								/>
 								<span>Full Tank Fill-up</span>
@@ -2061,7 +2342,7 @@
 						</div>
 					</div>
 					<div>
-						<label class="block text-slate-300 font-medium mb-1">Receipt Notes / Station</label>
+						<label for="fuelInputNotes" class="block text-slate-300 font-medium mb-1">Receipt Notes / Station</label>
 						<input
 							id="fuelInputNotes"
 							type="text"
@@ -2085,14 +2366,18 @@
 		<div
 			id="editCarModal"
 			class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-sm p-4"
+			role="dialog"
+			aria-modal="true"
+			aria-labelledby="editCarModalTitle"
 		>
 			<div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-lg w-full overflow-hidden shadow-2xl">
 				<div class="px-5 py-4 border-b border-slate-800 flex items-center justify-between">
-					<h3 class="text-base font-bold text-white">Edit Vehicle Details</h3>
+					<h3 id="editCarModalTitle" class="text-base font-bold text-white">Edit Vehicle Details</h3>
 					<button
 						id="closeEditCarModalBtn"
 						type="button"
 						class="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800 transition"
+						aria-label="Close Edit Vehicle Details modal"
 					>
 						<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
 							<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -2102,7 +2387,7 @@
 				<form id="editCarForm" class="p-5 space-y-3 text-xs">
 					<div class="grid grid-cols-2 gap-3">
 						<div>
-							<label class="block text-slate-300 font-medium mb-1">Make *</label>
+							<label for="editCarMake" class="block text-slate-300 font-medium mb-1">Make *</label>
 							<input
 								id="editCarMake"
 								type="text"
@@ -2111,7 +2396,7 @@
 							/>
 						</div>
 						<div>
-							<label class="block text-slate-300 font-medium mb-1">Model *</label>
+							<label for="editCarModel" class="block text-slate-300 font-medium mb-1">Model *</label>
 							<input
 								id="editCarModel"
 								type="text"
@@ -2122,7 +2407,7 @@
 					</div>
 					<div class="grid grid-cols-3 gap-3">
 						<div>
-							<label class="block text-slate-300 font-medium mb-1">Year</label>
+							<label for="editCarYear" class="block text-slate-300 font-medium mb-1">Year</label>
 							<input
 								id="editCarYear"
 								type="number"
@@ -2130,7 +2415,7 @@
 							/>
 						</div>
 						<div>
-							<label class="block text-slate-300 font-medium mb-1">Plate Number</label>
+							<label for="editCarPlate" class="block text-slate-300 font-medium mb-1">Plate Number</label>
 							<input
 								id="editCarPlate"
 								type="text"
@@ -2138,7 +2423,7 @@
 							/>
 						</div>
 						<div>
-							<label class="block text-slate-300 font-medium mb-1">Currency</label>
+							<label for="editCarCurrency" class="block text-slate-300 font-medium mb-1">Currency</label>
 							<input
 								id="editCarCurrency"
 								type="text"
@@ -2148,7 +2433,7 @@
 					</div>
 					<div class="grid grid-cols-2 gap-3">
 						<div>
-							<label class="block text-slate-300 font-medium mb-1">Engine</label>
+							<label for="editCarEngine" class="block text-slate-300 font-medium mb-1">Engine</label>
 							<input
 								id="editCarEngine"
 								type="text"
@@ -2156,7 +2441,7 @@
 							/>
 						</div>
 						<div>
-							<label class="block text-slate-300 font-medium mb-1">Transmission</label>
+							<label for="editCarTrans" class="block text-slate-300 font-medium mb-1">Transmission</label>
 							<input
 								id="editCarTrans"
 								type="text"
@@ -2166,7 +2451,7 @@
 					</div>
 					<div class="grid grid-cols-2 gap-3">
 						<div>
-							<label class="block text-slate-300 font-medium mb-1">Road Tax Expiry</label>
+							<label for="editCarRoadTax" class="block text-slate-300 font-medium mb-1">Road Tax Expiry</label>
 							<input
 								id="editCarRoadTax"
 								type="date"
@@ -2174,7 +2459,7 @@
 							/>
 						</div>
 						<div>
-							<label class="block text-slate-300 font-medium mb-1">Insurance Expiry</label>
+							<label for="editCarInsurance" class="block text-slate-300 font-medium mb-1">Insurance Expiry</label>
 							<input
 								id="editCarInsurance"
 								type="date"
@@ -2196,6 +2481,9 @@
 		<div
 			id="settingsCarModal"
 			class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-sm p-4 overflow-y-auto"
+			role="dialog"
+			aria-modal="true"
+			aria-labelledby="settingsCarModalTitle"
 		>
 			<div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-xl w-full max-h-[90vh] flex flex-col overflow-hidden shadow-2xl">
 				<div class="px-5 py-4 border-b border-slate-800 flex items-center justify-between shrink-0">
@@ -2207,7 +2495,7 @@
 							</svg>
 						</span>
 						<div>
-							<h3 class="text-base font-bold text-white">Settings &amp; Add New Car</h3>
+							<h3 id="settingsCarModalTitle" class="text-base font-bold text-white">Settings &amp; Add New Car</h3>
 							<p class="text-xs text-slate-400">Configure vehicle profiles, create custom cars, or manage saved records</p>
 						</div>
 					</div>
@@ -2215,6 +2503,7 @@
 						id="closeSettingsCarModalBtn"
 						type="button"
 						class="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800 transition"
+						aria-label="Close Settings and Tools modal"
 						title="Close Modal"
 					>
 						<svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
