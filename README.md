@@ -69,7 +69,7 @@ All data is stored client-side in the browser's `localStorage` and can be export
   - **Vehicle Status Report (A4)**: Comprehensive condition certificate showing current vehicle specifications, document expiry dates, and full periodic schedule health matrix without cluttering maintenance logs.
   - **Service History Report (A4)**: Filter-aware maintenance and expense ledger detailing parts vs. labor costs, mechanic attributions, and workshop receipts matching current dashboard filters.
 - **📲 Instant Report Sharing**: Native Web Share API integration with automatic fallback to one-click WhatsApp text summary copying.
-- **🔒 Zero-Tracking & 100% Privacy**: Client-side execution with origin-isolated storage. No backend, no telemetry, no tracking cookies.
+- **🔒 100% Privacy**: Client-side execution with origin-isolated storage. No backend, no tracking cookies.
 
 ---
 
