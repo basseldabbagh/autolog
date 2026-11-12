@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="dark">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Terms of Service — MotoFolio</title>
+		<meta
+			name="description"
+			content="Terms of Service for MotoFolio — open-source client-side vehicle maintenance tracker, service interval calculator, and Google Drive sync tool."
+		/>
+		<meta name="robots" content="index, follow" />
+		<meta name="theme-color" content="#0f172a" />
+
+		<!-- Favicon & Canonical -->
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/favicon.svg" />
+		<link rel="manifest" href="/manifest.json" />
+		<link rel="canonical" href="https://motofolio.pages.dev/terms-of-service" />
+
+		<!-- Open Graph -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://motofolio.pages.dev/terms-of-service" />
+		<meta property="og:site_name" content="MotoFolio" />
+		<meta property="og:title" content="Terms of Service — MotoFolio" />
+		<meta
+			property="og:description"
+			content="Terms of Service, automotive safety disclaimer, MIT open-source license terms, and third-party Google Drive integration terms for MotoFolio."
+		/>
+		<meta property="og:image" content="/og-image.svg" />
+
+		<!-- Tailwind CSS CDN & Fonts -->
+		<script src="https://cdn.tailwindcss.com"></script>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="/src/styles.css" />
+	</head>
+	<body
+		class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col selection:bg-indigo-500 selection:text-white"
+	>
+		<!-- Ambient Glow -->
+		<div class="fixed inset-0 pointer-events-none overflow-hidden -z-10">
+			<div class="absolute -top-40 start-1/4 w-96 h-96 bg-indigo-600/15 rounded-full blur-3xl"></div>
+			<div class="absolute top-1/3 end-10 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl"></div>
+		</div>
+
+		<!-- Toast Notification -->
+		<div
+			id="toastBanner"
+			class="fixed bottom-5 end-5 z-[9999] hidden items-center gap-2 bg-slate-900 border border-indigo-500/40 text-slate-100 text-xs font-medium px-4 py-3 rounded-xl shadow-2xl"
+		>
+			<span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+			<span id="toastText">Saved</span>
+		</div>
+
+		<!-- Sticky Top Bar -->
+		<header class="sticky top-0 z-30 backdrop-blur-xl bg-slate-950/85 border-b border-slate-800/80">
+			<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center justify-between gap-3">
+				<a href="/" class="flex items-center gap-3 group">
+					<div
+						class="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-cyan-500 flex items-center justify-center shadow-lg shadow-indigo-500/20 shrink-0"
+					>
+						<svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M8 17a2 2 0 100 4 2 2 0 000-4zm8 0a2 2 0 100 4 2 2 0 000-4zM3 9l2-5h14l2 5M3 9h18M3 9v8h2m16-8v8h-2M7 17h6"
+							/>
+						</svg>
+					</div>
+					<div>
+						<span class="text-xs font-mono font-extrabold uppercase tracking-widest text-indigo-400 block">MotoFolio</span>
+						<span class="text-sm font-bold text-white group-hover:text-indigo-300 transition">Legal &amp; Terms</span>
+					</div>
+				</a>
+
+				<nav aria-label="Legal navigation" class="flex items-center flex-wrap gap-2">
+					<a
+						href="/privacy-policy"
+						class="px-3 py-1.5 rounded-xl text-xs font-medium bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700/80 transition"
+					>
+						Privacy Policy
+					</a>
+					<a
+						href="/terms-of-service"
+						aria-current="page"
+						class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-indigo-600 text-white shadow-sm transition"
+					>
+						Terms of Service
+					</a>
+					<div class="hidden sm:inline-flex rounded-xl bg-slate-900 p-0.5 border border-slate-800" aria-label="Theme">
+						<button
+							type="button"
+							data-theme="system"
+							class="theme-toggle-btn px-2 py-1 text-xs font-medium rounded-lg text-slate-400 hover:text-white transition flex items-center gap-1 cursor-pointer"
+							title="System theme"
+						>
+							<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+							</svg>
+						</button>
+						<button
+							type="button"
+							data-theme="light"
+							class="theme-toggle-btn px-2 py-1 text-xs font-medium rounded-lg text-slate-400 hover:text-white transition flex items-center gap-1 cursor-pointer"
+							title="Light mode"
+						>
+							<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+							</svg>
+						</button>
+						<button
+							type="button"
+							data-theme="dark"
+							class="theme-toggle-btn px-2 py-1 text-xs font-medium rounded-lg text-slate-400 hover:text-white transition flex items-center gap-1 cursor-pointer"
+							title="Dark mode"
+						>
+							<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+							</svg>
+						</button>
+					</div>
+					<a
+						href="/"
+						class="inline-flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-semibold px-3 py-1.5 rounded-xl border border-slate-700/80 transition"
+					>
+						<svg class="w-3.5 h-3.5 text-indigo-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+						</svg>
+						<span>Back to App</span>
+					</a>
+				</nav>
+			</div>
+		</header>
+
+		<!-- Main Content -->
+		<main class="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6 motion-enter">
+			<!-- Hero Banner -->
+			<section class="rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900 to-indigo-950/40 border border-slate-800 p-6 sm:p-8 shadow-2xl space-y-4">
+				<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/25 text-indigo-300 text-xs font-semibold">
+					<svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+					</svg>
+					<span>Free &amp; Open-Source Software • MIT License</span>
+				</div>
+				<h1 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">Terms of Service</h1>
+				<p class="text-sm sm:text-base text-slate-300 leading-relaxed max-w-3xl">
+					Please read these Terms of Service carefully before using MotoFolio. By accessing or using the web application,
+					exporting reports, or connecting optional Google Drive synchronization, you agree to the terms outlined below.
+				</p>
+				<div class="flex flex-wrap items-center gap-4 pt-1 text-xs font-mono text-slate-400">
+					<span>Effective Date: <strong class="text-slate-200">November 12, 2026</strong></span>
+					<span class="text-slate-600">•</span>
+					<span>Application URL: <strong class="text-indigo-300">https://motofolio.pages.dev/</strong></span>
+				</div>
+			</section>
+
+			<!-- Important Safety Callout -->
+			<section class="bg-amber-950/30 border border-amber-500/35 rounded-2xl p-5 flex items-start gap-3.5">
+				<div class="w-9 h-9 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-300 shrink-0 mt-0.5">
+					<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+					</svg>
+				</div>
+				<div class="space-y-1">
+					<h2 class="text-sm font-bold text-amber-300">Automotive Safety &amp; Maintenance Disclaimer</h2>
+					<p class="text-xs text-slate-300 leading-relaxed">
+						Sample service intervals, status badges (<code class="font-mono">Good</code>, <code class="font-mono">Due Soon</code>,
+						<code class="font-mono">Overdue</code>), fuel economy diagnostics, and printable A4 reports are informational
+						record-keeping aids only. Always consult your vehicle manufacturer&apos;s owner manual and qualified automotive
+						technicians before operating, servicing, or certifying any vehicle.
+					</p>
+				</div>
+			</section>
+
+			<!-- Terms Sections -->
+			<article class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-xl space-y-8 text-sm text-slate-300 leading-relaxed">
+				<section class="space-y-3">
+					<h2 class="text-lg font-bold text-white flex items-center gap-2">
+						<span class="text-xs font-mono px-2 py-0.5 rounded-md bg-indigo-500/15 text-indigo-300 border border-indigo-500/30">01</span>
+						<span>Acceptance of Terms</span>
+					</h2>
+					<p>
+						By accessing or using MotoFolio at <span class="font-mono text-indigo-300">https://motofolio.pages.dev/</span>
+						(including installing it as a Progressive Web App or using any exported templates and reports), you agree to be
+						bound by these Terms of Service and our
+						<a href="/privacy-policy" class="text-indigo-400 hover:text-indigo-300 underline">Privacy Policy</a>. If you do
+						not agree with these terms, please discontinue use of the application.
+					</p>
+				</section>
+
+				<section class="space-y-3 border-t border-slate-800 pt-6">
+					<h2 class="text-lg font-bold text-white flex items-center gap-2">
+						<span class="text-xs font-mono px-2 py-0.5 rounded-md bg-indigo-500/15 text-indigo-300 border border-indigo-500/30">02</span>
+						<span>Description of Service</span>
+					</h2>
+					<p>
+						MotoFolio provides a client-side web interface for managing vehicle profiles, tracking periodic service
+						intervals by distance and calendar time, logging workshop and DIY repair expenses, monitoring fuel economy
+						receipts, tracking road tax and insurance expiry dates, importing/exporting structured CSV and JSON files,
+						generating printable A4 condition and history reports, and optionally backing up vehicle CSV files to your
+						personal Google Drive.
+					</p>
+				</section>
+
+				<section class="space-y-3 border-t border-slate-800 pt-6">
+					<h2 class="text-lg font-bold text-white flex items-center gap-2">
+						<span class="text-xs font-mono px-2 py-0.5 rounded-md bg-indigo-500/15 text-indigo-300 border border-indigo-500/30">03</span>
+						<span>Open-Source License (MIT)</span>
+					</h2>
+					<p>
+						MotoFolio&apos;s source code is made available under the <strong>MIT License</strong>. Subject to the MIT
+						License conditions—preserving the copyright and permission notices—you are permitted to use, copy, modify,
+						merge, publish, distribute, and self-host the software for personal or commercial purposes.
+					</p>
+				</section>
+
+				<section class="space-y-3 border-t border-slate-800 pt-6">
+					<h2 class="text-lg font-bold text-white flex items-center gap-2">
+						<span class="text-xs font-mono px-2 py-0.5 rounded-md bg-indigo-500/15 text-indigo-300 border border-indigo-500/30">04</span>
+						<span>User Responsibilities &amp; Data Backups</span>
+					</h2>
+					<ul class="list-disc ps-5 space-y-2 text-slate-300">
+						<li>
+							<strong>Accuracy of Entered Records:</strong> You are solely responsible for verifying odometer readings,
+							service intervals, OEM part numbers, tax/insurance expiry dates, and cost entries before relying on them or
+							sharing A4 reports with buyers, workshops, or fleet operators.
+						</li>
+						<li>
+							<strong>Backups &amp; Local Storage Volatility:</strong> Because MotoFolio stores data locally in your
+							browser&apos;s <code class="font-mono text-xs">localStorage</code> without a central server backup, clearing
+							browser data, switching browsers/devices, or operating in private/incognito browsing sessions may delete
+							unsaved local records. You are responsible for exporting periodic CSV/JSON backups or enabling Google Drive
+							sync.
+						</li>
+						<li>
+							<strong>Lawful Use:</strong> You agree not to misuse the application, attempt to disrupt hosting
+							infrastructure, or use MotoFolio to falsify vehicle inspection or mileage records.
+						</li>
+					</ul>
+				</section>
+
+				<section class="space-y-3 border-t border-slate-800 pt-6">
+					<h2 class="text-lg font-bold text-white flex items-center gap-2">
+						<span class="text-xs font-mono px-2 py-0.5 rounded-md bg-indigo-500/15 text-indigo-300 border border-indigo-500/30">05</span>
+						<span>No Professional, Mechanical, or Legal Advice</span>
+					</h2>
+					<p>
+						Archetype templates (such as Sedan, SUV, Hatchback, Pickup Truck, Sports Car, EV, Hybrid, and Van presets)
+						contain generic baseline intervals for convenience only. They do not account for severe driving conditions,
+						manufacturer recalls, regional regulations, or specific vehicle wear. MotoFolio does not provide certified
+						mechanical inspections, financial/accounting advice, or statutory compliance guarantees.
+					</p>
+				</section>
+
+				<section class="space-y-3 border-t border-slate-800 pt-6">
+					<h2 class="text-lg font-bold text-white flex items-center gap-2">
+						<span class="text-xs font-mono px-2 py-0.5 rounded-md bg-indigo-500/15 text-indigo-300 border border-indigo-500/30">06</span>
+						<span>Third-Party Services &amp; Google Drive Integration</span>
+					</h2>
+					<p>
+						Optional Google Drive synchronization uses Google Identity Services and the Google Drive API provided by
+						Google LLC. Your use of Google Sign-In and Google Drive is governed by Google&apos;s own Terms of Service and
+						Privacy Policy. MotoFolio is independent of Google LLC and is not responsible for Google API rate limits,
+						outages, account lockouts, or changes to third-party CDN/font services.
+					</p>
+				</section>
+
+				<section class="space-y-3 border-t border-slate-800 pt-6">
+					<h2 class="text-lg font-bold text-white flex items-center gap-2">
+						<span class="text-xs font-mono px-2 py-0.5 rounded-md bg-indigo-500/15 text-indigo-300 border border-indigo-500/30">07</span>
+						<span>Disclaimer of Warranties &amp; Limitation of Liability</span>
+					</h2>
+					<p>
+						THE SOFTWARE AND SERVICE ARE PROVIDED &ldquo;AS IS&rdquo;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+						INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, DATA
+						DURABILITY, ACCURACY, AND NON-INFRINGEMENT.
+					</p>
+					<p>
+						IN NO EVENT SHALL THE AUTHORS, MAINTAINERS, OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DIRECT OR INDIRECT
+						DAMAGES, LOSS OF DATA, MISSED MAINTENANCE INTERVALS, MECHANICAL FAILURE, OR OTHER LIABILITY, WHETHER IN AN
+						ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM OR IN CONNECTION WITH THE USE OF MOTOFOLIO.
+					</p>
+				</section>
+
+				<section class="space-y-3 border-t border-slate-800 pt-6">
+					<h2 class="text-lg font-bold text-white flex items-center gap-2">
+						<span class="text-xs font-mono px-2 py-0.5 rounded-md bg-indigo-500/15 text-indigo-300 border border-indigo-500/30">08</span>
+						<span>Modifications to Terms</span>
+					</h2>
+					<p>
+						These Terms of Service or application features may be updated at any time. Any revisions will be posted on this
+						page with an updated Effective Date, and continued use of MotoFolio after updates take effect constitutes
+						acceptance of the revised terms.
+					</p>
+				</section>
+			</article>
+		</main>
+
+		<!-- Footer -->
+		<footer class="border-t border-slate-800/80 bg-slate-950/60 mt-auto">
+			<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400">
+				<div class="flex items-center gap-2">
+					<span class="font-mono font-bold text-indigo-400">MotoFolio</span>
+					<span class="text-slate-600">•</span>
+					<span>Client-Side Vehicle Maintenance Tracker (MIT License)</span>
+				</div>
+				<div class="flex items-center gap-4">
+					<a href="/" class="hover:text-white transition">Dashboard</a>
+					<a href="/privacy-policy" class="hover:text-white transition">Privacy Policy</a>
+					<a href="/terms-of-service" class="text-indigo-400 font-semibold">Terms of Service</a>
+				</div>
+			</div>
+		</footer>
+
+		<script type="module" src="/src/legal.ts"></script>
+	</body>
+</html>
