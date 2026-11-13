@@ -1,0 +1,29 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://motofolio.pages.dev/",
+      "describedby": [
+        {
+          "href": "https://motofolio.pages.dev/llms.txt",
+          "type": "text/markdown"
+        },
+        {
+          "href": "https://motofolio.pages.dev/.well-known/ard.json",
+          "type": "application/json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://motofolio.pages.dev/faqs.md",
+          "type": "text/markdown"
+        }
+      ],
+      "item": [
+        {
+          "href": "https://motofolio.pages.dev/data/faqs.json",
+          "type": "application/json"
+        }
+      ]
+    }
+  ]
+}

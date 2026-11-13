@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   /* ================================================================= */
   /* MY MOTOFOLIO DESIGN SYSTEM TOKENS (CSS VARIABLES)                 */

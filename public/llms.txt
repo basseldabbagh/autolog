@@ -3,23 +3,25 @@
 > Universal client-side vehicle maintenance tracker, periodic service interval calculator, workshop expense ledger, fuel economy logbook, and printable A4 inspection reports.
 
 ## Overview
-- Website: https://motofolio.pages.dev/
-- Open Source License: MIT License
-- Architecture: 100% Client-Side, Offline-First Progressive Web App (PWA) with LocalStorage and optional direct Google Drive sync.
+- Website: [My MotoFolio](https://motofolio.pages.dev/)
+- License: [MIT License](https://opensource.org/license/mit)
+- Architecture: 100% Client-Side, Offline-First Progressive Web App (PWA) with browser LocalStorage and optional direct Google Drive sync.
 - Privacy Model: Zero server databases, 100% private client-side storage.
 
 ## Key Capabilities & Automotive Calculations
-- Periodic Maintenance Schedule Engine: Tracks engine oil, transmission fluid, spark plugs, brake pads, coolant, timing belts, tires, and filters with live remaining distance countdowns and overdue warnings (color-coded: Good, Due Soon within 1000km, Overdue).
-- Interactive Odometer Simulation: Fast increment (+1k, +5k km) and manual odometer calibration recalculating all component wear in real time.
-- Workshop Service Ledger: Complete expense tracking with labor vs. parts cost breakdown, mechanic attribution, category filters, and keyword search.
-- Fuel Economy Logbook: Fuel consumption calculator tracking liters, cost per km, mileage, fuel grade, and full tank status.
-- Bi-directional Data Interchange: Import and export vehicles via clean CSV spreadsheets and full JSON v2.0 profiles.
-- Vehicle Archetypes: Pre-configured sample maintenance intervals for Sedans, SUVs, Hatchbacks, 4x4 Trucks, Sports Coupes, Hybrids, EVs, and Passenger Vans.
-- Printable A4 Vehicle Condition Reports: Instant professional inspection summaries ready for printing or exporting to PDF.
-- Mobile & Desktop PWA: Installable on Android, iOS (Safari Add to Home Screen), Windows, macOS, and Linux for full offline use.
+- **Periodic Maintenance Schedule Engine**: Tracks engine oil, transmission fluid, spark plugs, brake pads, coolant, timing belts, tires, and filters with live remaining distance countdowns and overdue warnings (`Good`, `Due Soon` within 1,000 km, `Overdue`).
+- **Interactive Odometer Simulation**: Fast increment (`+1k`, `+5k` km) and manual odometer calibration recalculating all component wear in real time.
+- **Workshop Service Ledger**: Complete expense tracking with labor vs. parts cost breakdown, mechanic attribution, category filters, and keyword search.
+- **Fuel Economy Logbook**: Fuel consumption calculator tracking liters, cost per km, mileage, fuel grade, and full tank status.
+- **Bi-directional Data Interchange**: Import and export vehicles via clean CSV spreadsheets and full JSON v2.0 profiles.
+- **Printable A4 Vehicle Condition Reports**: Instant professional inspection summaries ready for printing or exporting to PDF.
 
-## URLs & Pages
-- Main Dashboard: https://motofolio.pages.dev/
-- Privacy Policy: https://motofolio.pages.dev/privacy-policy
-- Terms of Service: https://motofolio.pages.dev/terms-of-service
-- XML Sitemap: https://motofolio.pages.dev/sitemap.xml
+## Pages & Machine-Readable Docs
+- [Main Dashboard](https://motofolio.pages.dev/): Interactive vehicle maintenance tracker and service interval calculator.
+- [Frequently Asked Questions](https://motofolio.pages.dev/faqs): Comprehensive Q&A covering maintenance calculations, CSV/JSON interchange, and offline privacy.
+- [FAQs Markdown](https://motofolio.pages.dev/faqs.md): Clean Markdown export of all FAQs for AI agents and LLMs.
+- [FAQs JSON Data](https://motofolio.pages.dev/data/faqs.json): Structured JSON dataset of all FAQs.
+- [Privacy Policy](https://motofolio.pages.dev/privacy-policy): Client-side storage and Google Drive OAuth privacy policy.
+- [Terms of Service](https://motofolio.pages.dev/terms-of-service): Open-source MIT terms of use.
+- [XML Sitemap](https://motofolio.pages.dev/sitemap.xml): Canonical URL index.
+- [Agentic Resource Discovery (ARD)](https://motofolio.pages.dev/.well-known/ard.json): Machine-readable capability and resource manifest.

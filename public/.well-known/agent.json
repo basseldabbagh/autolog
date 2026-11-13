@@ -1,0 +1,23 @@
+{
+  "name": "My MotoFolio",
+  "description": "Free, 100% client-side vehicle maintenance tracker, periodic service interval calculator, workshop expense ledger, fuel economy logbook, and printable A4 inspection reports.",
+  "url": "https://motofolio.pages.dev/",
+  "version": "2.0.0",
+  "documentationUrl": "https://motofolio.pages.dev/llms.txt",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "skills": [
+    {
+      "id": "maintenance-schedule",
+      "name": "Periodic Maintenance Schedule",
+      "description": "Calculate remaining distance and Good/Due Soon/Overdue status for vehicle service intervals."
+    },
+    {
+      "id": "faqs",
+      "name": "MotoFolio FAQs",
+      "description": "Answer questions about My MotoFolio features, CSV/JSON interchange, and offline privacy."
+    }
+  ]
+}

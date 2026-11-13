@@ -696,7 +696,37 @@ async function refreshGoogleUserInfo(token: string): Promise<{ name: string; ema
   return { name: fetchedName, email: fetchedEmail };
 }
 
-export function initGoogleDriveAuth(interactive = false): void {
+let gsiLoadPromise: Promise<boolean> | null = null;
+
+/** Lazily loads Google Identity Services script only when Google Drive auth is needed. */
+function loadGoogleIdentityScript(): Promise<boolean> {
+  if (typeof google !== "undefined" && google.accounts?.oauth2) {
+    return Promise.resolve(true);
+  }
+  if (gsiLoadPromise) return gsiLoadPromise;
+
+  gsiLoadPromise = new Promise((resolve) => {
+    const existing = document.querySelector<HTMLScriptElement>('script[src="https://accounts.google.com/gsi/client"]');
+    if (existing) {
+      existing.addEventListener("load", () => resolve(true), { once: true });
+      existing.addEventListener("error", () => resolve(false), { once: true });
+      return;
+    }
+    const script = document.createElement("script");
+    script.src = "https://accounts.google.com/gsi/client";
+    script.async = true;
+    script.defer = true;
+    script.onload = () => resolve(true);
+    script.onerror = () => {
+      gsiLoadPromise = null;
+      resolve(false);
+    };
+    document.head.appendChild(script);
+  });
+  return gsiLoadPromise;
+}
+
+export async function initGoogleDriveAuth(interactive = false): Promise<void> {
   const clientId = getDriveClientId();
   if (!clientId) {
     if (interactive) {
@@ -709,10 +739,12 @@ export function initGoogleDriveAuth(interactive = false): void {
   }
 
   if (typeof google === "undefined" || !google.accounts || !google.accounts.oauth2) {
-    if (interactive) {
-      alert("Google Identity Services library is still loading. Please try again in a few seconds.");
+    if (!interactive) return;
+    const loaded = await loadGoogleIdentityScript();
+    if (!loaded || typeof google === "undefined" || !google.accounts || !google.accounts.oauth2) {
+      showToast("Unable to load Google Identity Services. Check your connection.", "warning");
+      return;
     }
-    return;
   }
 
   gdriveTokenClient = google.accounts.oauth2.initTokenClient({

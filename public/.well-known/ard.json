@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "1.0",
+  "name": "My MotoFolio",
+  "description": "Free, 100% client-side vehicle maintenance tracker, periodic service interval calculator, workshop expense ledger, fuel economy logbook, and printable A4 inspection reports.",
+  "url": "https://motofolio.pages.dev/",
+  "resources": [
+    {
+      "name": "llms-txt",
+      "type": "documentation",
+      "url": "https://motofolio.pages.dev/llms.txt",
+      "mimeType": "text/markdown",
+      "description": "Concise overview, capabilities, and canonical links for LLMs and AI agents."
+    },
+    {
+      "name": "faqs-markdown",
+      "type": "documentation",
+      "url": "https://motofolio.pages.dev/faqs.md",
+      "mimeType": "text/markdown",
+      "description": "Frequently Asked Questions in Markdown format."
+    },
+    {
+      "name": "faqs-json",
+      "type": "dataset",
+      "url": "https://motofolio.pages.dev/data/faqs.json",
+      "mimeType": "application/json",
+      "description": "Structured JSON dataset of My MotoFolio Frequently Asked Questions."
+    },
+    {
+      "name": "sitemap",
+      "type": "sitemap",
+      "url": "https://motofolio.pages.dev/sitemap.xml",
+      "mimeType": "application/xml",
+      "description": "XML Sitemap of public My MotoFolio pages."
+    }
+  ]
+}

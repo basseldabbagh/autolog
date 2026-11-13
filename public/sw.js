@@ -1,4 +1,4 @@
-const CACHE_NAME = 'motofolio-v2';
+const CACHE_NAME = 'motofolio-v3';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -36,13 +36,23 @@ self.addEventListener('activate', (e) => {
   );
 });
 
-// Network-first strategy with cache fallback for HTML/API, cache-first for immutable static identity images
+// Network-first strategy with cache fallback for HTML/CSS/JS, cache-first for immutable static images & fonts
 self.addEventListener('fetch', (e) => {
   if (e.request.method !== 'GET') return;
   if (!e.request.url.startsWith('http://') && !e.request.url.startsWith('https://')) return;
 
   const url = new URL(e.request.url);
-  const isImageOrFont = /\.(png|svg|jpg|jpeg|webp|woff2?|ttf|css)$/i.test(url.pathname);
+  if (url.origin !== self.location.origin) return;
+  if (
+    url.pathname.startsWith('/src/') ||
+    url.pathname.startsWith('/@vite/') ||
+    url.pathname.startsWith('/@fs/') ||
+    url.pathname.startsWith('/node_modules/')
+  ) {
+    return;
+  }
+
+  const isImageOrFont = /\.(png|svg|jpg|jpeg|webp|woff2?|ttf)$/i.test(url.pathname);
 
   if (isImageOrFont) {
     // Cache-first for images & fonts

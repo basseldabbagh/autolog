@@ -84,13 +84,14 @@
 			}
 		</script>
 
-		<!-- Tailwind CSS CDN & Fonts -->
-		<script src="https://cdn.tailwindcss.com"></script>
+		<!-- Fonts (non-blocking) & Compiled Styles -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
 			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap"
 			rel="stylesheet"
+			media="print"
+			onload="this.media='all'"
 		/>
 		<link rel="stylesheet" href="/src/styles.css" />
 	</head>
@@ -231,12 +232,18 @@
 		<header class="sticky top-0 z-30 backdrop-blur-xl bg-slate-950/85 border-b border-slate-800/80" role="banner">
 			<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center justify-between gap-3">
 				<a href="/" class="flex items-center gap-2.5 group" title="My MotoFolio Home">
-					<img src="/images/identity/logo-light.png" alt="My MotoFolio" width="168" height="24" loading="eager" decoding="async" class="h-6 w-auto hidden dark:block" />
-					<img src="/images/identity/logo.png" alt="My MotoFolio" width="168" height="24" loading="eager" decoding="async" class="h-6 w-auto block dark:hidden" />
+					<img src="/images/identity/logo-light.png" alt="My MotoFolio" width="89" height="24" loading="eager" decoding="async" class="h-6 w-auto hidden dark:block" />
+					<img src="/images/identity/logo.png" alt="My MotoFolio" width="89" height="24" loading="eager" decoding="async" class="h-6 w-auto block dark:hidden" />
 					<span class="text-xs font-bold text-slate-400 group-hover:text-indigo-400 transition">Legal &amp; Terms</span>
 				</a>
 
 				<nav aria-label="Legal navigation" class="flex items-center flex-wrap gap-2">
+					<a
+						href="/faqs"
+						class="px-3 py-1.5 rounded-xl text-xs font-medium bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700/80 transition"
+					>
+						FAQs
+					</a>
 					<a
 						href="/privacy-policy"
 						class="px-3 py-1.5 rounded-xl text-xs font-medium bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700/80 transition"

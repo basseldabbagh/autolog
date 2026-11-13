@@ -56,15 +56,15 @@
 			id="ogDesc"
 			content="Interactive periodic maintenance schedule, live mileage calculator, workshop expense history, fuel logbook, and printable A4 vehicle condition report."
 		/>
-		<meta property="og:image" id="ogImage" content="https://motofolio.pages.dev/images/identity/logo.png" />
-		<meta property="og:image:secure_url" id="ogImageSecure" content="https://motofolio.pages.dev/images/identity/logo.png" />
+		<meta property="og:image" id="ogImage" content="https://motofolio.pages.dev/images/identity/appicon.png" />
+		<meta property="og:image:secure_url" id="ogImageSecure" content="https://motofolio.pages.dev/images/identity/appicon.png" />
 		<meta property="og:image:type" content="image/png" />
-		<meta property="og:image:width" content="1200" />
-		<meta property="og:image:height" content="630" />
+		<meta property="og:image:width" content="1024" />
+		<meta property="og:image:height" content="1024" />
 		<meta property="og:image:alt" id="ogImageAlt" content="My MotoFolio — Car Maintenance &amp; Service Tracker" />
 
 		<!-- Twitter / X Cards -->
-		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:site" content="@MyMotoFolio" />
 		<meta name="twitter:creator" content="@MyMotoFolio" />
 		<meta name="twitter:title" id="twTitle" content="My MotoFolio — Free Car Maintenance Tracker &amp; Service Interval Calculator" />
@@ -73,7 +73,7 @@
 			id="twDesc"
 			content="Interactive periodic maintenance schedule, live mileage calculator, workshop expense history, fuel logbook, and printable A4 vehicle condition report."
 		/>
-		<meta name="twitter:image" id="twImage" content="https://motofolio.pages.dev/images/identity/logo.png" />
+		<meta name="twitter:image" id="twImage" content="https://motofolio.pages.dev/images/identity/appicon.png" />
 		<meta name="twitter:image:alt" id="twImageAlt" content="My MotoFolio — Car Maintenance &amp; Service Tracker" />
 
 		<!-- Dynamic JSON-LD Structured Data (Comprehensive Schema for SEO & AEO) -->
@@ -223,20 +223,23 @@
 		</script>
 
 		<!-- Deployment Configuration (Google OAuth Client ID) -->
-		<script src="config.js"></script>
+		<script src="config.js" defer></script>
 
-		<!-- Google Identity Services (GIS) for Google Drive Auth -->
-		<script src="https://accounts.google.com/gsi/client" async defer></script>
-
-
-		<!-- Tailwind CSS CDN -->
-		<script src="https://cdn.tailwindcss.com"></script>
+		<!-- Fonts (non-blocking) & Compiled Styles -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
 			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap"
 			rel="stylesheet"
+			media="print"
+			onload="this.media='all'"
 		/>
+		<noscript>
+			<link
+				href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap"
+				rel="stylesheet"
+			/>
+		</noscript>
 		<link rel="stylesheet" href="/src/styles.css" />
 	</head>
 	<body
@@ -318,9 +321,9 @@
 						My MotoFolio uses local browser storage and essential cookies to save your vehicle fleet, maintenance intervals, and preferences offline on your device.
 					</p>
 					<div class="flex items-center gap-2.5 pt-1 text-[11px]">
-						<a href="/privacy-policy" class="text-indigo-400 hover:text-indigo-300 underline underline-offset-2 transition">Privacy Policy</a>
+						<a href="/privacy-policy" class="text-indigo-700 dark:text-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-300 underline underline-offset-2 transition">Privacy Policy</a>
 						<span class="text-slate-600">•</span>
-						<a href="/terms-of-service" class="text-indigo-400 hover:text-indigo-300 underline underline-offset-2 transition">Terms of Service</a>
+						<a href="/terms-of-service" class="text-indigo-700 dark:text-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-300 underline underline-offset-2 transition">Terms of Service</a>
 					</div>
 				</div>
 			</div>
@@ -398,7 +401,7 @@
 				<button
 					id="pwaInstallConfirmBtn"
 					type="button"
-					class="px-3.5 py-1.5 text-xs font-bold rounded-xl bg-orange-500 hover:bg-orange-400 text-slate-950 shadow-md shadow-orange-500/20 transition cursor-pointer"
+					class="px-3.5 py-1.5 text-xs font-bold rounded-xl bg-orange-700 hover:bg-orange-600 text-white shadow-md shadow-orange-900/20 transition cursor-pointer"
 				>
 					Install
 				</button>
@@ -411,8 +414,8 @@
 				<!-- Brand & Vehicle Identity -->
 				<div class="flex items-center gap-3 sm:gap-4">
 					<a href="#" class="flex items-center shrink-0 group py-0.5" title="My MotoFolio Home">
-						<img src="/images/identity/logo-light.png" alt="My MotoFolio" width="168" height="28" loading="eager" decoding="async" class="h-6 sm:h-7 w-auto hidden dark:block" />
-						<img src="/images/identity/logo.png" alt="My MotoFolio" width="168" height="28" loading="eager" decoding="async" class="h-6 sm:h-7 w-auto block dark:hidden" />
+						<img src="/images/identity/logo-light.png" alt="My MotoFolio" width="104" height="28" loading="eager" decoding="async" class="h-6 sm:h-7 w-auto hidden dark:block" />
+						<img src="/images/identity/logo.png" alt="My MotoFolio" width="104" height="28" loading="eager" decoding="async" class="h-6 sm:h-7 w-auto block dark:hidden" />
 					</a>
 					<div>
 						<div class="flex items-center gap-2 flex-wrap">
@@ -1188,7 +1191,7 @@
 							</svg>
 						</summary>
 						<div class="mt-2 text-xs text-slate-300 leading-relaxed pt-2 border-t border-slate-800/60">
-							Yes. My MotoFolio is 100% free under the open-source MIT License. It operates with zero backend databases and zero third-party telemetry. All your vehicle records are stored locally in your browser's local storage. You also have the option to connect your personal Google Drive for direct, private cloud backups.
+							Yes. My MotoFolio is 100% free under the open-source <a href="https://opensource.org/license/mit" target="_blank" rel="noopener noreferrer" class="text-indigo-700 dark:text-indigo-400 underline underline-offset-2 hover:text-indigo-600 dark:hover:text-indigo-300">MIT License</a>. It operates with zero backend databases and zero third-party telemetry. All your vehicle records are stored locally in your <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API" target="_blank" rel="noopener noreferrer" class="text-indigo-700 dark:text-indigo-400 underline underline-offset-2 hover:text-indigo-600 dark:hover:text-indigo-300">browser's local storage</a>. You also have the option to connect your personal Google Drive for direct, private cloud backups—see our <a href="/privacy-policy" class="text-indigo-700 dark:text-indigo-400 underline underline-offset-2 hover:text-indigo-600 dark:hover:text-indigo-300">Privacy Policy</a> and <a href="/terms-of-service" class="text-indigo-700 dark:text-indigo-400 underline underline-offset-2 hover:text-indigo-600 dark:hover:text-indigo-300">Terms of Service</a> for full details.
 						</div>
 					</details>
 
@@ -1212,10 +1215,13 @@
 							</svg>
 						</summary>
 						<div class="mt-2 text-xs text-slate-300 leading-relaxed pt-2 border-t border-slate-800/60">
-							My MotoFolio is an installable Progressive Web App (PWA). Click 'Install' on the install banner, or select 'Add to Home Screen' in iOS Safari or Chrome on Android. On desktop (Chrome, Edge), click the install icon in your address bar. Once installed, it works completely offline with zero internet connection required.
+							My MotoFolio is an installable <a href="https://web.dev/explore/progressive-web-apps" target="_blank" rel="noopener noreferrer" class="text-indigo-700 dark:text-indigo-400 underline underline-offset-2 hover:text-indigo-600 dark:hover:text-indigo-300">Progressive Web App (PWA)</a>. Click 'Install' on the install banner, or select 'Add to Home Screen' in iOS Safari or Chrome on Android. On desktop (Chrome, Edge), click the install icon in your address bar. Once installed, it works completely offline with zero internet connection required.
 						</div>
 					</details>
 				</div>
+				<p class="mt-4 text-xs text-slate-400">
+					Looking for more answers on service intervals, CSV/JSON imports, or Google Drive sync? Explore the full <a href="/faqs" class="text-indigo-700 dark:text-indigo-400 font-semibold underline underline-offset-2 hover:text-indigo-600 dark:hover:text-indigo-300">My MotoFolio FAQs</a>.
+				</p>
 			</section>
 			</div>
 		</main>
@@ -1226,10 +1232,11 @@
 				<div class="flex items-center gap-2 flex-wrap">
 					<img src="/images/identity/icon-light.png" alt="My MotoFolio" width="20" height="20" loading="lazy" decoding="async" class="w-5 h-5 object-contain shrink-0 hidden dark:inline-block theme-logo-dark" />
 					<img src="/images/identity/icon.png" alt="My MotoFolio" width="20" height="20" loading="lazy" decoding="async" class="w-5 h-5 object-contain shrink-0 inline-block dark:hidden theme-logo-light" />
-					<span class="font-mono font-bold text-indigo-400">My MotoFolio</span>
+					<span class="font-mono font-bold text-indigo-700 dark:text-indigo-400">My MotoFolio</span>
 					<span>100% Client-Side Vehicle Maintenance Tracker (MIT License)</span>
 				</div>
 				<div class="flex items-center gap-4">
+					<a href="/faqs" class="hover:text-white transition">FAQs</a>
 					<a href="/privacy-policy" class="hover:text-white transition">Privacy Policy</a>
 					<a href="/terms-of-service" class="hover:text-white transition">Terms of Service</a>
 				</div>

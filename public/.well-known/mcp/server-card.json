@@ -1,0 +1,21 @@
+{
+  "serverInfo": {
+    "name": "My MotoFolio",
+    "version": "2.0.0",
+    "vendor": "My MotoFolio"
+  },
+  "description": "Client-side vehicle maintenance tracker with WebMCP browser tools and static agent documentation.",
+  "documentationUrl": "https://motofolio.pages.dev/llms.txt",
+  "transport": {
+    "type": "webmcp",
+    "url": "https://motofolio.pages.dev/"
+  },
+  "capabilities": {
+    "tools": {
+      "listChanged": false
+    },
+    "resources": {
+      "subscribe": false
+    }
+  }
+}

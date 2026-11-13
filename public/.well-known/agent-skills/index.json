@@ -1,0 +1,17 @@
+{
+  "$schema": "https://schemas.agentskills.io/discovery/v0.2.0/index.json",
+  "skills": [
+    {
+      "name": "motofolio-documentation",
+      "type": "documentation",
+      "description": "Learn how My MotoFolio calculates periodic car maintenance intervals, tracks workshop expenses, exports CSV/JSON v2.0, and generates A4 vehicle reports.",
+      "url": "https://motofolio.pages.dev/llms.txt"
+    },
+    {
+      "name": "motofolio-faqs",
+      "type": "documentation",
+      "description": "Searchable and structured FAQ knowledge base for My MotoFolio.",
+      "url": "https://motofolio.pages.dev/faqs.md"
+    }
+  ]
+}

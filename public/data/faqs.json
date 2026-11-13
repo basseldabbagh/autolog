@@ -1,0 +1,87 @@
+{
+  "schemaVersion": "1.0",
+  "title": "My MotoFolio — Frequently Asked Questions",
+  "description": "Answers about My MotoFolio's periodic maintenance tracker, service interval calculations, offline privacy, CSV/JSON interchange, Google Drive backup, and printable A4 vehicle reports.",
+  "lastUpdated": "2026-11-13",
+  "categories": [
+    {
+      "id": "general-privacy",
+      "name": "General & Privacy",
+      "faqs": [
+        {
+          "id": "what-is-motofolio",
+          "question": "What is My MotoFolio and how does it work?",
+          "answer": "My MotoFolio is a free, 100% client-side vehicle maintenance tracker. It monitors periodic maintenance schedules (engine oil, filters, spark plugs, timing belt, brake pads, coolant, tires), tracks workshop invoices and fuel consumption, and generates printable A4 inspection reports directly in your browser without requiring a backend server."
+        },
+        {
+          "id": "is-it-free-and-private",
+          "question": "Is My MotoFolio completely free, private, and offline?",
+          "answer": "Yes. My MotoFolio is 100% free under the open-source MIT License. It operates with zero backend databases and zero third-party telemetry. All vehicle records remain strictly private inside your browser's local storage, with optional direct backups to your personal Google Drive."
+        },
+        {
+          "id": "how-to-install-pwa",
+          "question": "How do I install My MotoFolio on my mobile phone or desktop?",
+          "answer": "My MotoFolio is an installable Progressive Web App (PWA). Click 'Install' on the install banner, or choose 'Add to Home Screen' in iOS Safari or Chrome on Android. On desktop (Chrome or Edge), click the install icon in your browser's address bar. Once installed, it works completely offline."
+        }
+      ]
+    },
+    {
+      "id": "maintenance-intervals",
+      "name": "Service Intervals & Odometer",
+      "faqs": [
+        {
+          "id": "how-due-calculated",
+          "question": "How does My MotoFolio calculate when car maintenance is due?",
+          "answer": "My MotoFolio compares your current odometer reading against each component's last serviced mileage and recommended replacement interval (nextDueKm = lastServicedKm + intervalKm). Remaining distance is color-coded into Good (more than 1,000 km remaining), Due Soon (1,000 km or less remaining), Overdue (0 km or negative), or Unset (needs baseline entry)."
+        },
+        {
+          "id": "odometer-simulation",
+          "question": "What do the +1k and +5k odometer simulation buttons do?",
+          "answer": "The +1k and +5k buttons let you quickly project future mileage without manually typing numbers, instantly recalculating all component countdown bars and status badges. You can reset or edit the exact odometer reading at any time."
+        },
+        {
+          "id": "vehicle-archetypes",
+          "question": "Which vehicle types are supported?",
+          "answer": "My MotoFolio includes pre-configured maintenance templates for Sedans, SUVs / Crossovers, Compact Hatchbacks, 4x4 Turbo Diesel Trucks, Sports Coupes, Hybrids (HEV), Battery Electric Vehicles (EV), and Passenger Vans (MPV). You can also create fully custom vehicle profiles and schedules."
+        }
+      ]
+    },
+    {
+      "id": "ledger-and-fuel",
+      "name": "Workshop Ledger & Fuel Logbook",
+      "faqs": [
+        {
+          "id": "workshop-expense-tracking",
+          "question": "How does the workshop expense ledger track parts vs. labor?",
+          "answer": "Each maintenance log entry records the service date, odometer reading, category, mechanic or workshop name, parts cost, labor cost, payment method, and notes. The interactive expense donut chart lets you toggle breakdowns by service category or by mechanic."
+        },
+        {
+          "id": "fuel-economy-logbook",
+          "question": "Can I track fuel economy and fuel costs?",
+          "answer": "Yes. The Fuel Logbook records fill-up odometer readings, liters added, total cost, fuel grade, and full-tank status to calculate consumption and cost per kilometer over time."
+        }
+      ]
+    },
+    {
+      "id": "data-and-reports",
+      "name": "Data Export, Google Drive & A4 Reports",
+      "faqs": [
+        {
+          "id": "csv-json-export",
+          "question": "Can I export or import my vehicle maintenance data?",
+          "answer": "Yes. The Data Hub supports bi-directional export and import using clean CSV spreadsheets (compatible with Excel, Apple Numbers, and Google Sheets) as well as full JSON v2.0 vehicle profiles. A blank CSV template is also available for bulk entry."
+        },
+        {
+          "id": "google-drive-sync",
+          "question": "How does optional Google Drive sync work?",
+          "answer": "When enabled, My MotoFolio connects directly from your browser to your personal Google Drive using Google Identity Services OAuth (drive.file scope). Your data never passes through any MotoFolio server."
+        },
+        {
+          "id": "a4-reports-and-whatsapp",
+          "question": "How do I print an A4 Vehicle Condition Report or share on WhatsApp?",
+          "answer": "Click 'A4 Report' to open a clean, print-optimized A4 inspection summary ready for physical printing or saving as PDF. Click 'Share' to use the native Web Share API or automatically copy a formatted WhatsApp-ready maintenance summary to your clipboard."
+        }
+      ]
+    }
+  ]
+}

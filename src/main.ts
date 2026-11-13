@@ -2,6 +2,7 @@ import { initTailwindConfig } from "./config/tailwind";
 import { initChartListeners } from "./features/charts";
 import { initCookieConsent } from "./features/cookieConsent";
 import { initPwaInstall } from "./features/pwaInstall";
+import { initWebMcpTools } from "./features/webmcp";
 import { initDataHubListeners } from "./features/dataHub";
 import { initFuelListeners } from "./features/fuel";
 import { autoSyncToGoogleDrive, initGoogleDriveListeners } from "./features/googleDrive";
@@ -93,15 +94,14 @@ document.addEventListener("DOMContentLoaded", () => {
   initVehicleAndSettingsListeners(renderAll);
   initCookieConsent();
   initPwaInstall();
+  initWebMcpTools();
 
   // Register Service Worker for PWA (Installable App & Offline Mode)
   if ("serviceWorker" in navigator && window.location.protocol.startsWith("http")) {
     navigator.serviceWorker
       .register("./sw.js")
-      .then((reg) => {
-        reg.update();
-      })
-      .catch((err) => console.log("SW registration note:", err));
+      .then((reg) => reg.update().catch(() => {}))
+      .catch(() => {});
   }
 
   // Dismiss App Preloader smoothly

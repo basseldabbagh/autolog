@@ -232,10 +232,7 @@ export async function loadProfile(profileKey: string | null): Promise<void> {
 
   if (window.location.protocol !== "file:" && profileKey !== "blank-template") {
     try {
-      let res = await fetch(`./template/${profileKey}.json`, { cache: "no-store" });
-      if (!res.ok) {
-        res = await fetch(`./cars/${profileKey}.json`, { cache: "no-store" });
-      }
+      const res = await fetch(`./cars/${profileKey}.json`, { cache: "no-store" });
       if (res.ok) {
         state.appData = (await res.json()) as VehicleProfile;
         saveToLocal(false);

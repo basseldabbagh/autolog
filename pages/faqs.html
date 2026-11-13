@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="dark">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Frequently Asked Questions — My MotoFolio</title>
+		<meta
+			name="description"
+			content="Frequently Asked Questions about My MotoFolio — periodic maintenance intervals, odometer tracking, CSV/JSON interchange, offline privacy, and printable A4 reports."
+		/>
+		<meta name="robots" content="index, follow" />
+		<meta name="theme-color" content="#0a192f" />
+
+		<!-- Favicon & Touch Icons -->
+		<link id="appFavicon" rel="icon" type="image/png" href="/images/identity/favicon-light.png" />
+		<link rel="icon" type="image/png" href="/images/identity/favicon.png" media="(prefers-color-scheme: light)" />
+		<link rel="icon" type="image/png" href="/images/identity/favicon-light.png" media="(prefers-color-scheme: dark)" />
+		<link id="appTouchIcon" rel="apple-touch-icon" sizes="180x180" href="/images/identity/appicon.png" />
+		<link rel="mask-icon" href="/images/identity/icon.png" color="#ff6b35" />
+		<link rel="manifest" href="/manifest.json" />
+		<link rel="canonical" href="https://motofolio.pages.dev/faqs" />
+
+		<!-- Open Graph -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://motofolio.pages.dev/faqs" />
+		<meta property="og:site_name" content="My MotoFolio" />
+		<meta property="og:title" content="Frequently Asked Questions — My MotoFolio" />
+		<meta
+			property="og:description"
+			content="Answers about My MotoFolio's periodic maintenance tracker, service interval calculations, offline privacy, and A4 vehicle reports."
+		/>
+		<meta property="og:image" content="https://motofolio.pages.dev/images/identity/logo.png" />
+
+		<!-- Twitter / X Cards -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:site" content="@MyMotoFolio" />
+		<meta name="twitter:title" content="Frequently Asked Questions — My MotoFolio" />
+		<meta
+			name="twitter:description"
+			content="Answers about My MotoFolio's periodic maintenance tracker, service interval calculations, offline privacy, and A4 vehicle reports."
+		/>
+		<meta name="twitter:image" content="https://motofolio.pages.dev/images/identity/logo.png" />
+
+		<!-- FAQPage JSON-LD (populated at build time from /public/data/faqs.json) -->
+		<!-- FAQ_JSONLD -->
+
+		<!-- Fonts (non-blocking) & Compiled Styles -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap"
+			rel="stylesheet"
+			media="print"
+			onload="this.media='all'"
+		/>
+		<link rel="stylesheet" href="/src/styles.css" />
+	</head>
+	<body
+		class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col selection:bg-indigo-500 selection:text-white"
+	>
+		<!-- Skip to Main Content Link (Accessibility WCAG 2.4.1) -->
+		<a
+			href="#mainContent"
+			class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:start-4 focus:z-[100002] focus:px-4 focus:py-2.5 focus:bg-orange-600 focus:text-white focus:font-semibold focus:rounded-xl focus:shadow-2xl focus:outline-none focus:ring-2 focus:ring-white"
+		>
+			Skip to main content
+		</a>
+
+		<!-- Ambient Glow -->
+		<div class="fixed inset-0 pointer-events-none overflow-hidden -z-10">
+			<div class="absolute -top-40 start-1/4 w-96 h-96 bg-indigo-600/15 rounded-full blur-3xl"></div>
+			<div class="absolute top-1/3 end-10 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl"></div>
+		</div>
+
+		<!-- Toast Notification -->
+		<div
+			id="toastBanner"
+			class="fixed bottom-5 end-5 z-[9999] hidden items-center gap-2 bg-slate-900 border border-indigo-500/40 text-slate-100 text-xs font-medium px-4 py-3 rounded-xl shadow-2xl"
+		>
+			<span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+			<span id="toastText">Saved</span>
+		</div>
+
+		<!-- Cookie Consent Banner -->
+		<div
+			id="cookieConsentBanner"
+			class="fixed bottom-5 start-5 end-5 sm:end-auto sm:max-w-md z-[9990] hidden motion-enter bg-slate-900/95 backdrop-blur-md border border-slate-700/80 rounded-2xl p-4 sm:p-5 shadow-2xl space-y-3"
+			role="dialog"
+			aria-live="polite"
+			aria-label="Cookie and Storage Policy"
+		>
+			<div class="flex items-start gap-3">
+				<div class="w-8 h-8 rounded-xl bg-indigo-500/15 text-indigo-400 flex items-center justify-center shrink-0 border border-indigo-500/25">
+					<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18zM9 10a1 1 0 100-2 1 1 0 000 2zm6 0a1 1 0 100-2 1 1 0 000 2zm-4 5a1 1 0 100-2 1 1 0 000 2z" />
+					</svg>
+				</div>
+				<div class="space-y-1">
+					<h4 class="text-xs sm:text-sm font-bold text-white tracking-tight">Cookie &amp; Storage Policy</h4>
+					<p class="text-xs text-slate-300 leading-relaxed">
+						My MotoFolio uses local browser storage and essential cookies to save your vehicle fleet, maintenance intervals, and preferences offline on your device.
+					</p>
+					<div class="flex items-center gap-2.5 pt-1 text-[11px]">
+						<a href="/privacy-policy" class="text-indigo-700 dark:text-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-300 underline underline-offset-2 transition">Privacy Policy</a>
+						<span class="text-slate-600">•</span>
+						<a href="/terms-of-service" class="text-indigo-700 dark:text-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-300 underline underline-offset-2 transition">Terms of Service</a>
+					</div>
+				</div>
+			</div>
+			<div class="flex items-center justify-end gap-2 pt-1">
+				<button
+					id="cookieConsentAcceptBtn"
+					type="button"
+					class="w-full sm:w-auto px-4 py-2 text-xs font-bold rounded-xl bg-indigo-700 hover:bg-indigo-600 text-white shadow-md shadow-indigo-900/30 transition cursor-pointer"
+				>
+					Accept &amp; Continue
+				</button>
+			</div>
+		</div>
+
+		<!-- PWA Install Suggestion Dialog (Desktop & Mobile) -->
+		<div
+			id="pwaInstallPrompt"
+			class="hidden fixed top-4 end-4 sm:top-5 sm:end-6 z-[9995] max-w-sm w-[calc(100%-2rem)] sm:w-84 bg-slate-900/95 backdrop-blur-md border border-slate-700/80 rounded-2xl p-4 shadow-2xl space-y-3"
+			role="dialog"
+			aria-labelledby="pwaInstallTitle"
+			aria-modal="false"
+		>
+			<div class="flex items-center justify-between gap-2 border-b border-slate-800/80 pb-2">
+				<span id="pwaInstallTitle" class="text-xs sm:text-sm font-semibold tracking-tight text-white flex items-center gap-1.5">
+					<svg class="w-4 h-4 text-orange-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+					</svg>
+					Install app?
+				</span>
+				<button
+					id="pwaInstallCloseBtn"
+					type="button"
+					class="text-slate-400 hover:text-white p-1 -m-1 rounded-lg transition cursor-pointer"
+					aria-label="Close"
+					title="Cancel"
+				>
+					<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+					</svg>
+				</button>
+			</div>
+			<div class="flex items-center gap-3">
+				<img
+					src="/images/identity/appicon.png"
+					alt="My MotoFolio"
+					width="44"
+					height="44"
+					loading="lazy"
+					decoding="async"
+					class="w-11 h-11 rounded-xl shadow-sm object-cover shrink-0 hidden dark:block"
+				/>
+				<img
+					src="/images/identity/appicon-light.png"
+					alt="My MotoFolio"
+					width="44"
+					height="44"
+					loading="lazy"
+					decoding="async"
+					class="w-11 h-11 rounded-xl shadow-sm object-cover shrink-0 block dark:hidden"
+				/>
+				<div class="min-w-0 flex-1">
+					<h4 class="text-xs sm:text-sm font-bold text-white truncate">My MotoFolio</h4>
+					<p class="text-[11px] text-slate-400 font-mono truncate">motofolio.pages.dev</p>
+					<p class="text-[11px] text-slate-300 mt-0.5 leading-snug">Fast offline access &amp; maintenance log on your device</p>
+				</div>
+			</div>
+			<div class="flex items-center justify-end gap-2 pt-1">
+				<button
+					id="pwaInstallCancelBtn"
+					type="button"
+					class="px-3 py-1.5 text-xs font-medium rounded-xl text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 border border-slate-700/80 transition cursor-pointer"
+				>
+					Cancel
+				</button>
+				<button
+					id="pwaInstallConfirmBtn"
+					type="button"
+					class="px-3.5 py-1.5 text-xs font-bold rounded-xl bg-orange-700 hover:bg-orange-600 text-white shadow-md shadow-orange-900/20 transition cursor-pointer"
+				>
+					Install
+				</button>
+			</div>
+		</div>
+
+		<!-- Sticky Top Bar -->
+		<header class="sticky top-0 z-30 backdrop-blur-xl bg-slate-950/85 border-b border-slate-800/80" role="banner">
+			<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center justify-between gap-3">
+				<a href="/" class="flex items-center gap-2.5 group" title="My MotoFolio Home">
+					<img src="/images/identity/logo-light.png" alt="My MotoFolio" width="89" height="24" loading="eager" decoding="async" class="h-6 w-auto hidden dark:block" />
+					<img src="/images/identity/logo.png" alt="My MotoFolio" width="89" height="24" loading="eager" decoding="async" class="h-6 w-auto block dark:hidden" />
+					<span class="text-xs font-bold text-slate-400 group-hover:text-indigo-400 transition">Help &amp; FAQs</span>
+				</a>
+
+				<nav aria-label="Secondary navigation" class="flex items-center flex-wrap gap-2">
+					<a
+						href="/faqs"
+						aria-current="page"
+						class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-indigo-600 text-white shadow-sm transition"
+					>
+						FAQs
+					</a>
+					<a
+						href="/privacy-policy"
+						class="px-3 py-1.5 rounded-xl text-xs font-medium bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700/80 transition"
+					>
+						Privacy Policy
+					</a>
+					<a
+						href="/terms-of-service"
+						class="px-3 py-1.5 rounded-xl text-xs font-medium bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700/80 transition"
+					>
+						Terms of Service
+					</a>
+					<div class="hidden sm:inline-flex rounded-xl bg-slate-900 p-0.5 border border-slate-800" aria-label="Theme">
+						<button
+							type="button"
+							data-theme="system"
+							class="theme-toggle-btn px-2 py-1 text-xs font-medium rounded-lg text-slate-400 hover:text-white transition flex items-center gap-1 cursor-pointer"
+							title="System theme"
+						>
+							<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+							</svg>
+						</button>
+						<button
+							type="button"
+							data-theme="light"
+							class="theme-toggle-btn px-2 py-1 text-xs font-medium rounded-lg text-slate-400 hover:text-white transition flex items-center gap-1 cursor-pointer"
+							title="Light mode"
+						>
+							<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+							</svg>
+						</button>
+						<button
+							type="button"
+							data-theme="dark"
+							class="theme-toggle-btn px-2 py-1 text-xs font-medium rounded-lg text-slate-400 hover:text-white transition flex items-center gap-1 cursor-pointer"
+							title="Dark mode"
+						>
+							<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+							</svg>
+						</button>
+					</div>
+					<a
+						href="/"
+						class="inline-flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-semibold px-3 py-1.5 rounded-xl border border-slate-700/80 transition"
+					>
+						<svg class="w-3.5 h-3.5 text-indigo-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+						</svg>
+						<span>Back to App</span>
+					</a>
+				</nav>
+			</div>
+		</header>
+
+		<!-- Main Content -->
+		<main id="mainContent" role="main" aria-label="Frequently Asked Questions" class="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6 motion-enter">
+			<!-- Hero Banner -->
+			<section class="rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900 to-indigo-950/40 border border-slate-800 p-6 sm:p-8 shadow-2xl space-y-4">
+				<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-xs font-semibold">
+					<svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+					</svg>
+					<span>Knowledge Base • Offline-First • Machine-Readable</span>
+				</div>
+				<h1 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">Frequently Asked Questions</h1>
+				<p class="text-sm sm:text-base text-slate-300 leading-relaxed max-w-3xl">
+					Everything you need to know about tracking periodic car maintenance, workshop expenses, fuel economy, CSV/JSON interchange, and offline backups in My MotoFolio.
+				</p>
+				<div class="flex flex-wrap items-center gap-4 pt-1 text-xs font-mono text-slate-400">
+					<span>Markdown: <a href="/faqs.md" class="text-indigo-700 dark:text-indigo-300 underline underline-offset-2">/faqs.md</a></span>
+					<span class="text-slate-600">•</span>
+					<span>JSON Dataset: <a href="/data/faqs.json" class="text-indigo-700 dark:text-indigo-300 underline underline-offset-2">/data/faqs.json</a></span>
+				</div>
+			</section>
+
+			<!-- Filter Controls -->
+			<section class="flex flex-col sm:flex-row gap-3" aria-label="Filter FAQs">
+				<input
+					id="faqSearchInput"
+					type="search"
+					placeholder="Search questions (e.g. oil, CSV, Google Drive, PWA)..."
+					aria-label="Search frequently asked questions"
+					class="flex-1 bg-slate-900 border border-slate-700/80 rounded-xl px-4 py-2.5 text-sm text-slate-100 placeholder-slate-400 focus:outline-none focus:border-indigo-500"
+				/>
+				<select
+					id="faqCategoryFilter"
+					aria-label="Filter FAQs by category"
+					class="sm:w-64 bg-slate-900 border border-slate-700/80 rounded-xl px-3.5 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-indigo-500"
+				>
+					<option value="all">All Categories</option>
+				</select>
+			</section>
+
+			<!-- FAQ Content (pre-rendered at build time, enhanced client-side) -->
+			<div id="faqContentContainer" class="space-y-6">
+				<!-- FAQ_PRERENDER_CONTENT -->
+			</div>
+		</main>
+
+		<!-- Site Footer -->
+		<footer class="border-t border-slate-800/80 bg-slate-950/60 mt-8" role="contentinfo">
+			<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400">
+				<div class="flex items-center gap-2 flex-wrap">
+					<img src="/images/identity/icon-light.png" alt="My MotoFolio" width="20" height="20" loading="lazy" decoding="async" class="w-5 h-5 object-contain shrink-0 hidden dark:inline-block theme-logo-dark" />
+					<img src="/images/identity/icon.png" alt="My MotoFolio" width="20" height="20" loading="lazy" decoding="async" class="w-5 h-5 object-contain shrink-0 inline-block dark:hidden theme-logo-light" />
+					<span class="font-mono font-bold text-indigo-700 dark:text-indigo-400">My MotoFolio</span>
+					<span>100% Client-Side Vehicle Maintenance Tracker (MIT License)</span>
+				</div>
+				<div class="flex items-center gap-4">
+					<a href="/" class="hover:text-white transition">Dashboard</a>
+					<a href="/faqs" class="hover:text-white transition">FAQs</a>
+					<a href="/privacy-policy" class="hover:text-white transition">Privacy Policy</a>
+					<a href="/terms-of-service" class="hover:text-white transition">Terms of Service</a>
+				</div>
+			</div>
+		</footer>
+
+		<script type="module" src="/src/faqs.ts"></script>
+	</body>
+</html>
