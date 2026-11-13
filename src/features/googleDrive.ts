@@ -613,6 +613,89 @@ export async function handleFetchCarsFromDrive(): Promise<void> {
   }
 }
 
+async function refreshGoogleUserInfo(token: string): Promise<{ name: string; email: string }> {
+  let fetchedEmail = "";
+  let fetchedName = "";
+  let fetchedFirst = "";
+  let fetchedLast = "";
+
+  try {
+    const uRes = await fetch("https://www.googleapis.com/oauth2/v3/userinfo", {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    if (uRes.status === 401) {
+      sessionStorage.removeItem(GDRIVE_STORAGE_TOKEN);
+      updateDriveUI();
+      return { name: "", email: "" };
+    }
+    if (uRes.ok) {
+      const uInfo = (await uRes.json()) as {
+        email?: string;
+        name?: string;
+        given_name?: string;
+        family_name?: string;
+      };
+      fetchedEmail = uInfo.email || "";
+      fetchedName = uInfo.name || "";
+      fetchedFirst = uInfo.given_name || "";
+      fetchedLast = uInfo.family_name || "";
+    }
+  } catch {
+    // ignore and try Drive about fallback
+  }
+
+  if (!fetchedEmail || !fetchedName) {
+    try {
+      const aboutRes = await fetch(
+        "https://www.googleapis.com/drive/v3/about?fields=user(displayName,emailAddress)",
+        { headers: { Authorization: `Bearer ${token}` } },
+      );
+      if (aboutRes.status === 401) {
+        sessionStorage.removeItem(GDRIVE_STORAGE_TOKEN);
+        updateDriveUI();
+        return { name: "", email: "" };
+      }
+      if (aboutRes.ok) {
+        const aboutData = (await aboutRes.json()) as {
+          user?: { displayName?: string; emailAddress?: string };
+        };
+        if (!fetchedEmail && aboutData.user?.emailAddress) {
+          fetchedEmail = aboutData.user.emailAddress;
+        }
+        if (!fetchedName && aboutData.user?.displayName) {
+          fetchedName = aboutData.user.displayName;
+        }
+      }
+    } catch {
+      // ignore
+    }
+  }
+
+  if (fetchedEmail) localStorage.setItem(GDRIVE_STORAGE_EMAIL, fetchedEmail);
+  if (fetchedName) localStorage.setItem(GDRIVE_STORAGE_NAME, fetchedName);
+
+  // Pre-fill local profile fields only if currently empty
+  const existingProfile = getUserProfile();
+  const parts = fetchedName.trim().split(/\s+/);
+  const nextFirst = existingProfile.firstName || fetchedFirst || parts[0] || "";
+  const nextLast = existingProfile.lastName || fetchedLast || (parts.length > 1 ? parts.slice(1).join(" ") : "");
+  const nextEmail = existingProfile.email || fetchedEmail || "";
+  if (
+    nextFirst !== existingProfile.firstName ||
+    nextLast !== existingProfile.lastName ||
+    nextEmail !== existingProfile.email
+  ) {
+    setUserProfile({
+      firstName: nextFirst,
+      lastName: nextLast,
+      email: nextEmail,
+    });
+  }
+
+  updateDriveUI();
+  return { name: fetchedName, email: fetchedEmail };
+}
+
 export function initGoogleDriveAuth(interactive = false): void {
   const clientId = getDriveClientId();
   if (!clientId) {
@@ -648,76 +731,8 @@ export function initGoogleDriveAuth(interactive = false): void {
         localStorage.removeItem(GDRIVE_STORAGE_EMAIL);
         localStorage.removeItem(GDRIVE_STORAGE_NAME);
 
-        let fetchedEmail = "";
-        let fetchedName = "";
-        let fetchedFirst = "";
-        let fetchedLast = "";
-
-        try {
-          const uRes = await fetch("https://www.googleapis.com/oauth2/v3/userinfo", {
-            headers: { Authorization: `Bearer ${resp.access_token}` },
-          });
-          if (uRes.ok) {
-            const uInfo = (await uRes.json()) as {
-              email?: string;
-              name?: string;
-              given_name?: string;
-              family_name?: string;
-            };
-            fetchedEmail = uInfo.email || "";
-            fetchedName = uInfo.name || "";
-            fetchedFirst = uInfo.given_name || "";
-            fetchedLast = uInfo.family_name || "";
-          }
-        } catch {
-          // ignore and try Drive about fallback
-        }
-
-        if (!fetchedEmail || !fetchedName) {
-          try {
-            const aboutRes = await fetch(
-              "https://www.googleapis.com/drive/v3/about?fields=user(displayName,emailAddress)",
-              { headers: { Authorization: `Bearer ${resp.access_token}` } },
-            );
-            if (aboutRes.ok) {
-              const aboutData = (await aboutRes.json()) as {
-                user?: { displayName?: string; emailAddress?: string };
-              };
-              if (!fetchedEmail && aboutData.user?.emailAddress) {
-                fetchedEmail = aboutData.user.emailAddress;
-              }
-              if (!fetchedName && aboutData.user?.displayName) {
-                fetchedName = aboutData.user.displayName;
-              }
-            }
-          } catch {
-            // ignore
-          }
-        }
-
-        if (fetchedEmail) localStorage.setItem(GDRIVE_STORAGE_EMAIL, fetchedEmail);
-        if (fetchedName) localStorage.setItem(GDRIVE_STORAGE_NAME, fetchedName);
-
-        // Pre-fill local profile fields only if currently empty
-        const existingProfile = getUserProfile();
-        const parts = fetchedName.trim().split(/\s+/);
-        const nextFirst = existingProfile.firstName || fetchedFirst || parts[0] || "";
-        const nextLast = existingProfile.lastName || fetchedLast || (parts.length > 1 ? parts.slice(1).join(" ") : "");
-        const nextEmail = existingProfile.email || fetchedEmail || "";
-        if (
-          nextFirst !== existingProfile.firstName ||
-          nextLast !== existingProfile.lastName ||
-          nextEmail !== existingProfile.email
-        ) {
-          setUserProfile({
-            firstName: nextFirst,
-            lastName: nextLast,
-            email: nextEmail,
-          });
-        }
-
-        updateDriveUI();
-        showToast(fetchedName ? `Connected as ${fetchedName}` : "Google Drive connected");
+        const { name } = await refreshGoogleUserInfo(resp.access_token);
+        showToast(name ? `Connected as ${name}` : "Google Drive connected");
         window.openDriveModal?.();
         await scanDriveFolders();
       }
@@ -748,7 +763,9 @@ export function initGoogleDriveListeners(onRenderAll: () => void): void {
     window.closeSettingsModal?.();
     driveSyncModal?.classList.remove("hidden");
     driveSyncModal?.classList.add("flex");
-    if (getDriveAccessToken()) {
+    const token = getDriveAccessToken();
+    if (token) {
+      void refreshGoogleUserInfo(token);
       void scanDriveFolders();
     }
   };
@@ -846,4 +863,8 @@ export function initGoogleDriveListeners(onRenderAll: () => void): void {
   });
 
   updateDriveUI();
+  const existingToken = getDriveAccessToken();
+  if (existingToken) {
+    void refreshGoogleUserInfo(existingToken);
+  }
 }
