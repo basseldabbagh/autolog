@@ -6,7 +6,7 @@
 
 import { showToast } from "../utils/format";
 
-const PWA_DISMISSED_KEY = "autolog_pwa_install_dismissed";
+const PWA_DISMISSED_KEY = "myMotofolio_pwa_install_dismissed";
 
 interface BeforeInstallPromptEvent extends Event {
   readonly platforms: string[];

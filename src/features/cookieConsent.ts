@@ -1,4 +1,4 @@
-const COOKIE_CONSENT_KEY = "autolog_cookies_accepted";
+const COOKIE_CONSENT_KEY = "myMotofolio_cookies_accepted";
 
 const BROWSING_ONLY_IDS = new Set([
   "pwaInstallCloseBtn",

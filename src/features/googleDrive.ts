@@ -22,7 +22,7 @@ const GDRIVE_STORAGE_TOKEN = "motofolio_gdrive_token";
 const GDRIVE_STORAGE_EMAIL = "motofolio_gdrive_email";
 const GDRIVE_STORAGE_NAME = "motofolio_gdrive_name";
 const GDRIVE_STORAGE_FOLDER_ID = "motofolio_gdrive_folder_id";
-const GDRIVE_STORAGE_FOLDER_NAME = "autolog_gdrive_folder_name";
+const GDRIVE_STORAGE_FOLDER_NAME = "myMotofolio_gdrive_folder_name";
 const GDRIVE_STORAGE_AUTOSYNC = "motofolio_gdrive_autosync";
 const GDRIVE_FOLDER_NAME = "MotoFolio";
 

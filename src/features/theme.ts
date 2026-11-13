@@ -1,7 +1,7 @@
 import type { ThemeMode } from "../types";
 import { showToast } from "../utils/format";
 
-const THEME_STORAGE_KEY = "autolog_theme_mode";
+const THEME_STORAGE_KEY = "myMotofolio_theme_mode";
 
 /** Updates favicon and touch appicon dynamically based on active theme schema. */
 export function updateThemeIdentityAssets(isDark: boolean): void {
