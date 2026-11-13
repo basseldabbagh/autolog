@@ -230,8 +230,10 @@ export function initVehicleAndSettingsListeners(onRenderAll: () => void): void {
     const profile = getUserProfile();
     const firstEl = document.getElementById("profileFirstName") as HTMLInputElement | null;
     const lastEl = document.getElementById("profileLastName") as HTMLInputElement | null;
+    const emailEl = document.getElementById("profileEmail") as HTMLInputElement | null;
     if (firstEl) firstEl.value = profile.firstName;
     if (lastEl) lastEl.value = profile.lastName;
+    if (emailEl) emailEl.value = profile.email;
   };
 
   const closeSettingsModal = (): void => {
@@ -257,7 +259,8 @@ export function initVehicleAndSettingsListeners(onRenderAll: () => void): void {
     e.preventDefault();
     const firstName = (document.getElementById("profileFirstName") as HTMLInputElement | null)?.value.trim() || "";
     const lastName = (document.getElementById("profileLastName") as HTMLInputElement | null)?.value.trim() || "";
-    setUserProfile({ firstName, lastName });
+    const email = (document.getElementById("profileEmail") as HTMLInputElement | null)?.value.trim() || "";
+    setUserProfile({ firstName, lastName, email });
     showToast("Profile saved");
   });
 

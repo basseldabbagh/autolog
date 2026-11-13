@@ -698,13 +698,21 @@ export function initGoogleDriveAuth(interactive = false): void {
         if (fetchedEmail) localStorage.setItem(GDRIVE_STORAGE_EMAIL, fetchedEmail);
         if (fetchedName) localStorage.setItem(GDRIVE_STORAGE_NAME, fetchedName);
 
-        // Pre-fill local profile name only if currently empty
+        // Pre-fill local profile fields only if currently empty
         const existingProfile = getUserProfile();
-        if (!existingProfile.firstName && !existingProfile.lastName && (fetchedFirst || fetchedLast || fetchedName)) {
-          const parts = fetchedName.trim().split(/\s+/);
+        const parts = fetchedName.trim().split(/\s+/);
+        const nextFirst = existingProfile.firstName || fetchedFirst || parts[0] || "";
+        const nextLast = existingProfile.lastName || fetchedLast || (parts.length > 1 ? parts.slice(1).join(" ") : "");
+        const nextEmail = existingProfile.email || fetchedEmail || "";
+        if (
+          nextFirst !== existingProfile.firstName ||
+          nextLast !== existingProfile.lastName ||
+          nextEmail !== existingProfile.email
+        ) {
           setUserProfile({
-            firstName: fetchedFirst || parts[0] || "",
-            lastName: fetchedLast || (parts.length > 1 ? parts.slice(1).join(" ") : ""),
+            firstName: nextFirst,
+            lastName: nextLast,
+            email: nextEmail,
           });
         }
 

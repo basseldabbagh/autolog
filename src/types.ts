@@ -135,6 +135,7 @@ export interface GoogleTokenClient {
 export interface UserProfile {
   firstName: string;
   lastName: string;
+  email: string;
 }
 
 declare global {

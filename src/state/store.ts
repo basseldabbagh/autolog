@@ -267,12 +267,13 @@ export function getUserProfile(): UserProfile {
       return {
         firstName: typeof parsed.firstName === "string" ? parsed.firstName : "",
         lastName: typeof parsed.lastName === "string" ? parsed.lastName : "",
+        email: typeof parsed.email === "string" ? parsed.email : "",
       };
     }
   } catch {
     // ignore
   }
-  return { firstName: "", lastName: "" };
+  return { firstName: "", lastName: "", email: "" };
 }
 
 export function setUserProfile(profile: UserProfile): void {
@@ -281,6 +282,7 @@ export function setUserProfile(profile: UserProfile): void {
     JSON.stringify({
       firstName: (profile.firstName || "").trim(),
       lastName: (profile.lastName || "").trim(),
+      email: (profile.email || "").trim(),
     }),
   );
 }
