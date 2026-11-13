@@ -452,21 +452,23 @@
 
 				<!-- Action Buttons -->
 				<div class="flex items-center flex-wrap gap-2">
-					<!-- 1. Car Selector (Drive & Local Saved Cars) -->
-					<div class="relative inline-flex items-center">
-						<span id="carProfileSelectIcon" class="absolute start-3 w-4 h-4 text-indigo-400 pointer-events-none flex items-center justify-center">
+					<!-- 1. Vehicles Switcher / Add New Car Button -->
+					<button
+						id="openVehiclesModalBtn"
+						type="button"
+						class="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs sm:text-sm font-medium px-3 py-2 rounded-xl border border-slate-700/80 hover:border-indigo-500/50 transition cursor-pointer"
+						title="Switch Saved Vehicles or Add New Vehicle"
+					>
+						<span id="headerVehicleSelectIcon" class="w-4 h-4 text-indigo-400 shrink-0 flex items-center justify-center">
 							<svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
 								<path stroke-linecap="round" stroke-linejoin="round" d="M8 17a2 2 0 100 4 2 2 0 000-4zm8 0a2 2 0 100 4 2 2 0 000-4zM3 9l2-5h14l2 5M3 9h18M3 9v8h2m16-8v8h-2M7 17h6" />
 							</svg>
 						</span>
-						<select
-							id="carProfileSelect"
-							aria-label="Select Car"
-							class="bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs sm:text-sm font-medium rounded-xl ps-9 pe-7 py-2 border border-slate-700/80 focus:outline-none focus:border-indigo-500 transition cursor-pointer"
-						>
-							<!-- Populated dynamically with Saved Cars (Local & Drive) -->
-						</select>
-					</div>
+						<span id="headerActiveCarLabel" class="truncate max-w-[140px] sm:max-w-[200px]">My Garage</span>
+						<svg class="w-3.5 h-3.5 text-slate-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+						</svg>
+					</button>
 
 					<!-- 2. Share Button -->
 					<button
@@ -491,18 +493,17 @@
 						<span class="hidden sm:inline">Share</span>
 					</button>
 
-					<!-- 3. Setting Button -->
+					<!-- 3. Profile Button -->
 					<button
 						id="openSettingsBtn"
 						type="button"
-						class="inline-flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs sm:text-sm font-medium px-3 py-2 rounded-xl border border-slate-700/80 hover:border-indigo-500/50 transition"
-						title="Settings, Tools &amp; Add New Car"
+						class="inline-flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs sm:text-sm font-medium px-3 py-2 rounded-xl border border-slate-700/80 hover:border-indigo-500/50 transition cursor-pointer"
+						title="Profile, Reports, Data Sync &amp; Settings"
 					>
 						<svg class="w-4 h-4 text-slate-300 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-							<path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+							<path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
 						</svg>
-						<span class="hidden sm:inline">Settings</span>
+						<span class="hidden sm:inline">Profile</span>
 					</button>
 				</div>
 			</div>
@@ -530,21 +531,13 @@
 
 						<!-- Prominent Action Row -->
 						<div class="pt-2 flex flex-wrap items-center gap-3">
-							<!-- 1. Google Drive Sign In (Primary Focused CTA) -->
+							<!-- 1. Google Drive Sign In (Reusable Component) -->
 							<button
 								id="welcomeGoogleSignInBtn"
 								type="button"
-								class="inline-flex items-center gap-2.5 bg-white hover:bg-slate-100 text-slate-900 text-xs sm:text-sm font-bold px-5 py-2.5 rounded-xl shadow-xl shadow-white/10 hover:shadow-indigo-500/20 border border-slate-200 transition-all cursor-pointer transform hover:-translate-y-0.5"
-								title="Sign in with Google to load or sync your fleet from Google Drive"
-							>
-								<svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24">
-									<path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
-									<path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
-									<path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
-									<path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
-								</svg>
-								<span>Sign In with Google</span>
-							</button>
+								data-google-auth-btn
+								data-variant="hero"
+							></button>
 
 							<!-- 2. Import Data Hub (Secondary CTA) -->
 							<button
@@ -1401,42 +1394,86 @@
 							</p>
 						</div>
 
-						<!-- Sync All Local Cars Button -->
-						<button
-							id="driveSyncAllCarsBtn"
-							type="button"
-							class="w-full inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold py-2.5 px-3 rounded-xl shadow-md shadow-emerald-600/20 transition cursor-pointer"
-							title="Backup all local vehicles to Drive and load missing vehicles from Drive"
-						>
-							<svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-							</svg>
-							<span>Sync All Local Cars to Drive</span>
-						</button>
-
 						<div class="grid grid-cols-2 gap-2 pt-1">
 							<button
-								id="drivePushCurrentBtn"
+								id="driveSaveManualBtn"
 								type="button"
-								class="inline-flex items-center justify-center gap-1.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-2 px-3 rounded-xl transition cursor-pointer"
+								class="inline-flex items-center justify-center gap-1.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-2.5 px-3 rounded-xl transition cursor-pointer"
+								title="Save vehicle(s) to Google Drive (lets you choose if multiple)"
 							>
 								<svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
 									<path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
 								</svg>
-								<span>Save Current Car</span>
+								<span>Save (Manual)</span>
 							</button>
 							<button
-								id="drivePullCurrentBtn"
+								id="driveFetchCarsBtn"
 								type="button"
-								class="inline-flex items-center justify-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-emerald-300 font-semibold py-2 px-3 rounded-xl border border-slate-700 transition cursor-pointer"
+								class="inline-flex items-center justify-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-emerald-300 font-semibold py-2.5 px-3 rounded-xl border border-slate-700 transition cursor-pointer"
+								title="Fetch vehicle(s) from Google Drive (lets you choose if multiple)"
 							>
 								<svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
 									<path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
 								</svg>
-								<span>Fetch Current Car</span>
+								<span>Fetch Cars</span>
 							</button>
 						</div>
+
+						<!-- Reusable Multi-Car Picker for Save (Manual) & Fetch Cars -->
+						<div id="driveCarPickerPanel" class="hidden p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2.5"></div>
+
 						<p id="driveSyncStatusMsg" class="text-center font-mono text-[11px] text-slate-400 pt-1"></p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- MODAL: Confirm Google Drive Disconnect -->
+		<div
+			id="driveDisconnectModal"
+			class="fixed inset-0 z-[60] hidden items-center justify-center bg-slate-950/80 backdrop-blur-sm p-4"
+			role="dialog"
+			aria-modal="true"
+			aria-labelledby="driveDisconnectModalTitle"
+		>
+			<div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-sm w-full overflow-hidden shadow-2xl">
+				<div class="px-5 py-4 border-b border-slate-800 flex items-center justify-between">
+					<h3 id="driveDisconnectModalTitle" class="text-sm font-bold text-white">Disconnect Google Drive</h3>
+					<button
+						id="closeDriveDisconnectModalBtn"
+						type="button"
+						class="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800 transition"
+						aria-label="Close disconnect confirmation"
+					>
+						<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+						</svg>
+					</button>
+				</div>
+				<div class="p-5 space-y-4 text-xs text-slate-300">
+					<p>Do you want to remove your saved vehicles from this browser or keep them locally after disconnecting?</p>
+					<div class="space-y-2">
+						<button
+							id="disconnectRemoveCarsBtn"
+							type="button"
+							class="w-full py-2.5 px-3 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-semibold transition cursor-pointer"
+						>
+							Remove local cars &amp; disconnect (Default)
+						</button>
+						<button
+							id="disconnectKeepCarsBtn"
+							type="button"
+							class="w-full py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold border border-slate-700 transition cursor-pointer"
+						>
+							Keep local cars &amp; disconnect
+						</button>
+						<button
+							id="cancelDriveDisconnectBtn"
+							type="button"
+							class="w-full py-2 px-3 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800/60 transition cursor-pointer"
+						>
+							Cancel
+						</button>
 					</div>
 				</div>
 			</div>
@@ -2480,7 +2517,7 @@
 			</div>
 		</div>
 
-		<!-- MODAL 6: Settings / Add New Car Modal -->
+		<!-- MODAL 6: Profile Modal (renamed from Settings) -->
 		<div
 			id="settingsCarModal"
 			class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-sm p-4 overflow-y-auto"
@@ -2493,20 +2530,19 @@
 					<div class="flex items-center gap-2.5">
 						<span class="p-2 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
 							<svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-								<path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+								<path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
 							</svg>
 						</span>
 						<div>
-							<h3 id="settingsCarModalTitle" class="text-base font-bold text-white">Settings &amp; Add New Car</h3>
-							<p class="text-xs text-slate-400">Configure vehicle profiles, create custom cars, or manage saved records</p>
+							<h3 id="settingsCarModalTitle" class="text-base font-bold text-white">Profile</h3>
+							<p class="text-xs text-slate-400">Manage your profile, printable reports, cloud sync, and preferences</p>
 						</div>
 					</div>
 					<button
 						id="closeSettingsCarModalBtn"
 						type="button"
 						class="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800 transition"
-						aria-label="Close Settings and Tools modal"
+						aria-label="Close Profile modal"
 						title="Close Modal"
 					>
 						<svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -2515,6 +2551,42 @@
 					</button>
 				</div>
 				<div class="p-5 space-y-5 overflow-y-auto">
+					<!-- Profile Info Form -->
+					<form id="userProfileForm" class="border-b border-slate-800 pb-4 space-y-3 text-xs">
+						<div class="flex items-center justify-between">
+							<h4 class="text-xs font-semibold uppercase tracking-wider text-indigo-400">Personal Info</h4>
+							<span class="text-[11px] text-slate-400">Saved locally</span>
+						</div>
+						<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+							<div>
+								<label for="profileFirstName" class="block text-slate-300 font-medium mb-1">First Name</label>
+								<input
+									id="profileFirstName"
+									type="text"
+									placeholder="First name"
+									class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700 focus:outline-none focus:border-indigo-500"
+								/>
+							</div>
+							<div>
+								<label for="profileLastName" class="block text-slate-300 font-medium mb-1">Last Name</label>
+								<input
+									id="profileLastName"
+									type="text"
+									placeholder="Last name"
+									class="w-full bg-slate-950 text-white rounded-xl px-3 py-2 border border-slate-700 focus:outline-none focus:border-indigo-500"
+								/>
+							</div>
+						</div>
+						<div class="flex justify-end">
+							<button
+								type="submit"
+								class="px-3.5 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold transition cursor-pointer"
+							>
+								Save Profile
+							</button>
+						</div>
+					</form>
+
 					<!-- Reports Section -->
 					<div class="border-b border-slate-800 pb-4 space-y-2">
 						<div class="flex items-center justify-between">
@@ -2550,10 +2622,10 @@
 						</div>
 					</div>
 
-					<!-- Tools & Cloud Sync Section -->
+					<!-- Data Sync / Export / Import Section -->
 					<div class="border-b border-slate-800 pb-4 space-y-2">
 						<div class="flex items-center justify-between">
-							<h4 class="text-xs font-semibold uppercase tracking-wider text-indigo-400">Data Hub &amp; Cloud Sync</h4>
+							<h4 class="text-xs font-semibold uppercase tracking-wider text-indigo-400">Data Sync / Export / Import</h4>
 							<span class="text-[11px] text-slate-400">Backup &amp; sync</span>
 						</div>
 						<div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -2570,28 +2642,106 @@
 								<span>Import / Export (CSV &amp; JSON)</span>
 							</button>
 
-							<!-- Google Drive Cloud Sync -->
+							<!-- Google Drive Cloud Sync (Reusable Component) -->
 							<button
 								id="openDriveSyncModalBtn"
 								type="button"
-								class="inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold px-3 py-2.5 rounded-xl border border-slate-700 hover:border-indigo-500/50 shadow-sm transition cursor-pointer"
-								title="Google Account: Not Connected - Click to connect"
-							>
-								<svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24">
-									<path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
-									<path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
-									<path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
-									<path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
-								</svg>
-								<span id="driveAccountStatusDot" class="w-2 h-2 rounded-full bg-slate-500"></span>
-								<span id="driveHeaderStatusText">Google Drive</span>
-							</button>
+								data-google-auth-btn
+								data-variant="panel"
+							></button>
+						</div>
+					</div>
+
+					<!-- Other Settings (Appearance & Theme) -->
+					<div class="space-y-2">
+						<div class="flex items-center justify-between gap-3 flex-wrap">
+							<div>
+								<h4 class="text-xs font-semibold uppercase tracking-wider text-indigo-400">Other Settings</h4>
+								<p class="text-[11px] text-slate-400">Choose between light, dark, or automatic system theme</p>
+							</div>
+							<div class="inline-flex rounded-xl bg-slate-950 p-1 border border-slate-800 shrink-0" id="themeToggleGroup">
+								<button
+									type="button"
+									data-theme="system"
+									class="theme-toggle-btn px-2.5 py-1 text-xs font-medium rounded-lg text-slate-400 hover:text-white transition flex items-center gap-1.5 cursor-pointer"
+									title="Follow OS/Browser theme"
+								>
+									<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+									<span>System</span>
+								</button>
+								<button
+									type="button"
+									data-theme="light"
+									class="theme-toggle-btn px-2.5 py-1 text-xs font-medium rounded-lg text-slate-400 hover:text-white transition flex items-center gap-1.5 cursor-pointer"
+									title="Light mode"
+								>
+									<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+									<span>Light</span>
+								</button>
+								<button
+									type="button"
+									data-theme="dark"
+									class="theme-toggle-btn px-2.5 py-1 text-xs font-medium rounded-lg text-slate-400 hover:text-white transition flex items-center gap-1.5 cursor-pointer"
+									title="Dark mode"
+								>
+									<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+									<span>Dark</span>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- MODAL 7: My Garage Modal (Switch Saved Vehicles & Add New Vehicle) -->
+		<div
+			id="vehiclesModal"
+			class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-sm p-4 overflow-y-auto"
+			role="dialog"
+			aria-modal="true"
+			aria-labelledby="vehiclesModalTitle"
+		>
+			<div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-xl w-full max-h-[90vh] flex flex-col overflow-hidden shadow-2xl">
+				<div class="px-5 py-4 border-b border-slate-800 flex items-center justify-between shrink-0">
+					<div class="flex items-center gap-2.5">
+						<span class="p-2 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+							<svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M8 17a2 2 0 100 4 2 2 0 000-4zm8 0a2 2 0 100 4 2 2 0 000-4zM3 9l2-5h14l2 5M3 9h18M3 9v8h2m16-8v8h-2M7 17h6" />
+							</svg>
+						</span>
+						<div>
+							<h3 id="vehiclesModalTitle" class="text-base font-bold text-white">My Garage</h3>
+							<p class="text-xs text-slate-400">Switch between saved vehicles or add a new vehicle</p>
+						</div>
+					</div>
+					<button
+						id="closeVehiclesModalBtn"
+						type="button"
+						class="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800 transition"
+						aria-label="Close My Garage modal"
+						title="Close Modal"
+					>
+						<svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+						</svg>
+					</button>
+				</div>
+				<div class="p-5 space-y-5 overflow-y-auto">
+					<!-- Manage Saved Vehicles List -->
+					<div class="space-y-2">
+						<div class="flex items-center justify-between">
+							<h4 class="text-xs font-semibold uppercase tracking-wider text-indigo-400">Saved Vehicles</h4>
+							<span id="settingsSavedCarsCount" class="text-[11px] text-slate-500">0 saved</span>
+						</div>
+						<div id="settingsSavedCarsList" class="space-y-2 max-h-48 overflow-y-auto pe-1">
+							<!-- Populated dynamically -->
 						</div>
 					</div>
 
 					<!-- Add New Car Form -->
-					<form id="addNewCarForm" class="space-y-4 text-xs">
-						<div class="border-b border-slate-800 pb-2">
+					<form id="addNewCarForm" class="border-t border-slate-800 pt-4 space-y-4 text-xs">
+						<div>
 							<h4 class="text-xs font-semibold uppercase tracking-wider text-indigo-400">Add New Vehicle</h4>
 						</div>
 
@@ -2705,7 +2855,7 @@
 						<div class="pt-2 flex justify-end gap-2">
 							<button
 								type="button"
-								id="cancelSettingsCarModalBtn"
+								id="cancelVehiclesModalBtn"
 								class="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 hover:bg-slate-700 transition"
 							>
 								Cancel
@@ -2721,56 +2871,6 @@
 							</button>
 						</div>
 					</form>
-
-					<!-- Manage Saved Vehicles List -->
-					<div class="border-t border-slate-800 pt-4 space-y-2">
-						<div class="flex items-center justify-between">
-							<h4 class="text-xs font-semibold uppercase tracking-wider text-slate-400">Saved Vehicles (Local &amp; Drive)</h4>
-							<span id="settingsSavedCarsCount" class="text-[11px] text-slate-500">0 saved</span>
-						</div>
-						<div id="settingsSavedCarsList" class="space-y-2 max-h-48 overflow-y-auto pe-1">
-							<!-- Populated dynamically -->
-						</div>
-					</div>
-
-					<!-- Appearance & Theme Section (At Bottom) -->
-					<div class="border-t border-slate-800 pt-4 space-y-2">
-						<div class="flex items-center justify-between gap-3 flex-wrap">
-							<div>
-								<h4 class="text-xs font-semibold uppercase tracking-wider text-indigo-400">Appearance &amp; Theme</h4>
-								<p class="text-[11px] text-slate-400">Choose between light, dark, or automatic system theme</p>
-							</div>
-							<div class="inline-flex rounded-xl bg-slate-950 p-1 border border-slate-800 shrink-0" id="themeToggleGroup">
-								<button
-									type="button"
-									data-theme="system"
-									class="theme-toggle-btn px-2.5 py-1 text-xs font-medium rounded-lg text-slate-400 hover:text-white transition flex items-center gap-1.5 cursor-pointer"
-									title="Follow OS/Browser theme"
-								>
-									<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-									<span>System</span>
-								</button>
-								<button
-									type="button"
-									data-theme="light"
-									class="theme-toggle-btn px-2.5 py-1 text-xs font-medium rounded-lg text-slate-400 hover:text-white transition flex items-center gap-1.5 cursor-pointer"
-									title="Light mode"
-								>
-									<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
-									<span>Light</span>
-								</button>
-								<button
-									type="button"
-									data-theme="dark"
-									class="theme-toggle-btn px-2.5 py-1 text-xs font-medium rounded-lg text-slate-400 hover:text-white transition flex items-center gap-1.5 cursor-pointer"
-									title="Dark mode"
-								>
-									<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
-									<span>Dark</span>
-								</button>
-							</div>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>

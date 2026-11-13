@@ -28,7 +28,7 @@ import {
   setAppData,
 } from "./state/store";
 import { updateDynamicSEO } from "./utils/seo";
-import { initGlobalFilterListeners, restoreFiltersFromUrl, syncFiltersToUrl } from "./utils/urlFilters";
+import { initGlobalFilterListeners, restoreFiltersFromUrl } from "./utils/urlFilters";
 
 // Configure Tailwind CDN & initial theme class immediately
 applyInitialThemeClass();
@@ -75,12 +75,6 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       renderAll();
     }
-  });
-
-  // Car Profile Switcher
-  document.getElementById("carProfileSelect")?.addEventListener("change", (e) => {
-    void loadProfile((e.target as HTMLSelectElement).value);
-    syncFiltersToUrl();
   });
 
   // Initialize Feature Listeners

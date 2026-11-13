@@ -1,9 +1,10 @@
 import { BUILTIN_PROFILES, SAMPLE_PROFILE_KEYS } from "../config/profiles";
-import type { DatePreset, DonutMode, MaintenanceRecord, ScheduleFilter, VehicleProfile } from "../types";
+import type { DatePreset, DonutMode, MaintenanceRecord, ScheduleFilter, UserProfile, VehicleProfile } from "../types";
 
 export const STORAGE_PREFIX = "car_tracker_v3_";
 export const ACTIVE_KEY_STORAGE = "car_tracker_v3_active_profile";
 export const CUSTOM_LIST_STORAGE = "car_tracker_v3_custom_profiles";
+export const USER_PROFILE_STORAGE = "motofolio_user_profile";
 
 interface StoreState {
   activeProfileKey: string | null;
@@ -255,5 +256,43 @@ export async function loadProfile(profileKey: string | null): Promise<void> {
 
   state.activeProfileKey = null;
   state.appData = null;
+  callbacks.onRenderAll?.();
+}
+
+export function getUserProfile(): UserProfile {
+  try {
+    const raw = localStorage.getItem(USER_PROFILE_STORAGE);
+    if (raw) {
+      const parsed = JSON.parse(raw) as Partial<UserProfile>;
+      return {
+        firstName: typeof parsed.firstName === "string" ? parsed.firstName : "",
+        lastName: typeof parsed.lastName === "string" ? parsed.lastName : "",
+      };
+    }
+  } catch {
+    // ignore
+  }
+  return { firstName: "", lastName: "" };
+}
+
+export function setUserProfile(profile: UserProfile): void {
+  localStorage.setItem(
+    USER_PROFILE_STORAGE,
+    JSON.stringify({
+      firstName: (profile.firstName || "").trim(),
+      lastName: (profile.lastName || "").trim(),
+    }),
+  );
+}
+
+export function clearAllLocalVehicles(): void {
+  const customMap = getCustomProfilesMap();
+  Object.keys(customMap).forEach((key) => {
+    localStorage.removeItem(STORAGE_PREFIX + key);
+  });
+  localStorage.removeItem(CUSTOM_LIST_STORAGE);
+  setActiveProfileKey(null);
+  setAppData(null);
+  callbacks.onSyncProfileSelectOptions?.();
   callbacks.onRenderAll?.();
 }

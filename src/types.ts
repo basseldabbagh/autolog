@@ -132,6 +132,11 @@ export interface GoogleTokenClient {
   requestAccessToken(options?: { prompt?: string }): void;
 }
 
+export interface UserProfile {
+  firstName: string;
+  lastName: string;
+}
+
 declare global {
   interface ImportMetaEnv {
     readonly VITE_GOOGLE_CLIENT_ID?: string;
@@ -148,6 +153,8 @@ declare global {
     _toastTimer?: ReturnType<typeof setTimeout>;
     openSettingsModal?: () => void;
     closeSettingsModal?: () => void;
+    openVehiclesModal?: () => void;
+    closeVehiclesModal?: () => void;
     openDriveModal?: () => void;
     closeDriveModal?: () => void;
   }

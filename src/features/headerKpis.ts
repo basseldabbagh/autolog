@@ -15,40 +15,29 @@ import { computeItemStatus } from "./periodicSchedule";
 export function updateVehicleIcons(profileKey: string): void {
   const svgHtml = VEHICLE_TYPE_ICONS[profileKey] || VEHICLE_TYPE_ICONS["default"];
   const headerBox = document.getElementById("headerVehicleIcon");
-  const selectIcon = document.getElementById("carProfileSelectIcon");
+  const selectIcon = document.getElementById("headerVehicleSelectIcon");
   if (headerBox) headerBox.innerHTML = svgHtml;
   if (selectIcon) selectIcon.innerHTML = svgHtml;
 }
 
 export function syncProfileSelectOptions(): void {
-  const sel = document.getElementById("carProfileSelect") as HTMLSelectElement | null;
-  if (!sel) return;
-
+  const labelEl = document.getElementById("headerActiveCarLabel");
   const customMap = getCustomProfilesMap();
-  const savedEntries = Object.entries(customMap);
+  const savedKeys = Object.keys(customMap);
   let activeProfileKey = getActiveProfileKey();
 
-  let html = "";
-  if (savedEntries.length > 0) {
-    savedEntries.forEach(([id, label]) => {
-      html += `<option value="${id}">${escapeHtml(label)}</option>`;
-    });
-  } else {
-    html = '<option value="" disabled selected>No Saved Vehicles</option>';
+  if (activeProfileKey && !customMap[activeProfileKey]) {
+    activeProfileKey = savedKeys.length > 0 ? savedKeys[0] : null;
+    setActiveProfileKey(activeProfileKey);
+  } else if (!activeProfileKey && savedKeys.length > 0) {
+    activeProfileKey = savedKeys[0];
+    setActiveProfileKey(activeProfileKey);
   }
 
-  sel.innerHTML = html;
-  if (activeProfileKey && [...sel.options].some((o) => o.value === activeProfileKey)) {
-    sel.value = activeProfileKey;
-  } else if (sel.options.length > 0 && sel.options[0].value) {
-    sel.value = sel.options[0].value;
-    activeProfileKey = sel.value;
-    setActiveProfileKey(activeProfileKey);
-  } else {
-    sel.value = "";
-    activeProfileKey = null;
-    setActiveProfileKey(null);
+  if (labelEl) {
+    labelEl.textContent = activeProfileKey && customMap[activeProfileKey] ? customMap[activeProfileKey] : "My Garage";
   }
+
   updateVehicleIcons(activeProfileKey || "default");
 }
 

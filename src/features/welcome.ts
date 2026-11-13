@@ -2,8 +2,8 @@ import { VEHICLE_TYPE_ICONS, WELCOME_SAMPLE_TEMPLATES } from "../config/profiles
 import { escapeHtml } from "../utils/format";
 
 export function openAddCarModalWithPreset(presetKey: string | null): void {
-  if (typeof window.openSettingsModal === "function") {
-    window.openSettingsModal();
+  if (typeof window.openVehiclesModal === "function") {
+    window.openVehiclesModal();
   }
   const baseSel = document.getElementById("modalNewCarBaseSelect") as HTMLSelectElement | null;
   if (baseSel) {

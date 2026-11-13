@@ -3,16 +3,19 @@ import {
   getActiveProfileKey,
   getAppData,
   getCustomProfilesMap,
+  getUserProfile,
   loadProfile,
   registerCustomProfileOption,
   saveToLocal,
   setActiveProfileKey,
   setAppData,
+  setUserProfile,
   STORAGE_PREFIX,
   CUSTOM_LIST_STORAGE,
 } from "../state/store";
 import type { VehicleProfile } from "../types";
 import { escapeHtml, showToast } from "../utils/format";
+import { syncFiltersToUrl } from "../utils/urlFilters";
 import { syncProfileSelectOptions } from "./headerKpis";
 
 export function renderSettingsSavedCarsList(onRenderAll: () => void, closeSettingsModal: () => void): void {
@@ -77,6 +80,7 @@ export function renderSettingsSavedCarsList(onRenderAll: () => void, closeSettin
       const carId = btn.getAttribute("data-car-id");
       if (carId) {
         void loadProfile(carId);
+        syncFiltersToUrl();
         renderSettingsSavedCarsList(onRenderAll, closeSettingsModal);
         closeSettingsModal();
         showToast("Switched vehicle");
@@ -220,14 +224,22 @@ export function initVehicleAndSettingsListeners(onRenderAll: () => void): void {
     showToast("Official documents dates saved");
   });
 
-  // Settings / Add New Vehicle Modal
+  // Profile Modal (previously Settings)
   const settingsCarModal = document.getElementById("settingsCarModal");
+  const populateUserProfileForm = (): void => {
+    const profile = getUserProfile();
+    const firstEl = document.getElementById("profileFirstName") as HTMLInputElement | null;
+    const lastEl = document.getElementById("profileLastName") as HTMLInputElement | null;
+    if (firstEl) firstEl.value = profile.firstName;
+    if (lastEl) lastEl.value = profile.lastName;
+  };
+
   const closeSettingsModal = (): void => {
     settingsCarModal?.classList.add("hidden");
     settingsCarModal?.classList.remove("flex");
   };
   const openSettingsModal = (): void => {
-    renderSettingsSavedCarsList(onRenderAll, closeSettingsModal);
+    populateUserProfileForm();
     settingsCarModal?.classList.remove("hidden");
     settingsCarModal?.classList.add("flex");
   };
@@ -237,9 +249,38 @@ export function initVehicleAndSettingsListeners(onRenderAll: () => void): void {
 
   document.getElementById("openSettingsBtn")?.addEventListener("click", openSettingsModal);
   document.getElementById("closeSettingsCarModalBtn")?.addEventListener("click", closeSettingsModal);
-  document.getElementById("cancelSettingsCarModalBtn")?.addEventListener("click", closeSettingsModal);
   settingsCarModal?.addEventListener("click", (e) => {
     if (e.target === settingsCarModal) closeSettingsModal();
+  });
+
+  document.getElementById("userProfileForm")?.addEventListener("submit", (e: SubmitEvent) => {
+    e.preventDefault();
+    const firstName = (document.getElementById("profileFirstName") as HTMLInputElement | null)?.value.trim() || "";
+    const lastName = (document.getElementById("profileLastName") as HTMLInputElement | null)?.value.trim() || "";
+    setUserProfile({ firstName, lastName });
+    showToast("Profile saved");
+  });
+
+  // Vehicles Modal (Saved Vehicles & Add New Vehicle)
+  const vehiclesModal = document.getElementById("vehiclesModal");
+  const closeVehiclesModal = (): void => {
+    vehiclesModal?.classList.add("hidden");
+    vehiclesModal?.classList.remove("flex");
+  };
+  const openVehiclesModal = (): void => {
+    renderSettingsSavedCarsList(onRenderAll, closeVehiclesModal);
+    vehiclesModal?.classList.remove("hidden");
+    vehiclesModal?.classList.add("flex");
+  };
+
+  window.openVehiclesModal = openVehiclesModal;
+  window.closeVehiclesModal = closeVehiclesModal;
+
+  document.getElementById("openVehiclesModalBtn")?.addEventListener("click", openVehiclesModal);
+  document.getElementById("closeVehiclesModalBtn")?.addEventListener("click", closeVehiclesModal);
+  document.getElementById("cancelVehiclesModalBtn")?.addEventListener("click", closeVehiclesModal);
+  vehiclesModal?.addEventListener("click", (e) => {
+    if (e.target === vehiclesModal) closeVehiclesModal();
   });
 
   document.getElementById("modalNewCarBaseSelect")?.addEventListener("change", (e) => {
@@ -297,7 +338,7 @@ export function initVehicleAndSettingsListeners(onRenderAll: () => void): void {
     registerCustomProfileOption(newId, `${make} ${model}`.trim());
     void loadProfile(newId);
 
-    closeSettingsModal();
+    closeVehiclesModal();
     (e.target as HTMLFormElement).reset();
     showToast(`Vehicle "${make} ${model}" created & switched`);
   });
