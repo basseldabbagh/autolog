@@ -316,9 +316,12 @@
 					</svg>
 				</div>
 				<div class="space-y-1">
-					<h4 class="text-xs sm:text-sm font-bold text-white tracking-tight">Cookie &amp; Storage Policy</h4>
+					<h4 class="text-xs sm:text-sm font-bold text-white tracking-tight">Cookies &amp; Local Storage</h4>
 					<p class="text-xs text-slate-300 leading-relaxed">
-						My MotoFolio uses local browser storage and essential cookies to save your vehicle fleet, maintenance intervals, and preferences offline on your device.
+						MotoFolio uses essential cookies and browser storage to save your vehicles, logs, and settings on your device. You can browse without them, but using app features requires consent.
+					</p>
+					<p id="cookieConsentFeatureNote" class="hidden text-[11px] font-medium text-amber-300">
+						Please accept storage to use this feature.
 					</p>
 					<div class="flex items-center gap-2.5 pt-1 text-[11px]">
 						<a href="/privacy-policy" class="text-indigo-700 dark:text-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-300 underline underline-offset-2 transition">Privacy Policy</a>
@@ -328,6 +331,13 @@
 				</div>
 			</div>
 			<div class="flex items-center justify-end gap-2 pt-1">
+				<button
+					id="cookieConsentRejectBtn"
+					type="button"
+					class="w-full sm:w-auto px-4 py-2 text-xs font-semibold rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition cursor-pointer"
+				>
+					Reject
+				</button>
 				<button
 					id="cookieConsentAcceptBtn"
 					type="button"
